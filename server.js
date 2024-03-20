@@ -27,7 +27,8 @@ mongoose.connect(MONGODB_URL)
 })
 .catch((err)=>{ console.log('DB connection error',err);})
 
-
+const candidateRouter =require("./routes/candidates");
+app.use(candidateRouter);
 
 //const loginsRouter = require('./routes/signup');
 //app.use(loginsRouter);
