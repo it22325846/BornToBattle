@@ -30,6 +30,10 @@ mongoose.connect(MONGODB_URL)
 const candidateRouter =require("./routes/candidates");
 app.use(candidateRouter);
 
+const judgeRouter = require('./routes/judges_route');
+app.use(judgeRouter);
+
+
 //const loginsRouter = require('./routes/signup');
 //app.use(loginsRouter);
 
