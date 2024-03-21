@@ -38,3 +38,4 @@ app.use(candidateRouter);
 // npm install axios
 // npm install web-vitals
 //npm install concurrently
+//npm install multer
