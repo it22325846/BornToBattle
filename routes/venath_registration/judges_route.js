@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Judge = require("../models/judges_model");
+const Judge = require("../../models/venath_registration/judges_model");
 
 // POST route for adding a new Judge
 router.post('/judges/save', (req, res) => {
@@ -10,7 +10,7 @@ router.post('/judges/save', (req, res) => {
             return res.status(200).json({
                 success: "Judge saved successfully",
             });
-        })  
+        })
         .catch((err) => {
             return res.status(400).json({
                 error: err

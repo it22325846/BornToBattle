@@ -27,10 +27,10 @@ mongoose.connect(MONGODB_URL)
 })
 .catch((err)=>{ console.log('DB connection error',err);})
 
-const candidateRouter =require("./routes/candidates");
+const candidateRouter =require("./routes/venath_registration/candidates");
 app.use(candidateRouter);
 
-const judgeRouter = require('./routes/judges_route');
+const judgeRouter = require('./routes/venath_registration/judges_route');
 app.use(judgeRouter);
 
 
