@@ -33,6 +33,13 @@ app.use(candidateRouter);
 const judgeRouter = require('./routes/venath_registration/judges_route');
 app.use(judgeRouter);
 
+const managerRouter = require('./routes/managers/managers_route');
+app.use(managerRouter);
+
+
+const adminRouter = require('./routes/admin/admin_route');
+app.use(adminRouter);
+
 
 //const loginsRouter = require('./routes/signup');
 //app.use(loginsRouter);
