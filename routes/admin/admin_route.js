@@ -3,8 +3,8 @@ const router = express.Router();
 const Admin = require("../../models/admin/admin_model");
 
 router.post('/admin/save',(req,res)=>{
-    let newManager=new Manager(req.body);
-    newManager.save()
+    let newAdmin=new Admin(req.body);
+    newAdmin.save()
     .then(()=>{
         return res.status(200).json({
         sucess: "Admin saved successfully"
@@ -20,10 +20,10 @@ router.post('/admin/save',(req,res)=>{
 
 router.get('/admin', (req, res) => {
     Manager.find().exec()
-        .then(managers => {
+        .then(admin => {
             return res.status(200).json({
                 success: true,
-                existingJudges: managers
+                existingJudges: admin
             });
         })
         .catch(err => {
