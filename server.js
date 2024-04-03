@@ -41,11 +41,11 @@ app.use(managerRouter);
 const adminRouter = require('./routes/admin/admin_route');
 app.use(adminRouter);
 
+const loginsRouter = require('./routes/venath_registration/candidate_signup_route');
+app.use(loginsRouter);
 
-
-
-
-
+const JloginsRouter = require('./routes/venath_registration/judge_signup_route');
+ app.use(JloginsRouter);
 
 
 
