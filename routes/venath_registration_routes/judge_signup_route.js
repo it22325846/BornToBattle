@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 //const bcrypt = require('bcrypt');
-let JLogin = require("../../models/venath_registration/judge_signup_model");
+let JLogin = require("../../models/venath_registration_models/judge_signup_model");
 
 
 
