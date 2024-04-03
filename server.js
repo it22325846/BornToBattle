@@ -63,8 +63,6 @@ app.use(audienceRouter);
 
 
 
-//nisitha stall management
-const stalllerRouter = require('./routes/Staller/stallerRoutes')
 
 
 
@@ -113,7 +111,9 @@ const stalllerRouter = require('./routes/Staller/stallerRoutes')
 
 
 //nisitha line 113
+const stalllerRouter = require('./routes/Staller/stallerRoutes');
 
+const stallItems = require('./routes/Staller/itemRoutes');
 
 
 
