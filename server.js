@@ -27,7 +27,7 @@ mongoose.connect(MONGODB_URL)
 })
 .catch((err)=>{ console.log('DB connection error',err);})
 
-//venath
+//venath line 30
 const candidateRouter =require("./routes/venath_registration/candidates");
 app.use(candidateRouter);
 
@@ -51,7 +51,7 @@ app.use(adminRouter);
 
 
 
-//thamindu
+//thamindu line 54
 const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
 app.use(commentRouter);
 
@@ -79,7 +79,7 @@ app.use(audienceRouter);
 
 
 
-//gimhani
+//gimhani line 82
 
 
 
@@ -110,7 +110,7 @@ app.use(audienceRouter);
 
 
 
-//nisitha
+//nisitha line 113
 
 
 
@@ -141,7 +141,7 @@ app.use(audienceRouter);
 
 
 
-//lakruwan
+//lakruwan line 144
 
 
 
@@ -171,7 +171,7 @@ app.use(audienceRouter);
 
 
 
-//vishmitha
+//vishmitha line 174
 
 
 
@@ -201,7 +201,7 @@ app.use(audienceRouter);
 
 
 
-//naduni
+//naduni line 204
 
 
 
@@ -231,7 +231,7 @@ app.use(audienceRouter);
 
 
 
-//dhananji
+//dhananji line 234
 
 
 
