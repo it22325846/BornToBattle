@@ -51,7 +51,7 @@ const stallerSchema = new schema({
 
 //pass the created schema to the mongoDB
 //                           <document name>
-const staller = mongoose.model("stallHolders", stallerSchema);
+const staller = mongoose.model("stallHolder", stallerSchema);
 
 //export the schema( MUST DO)
 module.exports = staller;

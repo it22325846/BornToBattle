@@ -23,7 +23,7 @@ const itemSchema = new schema({
 
 //pass the created schema to the mongoDB
 //                           <document name>
-const item = mongoose.model("itemTable", itemSchema);
+const item = mongoose.model("stallItem", itemSchema);
 
 //export the schema( MUST DO)
 module.exports = item;
