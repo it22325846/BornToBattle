@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const mediaSchema = new Schema({
+const gallerySchema = new Schema({
 
     name:{
         type : String,
