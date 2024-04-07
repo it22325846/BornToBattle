@@ -12,4 +12,6 @@ const mediaManager_SignUp_Signin = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("media_signUp_signIn", mediaManager_SignUp_Signin);
+module.exports = mongoose.model("media_signUp", mediaManager_SignUp_Signin);
+
+//model for both signin and signup
