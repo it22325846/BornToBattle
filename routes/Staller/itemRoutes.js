@@ -43,7 +43,7 @@ router.route("/create").post(upload.single('pImage'), (req, res) => {
 
 //Read
 
-// Serving images from the 'uploads' directory
+// Serving images from the 'uploads' directory/folder
 router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Read route
