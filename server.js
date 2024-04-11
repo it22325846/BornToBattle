@@ -61,14 +61,14 @@ app.use(A_signupRoutes);
 const audienceRouter =require("./routes/Thamindu_AudienceRoutes/audienceRoutes");
 app.use(audienceRouter);
 
+const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
+app.use(commentRouter);
 
+const A_signupRoutes = require('./routes/Thamindu_AudienceRoutes/A_signupRoutes');
+app.use(A_signupRoutes);
 
-
-
-
-
-
-
+const audienceRouter =require("./routes/Thamindu_AudienceRoutes/audienceRoutes");
+app.use(audienceRouter);
 
 
 
@@ -111,7 +111,9 @@ app.use(audienceRouter);
 
 
 //nisitha line 113
+const stalllerRouter = require('./routes/Staller/stallerRoutes')
 
+const stallItems = require('./routes/Staller/itemRoutes')
 
 
 
