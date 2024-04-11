@@ -122,7 +122,12 @@ router.patch('/comments/:id', async (req, res) => {
   try {
     const { id } = req.params;
     const { comment } = req.body;
-    const updatedComment = await Comment.findByIdAndUpdate(id, { comment }, { new: true });
+    const updatedComment = await Comment.findByIdAndUpdate(
+      id, 
+      { comments: comment }, 
+      { new: true }
+    );
+
     if (!updatedComment) {
       return res.status(404).json({ message: 'Comment not found' });
     }
