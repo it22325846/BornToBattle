@@ -79,10 +79,10 @@ router.post('/api/signin', async (req, res) => {
       if (user.password === password) {
         return res.json({ success: true });
       } else {
-        return res.json({ success: false, message: 'Invalid credentials' });
+        return res.json({ success: false, message: 'Invalid pwd credentials' });
       }
     } else {
-      return res.json({ success: false, message: 'Invalid credentials' });
+      return res.json({ success: false, message: 'Invalid username credentials' });
     }
   } catch (error) {
     console.error("Error in sign-in:", error);

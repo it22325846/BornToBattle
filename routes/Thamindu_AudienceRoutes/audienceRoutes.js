@@ -131,7 +131,9 @@ router.get('/audience', (req, res) => {
 
 
 
-//delete audience => work ?
+
+
+// delete audience => work ?
 router.delete('/audience/delete/:id', (req, res) => {
 
     console.log('Deleting audience with ID:', req.params.id);
@@ -286,6 +288,23 @@ router.get('/user/find/:username', async (req, res) => {
       });
     }
   });
+
+
+
+  router.put('/audience/update/:id', (req, res) => {
+    const { id } = req.params;
+    const { name, age, gender, phoneNumber } = req.body;
+  
+    Audience.findByIdAndUpdate(id, { name, age, gender, phoneNumber }, { new: true })
+      .then(updatedAudience => {
+        res.status(200).json({ success: true, updatedAudience });
+      })
+      .catch(error => {
+        console.error("Error updating audience details:", error);
+        res.status(500).json({ success: false, error });
+      });
+  });
+
 
 
 
