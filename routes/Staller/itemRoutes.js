@@ -55,4 +55,64 @@ router.route("/read").post((req, res) => {
   });
 });
 
+//Update
+
+//get ID route
+
+router.route("/get/:Itemid").get(async (req, res) => {
+  let itemId = req.params.Itemid;
+
+  const getID = await Item.findById(itemId)
+  .then( (item) => {
+    res.json({
+      pName: item.pName,
+      pPrice: item.pPrice,
+      pImage: item.pImage, // Assuming this is the filename stored in your database
+    });
+  }).catch((err) => {
+      console.log(err)
+  })
+
+})
+
+// Update route
+router.route("/update/:Itemid").put(upload.single('pImage'), async (req, res) => {
+  const itemId = req.params.Itemid;
+  const { pName, pPrice } = req.body;
+
+  // Check if there's a new image uploaded
+  let pImage;
+  if (req.file) {
+    pImage = req.file.filename;
+  }
+
+  const updateItem = {
+    pName,
+    pPrice,
+    ...(pImage && { pImage }), // Only include pImage in updateItem if it's provided
+  };
+
+  try {
+    const updatedItem = await Item.findByIdAndUpdate(itemId, updateItem, { new: true });
+    res.status(200).json({ status: "Item Updated", updatedItem });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ status: "Error in updating Item data", error: err.message });
+  }
+});
+
+
+// Delete route
+router.route("/delete/:Itemid").delete(async (req, res) => {
+  const itemid = req.params.Itemid;
+
+  try {
+    await Item.findByIdAndDelete(itemid);
+    res.status(200).json({ status: "Item deleted" });
+  } catch (err) {
+    console.log(err.message);
+    res.status(500).json({ status: "Error in deleting the Item" });
+  }
+});
+
 module.exports = router;
