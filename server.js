@@ -81,11 +81,11 @@ app.use(audienceRouter);
 
 //gimhani line 82
 
+const eventRoutes = require('./routes/gimhani_event_routes/Events_route');
+app.use(eventRoutes);
 
-
-
-
-
+const eventCatRoutes = require('./routes/gimhani_event_routes/Event_categories');
+app.use(eventCatRoutes);
 
 
 
