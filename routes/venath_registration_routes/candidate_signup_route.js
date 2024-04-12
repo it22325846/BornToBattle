@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-let Login = require("../../models/venath_registration/candidate_signup_model");
+let Login = require("../../models/venath_registration_models/candidate_signup_model");
 
 
 

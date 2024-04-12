@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Judge = require("../../models/venath_registration/judges_model");
+const Judge = require("../../models/venath_registration_models/judges_model");
 
 // POST route for adding a new Judge
 router.post('/judges/save', (req, res) => {

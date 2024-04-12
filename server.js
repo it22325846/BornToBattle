@@ -28,10 +28,10 @@ mongoose.connect(MONGODB_URL)
 .catch((err)=>{ console.log('DB connection error',err);})
 
 //venath line 30
-const candidateRouter =require("./routes/venath_registration/candidates");
+const candidateRouter =require("./routes/venath_registration_routes/candidates");
 app.use(candidateRouter);
 
-const judgeRouter = require('./routes/venath_registration/judges_route');
+const judgeRouter = require('./routes/venath_registration_routes/judges_route');
 app.use(judgeRouter);
 
 const managerRouter = require('./routes/managers/managers_route');
@@ -41,10 +41,10 @@ app.use(managerRouter);
 const adminRouter = require('./routes/admin/admin_route');
 app.use(adminRouter);
 
-const loginsRouter = require('./routes/venath_registration/candidate_signup_route');
+const loginsRouter = require('./routes/venath_registration_routes/candidate_signup_route');
 app.use(loginsRouter);
 
-const JloginsRouter = require('./routes/venath_registration/judge_signup_route');
+const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_route');
  app.use(JloginsRouter);
 
 

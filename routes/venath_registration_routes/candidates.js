@@ -1,7 +1,7 @@
 const express = require("express");
 const router = require("express").Router();
 const multer = require('multer');
-let Candidate = require("../../models/venath_registration/candidates");
+let Candidate = require("../../models/venath_registration_models/candidates");
 //const Photo = require('../models/candidates');
 const path = require('path');
 
