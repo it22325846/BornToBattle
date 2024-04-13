@@ -506,7 +506,6 @@ import { Link } from 'react-router-dom';
 
 import './Style/A_UserProfile.css';
 
-
 function AudienceProfilePage() {
 
     const [audienceDetails, setAudienceDetails] = useState({});
@@ -530,7 +529,7 @@ function AudienceProfilePage() {
 
     const fetchAudienceDetails = async () => {
         try {
-            const response = await axios.get(`audience/${encodeURIComponent(Username)}`);
+            const response = await axios.get(`/audience/${encodeURIComponent(Username)}`);
             if (response.data.success) {
                 setAudienceDetails(response.data.audience);
             } else {
@@ -621,6 +620,12 @@ function AudienceProfilePage() {
     };
 
 
+    const handleSignOut = () => {
+        localStorage.removeItem('username');
+        window.location.href = '/';
+      };
+
+
 
 
     return (
@@ -644,10 +649,13 @@ function AudienceProfilePage() {
                             <i className="far fa-trash-alt"></i>&nbsp;Delete
                         </button>
 
+                        <button className="btn2" onClick={handleSignOut}>
+                            Sign Out
+                        </button>
+                
                     </>
-
-
                 )} 
+
                 { !fetchAudienceDetails && (    
 
                     <form onSubmit={handleSubmit}>

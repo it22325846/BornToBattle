@@ -1,4 +1,4 @@
-// const express = require("express");
+a// const express = require("express");
 // const router = require("express").Router();
 // const multer = require('multer');
 // const Audience = require("../../models/Thamindu_Audience/audience");
@@ -326,6 +326,9 @@ router.post("/audience/save", async (req, res) => {
         if (!name || !age || !gender || !phoneNumber || !username) {
           return res.status(400).json({ error: 'Missing required fields' });
         }
+        if (isNaN(age) || age < 0 || age > 150) {
+            return res.status(400).json({ error: 'Invalid age' });
+        }
         
         const audienceData = { 
             name: name,
@@ -387,12 +390,12 @@ router.delete("/audience/:id", async (req, res) => {
 
 
 // Display audience details => postman work
-router.get("/api/audience/username/:username", async (req, res) => {
+router.get("/audience/:username", async (req, res) => {
     
     const {username} = req.params;
     
     try {
-        const audience = await Audience.find({ username });
+        const audience = await Audience.findOne({ username });
         res.send(audience);
         res.status(200).json({ success: true, audience });
 
