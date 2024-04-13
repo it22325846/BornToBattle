@@ -27,11 +27,16 @@
 .btn-submit {
     background-color: #000;
     color: aliceblue;
-    border: 2px solid #000;
-    border-radius: 10px; 
+    /* border: 2px solid #000; */
+    border: 2px solid #ff0000;
+    border-radius: 8px; 
     margin-right: 100px;
+    padding: 5px 20px;
+    font-size: 14px;
+    font-weight: bold;
 
 }
 .btn-submit:hover {
-    background-color: #951212;
+    background-color: #ff0000;
+    border: 2px solid #000000;
 }
