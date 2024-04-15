@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import A_EditUserProfile from './A_EditUserProfile'; 
 import './Style/A_UserProfile.css';
 
+
+
 const A_UserProfile = () => {
     const [userDetails, setUserDetails] = useState({});
     const [editMode, setEditMode] = useState(false);
@@ -72,7 +74,7 @@ const A_UserProfile = () => {
 
             {userDetails && (
                 <div>
-                    <p className="ap" >Username: {userDetails.username}</p>
+                    <p className="ap" >Username : {userDetails.username}</p>
                     {editMode ? (
                         <A_EditUserProfile
                             userDetails={userDetails}
@@ -82,22 +84,26 @@ const A_UserProfile = () => {
                     ) : (
                         <div>
 
-                            <p className="ap"  >Name: {userDetails.name}</p>
-                            <p className="ap"  >Age: {userDetails.age}</p>
-                            <p className="ap"  >Gender: {userDetails.gender}</p>
-                            <p className="ap"  >Phone Number: {userDetails.phoneNumber}</p>
+                            <p className="ap"  >Name : {userDetails.name}</p>
+                            <p className="ap"  >Age : {userDetails.age}</p>
+                            <p className="ap"  >Gender : {userDetails.gender}</p>
+                            <p className="ap"  >Phone Number : {userDetails.phoneNumber}</p>
                         </div>
                     )}
-                    
-                    <button className="btn2" onClick={toggleEditMode}>{editMode ? 'Cancel ' : 'Edit ' }
-                        <i className="fas fa-edit"></i>&nbsp;
-                    </button>
-                    <button className="btn2" onClick={handleDeleteAccount}>
-                        <i className="far fa-trash-alt"></i>&nbsp;Delete Account
-                    </button>
-                    <button className="btn2" onClick={handleSignOut}>
-                        Sign Out
-                    </button>
+
+                    <div className="btn-container1">
+                        <button className="btn2" onClick={toggleEditMode}>
+                            <i className="fas fa-edit"></i>&nbsp;
+                            {editMode ? 'Cancel ' : 'Edit ' }
+                        </button>
+                        <button className="btn2" onClick={handleDeleteAccount}>
+                            <i className="far fa-trash-alt"></i>&nbsp;
+                            Delete Account
+                        </button>
+                        <button className="btn2" onClick={handleSignOut}>
+                            Sign Out
+                        </button>
+                    </div>
 
                 </div>
             )}

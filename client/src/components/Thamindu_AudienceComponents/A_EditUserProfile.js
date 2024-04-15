@@ -36,23 +36,24 @@ const A_EditUserProfile = ({ userDetails, fetchUserDetails, toggleEditMode }) =>
             <form onSubmit={handleSubmit}>
 
                 <label>
-                    Name:
+                    Name :
                     <input type="text" name="name" value={editedUserDetails.name} onChange={handleChange} />
                 </label>
                 <label>
-                    Age:
+                    Age :
                     <input type="number" name="age" value={editedUserDetails.age} onChange={handleChange} />
                 </label>
                 <label>
-                    Gender:
+                    Gender :
                     <select name="gender" value={editedUserDetails.gender} onChange={handleChange}>
+                        <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                         <option value="Other">Other</option>
                     </select>
                 </label>
                 <label>
-                    Phone Number:
+                    Phone Number :
                     <input type="text" name="phoneNumber" value={editedUserDetails.phoneNumber} onChange={handleChange} />
                 </label>
 
