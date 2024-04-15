@@ -21,8 +21,8 @@ export default function AddScore() {
         e.preventDefault();
 
         const newScore = {
-            // Cname,
-            // Category,
+            Cname,
+            Category,
             Performance,
             Costume,
             Technique,
