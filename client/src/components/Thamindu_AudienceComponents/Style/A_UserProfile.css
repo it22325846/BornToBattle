@@ -1,9 +1,13 @@
 .container1 {
         max-width: 600px;
         margin: 50px auto;
-        padding: 20px;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 10px;
+        padding-bottom: 50px;
         border: 2px solid #000;
         border-radius: 10px;
+        
     }
     
 .user-form {
@@ -57,4 +61,61 @@ select {
 .audience-details {
         margin-top: 20px;
     }
+.ap {
+        font-size: large;
+        font-weight: bold;
+
+    }
+.h2 {
+        color: #272020;
+        font-weight: bold; 
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        justify-content: center;
+        max-width: 400px;
+        cursor: default;
     
+    }
+    
+
+
+    .user-details-table {
+        display: flex;
+        flex-direction: column;
+        background-color: #615c5c;
+        border: 2px solid #000 ;
+        border-radius: 8px;
+    }
+    
+    .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .label {
+        width: 150px; /* Adjust as needed */
+        font-weight: bold;
+        text-align: left;
+        margin-left: 10px;
+        margin-bottom: 20px;
+        cursor: default;
+        padding: 5px;
+    }
+    
+    .value {
+        flex: 1;
+        padding-left: 10px;
+        padding: 5px;
+        text-align: left;
+        margin-left: 20px;
+        cursor: copy;
+    }
+    
+    .btn-container1 {
+        margin-top: 40px;
+    }
+    
+ 

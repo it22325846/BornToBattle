@@ -104,7 +104,7 @@ if (!fs.existsSync(reportsDirectory)) {              // Check if 'reports' direc
 }
 
 
-// generating reports
+// generating reports => admin manager => still checking 
 router.get('/generate-report', async (req, res) => {
   try {
 

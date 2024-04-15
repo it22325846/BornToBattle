@@ -84,11 +84,11 @@ const CommentList = ({ comments, onDelete, onEdit }) => {
                 {comment.username === username && (
                     <>
                         {editedComment.id === comment._id ? (
-                            <button onClick={() => handleSave(comment._id, editedComment.text)}>Save</button>
+                            <button className='btn2' onClick={() => handleSave(comment._id, editedComment.text)}>Save</button>
                         ) : (
                             <>
-                                <button className='btn1' onClick={() => handleEdit(comment._id, comment.comments)}>Edit</button>
-                                <button className='btn1' onClick={() => onDelete(comment._id)}>Delete</button>
+                                <button className='btn2' onClick={() => handleEdit(comment._id, comment.comments)}>Edit</button>
+                                <button className='btn2' onClick={() => onDelete(comment._id)}>Delete</button>
                             </>
                         )}
                     </>
