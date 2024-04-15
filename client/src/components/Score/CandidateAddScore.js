@@ -26,7 +26,7 @@ export default function CandidateAddScore() {
     return (
         <div className="wrapper">
             <div>
-                <h2>Final Resultsheet</h2>
+                <h2>Candidates</h2>
                 <table className="table">
                     <thead>
                         <tr>
