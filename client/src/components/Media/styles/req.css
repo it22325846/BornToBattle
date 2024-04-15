@@ -1,0 +1,84 @@
+.overlay11 {
+    position: relative;
+    width: 100%;
+}
+
+.overlay11 img {
+    width: 100%;
+    height: auto;
+   
+    opacity: 0.9; /* Changed to decimal value */
+}
+
+.overlay11-text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-30%, -60%);
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.img_ga {
+    font-size: 100px;
+    color: #ff1515;
+    font-weight: bold;
+}
+.overlay22 {
+    position: relative;
+    width: 100%; /* Ensure full width */
+    height: 100%; /* Ensure full height */
+  }
+  
+  .overlay22-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 30%);
+    text-align: center; /* Center align text */
+    color: #ff0000;
+    font-weight: bold;
+  }
+
+  .form{
+    position: absolute;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc; /* Add border to the form */
+    border-radius: 20px;
+    padding: 20px; /* Add padding for better spacing */
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120vh; /* Optional: to center vertically */
+}
+.form-control {
+    /* Add your form control styles here */
+    /* For example: */
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+.black-label {
+    color: black;
+}
+
+.custom-but {
+    width: 150px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: #ff0000;
+    font-size: 25px;
+    color: #ffffff;
+    border: none;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.custom-but:active {
+    background-color: #008cff; 
+}
