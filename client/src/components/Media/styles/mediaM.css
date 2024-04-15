@@ -1,0 +1,23 @@
+.overlay {
+    position: relative;
+  }
+  
+  .link-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Adjust this margin as needed */
+  }
+  
+  .link-container a {
+    margin: 0 100px; /* Adjust horizontal spacing between links */
+    padding: 10px 20px; /* Adjust link padding */
+    font-size: 36px; /* Adjust link font size */
+    text-decoration: none; /* Remove underline */
+    color: #000000; /* Link color */
+    font-weight: bold; /* Make the link bold */
+  }
+  
+  .link-container a:hover {
+    color: #0056b3; /* Link color on hover */
+  }
+  
