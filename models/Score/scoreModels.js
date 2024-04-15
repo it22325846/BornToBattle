@@ -4,11 +4,11 @@ const Schema = mongoose.Schema;
 
 const scoreSchema = new Schema({
 
-    CId :{
+    Cname :{
         type : String,
         required : true,
     },
-    JId :{
+    Category :{
         type : String,
         required : true,
     },

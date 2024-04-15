@@ -1,11 +1,10 @@
 const router = require("express").Router();
 const { request } = require("express");
-let score = require("../../models/Score/scoreModels");
-
+let score = require("../models/score.js");
 
 router.route("/add").post((req,res)=>{
-    const CId = req.body.CId;
-    const JId = req.body.JId;
+    const Cname = req.body.Cname;
+    const Category = req.body.Category;
     const Performance = req.body.Performance;
     const Costume = req.body.Costume;
     const Technique = req.body.Technique;
@@ -13,8 +12,8 @@ router.route("/add").post((req,res)=>{
     const Feedback = req.body.Feedback;
 
     const newScore = new score({
-        CId,
-        JId,
+        Cname,
+        Category,
         Performance,
         Costume,
         Technique,
