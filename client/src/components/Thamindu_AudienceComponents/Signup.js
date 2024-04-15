@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import instance from './axiosInstance'
 import React, { useState, useEffect } from 'react';
 
 const SignUp = () => {
@@ -37,8 +36,9 @@ const SignUp = () => {
         console.log("Username:", username);
         console.log("Password:", password);
         
-        // Sign-up logic (replace with actual sign-up logic)
-        const response = await axios.post('/signup/save', { username, password });
+        // Sign-up 
+        await axios.post('/signup/save', { username, password });
+        await axios.post('/audience/save/un', { username }); // Save username to audience models
         alert('Sign-up successful!');
         
         
@@ -54,6 +54,8 @@ const SignUp = () => {
       setError('Passwords do not match');
     }
   };
+
+
 
   return (
     
