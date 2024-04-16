@@ -36,13 +36,9 @@ router.route("/").get((req,res)=>{
     })
 })
 
-router.route("/update/:id").put(async (req,res) =>{
-    let userid = req.params.id;
-    const {Performance} = req.body;
-    const {Costume} = req.body;
-    const {Technique} = req.body;
-    const {Timing} = req.body;
-    const {Feedback} = req.body;
+router.route("/update/:id").put(async (req, res) => {
+    let scoreId = req.params.id;
+    const { Performance, Costume, Technique, Timing, Feedback } = req.body;
 
     const updatescore = {
         Performance,
@@ -52,13 +48,15 @@ router.route("/update/:id").put(async (req,res) =>{
         Feedback
     }
 
-    const update = await score.findByIdAndUpdate(userid, updatescore).then(()=>{
-        res.status(200).send({status:"Score updated"})
-    }).catch((err)=>{
+    try {
+        const updatedScore = await score.findByIdAndUpdate(scoreId, updatescore);
+        res.status(200).send({ status: "Score updated" });
+    } catch (err) {
         console.log(err.message);
-        res.status(500).send({status: "Score updated uncessful", error:err.message}); //internal server error code, 500
-    })
+        res.status(500).send({ status: "Score update unsuccessful", error: err.message });
+    }
 })
+
 
     router.route("/delete/:id").delete(async (req,res)=>{
         let userid = req.params.id;
