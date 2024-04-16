@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./styles/req.css";
+import "../styles/req.css";
 
 export default function RequestForm() {
   const [fname, setFName] = useState(" ");

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./styles/main.css";
-import "./styles/gallery.css";
+import "../styles/main.css";
+import "../styles/gallery.css";
 export default function Gallery() {
   const navigate = useNavigate();
 
