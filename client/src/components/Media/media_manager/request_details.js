@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./styles/reqForm.css";
+import "../styles/reqForm.css";
 
 export default function MediaManagerUI() {
   const [forms, setForms] = useState([]);
