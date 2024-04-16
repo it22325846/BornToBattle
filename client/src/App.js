@@ -71,11 +71,13 @@ import EditCategory from './components/gimhani_event_management/EditCategory';
 
 import A_SignIn from './components/Thamindu_AudienceComponents/SignIn';
 import A_SignUp from './components/Thamindu_AudienceComponents/Signup';
-import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile'
-import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' 
+import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile';
+import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' ;
 import Comment_main from './components/Thamindu_AudienceComponents/Comment_main';
-import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
+
 // #endregion
+import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
+
 
 //#region Naduni
 // #endregion
