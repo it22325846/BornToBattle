@@ -6,6 +6,7 @@ import axios from "axios";
 export default function FinalScore(){
 
     const [finalScores, setFinalScores] = useState([]);
+    const [deleteScore, setDeleteScore] = useState([]);
     const navigate = useNavigate();
     //const [selectedCId, setSelectedCId] = useState('');
 
@@ -38,8 +39,20 @@ export default function FinalScore(){
     }, []);
     
     const handleAddButtonClick = (Cname, Category, Performance, Costume, Technique, Timing, Feedback) => {
-        navigate(`/updatescore?Cname=${Cname}&Category=${Category}&Performance=${Performance}&Costume-${Costume}&Technique=${Technique}&Timing=${Timing}&Feedback=${Feedback}`);
+        navigate(`/updatescore?Cname=${Cname}&Category=${Category}&Performance=${Performance}&Costume=${Costume}&Technique=${Technique}&Timing=${Timing}&Feedback=${Feedback}`);
     };
+
+    const handleDeleteButtonClick = (scoreId) => {
+        axios.delete(`http://localhost:8070/score/delete/${scoreId}`)
+            .then(response => {
+                setFinalScores(finalScores.filter(score => score._id !== scoreId));
+                alert("Score Deleted Successfully");
+            })
+            .catch(error => {
+                console.error("Error deleting score:", error);
+            });
+    };
+    
 
     return (
         <div className="wrapper">
@@ -49,9 +62,9 @@ export default function FinalScore(){
                         <h2>Final Resultsheet</h2>
                     </div>
                     <div className="col">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        <form className="d-flex" role="search">
+                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                            <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
                 </div>
@@ -75,19 +88,16 @@ export default function FinalScore(){
                                 <td>
                                     <div className="row">
                                         <div className="col">
-                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(score.Cname,score.Category,score.Performance,score.Costume,score.Technique,score.Timing,score.Feedback)}>Update</button>
-
-                                            <button type="button" className="btn btn-primary" >Delete</button>   
+                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}>Update</button>
+                                            <button type="button" className="btn btn-primary" onClick={() => handleDeleteButtonClick(score._id)}>Delete</button>
                                         </div>
                                     </div>
                                 </td>
-
                             </tr>
                         ))}
                     </tbody>
                 </table>
             </div>
-            
         </div>
     );
 }
