@@ -122,10 +122,10 @@ function App() {
         <Route path="/" element={<Candidates />} /> */}
 
         <>{/* Venath registration routes */}
-      <Route path="/" element={<Home />} />
-      <Route path="/candidates" element={<Candidates />} />
-      <Route path="/candidates/:event" element={<EventCandidates />} />
-      <Route path="/subcandidates/:event" element={<SubCategoryCandidates />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/candidates" element={<Candidates />} />
+        <Route path="/candidates/:event" element={<EventCandidates />} />
+        <Route path="/subcandidates/:event" element={<SubCategoryCandidates />} />
         <Route path="/addc" element={<CreateCandidate />} /> {/* add */}
         <Route path="/creategroup" element={<CreateGroup/>} />
         <Route path="/editc/:id" element={<EditCandidate />} /> {/* edit */}
@@ -136,7 +136,7 @@ function App() {
         <Route path="/all_judges" element={<AllJudges />} /> {/* judges */}
         <Route path="/Signup" element={<Signup />} />
         <Route path="/CandidateSignup" element={<CandidateSignup />} />
-       <Route path="/JudgeSignup" element={<JudgeSignup />} />
+        <Route path="/JudgeSignup" element={<JudgeSignup />} />
 
         
         <Route path="/regDash" element={<RegDash />} />
