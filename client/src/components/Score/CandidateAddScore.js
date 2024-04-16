@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './Style/FinalScore.css';
+import '../Style/score/FinalScore.css';
 import axios from "axios";
 
 export default function CandidateAddScore() {
@@ -10,7 +10,7 @@ export default function CandidateAddScore() {
 
     useEffect(() => {
         // Fetch candidates and final scores from the backend when the component mounts
-        axios.get("http://localhost:8070/score")
+        axios.get("http://localhost:8020/candidate/candidates")
             .then(response => {
                 setFinalScores(response.data);
             })
@@ -19,8 +19,8 @@ export default function CandidateAddScore() {
             });
     }, []);
 
-    const handleAddButtonClick = (Cname, Category) => {
-        navigate(`/addscoreandfeedback?Cname=${Cname}&Category=${Category}`);
+    const handleAddButtonClick = (name, category) => {
+        navigate(`/addscoreandfeedback?Cname=${name}&Category=${category}`);
     };
 
     return (
@@ -36,15 +36,15 @@ export default function CandidateAddScore() {
                         </tr>
                     </thead>
                     <tbody>
-                        {finalScores.map(score => {
+                        {finalScores.map(candidate => {
                             //const candidate = candidates.find(candidate => candidate.Cname === score.Cname);
                             return (
-                                <tr key={score._id}>
-                                    <td>{score.Cname}</td>
-                                    <td>{score.Category}</td>
+                                <tr key={candidate._id}>
+                                    <td>{candidate.name}</td>
+                                    <td>{candidate.category}</td>
                                     <td>
                                         <div className="mb-3 col-12">
-                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(score.Cname,score.Category)}>Add Score</button>
+                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(candidate.name,candidate.category)}>Add Score</button>
                                         </div>
                                     </td>
                                 </tr>

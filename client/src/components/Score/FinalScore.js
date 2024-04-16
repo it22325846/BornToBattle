@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import{useNavigate} from "react-router-dom";
-import './Style/FinalScore.css'
+import '../Style/score/FinalScore.css'
 import axios from "axios";
 
 export default function FinalScore(){
