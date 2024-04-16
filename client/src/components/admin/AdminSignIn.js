@@ -1,36 +1,47 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const SignIn = () => {
+const AdminSignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
   const handleSignIn = async () => {
     try {
-      console.log("Username:", username);
-      console.log("Password:", password);
-  
-        const response = await axios.post('/api/signin', { username, password });
-        //console.log("Response from server:", response.data);
-  
-        if (response.data.success) {
-          // Sign-in successful
-          localStorage.setItem('username', username); // Store username in session
-          window.location.href = '/profile'; // Redirect to dashboard or another page
-        } else {
-          setError('Invalid username or password. Please try again.');
+      const response = await axios.post('/find_admin', { username, password });
+      if (response.data.success) {
+        if(response.data.admin.type === "admin"){
+          window.location.href = '/admin';
         }
-      
+      } else {
+        setError('Invalid username or password. Please try again.');
+      }
     } catch (error) {
       setError('Error in sign-in. Please try again.');
       console.error("Error in sign-in:", error);
     }
+          // try {
+    //   console.log("Username:", username);
+    //   console.log("Password:", password);
+  
+    //   if (username === "admin" && password === "admin") {
+    //     localStorage.setItem('username', username);
+    //     window.location.href = '/admin';
+    //   } else {
+       
+    //       setError('Invalid username or password. Please try again.');
+        
+    //   }
+    // } catch (error) {
+    //   setError('Error in sign-in. Please try again.');
+    //   console.error("Error in sign-in:", error);
+    // }
+
   };
   
 
 
-  return ( 
+  return (
     <div  className="container d-flex justify-content-center align-items-center vh-100">
        <div style={{ maxWidth: '500px', maxHeight: '700px', width: '100%', overflow: 'auto', }}>
 <div className="card p-4">
@@ -64,16 +75,11 @@ const SignIn = () => {
         <button type="button" className="btn btn-primary" onClick={handleSignIn}>
           Sign In
         </button>
-        <p className="mt-3">
-            Don't have an account? <a href="/signup">Sign Up</a>
-          </p>
       </form>
-      
       </div>
-      
       </div>
     </div>
   );
 };
 
-export default SignIn;
+export default AdminSignIn;

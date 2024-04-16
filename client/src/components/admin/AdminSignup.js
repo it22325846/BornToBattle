@@ -9,10 +9,10 @@ const SignUp = () => {
   const [usernameExists, setUsernameExists] = useState(false);
 
   useEffect(() => {
-    const existingUsername = localStorage.getItem('username');
-    if (existingUsername) {
-      alert("You are already signed in");
-      window.location.href = '/profile';
+    const admin = localStorage.getItem('username');
+    if (!admin=='admin') {
+      alert("You are not admin");
+      window.location.href = '/';
     }
   }, []);
 
@@ -32,8 +32,8 @@ const SignUp = () => {
         const response = await axios.post('/signup/save', { username, password });
         alert('Sign-up successful!');
         
-        localStorage.setItem('username', username);//session
-        window.location.href = '/addc';
+       // localStorage.setItem('username', username);//session
+        window.location.href = '/add';
 
       } catch (error) {
         setError('Error in sign-up. Please try again.');
@@ -96,7 +96,6 @@ const SignUp = () => {
         Sign Up
       </button>
     </form>
-    
     </div>
   </div>
 </div>
@@ -106,50 +105,3 @@ const SignUp = () => {
 
 export default SignUp;
 
-{/* <div>
-      <h2>Sign Up Page</h2>
-      <form>
-        <div className="mb-3">
-          <label htmlFor="username" className="form-label">
-            Username:
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            onBlur={checkUsername}
-          />
-          {usernameExists && <p style={{ color: 'red' }}>Username already exists</p>}
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password:
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="confirmPassword" className="form-label">
-            Confirm Password:
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <button type="button" className="btn btn-primary" onClick={handleSignUp}>
-          Sign Up
-        </button>
-      </form>
-    </div> */}
