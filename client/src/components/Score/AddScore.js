@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Style/AddScore.css'
+import '../Style/score/AddScore.css'
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -30,7 +30,7 @@ export default function AddScore() {
             Feedback
         }
 
-        axios.post("http://localhost:8070/score/add", newScore).then(() => {
+        axios.post("http://localhost:4000/score/add", newScore).then(() => {
             console.log(newScore);
             alert("Score Added")
         }).catch((err) => {
@@ -40,9 +40,10 @@ export default function AddScore() {
 
     return (
         <div className="Main">
-            <form className="row g-3  formAdd" onSubmit={sendData}>
 
-                <h2>Score and Feedback</h2>
+            <h2>Score and Feedback</h2>
+            
+            <form className="row g-3  formAdd" onSubmit={sendData}>
 
                 <div className="mb-3 col-md-6">
                     <label htmlFor="Cname">Candidate ID</label>
