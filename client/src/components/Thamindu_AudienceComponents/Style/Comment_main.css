@@ -1,0 +1,41 @@
+.comment_main {
+    border: 2px solid #000000; 
+    border-radius: 10px; 
+    height: auto;
+    width: auto;
+    padding: 20px;
+    margin: 100px 100px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* display: flex; */
+    /* flex-direction: row; */
+    justify-content: space-between;
+    justify-items: auto;
+    background-color: #bdb8b8; 
+    background-size: cover;
+    background-position: center;
+    background-image: url('./red-black-brush-stroke-banner-background-perfect-canva.jpg'); 
+    background-repeat: no-repeat; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+/* .comment_list {
+    border: 2px solid #000;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    background-color: #bdb8b8;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    overflow-y: auto;
+    
+} */
+/* .comment_form {
+    background-color: #bdb8b8;
+
+} */
+
+
+  

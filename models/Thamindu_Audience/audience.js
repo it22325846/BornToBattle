@@ -7,21 +7,21 @@ const photoSchema = new mongoose.Schema({
 const audienceSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:false
     },
     age:{
         type: Number,
-        required:true 
+        required:false 
     },
     gender:{
         type: String,
-        required: true
+        required: false
     },
     phoneNumber:{
-        type: Number,
-        required: true
+        type: String,
+        required: false
     },
-    un:{
+    username:{
         type: String,
         required: true
         

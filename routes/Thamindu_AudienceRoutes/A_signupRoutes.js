@@ -123,6 +123,7 @@ router.post('/api/signin', async (req, res) => {
 
 //update pwd => work => postman
 
+
 router.put('/password/update/:username', async (req, res) => {
   try {
     const username = req.params.username;
