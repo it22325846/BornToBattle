@@ -1,65 +1,77 @@
-//import React, { Component } from 'react'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useParams} from 'react-router-dom';
+// import { events } from './candidates';
 
-
-const CreateCategory = () => {
-  const [formData, setFormData] = useState({
+export default function EditEvent() {
+  const [category, setCategory] = useState({
     topic: '',
     judgesCount: '',
     rules: '',
     registrationOpen: '',
   });
-  //formData represents the current state value
-  //setFormData is a function used to update the state
+
+  const { id } = useParams();
+  //const history = useHistory(); // Initialize useHistory hook
+
+  // To retrieve data related to a specific post
+  useEffect(() => {
+    console.log('Fetching post with ID:', id);
+    axios.get(`http://localhost:8000/cat/${id}`).then((res) => {
+      console.log('Axios response:', res);
+      if (res.data.success) {
+        setCategory(res.data.categories);
+      }
+    });
+  }, [id]);
 
   const HandleInputChange = (e) => {
     const { name, value } = e.target;
-
-    setFormData({
-      ...formData,
+    setCategory((prevCategory) => ({
+      ...prevCategory,
       [name]: value,
-    });
+    }));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const data = {
+      topic: category.topic,
+      judgesCount: category.judgesCount,
+      rules: category.rules,
+      registrationOpen: category.registrationOpen,
 
-    console.log(formData);
+      
+      // eventCategory: event.eventCategory,
+      // style: event.style,
+    };
 
-    axios.post('http://localhost:8000/cat/save', formData)
-      .then((res) => {
-        if (res.data.success) {
-          setFormData({
-            topic: '',
-            judgesCount: '',
-            rules: '',
-            registrationOpen: '',
-          });
-          window.location.href = '/e';
-        }
+    console.log(data);
 
-      })
-      .catch((error) => {
-        console.error('Error occurred while creating event:', error);
-      });
+    axios.put(`http://localhost:8000/cat/update/${id}`, data).then((res) => {
+      if (res.data.success) {
+        alert("Category updated successfully!");
+        setCategory({
+            topic: "",
+            judgesCount: "",
+            rules: "",
+            registrationOpen: "",
+        });
+
+         window.location.href = '/e';
+         // history.push('/Events');
+      }
+    });
   };
 
-  const containerStyle = {
-    border: '2px solid black',
-    borderRadius: '10px',
-    padding: '20px',
-    backgroundColor: 'gray',
-    color: 'white',
-    maxWidth: '600px',
-    margin: 'auto', // Center the container
-  };
+  return (
+    <div className="container mt-5" style={{border: '2px solid black', padding: '20px',backgroundColor: 'gray',  maxWidth: '600px'}}>
+       {/* <div className="card-header text-white bg-danger"> */}
+      <h2>Update Category</h2>
 
-  return(
-    <div className="container mt-5" style={containerStyle}>
-  
-    <form>
-      <div className="mb-3">
+      {category.topic !== "" && category.description !== "" ? (
+        <form onSubmit={onSubmit}>
+         <div className="mb-3">
         <label htmlFor="topic" className="form-label">
           Category
         </label>
@@ -67,7 +79,7 @@ const CreateCategory = () => {
           type="text"
           className="form-control"
           placeholder="Enter name of the event"
-          value={formData.topic}
+          value={category.topic}
           onChange={HandleInputChange}
           id="topic"
           name="topic"
@@ -97,7 +109,7 @@ const CreateCategory = () => {
           type="number"
           className="form-control"
           placeholder="Enter Judges"
-          value={formData.judgesCount}
+          value={category.judgesCount}
           onChange={HandleInputChange}
           id="judgesCount"
           name="judgesCount"
@@ -112,7 +124,7 @@ const CreateCategory = () => {
           type="text"
           className="form-control"
           placeholder="Enter Rules"
-          value={formData.rules}
+          value={category.rules}
           onChange={HandleInputChange}
           id="rules"
           name="rules"
@@ -128,7 +140,7 @@ const CreateCategory = () => {
       id="registrationOpenYes"
       name="registrationOpen"
       value="true"
-      checked={formData.registrationOpen === 'true'}
+      checked={category.registrationOpen === 'true'}
       onChange={HandleInputChange}
     />
     <label className="form-check-label" htmlFor="registrationOpenYes">
@@ -142,24 +154,23 @@ const CreateCategory = () => {
       id="registrationOpenNo"
       name="registrationOpen"
       value="false"
-      checked={formData.registrationOpen === 'false'}
+      checked={category.registrationOpen === 'false'}
       onChange={HandleInputChange}
     />
     <label className="form-check-label" htmlFor="registrationOpenNo">
       No
     </label>
   </div>
-</div>
-
-
-    
-
-      <button type="submit" className="btn btn-danger" onClick={onSubmit}>
-        Submit
-      </button>
-    </form>
   </div>
-  );
-};
 
-export default CreateCategory;
+          <button type="submit" className="btn btn-warning">
+            Save
+          </button>
+        </form>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+   
+  );
+}

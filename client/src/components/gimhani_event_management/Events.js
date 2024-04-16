@@ -10,13 +10,16 @@ const Events = () => {
 
   useEffect(() => {
     retrieveEvents();
+
     retrieveCategories();
   }, []);
 
   const retrieveEvents = () => {
+   
     axios.get("http://localhost:8000/events")
       .then((res) => {
         if (res.data.success) {
+        
           setEvents(res.data.existingEvents);
           setLoading(false);
           setError(null);
@@ -31,19 +34,26 @@ const Events = () => {
         console.error(error);
       });
   }
+  
 
   const retrieveCategories = () =>{
-    axios.get("http://localhost:8000/cat")
-    .then((res)=>{
-      if(res.data.success){
+    axios.get("http://localhost:8000/cat") // Update the API endpoint here
+    .then((res) => {
+      if (res.data.success) {
+        console.log('Cat ID:',res.data )
         setCategories(res.data.existingCategories);
-        // setLoading(false);
-        // setError(null);
-      } 
-      })
-      .catch((error) => {
-        console.error('Error occurred while fetching categories:', error);
-      });
+        setLoading(false);
+        setError(null);
+      } else {
+        setLoading(false);
+        setError('No categories found');
+      }
+    })
+    .catch((error) => {
+      setLoading(false);
+      setError('Error fetching categories');
+      console.error('Error fetching categories:', error);
+    });
   }
 
   const onDelete = (id) => {
@@ -53,10 +63,25 @@ const Events = () => {
     });
   }
 
+  const onCatDelete = (id) => {
+    axios.delete(`http://localhost:8000/cat/delete/${id}`).then((res) => {
+      alert("Deleted successfully");
+      retrieveEvents();
+    });
+  }
+
+  // const filterData = (events, searchKey) => {
+  //   const result = events.filter((event) =>
+  //     event.topic.toLowerCase().includes(searchKey) ||
+  //     event.description.toLowerCase().includes(searchKey)
+  //   );
+  //   setEvents(result);
+  // }
+
   const filterData = (events, searchKey) => {
     const result = events.filter((event) =>
-      event.topic.toLowerCase().includes(searchKey) ||
-      event.description.toLowerCase().includes(searchKey)
+      event.topic.toLowerCase().includes(searchKey) 
+      // event.description.toLowerCase().includes(searchKey)
     );
     setEvents(result);
   }
@@ -75,6 +100,7 @@ const Events = () => {
   const totalEvents = events.length;
 
   return (
+   
     <div>
 <h2> Main event Categories </h2>
 
@@ -82,7 +108,14 @@ const Events = () => {
 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
   {categories.map((category, index) => (
     <div key={index} style={{ border: '1px solid black', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
-      <p style={{ margin: '0', lineHeight: '1.5' }}>{category.topic}</p>
+      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`}>{category.topic}</a> &nbsp;
+      <a className="btn btn-warning" href={`/edit/cat/${category._id}`}>
+         <i className="fas fa-edit"></i>&nbsp;Edit
+         </a>
+      &nbsp;
+      <button className="btn btn-danger" onClick={() => onCatDelete(category._id)}>
+                    <i className="far fa-trash-alt"></i>&nbsp;Delete
+      </button></p>
     </div>
     // justifyContent: 'space-between'-- evenly distribute the child elements along the main axis
   ))}
@@ -162,6 +195,7 @@ const Events = () => {
                     {event.topic}
                   </a>
                 </td>
+                
                 <td>{event.type}</td>
                 <td>{event.gender}</td>
                

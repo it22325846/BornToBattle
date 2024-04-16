@@ -26,12 +26,48 @@ const CreateEvent = () => {
     fetchCategories();
   }, []); 
 
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
+  //   // if (name === 'category' && value === 'beatbox') {
+  //   //   setFormData({
+  //   //     ...formData,
+  //   //     ageGroup: 'Open',
+  //   //     gender: 'Open',
+  //   //   });
+  //   // }  
+  // };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    // Update form data
     setFormData({
       ...formData,
       [name]: value,
     });
+
+    // Handle specific logic based on category selection
+    if (name === 'category') {
+      if (value === 'Beatbox') {
+        // Set type to 'individual' if category is 'beatbox'
+        setFormData({
+          ...formData,
+          type: 'individual',
+          gender: 'Open',
+          ageGroup: 'Open',
+        });
+      } else {
+        // Reset type if category is not 'beatbox'
+        setFormData({
+          ...formData,
+          type: '', // Reset type to default (empty)
+        });
+      }
+    }
   };
 
   const onSubmit = async (e) => {
@@ -110,6 +146,14 @@ const CreateEvent = () => {
           />
         </div>
 
+        {formData.category === 'Beatbox' ? (
+          <input
+            type="text"
+            className="form-control"
+            value="individual"
+            disabled
+          />
+        ) : (
         <div className="mb-3">
           <label htmlFor="type" className="form-label">
             Individual/Group
@@ -126,7 +170,16 @@ const CreateEvent = () => {
             <option value="group">Group</option>
           </select>
         </div>
+         )}
 
+{formData.type === 'Group' ? (
+          <input
+            type="text"
+            className="form-control"
+            value="Open"
+            disabled
+          />
+        ) : (
         <div className="mb-3">
           <label htmlFor="gender" className="form-label">
             Gender
@@ -141,9 +194,19 @@ const CreateEvent = () => {
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
+            <option value="open1">Open</option>
           </select>
         </div>
+          )}
 
+{formData.type === 'Group' ? (
+          <input
+            type="text"
+            className="form-control"
+            value="Open"
+            disabled
+          />
+        ) : (
         <div className="mb-3">
           <label htmlFor="ageGroup" className="form-label">
             Age Category
@@ -158,8 +221,10 @@ const CreateEvent = () => {
             <option value="">Select Age Category</option>
             <option value="under18">Under 18</option>
             <option value="above18">Above 18</option>
+            <option value="open2">Open</option>
           </select>
         </div>
+          )}
 
         <div className="mb-3">
           <label htmlFor="time" className="form-label">
