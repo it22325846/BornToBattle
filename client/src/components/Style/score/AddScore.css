@@ -1,0 +1,25 @@
+.Main{
+    /* background-image: url('../../../../public/Images/red\ and\ black.jpg' ); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.formAdd{
+    margin: auto;
+    width: 60%;
+    height: 100%;
+    color: #ffffff;
+    padding: 0px;
+    text-align: center;
+}
+
+.btn.btn-secondary{
+    width: 400px;
+    background-color: #ff0000;
+    border: #000000;
+}
+
+h2{
+    text-align: center;
+}

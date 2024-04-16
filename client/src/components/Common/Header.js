@@ -17,7 +17,7 @@ function Header() {
       </div>
 
       <li className="nav-item">
-        <a className="nav-link" aria-current="page" href="Home">
+        <a className="nav-link" aria-current="page" href="/">
           HOME
         </a>
       </li>
@@ -25,10 +25,26 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="event">
-          EVENT
+        <a className="nav-link" href="displayevents">
+          EVENTS
         </a>
       </li>
+
+      <span className="separator">|</span>
+
+<li className="nav-item">
+  <a className="nav-link" href="judges">
+    JUDGES
+  </a>
+</li>
+
+<span className="separator">|</span>
+
+<li className="nav-item">
+  <a className="nav-link" href="candidates">
+    CONTESTANTS
+  </a>
+</li>
 
       <span className="separator">|</span>
 
@@ -38,13 +54,7 @@ function Header() {
         </a>
       </li>
 
-      <span className="separator">|</span>
-
-      <li className="nav-item">
-        <a className="nav-link" href="judges">
-          JUDGES
-        </a>
-      </li>
+     
 
       <span className="separator">|</span>
 
@@ -61,7 +71,7 @@ function Header() {
           className="nav-link active"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          onClick={() => navigate("/gallery")}
+          
         >
           MEDIA
         </a>
@@ -69,19 +79,19 @@ function Header() {
           <li>
             <a
               class="dropdown-item active"
-              onClick={() => navigate("/gallery")}
+              onClick={() => navigate("/galleryDisplay")}
             >
               Gallery
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="news">
-              News
+            <a class="dropdown-item" href="https://www.youtube.com/@invincibledancestudio-ids6066">
+              Videos
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="videos">
-              Videos
+            <a class="dropdown-item" onClick={() => navigate("/mediaCenter")}>
+              Media Center
             </a>
           </li>
         </ul>
@@ -98,12 +108,12 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="contact">
+        <a className="nav-link" href="contactus">
           CONTACT US
         </a>
       </li>
       <div className="image_nav2" style={{ marginRight: "10px" }}>
-        <a href="profile">
+        <a href="#don't add profile link">
           <img
             src="../../Images/profile.png"
             alt="IDS"

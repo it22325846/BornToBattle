@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-const photoSchema = new mongoose.Schema({
-    data: Buffer,
-    contentType: String
-  });
+// const photoSchema = new mongoose.Schema({
+//     data: Buffer,
+//     contentType: String
+//   });
 
 const candidateSchema =new mongoose.Schema({
     name:{
@@ -34,11 +34,17 @@ const candidateSchema =new mongoose.Schema({
         required: true
         
     }
-    // photo: {
-    //     data: Buffer,
-    //     contentType: String
-    // }
-    
+    ,
+    photo: {
+        data: {
+            type: Buffer,
+            default: Buffer.from('default_photo_data_in_base64_or_binary', 'base64') // Set default photo data as Buffer
+        },
+        contentType: {
+            type: String,
+            default: 'user/jpeg' // Default content type (replace with appropriate type)
+        }
+    }
 });
 
 //const Student = mongoose.model("Student",studentSchema)

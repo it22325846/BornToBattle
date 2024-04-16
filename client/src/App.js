@@ -51,22 +51,37 @@ import ManagerSignin from './components/managers/ManagerSignin';
 
 //#region Gimhani
 
-
+import Events from './components/gimhani_event_management/Events';
+import CreateEvent from './components/gimhani_event_management/CreateEvent';
+import EditEvent from './components/gimhani_event_management/EditEvent';
+import EventDetails from './components/gimhani_event_management/EventDetails';
+import CreateCategory from './components/gimhani_event_management/CreateCategory';
+import EventManagerDashboard from './components/gimhani_event_management/EventManagerDashboard';
+import Calendar from './components/gimhani_event_management/Calendar';
+import EventCategoryDetails from './components/gimhani_event_management/EventCategoryDetails';
+import EditCategory from './components/gimhani_event_management/EditCategory';
+import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 
 // #endregion
 
 //#region Lakruwan
+import FinalScore from './components/Score/FinalScore';
+import AddScore from './components/Score/AddScore';
+import UpdateScore from './components/Score/UpdateScore';
+import CandidateAddScore from './components/Score/CandidateAddScore';
 // #endregion
 
 //#region Thamindu
 
 import A_SignIn from './components/Thamindu_AudienceComponents/SignIn';
 import A_SignUp from './components/Thamindu_AudienceComponents/Signup';
-import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile'
-import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' 
+import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile';
+import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' ;
 import Comment_main from './components/Thamindu_AudienceComponents/Comment_main';
-import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
+
 // #endregion
+import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
+
 
 //#region Naduni
 // #endregion
@@ -95,13 +110,14 @@ import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceMan
 function App() {
   return (
     <Router>
-       {/* <style>{'body { background-color: #969696; }'}</style> */}
-       {/* Include the NavBar component here */}
+      
+       <Header /> 
+
 
       <Routes>
         
-
-      {/* <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      {/* 
       
         <Route path="/Signup" element={<Signup />} />
       
@@ -110,15 +126,81 @@ function App() {
         <Route path="/" element={<Candidates />} /> */}
 
         <>{/* Venath registration routes */}
+        <Route path="/" element={<Home />} />
+        <Route path="/candidates" element={<Candidates />} />
+        <Route path="/candidates/:event" element={<EventCandidates />} />
+        <Route path="/subcandidates/:event" element={<SubCategoryCandidates />} />
+        <Route path="/addc" element={<CreateCandidate />} /> {/* add */}
+        <Route path="/creategroup" element={<CreateGroup/>} />
+        <Route path="/editc/:id" element={<EditCandidate />} /> {/* edit */}
+        <Route path="/jedit/:id" element={<EditJudge/>} />
+        <Route path="/candidate/:id" element={<CandidateDetails />} />
+        <Route path="/all_candidates" element={<AllCandidates />} />
+        <Route path="/all_groups" element={<AllGroups/>} />
+        <Route path="/all_judges" element={<AllJudges />} /> {/* judges */}
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/CandidateSignup" element={<CandidateSignup />} />
+        <Route path="/JudgeSignup" element={<JudgeSignup />} />
+
+        
+        <Route path="/regDash" element={<RegDash />} />
+        <Route path="/judgeCount" element={<JudgeCount />} />
+        <Route path="/managercandidates/:event" element={<ManagerEventCandidates />} />
+        <Route path="/editcandidates" element={<ManagerEditAll />} />
+        <Route path="/editJudges" element={<EditJudges />} />
+        <Route path="/addJudge" element={<CreateJudge />} />
+
+
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/judgeprofile" element={<JUserProfile />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/editpwd" element={<EditPassword />} />
+      
+
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/adminsignin" element={<AdminSignin />} />
+        <Route path="/adminsignup" element={<AdminSignup />} />
+        <Route path="/addManagers" element={<AddManagers />} />
+        <Route path="/user/:userName/:id" component={UserProfile} />
+
+        <Route path="/managerSignin" element={<ManagerSignin />} />
+
         </>
 
         <>{/* Gimhani registration routes */}
+        <Route path="/e" element={<Events />} />
+        <Route path="/addevent" element={<CreateEvent />} />
+        <Route path="/editevent/:id" element={<EditEvent />} />
+        {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
+       
+        <Route path="/addcat" element={<CreateCategory />} />
+        <Route path="/edit/cat/:id" element={<EditCategory />} />
+
+        <Route path="/eventmanager" element={<EventManagerDashboard />} />
+        <Route path="/calendar" element={<Calendar />} />
+
+        <Route path="/displayevents" element={<DisplayEvents />} />
+
+       
+
+        <Route path="/eventd/:id" element={<EventDetails />} />
+        <Route path="/cat/:id" element={<EventCategoryDetails />} />
         </>
 
         <>{/* Lakruwan registration routes */}
+        <Route path='/finalscoresheet' Component={FinalScore}/>
+      <Route path='/addscore' Component={AddScore}/>
+      <Route path='/updatescore' Component={UpdateScore}/>
+      <Route path='/candidateaddscore' Component={CandidateAddScore}/>
         </>
 
         <>{/* Thamindu registration routes */}
+        <Route path="/A_signup" element={<A_SignUp />} />
+        <Route path="/A_signin" element={<A_SignIn />} />
+        <Route path="/A_profile" element={<A_UserProfile />} />
+        <Route path="/edit/:username" element={<A_EditUserProfile />} />
+        <Route path="/M_Comment_main" element={<M_Comment_main />} />
+        <Route path="/contactus" element={<Comment_main />} />
         </>
 
         <>{/* Naduni registration routes */}
@@ -135,7 +217,7 @@ function App() {
 
          
 </Routes>
-      {/* <Footer />{} */}
+      <Footer />{}
     </Router>
   );
 }
