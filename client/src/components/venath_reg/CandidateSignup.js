@@ -33,7 +33,7 @@ const SignUp = () => {
         alert('Sign-up successful!');
         
         localStorage.setItem('username', username);//session
-        window.location.href = '/add';
+        window.location.href = '/addc';
 
       } catch (error) {
         setError('Error in sign-up. Please try again.');
