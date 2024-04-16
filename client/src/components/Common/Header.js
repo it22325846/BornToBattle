@@ -33,7 +33,7 @@ function Header() {
       <span className="separator">|</span>
 
 <li className="nav-item">
-  <a className="nav-link" href="judges">
+  <a className="nav-link" href="all_judges">
     JUDGES
   </a>
 </li>
