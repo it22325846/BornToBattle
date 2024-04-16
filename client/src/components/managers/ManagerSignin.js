@@ -39,6 +39,9 @@ const SignIn = () => {
             else if(manager && manager.type && manager.type === "payment_manager") {
                 window.location.href = '/#';
             }
+            else if(manager && manager.type && manager.type === "comment_manager") {
+                window.location.href = '/M_Comment_main';
+            }
             localStorage.setItem('username', username);
         } else {
             setError('Invalid username or password. Please try again.');
