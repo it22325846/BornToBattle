@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./styles/MCenter.css";
+import "../styles/MCenter.css";
 
 export default function MediaCenter() {
   return (
