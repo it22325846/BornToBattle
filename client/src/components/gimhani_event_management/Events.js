@@ -109,7 +109,8 @@ const Events = () => {
 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
   {categories.map((category, index) => (
     <div key={index} style={{ border: '1px solid black', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
-      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`}>{category.topic}</a> &nbsp;
+      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`} style={{ color: 'black' }}>{category.topic}</a> &nbsp;
+      
       <a className="btn btn-warning" href={`/edit/cat/${category._id}`}>
          <i className="fas fa-edit"></i>&nbsp;Edit
          </a>
@@ -173,35 +174,35 @@ const Events = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Event No</th>
-              <th scope="col">Event Category</th>
-              <th scope="col">Event Name</th>
-              <th scope="col">Individual/Group</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Age category</th>
-              <th scope="col">Time</th>
+              <th scope="col"  style={{ color: 'black' }}>Event No</th>
+              <th scope="col"  style={{ color: 'black' }}>Event Category</th>
+              <th scope="col"  style={{ color: 'black' }}>Event Name</th>
+              <th scope="col"  style={{ color: 'black' }}>Individual/Group</th>
+              <th scope="col"  style={{ color: 'black' }}>Gender</th>
+              <th scope="col"  style={{ color: 'black' }}>Age category</th>
+              <th scope="col"  style={{ color: 'black' }}>Time</th>
               {/* <th scope="col">Time</th> */}
              
               
-              <th scope="col">Action</th>
+              <th scope="col" style={{ color: 'black' }}>Action</th>
             </tr>
           </thead>
           <tbody>
             {events.map((event, index) => (
               <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{event.category}</td>
-                <td>
+                <th scope="row" style={{ color: 'black' }}>{index + 1}</th>
+                <td style={{ color: 'black' }}>{event.category}</td>
+                <td style={{ color: 'black' }}>
                   <a href={`/eventd/${event._id}`}>
                     {event.topic}
                   </a>
                 </td>
                 
-                <td>{event.type}</td>
-                <td>{event.gender}</td>
+                <td style={{ color: 'black' }}>{event.type}</td>
+                <td style={{ color: 'black' }}>{event.gender}</td>
                
-                <td>{event.ageGroup}</td>
-                <td>{event.time}</td>
+                <td style={{ color: 'black' }}>{event.ageGroup}</td>
+                <td style={{ color: 'black' }}>{event.time}</td>
                 {/* <td>{event.style}</td> */}
                 <td>
                   <a className="btn btn-warning" href={`/editevent/${event._id}`}>
