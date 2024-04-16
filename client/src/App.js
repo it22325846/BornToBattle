@@ -65,6 +65,10 @@ import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 // #endregion
 
 //#region Lakruwan
+import FinalScore from './components/Score/FinalScore';
+import AddScore from './components/Score/AddScore';
+import UpdateScore from './components/Score/UpdateScore';
+import CandidateAddScore from './components/Score/CandidateAddScore';
 // #endregion
 
 //#region Thamindu
@@ -184,6 +188,10 @@ function App() {
         </>
 
         <>{/* Lakruwan registration routes */}
+        <Route path='/finalscoresheet' Component={FinalScore}/>
+      <Route path='/addscore' Component={AddScore}/>
+      <Route path='/updatescore' Component={UpdateScore}/>
+      <Route path='/candidateaddscore' Component={CandidateAddScore}/>
         </>
 
         <>{/* Thamindu registration routes */}
