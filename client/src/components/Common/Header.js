@@ -71,7 +71,7 @@ function Header() {
           className="nav-link active"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-          onClick={() => navigate("/gallery")}
+          
         >
           MEDIA
         </a>
@@ -79,19 +79,19 @@ function Header() {
           <li>
             <a
               class="dropdown-item active"
-              onClick={() => navigate("/gallery")}
+              onClick={() => navigate("/galleryDisplay")}
             >
               Gallery
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="news">
-              News
+            <a class="dropdown-item" href="https://www.youtube.com/@invincibledancestudio-ids6066">
+              Videos
             </a>
           </li>
           <li>
-            <a class="dropdown-item" href="videos">
-              Videos
+            <a class="dropdown-item" onClick={() => navigate("/mediaCenter")}>
+              Media Center
             </a>
           </li>
         </ul>

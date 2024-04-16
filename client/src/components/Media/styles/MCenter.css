@@ -1,0 +1,98 @@
+.overlay {
+    position: relative;
+    width: 100%;
+}
+
+.overlay img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    opacity: 0.9; /* Changed to decimal value */
+}
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-30%, -60%);
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+.img_ga {
+    font-size: 100px;
+    color: #ff1515;
+    font-weight: bold;
+}
+
+.overlay2 {
+    width: 50%;
+    height: auto;
+}
+
+.overlay2-text {
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color: rgb(0, 0, 0);
+    width: 50%; /* Adjust width as needed */
+}
+
+.ph {
+    font-size: 20px;
+}
+
+.overlay3 {
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    width: 30%;
+}
+
+.hh1 {
+    font-size: 25px;
+    color: #ff0000;
+}
+
+.hh2 {
+    position: absolute;
+    margin-left: 20px;
+    margin-top: -38px;
+    font-size: 25px;
+    color: #ff0000;
+}
+.hh21 {
+    position: absolute;
+    margin-left: 20px;
+    
+    font-size: 25px;
+    color: #ff0000;
+}
+
+.overlay4{
+    background-color: #ff9696;
+    margin-top: 350px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.butt{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.custom-button{
+    width: 500px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 25px;
+    color: #ffffff;
+    background-color: #ff0000;
+    
+}
+

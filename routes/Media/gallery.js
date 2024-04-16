@@ -21,7 +21,7 @@ router.route("/add").post(upload.single('image'), (req, res) => {
     const description = req.body.description;
     const image = req.file.filename;
 
-    console.log(req.file, req.body); // debugging
+    console.log(req.file, req.body);
 
     const newMedia = new Media({
         name,
