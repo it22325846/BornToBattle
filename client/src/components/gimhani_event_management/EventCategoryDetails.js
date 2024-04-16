@@ -7,7 +7,7 @@ const EventCategoryDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/cat/${id}`).then((res) => {
+    axios.get(`http://localhost:8020/cat/${id}`).then((res) => {
       if (res.data.success) {
         setCategory(res.data.categories);
       }

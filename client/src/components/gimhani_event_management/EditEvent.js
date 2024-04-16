@@ -18,7 +18,7 @@ export default function EditEvent() {
   // To retrieve data related to a specific post
   useEffect(() => {
     console.log('Fetching post with ID:', id);
-    axios.get(`http://localhost:8000/event/${id}`).then((res) => {
+    axios.get(`http://localhost:8020/event/${id}`).then((res) => {
       console.log('Axios response:', res);
       if (res.data.success) {
         setEvent(res.data.event);
@@ -49,7 +49,7 @@ export default function EditEvent() {
 
     console.log(data);
 
-    axios.put(`http://localhost:8000/event/update/${id}`, data).then((res) => {
+    axios.put(`http://localhost:8020/event/update/${id}`, data).then((res) => {
       if (res.data.success) {
         alert("Event updated successfully!");
         setEvent({
@@ -119,6 +119,7 @@ export default function EditEvent() {
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
+            <option value="open">Open</option>
           </select>
         </div>
 
@@ -136,6 +137,7 @@ export default function EditEvent() {
               <option value="">Select Age Category</option>
               <option value="under18">Under 18</option>
               <option value="above18">Above 18</option>
+              <option value="open">Open</option>
             </select>
                </div>
 

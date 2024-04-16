@@ -79,8 +79,10 @@ function CreateCandidate() {
   const { event, categoryOptions, username } = formData;
   const categories = categoryOptions[event] || [];
 
+  
   return (
     <div>
+    
       {username === 'admin' ? (
         <p>Add candidate and give un and pw to them</p>
       ) : (
