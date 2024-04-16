@@ -51,6 +51,15 @@ import ManagerSignin from './components/managers/ManagerSignin';
 
 //#region Gimhani
 
+import Events from './components/gimhani_event_management/Events';
+import CreateEvent from './components/gimhani_event_management/CreateEvent';
+import EditEvent from './components/gimhani_event_management/EditEvent';
+import EventDetails from './components/gimhani_event_management/EventDetails';
+import CreateCategory from './components/gimhani_event_management/CreateCategory';
+import EventManagerDashboard from './components/gimhani_event_management/EventManagerDashboard';
+import Calendar from './components/gimhani_event_management/Calendar';
+import EventCategoryDetails from './components/gimhani_event_management/EventCategoryDetails';
+import EditCategory from './components/gimhani_event_management/EditCategory';
 
 
 // #endregion
@@ -95,13 +104,14 @@ import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceMan
 function App() {
   return (
     <Router>
-       {/* <style>{'body { background-color: #969696; }'}</style> */}
-       {/* Include the NavBar component here */}
+      
+       <Header /> 
+
 
       <Routes>
         
-
-      {/* <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home />} />
+      {/* 
       
         <Route path="/Signup" element={<Signup />} />
       
@@ -135,7 +145,7 @@ function App() {
 
          
 </Routes>
-      {/* <Footer />{} */}
+      <Footer />{}
     </Router>
   );
 }
