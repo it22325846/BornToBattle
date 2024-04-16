@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import Footer from './components/Venath/Footer'; // Import the NavBar component
 // import Signup from './components/Venath/Signup';
 
-// import SignIn from './components/Venath/SignIn';
+//  import Candidates from './components/venath_reg/CandidateSignup';
 // import EditPassword from './components/Venath/EditPassword';
 // import Home from './components/Venath/Home';
 
@@ -26,7 +26,7 @@ function App() {
       
         <Route path="/signin" element={<SignIn />} />
         <Route path="/editpwd" element={<EditPassword />} />
-        <Route path="/home" element={<Home />} /> */}
+        <Route path="/" element={<Candidates />} /> */}
 
          
 </Routes>
