@@ -17,7 +17,7 @@ export default function EditEvent() {
   // To retrieve data related to a specific post
   useEffect(() => {
     console.log('Fetching post with ID:', id);
-    axios.get(`http://localhost:8000/cat/${id}`).then((res) => {
+    axios.get(`http://localhost:8020/cat/${id}`).then((res) => {
       console.log('Axios response:', res);
       if (res.data.success) {
         setCategory(res.data.categories);
@@ -48,7 +48,7 @@ export default function EditEvent() {
 
     console.log(data);
 
-    axios.put(`http://localhost:8000/cat/update/${id}`, data).then((res) => {
+    axios.put(`http://localhost:8020/cat/update/${id}`, data).then((res) => {
       if (res.data.success) {
         alert("Category updated successfully!");
         setCategory({

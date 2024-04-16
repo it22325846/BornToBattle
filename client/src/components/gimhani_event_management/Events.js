@@ -16,7 +16,7 @@ const Events = () => {
 
   const retrieveEvents = () => {
    
-    axios.get("http://localhost:8000/events")
+    axios.get("http://localhost:8020/events")
       .then((res) => {
         if (res.data.success) {
         
@@ -37,7 +37,7 @@ const Events = () => {
   
 
   const retrieveCategories = () =>{
-    axios.get("http://localhost:8000/cat") // Update the API endpoint here
+    axios.get("http://localhost:8020/cat") // Update the API endpoint here
     .then((res) => {
       if (res.data.success) {
         console.log('Cat ID:',res.data )
@@ -57,14 +57,14 @@ const Events = () => {
   }
 
   const onDelete = (id) => {
-    axios.delete(`http://localhost:8000/event/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:8020/event/delete/${id}`).then((res) => {
       alert("Deleted successfully");
       retrieveEvents();
     });
   }
 
   const onCatDelete = (id) => {
-    axios.delete(`http://localhost:8000/cat/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:8020/cat/delete/${id}`).then((res) => {
       alert("Deleted successfully");
       retrieveEvents();
     });
@@ -89,7 +89,7 @@ const Events = () => {
   const handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:8000/events")
+    axios.get("http://localhost:8020/events")
       .then((res) => {
         if (res.data.success) {
           filterData(res.data.existingEvents, searchKey);
@@ -102,7 +102,8 @@ const Events = () => {
   return (
    
     <div>
-<h2> Main event Categories </h2>
+<h2 style={{ color: 'black' }}>Main Event Categories</h2>
+
 
 
 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
@@ -145,7 +146,7 @@ const Events = () => {
 
           
     <div style={{
-      backgroundImage: "url('/b2b4.jpg')",
+      backgroundImage: `url("/Images/b2b4.jpg")`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       minHeight: '100vh',
@@ -191,7 +192,7 @@ const Events = () => {
                 <th scope="row">{index + 1}</th>
                 <td>{event.category}</td>
                 <td>
-                  <a href={`/event/${event._id}`}>
+                  <a href={`/eventd/${event._id}`}>
                     {event.topic}
                   </a>
                 </td>
@@ -203,7 +204,7 @@ const Events = () => {
                 <td>{event.time}</td>
                 {/* <td>{event.style}</td> */}
                 <td>
-                  <a className="btn btn-warning" href={`/edit/${event._id}`}>
+                  <a className="btn btn-warning" href={`/editevent/${event._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </a>
                   &nbsp;
@@ -218,7 +219,7 @@ const Events = () => {
 
         <div className="d-flex justify-content-between align-items-center">
           <button className="btn btn-dark">
-            <a href="/add" style={{ textDecoration: 'none', color: 'white' }}>
+            <a href="/addevent" style={{ textDecoration: 'none', color: 'white' }}>
               Add New Event
             </a>
           </button>
@@ -232,7 +233,12 @@ const Events = () => {
       </div>
 
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
-      <button> <a href="/calendar"> View Schedule </a></button>
+      <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '16px', borderRadius: '5px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+  <a href="/calendar" style={{ textDecoration: 'none', color: 'white' }}>
+    View Schedule
+  </a>
+</button>
+
       </div>
     </div>
 

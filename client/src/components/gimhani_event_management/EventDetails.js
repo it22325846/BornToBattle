@@ -7,7 +7,7 @@ const EventDetails = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/event/${id}`).then((res) => {
+    axios.get(`http://localhost:8020/event/${id}`).then((res) => {
       if (res.data.success) {
         setEvent(res.data.event);
       }

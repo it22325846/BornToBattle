@@ -5,14 +5,20 @@ const mainEventCategoriesSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
   judgesCount: {
     type: Number,
+    required: true,
   },
+
   rules: {
     type: String, 
+    required: true,
   },
+  
   registrationOpen: {
     type: Boolean,
+    required: true,
   },
 });
 

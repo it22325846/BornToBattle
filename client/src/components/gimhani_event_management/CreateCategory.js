@@ -27,7 +27,7 @@ const CreateCategory = () => {
 
     console.log(formData);
 
-    axios.post('http://localhost:8000/cat/save', formData)
+    axios.post('/cat/save', formData)
       .then((res) => {
         if (res.data.success) {
           setFormData({
@@ -57,7 +57,7 @@ const CreateCategory = () => {
 
   return(
     <div className="container mt-5" style={containerStyle}>
-  
+    <h2 style={{ color: 'black' }}>Add Main Event Category</h2>
     <form>
       <div className="mb-3">
         <label htmlFor="topic" className="form-label">
