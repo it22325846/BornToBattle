@@ -31,6 +31,9 @@ export default function Home(){
                     <p class="ph">Registration will be accepted on a first-come, first-served basis. Spots are limited in each division. Once a division is full, no more entries will be accepted for that division</p>
                     <p class="ph">Payment must be made in FULL in order for registration to be processed.</p>
                     <button type="button" class="btn btn-primary btn-lg custom-btn">More Information</button>
+                    <button type="button" class="btn btn-primary btn-lg custom-btn"> <a href="/CandidateSignup" style={{ color: 'white' }}>Register To A Event</a></button>
+
+               
                 </div>
             </div>
 
