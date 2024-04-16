@@ -26,9 +26,25 @@ function Header() {
 
       <li className="nav-item">
         <a className="nav-link" href="event">
-          EVENT
+          EVENTS
         </a>
       </li>
+
+      <span className="separator">|</span>
+
+<li className="nav-item">
+  <a className="nav-link" href="judges">
+    JUDGES
+  </a>
+</li>
+
+<span className="separator">|</span>
+
+<li className="nav-item">
+  <a className="nav-link" href="judges">
+    CONTESTANTS
+  </a>
+</li>
 
       <span className="separator">|</span>
 
@@ -38,13 +54,7 @@ function Header() {
         </a>
       </li>
 
-      <span className="separator">|</span>
-
-      <li className="nav-item">
-        <a className="nav-link" href="judges">
-          JUDGES
-        </a>
-      </li>
+     
 
       <span className="separator">|</span>
 
