@@ -25,7 +25,7 @@ const AdminHome = () => {
       <br></br>
 
       <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
+        <a href="/e" style={{ color: "black" }}>
           Event Management
         </a>
       </button>
@@ -61,8 +61,8 @@ const AdminHome = () => {
       <br></br>
 
       <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
-         Payment Management
+        <a href="/M_Comment_main" style={{ color: "black" }}>
+         Audience  Management
         </a>
       </button>
 
