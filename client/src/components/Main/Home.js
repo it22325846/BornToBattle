@@ -6,7 +6,7 @@ import "./Style/Home.css";
 export default function Home(){
     return(
         <div className="img1">
-            <img src="../../Images/read and black.jpg" alt="Read and Black"  width="100%" height="auto"  />
+            <img src="../../../public/Images/red_and_black.jpg" alt="Red and Black"  width="100%" height="auto"  />
             <div className="overlay">
                 <h1 className="welcome">WELCOME TO</h1>
                 <h1 className="born">BORN TO</h1>
