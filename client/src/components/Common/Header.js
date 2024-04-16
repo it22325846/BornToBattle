@@ -25,7 +25,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="event">
+        <a className="nav-link" href="displayevents">
           EVENTS
         </a>
       </li>
@@ -41,7 +41,7 @@ function Header() {
 <span className="separator">|</span>
 
 <li className="nav-item">
-  <a className="nav-link" href="judges">
+  <a className="nav-link" href="candidates">
     CONTESTANTS
   </a>
 </li>
@@ -108,7 +108,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="contact">
+        <a className="nav-link" href="contactus">
           CONTACT US
         </a>
       </li>

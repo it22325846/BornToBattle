@@ -103,7 +103,22 @@ export default function Home(){
                 <button type="button" class="btn btn-primary btn-lg custom-btn2">BUY</button>
                 
             </div>
-    
+            <button className="btn btn-success">
+          <a href="/CandidateSignup" style={{ color: 'black' }}>Register To A Event</a>
+        </button>
+        <p></p>
+        <button className="btn btn-success">
+          <a href="/managerSignin" style={{ color: 'black' }}>Sign in as a manager</a>
+        </button>
+
+        <p></p>
+        <button className="btn btn-success">
+          <a href="/AdminSignin" style={{ color: 'black' }}>Admin Sign In</a>
+        </button>
+<p></p>
+        <button className="btn btn-success">
+          <a href="/JudgeSignup" style={{ color: 'black' }}>Sign In as a judge</a>
+        </button>
             </div>
                
 

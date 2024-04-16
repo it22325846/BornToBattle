@@ -60,7 +60,7 @@ import EventManagerDashboard from './components/gimhani_event_management/EventMa
 import Calendar from './components/gimhani_event_management/Calendar';
 import EventCategoryDetails from './components/gimhani_event_management/EventCategoryDetails';
 import EditCategory from './components/gimhani_event_management/EditCategory';
-
+import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 
 // #endregion
 
@@ -122,15 +122,77 @@ function App() {
         <Route path="/" element={<Candidates />} /> */}
 
         <>{/* Venath registration routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/candidates" element={<Candidates />} />
+      <Route path="/candidates/:event" element={<EventCandidates />} />
+      <Route path="/subcandidates/:event" element={<SubCategoryCandidates />} />
+        <Route path="/addc" element={<CreateCandidate />} /> {/* add */}
+        <Route path="/creategroup" element={<CreateGroup/>} />
+        <Route path="/editc/:id" element={<EditCandidate />} /> {/* edit */}
+        <Route path="/jedit/:id" element={<EditJudge/>} />
+        <Route path="/candidate/:id" element={<CandidateDetails />} />
+        <Route path="/all_candidates" element={<AllCandidates />} />
+        <Route path="/all_groups" element={<AllGroups/>} />
+        <Route path="/all_judges" element={<AllJudges />} /> {/* judges */}
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/CandidateSignup" element={<CandidateSignup />} />
+       <Route path="/JudgeSignup" element={<JudgeSignup />} />
+
+        
+        <Route path="/regDash" element={<RegDash />} />
+        <Route path="/judgeCount" element={<JudgeCount />} />
+        <Route path="/managercandidates/:event" element={<ManagerEventCandidates />} />
+        <Route path="/editcandidates" element={<ManagerEditAll />} />
+        <Route path="/editJudges" element={<EditJudges />} />
+        <Route path="/addJudge" element={<CreateJudge />} />
+
+
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/judgeprofile" element={<JUserProfile />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/editpwd" element={<EditPassword />} />
+      
+
+        <Route path="/admin" element={<AdminHome />} />
+        <Route path="/adminsignin" element={<AdminSignin />} />
+        <Route path="/adminsignup" element={<AdminSignup />} />
+        <Route path="/addManagers" element={<AddManagers />} />
+        <Route path="/user/:userName/:id" component={UserProfile} />
+
+        <Route path="/managerSignin" element={<ManagerSignin />} />
+
         </>
 
         <>{/* Gimhani registration routes */}
+        <Route path="/e" element={<Events />} />
+        <Route path="/addevent" element={<CreateEvent />} />
+        <Route path="/editevent/:id" element={<EditEvent />} />
+        {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
+       
+        <Route path="/addcat" element={<CreateCategory />} />
+        <Route path="/edit/cat/:id" element={<EditCategory />} />
+
+        <Route path="/eventmanager" element={<EventManagerDashboard />} />
+        <Route path="/calendar" element={<Calendar />} />
+
+        <Route path="/displayevents" element={<DisplayEvents />} />
+
+       
+
+        <Route path="/eventd/:id" element={<EventDetails />} />
+        <Route path="/cat/:id" element={<EventCategoryDetails />} />
         </>
 
         <>{/* Lakruwan registration routes */}
         </>
 
         <>{/* Thamindu registration routes */}
+        <Route path="/A_signup" element={<A_SignUp />} />
+        <Route path="/A_signin" element={<A_SignIn />} />
+        <Route path="/A_profile" element={<A_UserProfile />} />
+        <Route path="/edit/:username" element={<A_EditUserProfile />} />
+        <Route path="/M_Comment_main" element={<M_Comment_main />} />
+        <Route path="/contactus" element={<Comment_main />} />
         </>
 
         <>{/* Naduni registration routes */}
