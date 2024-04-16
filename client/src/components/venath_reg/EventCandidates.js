@@ -46,6 +46,10 @@ const EventCandidates = () => {
     });
   };
 
+  // const handleConfirm = (id) => {
+
+  // }
+
   return (
     <div>
       <div>
@@ -102,12 +106,31 @@ const EventCandidates = () => {
             ))}
           </tbody>
         </table>
+        <h4>HipHop</h4>
+        <h5> Under 18 <a href="/subcandidates/dancing?cat=u18bh">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
+        <h5> Over  18 <a href="/subcandidates/dancing?cat=o18bh">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
 
-        <button className="btn btn-success">
+        <h5> Under 16  <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
+        {/* <h5> Over  16 <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5> */}
+
+<br></br>
+        <h4>All Styles</h4>
+        <h5> Under 18 <a href="/subcandidates/dancing?cat=u18ba">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
+        <h5> Over  18 <a href="/subcandidates/dancing?cat=o18ba">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
+
+        <h5> Under 16  <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
+        {/* <h5> Over  16 <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5> */}
+        
+
+
+
+
+
+        {/* <button className="btn btn-success">
           <Link to="/add" style={{ color: 'black' }}>
             Create New Student
           </Link>
-        </button>
+        </button> */}
       </div>
     </div>
   );

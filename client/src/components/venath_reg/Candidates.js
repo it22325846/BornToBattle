@@ -1,26 +1,26 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
-const Candidates =()=> {
-  
-    
-    const[ username, setUsername]=useState( localStorage.getItem('username') || ''); // Retrieve username from localStorage
-    
-     useEffect(()=>{
-      localStorage.setItem('username',username);
-     },[username]);
-  
+const Candidates = () => {
+  const [username, setUsername] = useState(
+    localStorage.getItem("username") || ""
+  ); // Retrieve username from localStorage
+
+  useEffect(() => {
+    localStorage.setItem("username", username);
+  }, [username]);
+
   const handleSignOut = () => {
-    localStorage.removeItem('username'); 
-   setUsername(''); 
+    localStorage.removeItem("username");
+    setUsername("");
     alert("Signed Out");
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   const handleSignIn = () => {
-    localStorage.removeItem('username'); 
-   setUsername('');
+    localStorage.removeItem("username");
+    setUsername("");
     alert("Signed Out");
-    window.location.href = '/';
+    window.location.href = "/";
   };
 
   // handleApply = () => {
@@ -35,12 +35,10 @@ const Candidates =()=> {
   //   }
   // };
 
-
-    return (
-      
-      <div>
-        <h3>Welcome, {username}</h3>
-        <div>
+  return (
+    <div>
+      <h3>Welcome, {username}</h3>
+      <div className="flex justify-content-center align-items-center">
         <iframe
           title="YouTube Video"
           width="560"
@@ -51,52 +49,83 @@ const Candidates =()=> {
         ></iframe>
       </div>
 
-         {/* <style>{'body { background-color: #A2A2A2; }'}</style> */}
-         <div className="row">
-         <div className="col-4 d-flex justify-content-center align-items-center">
-        <a href="/candidates/dancing"><img src="dance.jpg" className="img-fluid" alt="Models" width="400px" height="400px" /></a> 
+      {/* <style>{'body { background-color: #A2A2A2; }'}</style> */}
+      <div className="row">
+        <div className="col-4 d-flex justify-content-center align-items-center">
+          <a href="/candidates/dancing">
+            <img
+              src="venath_reg/dance.jpg"
+              className="img-fluid"
+              alt="Models"
+              width="400px"
+              height="400px"
+            />
+          </a>
         </div>
-        
+{/* 
+        <div className="col-4 d-flex justify-content-center align-items-center">
+          <a href="/candidates/rap">
+            <img
+              src="venath_reg/dance.jpg"
+              className="img-fluid"
+              alt="Models"
+              width="400px"
+              height="400px"
+            />
+          </a>
+        </div> */}
 
         <div className="col-4 d-flex justify-content-center align-items-center">
-        <a href="/candidates/rap"><img src="dance.jpg" className="img-fluid" alt="Models" width="400px" height="400px" /></a> 
-          </div>
+          <a href="/candidates/beatbox">
+            <img
+              src="venath_reg/dance.jpg"
+              className="img-fluid"
+              alt="Models"
+              width="400px"
+              height="400px"
+            />
+          </a>
+        </div>
+      </div>
 
-         <div className="col-4 d-flex justify-content-center align-items-center">
-        <a href="/candidates/beatbox"><img src="dance.jpg" className="img-fluid" alt="Models" width="400px" height="400px" /></a> 
-          </div>
-         </div>
+      <div className="row">
+        <div className="col-4 d-flex justify-content-center align-items-center">
+          <p>
+            <a href="/candidates/dancing">All Candidates In Dancing</a>
+          </p>
+          <br />
+        </div>
 
-         <div className='row'>
+        {/* <div className="col-4 d-flex justify-content-center align-items-center">
+          <p>
+            <a href="/candidates/rap">All Candidates In Rap</a>
+          </p>
+          <br />
+        </div> */}
 
-         <div className="col-4 d-flex justify-content-center align-items-center">
-  <p><a href="/candidates/dancing">All Candidates In Dancing</a></p><br />
-</div>
+        <div className="col-4 d-flex justify-content-center align-items-center">
+          <p>
+            <a href="/candidates/beatbox">All Candidates In BeatBox</a>
+          </p>
+        </div>
+      </div>
+      <div className="col-4 d-flex justify-content-center align-items-center">
+        <p>
+          <a href="all_groups">All Groups</a>
+        </p>
+      </div>
 
-<div className="col-4 d-flex justify-content-center align-items-center">
-  <p><a href="/candidates/rap">All Candidates In Rap</a></p><br />
-</div>
-
-<div className="col-4 d-flex justify-content-center align-items-center">
-  <p><a href="/candidates/beatbox">All Candidates In BeatBox</a></p>
-</div>
-
-
-         </div>
-        
-        {/* <h><a href="/candidates/dancing">Dancing</a></h><br></br>
+      {/* <h><a href="/candidates/dancing">Dancing</a></h><br></br>
         <h><a href="/candidates/rap">Rap</a></h><br></br>
         <h><a href="/candidates/beatbox">BeatBox</a></h> */}
 
-<br></br>
+      <br></br>
 
-
-
-        {/* <button className="btn btn-success">
+      {/* <button className="btn btn-success">
           <a href="/signup" style={{ color: 'black' }}>Apply</a>
          
         </button> */}
-{/* 
+      {/* 
         <br></br>
         <br></br>
         <button className="btn btn-success" >
@@ -104,55 +133,59 @@ const Candidates =()=> {
           <a href="/add" style={{ color: 'black' }} >Applyyyy</a>
         </button>
         */}
-        <br></br>
-        <br></br>
-        
-        <button className="btn btn-success">
-          <a href="/all_candidates" style={{ color: 'black' }}>All Candidates</a>
-        </button>
+      <br></br>
+      <br></br>
 
-        <br></br>
-        <br></br>
-        <button className="btn btn-success">
-            <a href="/judges" style={{ color: 'black' }}>All Judges</a>
-          </button>
-        {/* <button className="btn btn-success">
+      <button className="btn btn-success">
+        <a href="/all_candidates" style={{ color: "black" }}>
+          All Candidates
+        </a>
+      </button>
+
+      <br></br>
+      <br></br>
+      <button className="btn btn-success">
+        <a href="/all_judges" style={{ color: "black" }}>
+          All Judges
+        </a>
+      </button>
+      {/* <button className="btn btn-success">
           <a href="#" style={{ color: 'black' }}>Add judges</a>
         </button> */}
 
-        <br></br>
-        <br></br>
+      <br></br>
+      <br></br>
 
-        {/* <button className="btn btn-success">
+      {/* <button className="btn btn-success">
           <a href="/signup" style={{ color: 'black' }}>Sign up</a>
         </button> */}
-        <button className="btn btn-success">
-          <a href="/CandidateSignup" style={{ color: 'black' }}>Register To A Event</a>
+      <button className="btn btn-success">
+        <a href="/CandidateSignup" style={{ color: "black" }}>
+          Register To A Event
+        </a>
+      </button>
+
+      <br></br>
+      <br></br>
+      <div>
+        <button className="btn btn-danger" onClick={handleSignOut}>
+          Sign Out
         </button>
-         
-         <br></br>
-         <br></br>
-        <div>
-            
-            <button className="btn btn-danger" onClick={handleSignOut}>
-              Sign Out
-            </button>
-          </div>
+      </div>
 
-          <br></br>
-        <br></br>
+      <br></br>
+      <br></br>
 
-        <button className="btn btn-success">
-          <a href="/signin" style={{ color: 'black' }}>Sign In</a>
-        </button>
+      <button className="btn btn-success">
+        <a href="/signin" style={{ color: "black" }}>
+          Sign In
+        </a>
+      </button>
 
-        
-        <br></br>
-        <br></br>
+      <br></br>
+      <br></br>
 
-        
-       
-{/* 
+      {/* 
         <button className="btn btn-success">
           <a href="/AdminSignin" style={{ color: 'black' }}>Admin Sign In</a>
         </button>
@@ -164,12 +197,8 @@ const Candidates =()=> {
         <button className="btn btn-success">
           <a href="/#" style={{ color: 'black' }}>Manager Sign In</a>
         </button> */}
-
-            
-
-      </div>
-      
-    );
-  };
+    </div>
+  );
+};
 
 export default Candidates;

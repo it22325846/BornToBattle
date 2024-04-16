@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 
+
 const UserProfile = () => {
   const [candidate, setCandidate] = useState({});
   const [loading, setLoading] = useState(true);
@@ -99,7 +100,7 @@ const UserProfile = () => {
         <p>Category: {candidate.category}</p>
         <p>Phone Number: {candidate.phoneNumber}</p>
 
-        <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
+        <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
           <i className="fas fa-edit"></i>&nbsp;Edit
         </Link>
 
