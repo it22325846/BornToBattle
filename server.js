@@ -173,6 +173,9 @@ const stallItems = require('./routes/Staller/itemRoutes')
 
 //vishmitha line 174
 
+const mediaRouter = require("./routes/Media/gallery");
+app.use("/media",mediaRouter);
+
 
 
 
