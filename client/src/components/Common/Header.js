@@ -17,7 +17,7 @@ function Header() {
       </div>
 
       <li className="nav-item">
-        <a className="nav-link" aria-current="page" href="Home">
+        <a className="nav-link" aria-current="page" href="/">
           HOME
         </a>
       </li>
