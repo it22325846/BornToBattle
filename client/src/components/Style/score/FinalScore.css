@@ -1,0 +1,34 @@
+h2{
+    color: #ffffff;
+}
+
+.table{
+    width: 100%;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    /* background-color: rgba(0, 0, 0, 0); */
+    background: transparent;
+    /* background-image: url('../../../public/Images/red-black-brush-stroke-banner-background-perfect-canva.jpg' ); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.wrapper{
+    background-image: url('../../../../public/Images/red\ and\ black.jpg' );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.form-control.me-2{
+    width: 400px;
+    justify-content: flex-end;
+}
+
+.btn.btn-outline-success{
+    display: flex;
+    justify-content: flex-end;
+    height: 40px;
+}
