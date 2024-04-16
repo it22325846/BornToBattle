@@ -176,6 +176,8 @@ const stallItems = require('./routes/Staller/itemRoutes')
 const mediaRouter = require("./routes/Media/gallery");
 app.use("/media",mediaRouter);
 
+const requestForm = require("./routes/Media/mediaRequestForm");
+app.use("/requestform",requestForm);
 
 
 
