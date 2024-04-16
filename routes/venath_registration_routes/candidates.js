@@ -30,33 +30,45 @@ router.post('/candidates/save', (req, res)=>{
 
 // Multer configuration for storing photos
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'uploads/profile-photos'); // Set the destination folder for profile photos
-    },
-    filename: function (req, file, cb) {
-      const ext = path.extname(file.originalname);
-      cb(null, Date.now() + ext); // Set the filename to be unique (timestamp + original extension)
-    }
-  });
-  
-  const upload = multer({ storage: storage });
-  
-  // POST route for saving a profile photo
-  router.post('/profile-photo/save', upload.single('photo'), (req, res) => {
-    // Assuming 'photo' is the name attribute of the file input in your form
-    if (!req.file) {
-        return res.status(400).json({ error: 'No file uploaded.' });
-      }
-    
-      // Process the file, save to the database, etc.
-      const { filename } = req.file;
-    
-      // You can save the filename to the database or perform other actions here
-    
-      return res.status(200).json({ success: 'Profile photo saved successfully' });
-  });
+  destination: function (req, file, cb) {
+    const uploadPath = path.join(__dirname, '..', '..', 'client', 'public', 'uploads', 'profile-photos');
 
-//read get students
+    cb(null, uploadPath); // Set the destination folder for profile photos
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext); // Set the filename to be unique (timestamp + original extension)
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Route to update candidate photo
+router.put('/candidate/update/:id/photo', upload.single('photo'), async (req, res) => {
+  try {
+    const candidateId = req.params.id;
+    const { filename } = req.file; // Uploaded photo filename
+
+    // Update the candidate document with the photo filename
+    const updatedCandidate = await Candidate.findByIdAndUpdate(
+      candidateId,
+      { photo: filename }, // Assuming 'photo' is the field in your Candidate schema to store the photo filename
+      { new: true }
+    );
+
+    if (!updatedCandidate) {
+      return res.status(404).json({ error: 'Candidate not found.' });
+    }
+
+    return res.status(200).json({ success: 'Profile photo updated successfully', candidate: updatedCandidate });
+  } catch (error) {
+    console.error('Error updating profile photo:', error);
+    return res.status(500).json({ error: 'Failed to update profile photo.' });
+  }
+});
+
+
+//read get candidates
 
 router.get('/candidates', (req, res) => {
     Candidate.find().exec()
@@ -93,10 +105,33 @@ router.get('/candidates', (req, res) => {
 
 //update students
 
+router.put('/candidate/update/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { name, age, gender } = req.body;
+
+    const updateCandidate = {
+      name,
+      age,
+      gender
+    };
+
+    const updatedCandidate = await Candidate.findByIdAndUpdate(userId, updateCandidate);
+
+    if (!updatedCandidate) {
+      return res.status(404).json({ error: "Candidate not found" });
+    }
+
+    return res.status(200).json({ status: "Candidate updated", candidate: updatedCandidate });
+  } catch (err) {
+    console.error(err);
+    return res.status(500).json({ status: "Error", error: err.message });
+  }
+});
 
 
 
-// router.route("/update/:id").post(async (req,res)=>{
+// router.route("/candidate/update/:id").put(async (req,res)=>{
 //     let userId = req.params.id;
 
 // const{name,age,gender}=req.body; //dstrutcure
