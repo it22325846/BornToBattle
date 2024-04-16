@@ -30,7 +30,7 @@ export default function RequestForm() {
     }
 
     axios
-      .post("http://localhost:8070/requestform/add", requestform)
+      .post("http://localhost:8020/requestform/add", requestform)
       .then(() => {
         alert("Request sent.");
       })

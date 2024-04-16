@@ -21,7 +21,7 @@ export default function Gallery() {
     formData.append("image", image);
 
     axios
-      .post("http://localhost:8070/media/add", formData, {
+      .post("http://localhost:8020/media/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -43,7 +43,7 @@ export default function Gallery() {
 
   const fetchMedia = () => {
     axios
-      .get("http://localhost:8070/media/read")
+      .get("http://localhost:8020/media/read")
       .then((res) => {
         setMedia(res.data);
       })
@@ -59,7 +59,7 @@ export default function Gallery() {
 
   const deleteContent = (id) => {
     axios
-      .delete(`http://localhost:8070/media/delete/${id}`)
+      .delete(`http://localhost:8020/media/delete/${id}`)
       .then(() => {
         alert("Item deleted.");
         // After deleting, fetch media again to update the list
@@ -130,7 +130,7 @@ export default function Gallery() {
             {/* Check if image exists before rendering */}
             {item.image && (
               <img
-                src={`http://localhost:8070/media/uploads/${item.image}`}
+                src={`http://localhost:8020/media/uploads/${item.image}`}
                 alt="Product Image"
                 className="media-image"
               />

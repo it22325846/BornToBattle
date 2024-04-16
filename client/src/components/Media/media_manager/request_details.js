@@ -18,7 +18,7 @@ export default function MediaManagerUI() {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8070/requestForm/delete/${id}`)
+      .delete(`http://localhost:8020/requestForm/delete/${id}`)
       .then(() => {
         setForms(forms.filter((form) => form._id !== id));
       })

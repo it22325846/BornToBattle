@@ -17,7 +17,7 @@ export default function Gallery() {
   // Fetch media on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:8070/media/read")
+      .get("http://localhost:8020/media/read")
       .then((res) => {
         setMedia(res.data);
       })
@@ -45,7 +45,7 @@ export default function Gallery() {
             {/* Check if image exists before rendering */}
             {item.image && (
               <img
-                src={`http://localhost:8070/media/uploads/${item.image}`}
+                src={`http://localhost:8020/media/uploads/${item.image}`}
                 alt="Product Image"
                 className="media-image"
               />
