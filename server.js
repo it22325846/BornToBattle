@@ -47,8 +47,8 @@ app.use(loginsRouter);
 const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_route');
  app.use(JloginsRouter);
 
-
-
+ const candidateGroupRouter =require("./routes/venath_registration_routes/candidate_group_route");
+ app.use(candidateGroupRouter);
 
 
 //thamindu line 54
