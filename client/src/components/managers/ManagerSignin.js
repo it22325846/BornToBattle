@@ -29,7 +29,7 @@ const SignIn = () => {
             }
 
             else if(manager && manager.type && manager.type === "media_manager") {
-                window.location.href = '/#';
+                window.location.href = '/mediaM';
             }
 
             else if(manager && manager.type && manager.type === "sponsor_manager") {
