@@ -24,7 +24,7 @@ const SignIn = () => {
         if (response.data.success) {
           // Sign-in successful
           localStorage.setItem('username', username); // Store username in session
-          window.location.href = '/';                // Redirect to dashboard
+          window.location.href = '/A_profile';                // Redirect to dashboard
 
         } else {
           setError('Invalid username or password. Please try again.');

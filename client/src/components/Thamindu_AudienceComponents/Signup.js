@@ -43,7 +43,7 @@ const SignUp = () => {
         
         
         localStorage.setItem('username', username);//session =>username
-        window.location.href = '/';
+        window.location.href = '/A_profile';
 
       } catch (error) {
         setError('Error in sign-up. Please try again.');
