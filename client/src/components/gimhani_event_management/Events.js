@@ -99,6 +99,11 @@ const Events = () => {
 
   const totalEvents = events.length;
 
+  const handleSignOut = () => {
+    localStorage.removeItem('username');
+    window.location.href = '/managerSignin';
+  };
+
   return (
    
     <div>
@@ -236,14 +241,21 @@ const Events = () => {
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
       <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '16px', borderRadius: '5px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
   <a href="/calendar" style={{ textDecoration: 'none', color: 'white' }}>
-    View Schedule
+    Manage Calendar
   </a>
 </button>
 
       </div>
     </div>
-
+    <div>
+            <button className="btn btn-danger" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          </div>
     </div>
+
+
+
   );
 
   //view schedule button

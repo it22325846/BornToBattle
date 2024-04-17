@@ -18,7 +18,7 @@ const SignIn = () => {
         if (response.data.success) {
             setManager(response.data.manager);
             if(manager && manager.type && manager.type === "event_manager") {
-                window.location.href = '/';
+                window.location.href = '/e';
             }
             else if(manager && manager.type && manager.type === "registration_manager") {
                 window.location.href = '/regDash';

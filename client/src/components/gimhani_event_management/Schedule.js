@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Events = () => {
+const Schedule = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -34,15 +34,22 @@ const Events = () => {
     setSearchKey(e.currentTarget.value.toLowerCase());
   };
 
-  const filteredEvents = events.filter((event) =>
-    event.topic.toLowerCase().includes(searchKey)
-  );
+  const filterByCategory = (category) => {
+    return events.filter((event) =>
+      event.category.toLowerCase() === category && event.topic.toLowerCase().includes(searchKey)
+    );
+  };
 
+  const dancingEvents = filterByCategory('dancing');
+  const beatboxEvents = filterByCategory('beatbox');
+
+  const totalDancingEvents = dancingEvents.length;
+  const totalBeatboxEvents = beatboxEvents.length;
   const totalEvents = events.length;
 
   return (
     <div>
-      <h2>All Events</h2>
+      <h2>Events</h2>
 
       <div className="row">
         <div className="col-lg-3 mt-2 mb-2">
@@ -55,28 +62,57 @@ const Events = () => {
         </div>
       </div>
 
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Event Name</th>
-            <th scope="col">Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredEvents.map((event, index) => (
-            <tr key={index}>
-              <td>{event.topic}</td>
-              <td>{event.time}</td>
+      <div>
+      <h3 style={{ color: 'white' }}>Dancing Events</h3>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Event Name</th>
+              <th scope="col">Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {dancingEvents.map((event, index) => (
+              <tr key={index}>
+                <td>{event.topic}</td>
+                <td>{event.time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div>
+          <h5  style={{ color: 'white' }}>Total Dancing Events: {totalDancingEvents}</h5>
+        </div>
+      </div>
 
       <div>
-        <h4>Total Events: {totalEvents}</h4>
+        <h3  style={{ color: 'white' }}>Beatbox Events</h3>
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Event Name</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {beatboxEvents.map((event, index) => (
+              <tr key={index}>
+                <td>{event.topic}</td>
+                <td>{event.time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div>
+          <h5  style={{ color: 'white' }}>Total Beatbox Events: {totalBeatboxEvents}</h5>
+        </div>
+      </div>
+
+      <div>
+        <h4  style={{ color: 'white' }}>Total Events: {totalEvents}</h4>
       </div>
     </div>
   );
 };
 
-export default Events;
+export default Schedule;

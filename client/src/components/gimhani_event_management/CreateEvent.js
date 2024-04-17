@@ -11,6 +11,7 @@ const CreateEvent = () => {
   });
 
   const [categories, setCategories] = useState([]);
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     // Fetch categories from backend when component mounts
@@ -28,18 +29,25 @@ const CreateEvent = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+  
+    // Update form data
     setFormData({
       ...formData,
       [name]: value,
     });
-    // if (name === 'category' && value === 'beatbox') {
-    //   setFormData({
-    //     ...formData,
-    //     ageGroup: 'Open',
-    //     gender: 'Open',
-    //   });
-    // }  
+  
+    // Handle specific logic based on category selection
+    if (name === 'category' && value === 'Beatbox') {
+      // Set type to 'individual' and disable type selection for 'Beatbox' category
+      setFormData({
+        ...formData,
+        type: 'individual', // Lock type to 'individual'
+      });
+    }
+
+    
   };
+  
 
   // const handleInputChange = (e) => {
   //   const { name, value } = e.target;
@@ -73,6 +81,47 @@ const CreateEvent = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+     // Perform form validation
+     const validationErrors = {};
+     if (!formData.topic) {
+       validationErrors.topic = 'Event name is required';
+     }
+     if (!formData.type) {
+       validationErrors.type = 'Please select Individual/Group';
+     }
+     if (!formData.gender) {
+       validationErrors.gender = 'Please select Gender';
+     }
+     if (!formData.ageGroup) {
+       validationErrors.ageGroup = 'Please select Age Category';
+     }
+     if (!formData.time) {
+       validationErrors.time = 'Event time is required';
+     }
+
+     try {
+      // Check if the entered time already exists in the database
+      const response = await axios.get('http://localhost:8020/events');
+      const existingEvents = response.data.existingEvents;
+      const isTimeExists = existingEvents.some((event) => event.time === formData.time);
+  
+      if (isTimeExists) {
+        validationErrors.time = 'Event time already exists';
+      }
+    } catch (error) {
+      console.error('Error checking existing events:', error);
+      validationErrors.time = 'Error checking existing events';
+    }
+  
+    setErrors(validationErrors);
+
+      // Check if there are any validation errors
+      if (Object.keys(validationErrors).length > 0) {
+        alert("Select a different time");
+        return; // Stop submission if there are validation errors
+      }
+ 
+
     try {
       const response = await axios.post('http://localhost:8020/event/save', formData);
       if (response.data.success) {
@@ -105,6 +154,15 @@ const CreateEvent = () => {
     margin: 'auto', // Center the container
   };
 
+  const inputStyle = {
+    width: '100%', // Full width
+    padding: '6px', // Padding around text
+    fontSize: '16px', // Font size
+    marginBottom: '15px', // Spacing between inputs
+    boxSizing: 'border-box', // Include padding in width calculation
+    borderRadius: '5px', // Rounded corners
+  };
+
   return (
     <div className="container mt-5" style={containerStyle}>
       <h2 style={{ color: 'black' }}>Add New Event</h2>
@@ -120,6 +178,7 @@ const CreateEvent = () => {
             onChange={handleInputChange}
             id="category"
             name="category"
+            style={inputStyle}
           >
             <option value="">Select Event Category</option>
             {categories.map((category) => (
@@ -143,6 +202,7 @@ const CreateEvent = () => {
             id="topic"
             name="topic"
             required
+            style={inputStyle}
           />
         </div>
 
@@ -164,6 +224,8 @@ const CreateEvent = () => {
             onChange={handleInputChange}
             id="type"
             name="type"
+            disabled={formData.category === 'Beatbox'}
+            style={inputStyle}
           >
             <option value="">Select Type</option>
             <option value="individual">Individual</option>
@@ -190,6 +252,7 @@ const CreateEvent = () => {
             onChange={handleInputChange}
             id="gender"
             name="gender"
+            style={inputStyle}
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
@@ -217,6 +280,7 @@ const CreateEvent = () => {
             onChange={handleInputChange}
             id="ageGroup"
             name="ageGroup"
+            style={inputStyle}
           >
             <option value="">Select Age Category</option>
             <option value="under18">Under 18</option>
