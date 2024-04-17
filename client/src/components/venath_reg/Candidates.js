@@ -39,7 +39,7 @@ const Candidates = () => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
+      <h3 style={{ color: 'white' }}>Welcome  {username}</h3>
       <div className="row" style={{ backgroundColor: 'white', padding: '35px'}}>
   <div className="col-12 d-flex justify-content-center align-items-center">
     <iframe
