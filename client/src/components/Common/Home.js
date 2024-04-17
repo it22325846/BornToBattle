@@ -6,12 +6,19 @@ import "../Style/Home.css"; // Adjust the path to Home.css
 export default function Home(){
     return(
         <div className="img1">
-            <img src="../../Images/read and black.jpg" alt="Read and Black"  width="100%" height="auto"  />
-            <div className="overlay">
-                <h1 className="welcome">WELCOME TO</h1>
-                <h1 className="born">BORN TO</h1>
-                <h1 className="battle">BATTLE</h1>
-            </div>
+         <div class="image-container">
+        <img
+          src="../../Images/red_and_black.jpg"
+          alt="Red and Black"
+          width="100%"
+          height="auto"
+        />
+        <div class="overlay">
+          <h1 class="welcome">WELCOME TO</h1>
+          <h1 class="born">BORN TO</h1>
+          <h1 class="battle">BATTLE</h1>
+        </div>
+      </div>
 
             <div className="overlay2">
                 <h1 className="intro">2024 Srilanka Dance Championship.</h1>

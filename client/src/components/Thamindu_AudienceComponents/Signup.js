@@ -63,7 +63,7 @@ const SignUp = () => {
  
  <div style={{ maxWidth: '500px', maxHeight: '700px', width: '100%', overflow: 'auto', }}>
   <div className="card p-4">
-    <h2 className="text-center mb-4">Sign Up Page</h2>
+    <h2 className="text-center mb-4" style={{ color: '#000000' }}  >Sign Up Page</h2>
     <form>
       <div className="mb-3">
         <label htmlFor="username" className="form-label">

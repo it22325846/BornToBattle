@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function CreateCandidate() {
+  const [error, setError] = useState('');
+
+
   const [formData, setFormData] = useState({
     name: "",
     age: "",
@@ -40,6 +43,18 @@ function CreateCandidate() {
     if (name === 'age' && ageError) {
       setAgeError("");
     }
+
+    if (name === 'phoneNumber') {
+      // Validate phone number to accept exactly 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
+      if (!isValidPhoneNumber && value.length > 0) { 
+        
+        setError('Phone number must be 10 digits');
+      } else {
+        setError('');
+      }
+    }
+
     setFormData(prevState => ({ ...prevState, [name]: value }));
   };
 
@@ -86,10 +101,10 @@ function CreateCandidate() {
       {username === 'admin' ? (
         <p>Add candidate and give un and pw to them</p>
       ) : (
-        <p>Welcome, {username}</p>
+        <h3 style={{ color: 'white' }}>Welcome, {username}</h3>
       )}
       <h2 style={{ marginLeft: '1rem' }}>Apply for event / <a href="/creategroup">Apply as a team</a></h2> 
-      <form onSubmit={handleSubmit} style={{ marginLeft: '1rem' }}>
+      <form onSubmit={handleSubmit} style={{ marginLeft: '1rem', color: 'white' }} >
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Name
@@ -199,6 +214,8 @@ function CreateCandidate() {
             required
             style={{ width: '30%' }}
           />
+                    {error && <p className="text-danger">{error}</p>}
+
         </div>
 
         <button type="submit" className="btn btn-primary">

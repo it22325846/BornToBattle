@@ -120,7 +120,12 @@ router.delete('/cat/delete/:id', (req, res) => {
     try {
       // Retrieve categories where topic is 'dancing' and only return judgesCount field
       const categories = await EventCategories.find({ topic: 'Dancing' }, 'judgesCount');
-      res.json(categories);
+  
+      // Map categories to extract judgesCount for each category
+      const judgesCounts = categories.map(category => category.judgesCount);
+  
+      // Send a successful response with judges counts for dancing categories
+      res.json({ success: true, judgesCounts });
     } catch (error) {
       console.error('Error fetching categories:', error);
       res.status(500).json({ error: 'Internal Server Error' });
@@ -130,9 +135,14 @@ router.delete('/cat/delete/:id', (req, res) => {
   // GET route to count judges with event "Beatbox"
   router.get('/judges/count/beatbox', async (req, res) => {
     try {
-      // Retrieve categories where topic is 'dancing' and only return judgesCount field
+      // Retrieve categories where topic is 'Beatbox' and only return judgesCount field
       const categories = await EventCategories.find({ topic: 'Beatbox' }, 'judgesCount');
-      res.json(categories);
+  
+      // Map categories to extract judgesCount for each category
+      const judgesCounts = categories.map(category => category.judgesCount);
+  
+      // Send a successful response with judges counts for Beatbox categories
+      res.json({ success: true, judgesCounts });
     } catch (error) {
       console.error('Error fetching categories:', error);
       res.status(500).json({ error: 'Internal Server Error' });

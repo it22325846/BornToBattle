@@ -101,7 +101,7 @@ const A_UserProfile = () => {
                             Delete Account
                         </button>
                         <button className="btn2" onClick={handleSignOut}>
-                            Sign Out
+                            Log Out
                         </button>
                     </div>
 
