@@ -48,7 +48,7 @@ const SignIn = () => {
         
         <div className="card p-4">
 
-            <h2 className="text-center mb-4">Sign In Page</h2>
+            <h2 className="text-center mb-4" style={{ color: '#000000' }} >Sign In Page</h2>
             <form>
 
                 <div className="mb-3">
