@@ -12,6 +12,14 @@ const UserProfile = () => {
   const [newProfilePhoto, setNewProfilePhoto] = useState(null);
 
   useEffect(() => {
+    const existingUsername = localStorage.getItem('username');
+    if (!existingUsername) {
+      alert("You don't have an account");
+      window.location.href = '/';
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchCandidateData = async () => {
       try {
         const response = await axios.get(`/candidate/username/${encodeURIComponent(username)}`);
