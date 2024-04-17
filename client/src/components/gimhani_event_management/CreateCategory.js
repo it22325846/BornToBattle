@@ -120,36 +120,21 @@ const CreateCategory = () => {
       </div>
 
       <div className="mb-3">
-  <label className="form-label">Is registration open?</label>
-  <div className="form-check">
-    <input
-      className="form-check-input"
-      type="radio"
-      id="registrationOpenYes"
-      name="registrationOpen"
-      value="true"
-      checked={formData.registrationOpen === 'true'}
-      onChange={HandleInputChange}
-    />
-    <label className="form-check-label" htmlFor="registrationOpenYes">
-      Yes
-    </label>
-  </div>
-  <div className="form-check">
-    <input
-      className="form-check-input"
-      type="radio"
-      id="registrationOpenNo"
-      name="registrationOpen"
-      value="false"
-      checked={formData.registrationOpen === 'false'}
-      onChange={HandleInputChange}
-    />
-    <label className="form-check-label" htmlFor="registrationOpenNo">
-      No
-    </label>
-  </div>
-</div>
+          <label htmlFor="registrationOpen" className="form-label">
+            Is registration open?
+          </label>
+          <select
+            className="form-select"
+            value={formData.registrationOpen}
+            onChange={HandleInputChange}
+            id="registrationOpen"
+            name="registrationOpen"
+          >
+            <option value="">Select</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
 
 
     

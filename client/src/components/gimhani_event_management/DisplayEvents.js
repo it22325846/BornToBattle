@@ -1,3 +1,5 @@
+//displayevents
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -38,6 +40,8 @@ const DisplayEvents = () => {
   const filteredEvents = events.filter((event) =>
     event.topic.toLowerCase().includes(searchKey)
   );
+
+  
 
   return (
 
@@ -90,30 +94,30 @@ const DisplayEvents = () => {
           <table className="table">
             <thead>
               <tr>
-                <th scope="col">Event No</th>
-                <th scope="col">Event Category</th>
-                <th scope="col">Event Name</th>
-                <th scope="col">Individual/Group</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Age category</th>
-                <th scope="col">Time</th>
+                <th scope="col" style={{ color: 'black' }}>Event No</th>
+                <th scope="col" style={{ color: 'black' }}>Event Category</th>
+                <th scope="col" style={{ color: 'black' }}>Event Name</th>
+                <th scope="col" style={{ color: 'black' }}>Individual/Group</th>
+                <th scope="col" style={{ color: 'black' }}>Gender</th>
+                <th scope="col" style={{ color: 'black' }}>Age category</th>
+                <th scope="col" style={{ color: 'black' }}>Time</th>
                
               </tr>
             </thead>
             <tbody>
               {filteredEvents.map((event, index) => (
                 <tr key={event._id}>
-                  <th scope="row">{index + 1}</th>
-                  <td>{event.category}</td>
-                  <td>
+                  <th scope="row" style={{ color: 'black' }}>{index + 1}</th>
+                  <td style={{ color: 'black' }}>{event.category}</td>
+                  <td style={{ color: 'black' }}>
                     {/* <a href={`/eventd/${event._id}`}> */}
                         {event.topic}
                         {/* </a> */}
                   </td>
-                  <td>{event.type}</td>
-                  <td>{event.gender}</td>
-                  <td>{event.ageGroup}</td>
-                  <td>{event.time}</td>
+                  <td style={{ color: 'black' }}>{event.type}</td>
+                  <td style={{ color: 'black' }}>{event.gender}</td>
+                  <td style={{ color: 'black' }}>{event.ageGroup}</td>
+                  <td style={{ color: 'black' }}>{event.time}</td>
                  
                 </tr>
               ))}

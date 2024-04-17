@@ -17,7 +17,7 @@ const mainEventCategoriesSchema = new mongoose.Schema({
   },
   
   registrationOpen: {
-    type: Boolean,
+    type: String,
     required: true,
   },
 });
