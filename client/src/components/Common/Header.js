@@ -113,7 +113,7 @@ function Header() {
         </a>
       </li>
       <div className="image_nav2" style={{ marginRight: "10px" }}>
-        <a href="/profile">
+        <a href="#don't add profile link">
           <img
             src="../../Images/profile.png"
             alt="IDS"
