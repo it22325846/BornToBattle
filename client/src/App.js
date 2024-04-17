@@ -61,7 +61,7 @@ import Calendar from './components/gimhani_event_management/Calendar';
 import EventCategoryDetails from './components/gimhani_event_management/EventCategoryDetails';
 import EditCategory from './components/gimhani_event_management/EditCategory';
 import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
-
+import Schedule from './components/gimhani_event_management/Schedule';
 // #endregion
 
 //#region Lakruwan
@@ -178,6 +178,8 @@ function App() {
         <Route path="/e" element={<Events />} />
         <Route path="/addevent" element={<CreateEvent />} />
         <Route path="/editevent/:id" element={<EditEvent />} />
+      <Route path="/schedule" element={<Schedule />} />
+      
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
        
         <Route path="/addcat" element={<CreateCategory />} />
