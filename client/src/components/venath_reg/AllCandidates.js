@@ -59,7 +59,7 @@ function AllCandidates () {
           <input className="form-control mr-sm-2 ml-auto" type="search" placeholder="Search" aria-label="Search" onChange={handleSearchArea} />
           <button className="btn btn-success" type="submit">Search</button>
         </form>
-        <p>Student details</p>
+        <h4>candidate details</h4>
         <table className="table">
           <thead>
             <tr>

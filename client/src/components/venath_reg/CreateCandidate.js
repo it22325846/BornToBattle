@@ -12,7 +12,7 @@ function CreateCandidate() {
     un: "",
     username: localStorage.getItem('username') || '',
     categoryOptions: {
-      dancing: ['bboy', 'hollywood'],
+      dancing: ['Hiphop', 'AllStyles'],
       rap: ['N/A'],
       beatbox: ['N/A'],
     },
@@ -79,14 +79,16 @@ function CreateCandidate() {
   const { event, categoryOptions, username } = formData;
   const categories = categoryOptions[event] || [];
 
+  
   return (
     <div>
+    
       {username === 'admin' ? (
         <p>Add candidate and give un and pw to them</p>
       ) : (
         <p>Welcome, {username}</p>
       )}
-      <h2 style={{ marginLeft: '1rem' }}>Apply for event</h2>
+      <h2 style={{ marginLeft: '1rem' }}>Apply for event / <a href="/creategroup">Apply as a team</a></h2> 
       <form onSubmit={handleSubmit} style={{ marginLeft: '1rem' }}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
@@ -155,7 +157,7 @@ function CreateCandidate() {
           >
             <option value="">Select event</option>
             <option value="dancing">Dancing</option>
-            <option value="rap">Rap</option>
+            {/* <option value="rap">Rap</option> */}
             <option value="beatbox">beatbox</option>
           </select>
         </div>

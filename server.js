@@ -47,8 +47,8 @@ app.use(loginsRouter);
 const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_route');
  app.use(JloginsRouter);
 
-
-
+ const candidateGroupRouter =require("./routes/venath_registration_routes/candidate_group_route");
+ app.use(candidateGroupRouter);
 
 
 //thamindu line 54
@@ -112,8 +112,10 @@ app.use(eventCatRoutes);
 
 //nisitha line 113
 const stalllerRouter = require('./routes/Staller/stallerRoutes')
+app.use(stalllerRouter)
 
 const stallItems = require('./routes/Staller/itemRoutes')
+app.use(stallItems)
 
 
 
@@ -173,6 +175,11 @@ const stallItems = require('./routes/Staller/itemRoutes')
 
 //vishmitha line 174
 
+const mediaRouter = require("./routes/Media/gallery");
+app.use("/media",mediaRouter);
+
+const requestForm = require("./routes/Media/mediaRequestForm");
+app.use("/requestform",requestForm);
 
 
 

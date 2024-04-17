@@ -1,15 +1,27 @@
-const regDash =()=>{
+
+import React, { useEffect } from "react";
+
+const RegDash =()=>{
+
+    useEffect(() => {
+    const manager = localStorage.getItem('username');
+    if (manager == '') {
+      alert("Please signin");
+      window.location.href = '/';
+    }
+  }, []);
+  
     const handleSignOut = () => {
         localStorage.removeItem('username');
-        window.location.href = '/';
+        window.location.href = '/managerSignin';
       };
     
       return (
         <div>
           <style>{'body { background-color: #A2A2A2; }'}</style>
-          <h><a href="/managercandidates/dancing">Dancing</a></h><br></br>
-          <h><a href="/managercandidates/rap">Rap</a></h><br></br>
-          <h><a href="/managercandidates/beatbox">BeatBox</a></h>
+          <h3><a href="/managercandidates/dancing">Dancing All Candidates</a></h3><br></br>
+          {/* <h3><a href="/managercandidates/rap">Rap All Candidates</a></h3><br></br> */}
+          <h3><a href="/managercandidates/beatbox">BeatBox All Candidates</a></h3>
     
           
     
@@ -70,4 +82,4 @@ const regDash =()=>{
         </div>
       );
 };
-export default regDash;
+export default RegDash;

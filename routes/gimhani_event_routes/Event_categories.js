@@ -38,6 +38,106 @@ router.post('/cat/save', (req, res)=>{
               });
           });
 
+          //getting category names
+          router.get('/categories', async (req, res) => {
+            try {
+              const categories = await EventCategories.find({}, 'topic'); // Retrieve only categoryName field
+              res.json(categories);
+            } catch (error) {
+              console.error('Error fetching categories:', error);
+              res.status(500).json({ error: 'Internal Server Error' });
+            }
+          });
+          
+          // Route to get a specific post by ID
+router.get("/cat/:id",(req, res) => {
+    
+  let catId = req.params.id;
+  console.log('Post ID:', catId);
+  EventCategories.findById(req.params.id)
+  .then(categories =>{
+    console.log('Found Post:', categories);
+    return res.status(200).json({
+        success:true,
+        categories
+    });
+  })
+  .catch(err => {
+    console.log('Error:', err);
+    return res.status(400).json({success:false, err
+    });
+});
+  
+});
+
+
+// update posts
+router.put('/cat/update/:id', (req, res) => {
+  EventCategories.findByIdAndUpdate(req.params.id, { $set: req.body })
+      .then(categories => {
+          if (!categories) {
+              return res.status(404).json({
+                  error: "Post not found"
+              });
+          }
+
+          return res.status(200).json({
+              success: "Updated successfully"
+          });
+      })
+      .catch(err => {
+          return res.status(400).json({
+              error: err.message
+          });
+      });
+});
+
+// Delete posts
+router.delete('/cat/delete/:id', (req, res) => {
+  EventCategories.findOneAndDelete({ _id: req.params.id })
+      .then(deletedCategory => {
+          if (!deletedCategory) {
+              return res.status(404).json({
+                  error: "Post not found"
+              });
+          }
+
+          return res.json({
+              message: "Delete Successful",
+              deletedCategory
+          });
+      })
+      .catch(err => {
+          return res.status(400).json({
+              message: "Delete unsuccessful",
+              err
+          });
+      });
+});
+
+  // GET route to count judges with event "Dancing"
+  router.get('/judges/count/dancing', async (req, res) => {
+    try {
+      // Retrieve categories where topic is 'dancing' and only return judgesCount field
+      const categories = await EventCategories.find({ topic: 'Dancing' }, 'judgesCount');
+      res.json(categories);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  // GET route to count judges with event "Beatbox"
+  router.get('/judges/count/beatbox', async (req, res) => {
+    try {
+      // Retrieve categories where topic is 'dancing' and only return judgesCount field
+      const categories = await EventCategories.find({ topic: 'Beatbox' }, 'judgesCount');
+      res.json(categories);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
           
 
           module.exports = router;

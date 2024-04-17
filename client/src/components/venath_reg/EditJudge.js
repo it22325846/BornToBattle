@@ -244,6 +244,7 @@ const handleSubmit = (e) => {
           onChange={handleChange}
           required
           style={{ width: '30%' }}
+          disabled
         />
       </div>
 

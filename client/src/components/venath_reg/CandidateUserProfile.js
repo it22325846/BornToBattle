@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 
+
 const UserProfile = () => {
   const [candidate, setCandidate] = useState({});
   const [loading, setLoading] = useState(true);
@@ -88,18 +89,18 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="row">
+    <div className="row" >
       {/* User Details */}
-      <div className="col-md-3">
+      <div className="col-md-3" >
         <h2>Candidate Details</h2>
-        <p>Name: {candidate.name}</p>
+        <p style={{ color: 'white' }}>Name: {candidate.name}</p>
         <p>Age: {candidate.age}</p>
         <p>Gender: {candidate.gender}</p>
         <p>Event: {candidate.event}</p>
         <p>Category: {candidate.category}</p>
         <p>Phone Number: {candidate.phoneNumber}</p>
 
-        <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
+        <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
           <i className="fas fa-edit"></i>&nbsp;Edit
         </Link>
 

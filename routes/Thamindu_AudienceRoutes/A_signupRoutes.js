@@ -7,7 +7,7 @@ let Login = require("../../models/Thamindu_Audience/A_signup");
 
 //save comment => work   //http://localhost:8020/signup/save
 
-router.post('/signup/save', (req, res) => {
+router.post('/A_signup/save', (req, res) => {
   let newLogin = new Login(req.body);
 
   newLogin.save()
@@ -27,7 +27,7 @@ router.post('/signup/save', (req, res) => {
 
 //checkusername => work 
 
-router.post('/signup/checkUsername', async (req, res) => {
+router.post('/A_signup/checkUsername', async (req, res) => {
   const { username } = req.body;
 
   try {
@@ -48,7 +48,7 @@ router.post('/signup/checkUsername', async (req, res) => {
 
 // delete => work 
 
-router.delete('/signup/delete/:username', async (req, res) => {
+router.delete('/A_signup/delete/:username', async (req, res) => {
   const { username } = req.params;
 
   try {
@@ -67,7 +67,7 @@ router.delete('/signup/delete/:username', async (req, res) => {
 
 
 
-router.post('/api/signin', async (req, res) => {
+router.post('/api/A_signin', async (req, res) => {
   const { username, password } = req.body;
 
   try {
