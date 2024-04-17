@@ -1,8 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import './Styles/EditStallStyles.css'; // Import your CSS file
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import '../../Style/stallStyles/EditStallStyles.css'; // Import your CSS file 
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function ItemShow() {
@@ -49,10 +47,10 @@ export default function ItemShow() {
               <div className='d-flex flex-column' style={{ position: 'relative' }}> {/* New container */}
                 <div className='d-flex flex-column gap-2' style={{ position: 'absolute', top: '0px', right: '15px', zIndex: 2 }}> {/* Button container */}
                   <button className='btn rounded-circle border border-4 edit-delete-btn' onClick={() => goToEditItem(item._id)}>
-                    <MdEdit />
+                    edit
                   </button>
                   <button className='btn rounded-circle border border-4 edit-delete-btn' onClick={(d) => deleteItem(item._id)}>
-                    <MdDelete />
+                    delete
                   </button>
                 </div>
                 <div className='bg-white mb-5' style={{ marginInline: '70px' }}> {/* Card container */}

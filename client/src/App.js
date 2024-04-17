@@ -87,6 +87,13 @@ import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceMan
 // #endregion
 
 //#region Nisitha
+import StallReg from './components/Stall/stall_holder/stallerRegister';
+import StallerProfile from './components/Stall/stall_holder/stallerProfile';
+import StallerEdit from './components/Stall/stall_holder/stallerEdit';
+import TheStall from './components/Stall/stall_item/theStall';
+import ItemEdit from './components/Stall/stall_item/editItems';
+import UserStalls from './components/Stall/stall_item/stallPage';
+
 // #endregion
 
 //#region Dhananji
@@ -207,6 +214,14 @@ function App() {
         </>
 
         <>{/* Nisitha registration routes */}
+        <Route path="/createStaller" element={<StallReg />} />
+        <Route path="/stallerprofile" element={<StallerProfile />} />
+        <Route path="/editStaller" element={<StallerEdit />} />
+
+        
+        <Route path="/theStall" element={<TheStall />} />
+        <Route path="/editItems" element={<ItemEdit />} />
+        <Route path="/stalls" element={<UserStalls />} />
         </>
 
         <>{/* Dhananji registration routes */}

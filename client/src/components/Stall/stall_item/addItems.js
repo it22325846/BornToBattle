@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { FaLink, FaPlus } from "react-icons/fa";
-import './Styles/EditStallStyles.css';
+import '../../Style/stallStyles/EditStallStyles.css'; // Import your CSS file
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 export default function ItemAdd() {
 
