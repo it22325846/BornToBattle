@@ -20,7 +20,7 @@ const SignUp = () => {
   // => work 
   const checkUsername = async () => {
     try {
-      const response = await axios.post('/signup/checkUsername', { username });
+      const response = await axios.post('/A_signup/checkUsername', { username });
       setUsernameExists(response.data.usernameExists);
     } catch (error) {
       console.error("Error checking username:", error);
@@ -37,7 +37,7 @@ const SignUp = () => {
         console.log("Password:", password);
         
         // Sign-up 
-        await axios.post('/signup/save', { username, password });
+        await axios.post('/A_signup/save', { username, password });
         await axios.post('/audience/save/un', { username }); // Save username to audience models
         alert('Sign-up successful!');
         
