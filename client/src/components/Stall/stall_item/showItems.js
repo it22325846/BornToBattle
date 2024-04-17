@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import '../../Style/stallStyles/EditStallStyles.css'; // Import your CSS file 
-import { Link, useNavigate } from 'react-router-dom';
+import '../../Style/stallStyles/EditStallStyles.css'; 
+import { useNavigate } from 'react-router-dom';
 
 export default function ItemShow() {
   const [items, setItems] = useState([]);
@@ -44,7 +44,7 @@ export default function ItemShow() {
         <div className='row'>
           {items.map((item) => (
             <div className='col-md-6' key={item._id}>
-              <div className='d-flex flex-column' style={{ position: 'relative' }}> {/* New container */}
+              <div className='d-flex flex-column' style={{ position: 'relative' }}>
                 <div className='d-flex flex-column gap-2' style={{ position: 'absolute', top: '0px', right: '15px', zIndex: 2 }}> {/* Button container */}
                   <button className='btn rounded-circle border border-4 edit-delete-btn' onClick={() => goToEditItem(item._id)}>
                     edit
@@ -53,7 +53,7 @@ export default function ItemShow() {
                     delete
                   </button>
                 </div>
-                <div className='bg-white mb-5' style={{ marginInline: '70px' }}> {/* Card container */}
+                <div className='bg-white mb-5' style={{ marginInline: '70px' }}>
                   <div className='card'>
                     <div className='card-block'>
                       <h3 className='card-title bg-dark text-white' >{item.pName}</h3>
