@@ -1,0 +1,41 @@
+.fullDiv{
+    background-color: rgb(200, 200, 200);
+    margin: auto;
+    padding: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#pendingID{
+  
+  margin: auto;
+  width: 50%;
+}
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(220, 178, 106);
+    background-image: url('https://img.freepik.com/premium-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_959084-10.jpg'); /* Adjust the path based on your project structure */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: keeps the background fixed while scrolling */
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  #root {
+    height: 100%;
+    overflow: auto;
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+  
