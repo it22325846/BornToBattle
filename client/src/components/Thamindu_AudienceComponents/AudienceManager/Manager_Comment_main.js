@@ -102,12 +102,12 @@ const M_MainComponent = () => {
       const downloadLink = document.createElement('a');
       downloadLink.href = filePath;
       downloadLink.setAttribute('download', fileName);
-      // downloadLink.setAttribute('download', 'report.txt');
+                                                            // downloadLink.setAttribute('download', 'report.txt');
       downloadLink.textContent = 'Download Report';
       document.body.appendChild(downloadLink);
       
-      downloadLink.click();                     // Trigger the click event to initiate download
-      document.body.removeChild(downloadLink);     // Remove the download link from the DOM after download
+      downloadLink.click();                     // Trigger  download
+      document.body.removeChild(downloadLink);     // Remove the download link 
       alert("Report generating successful ");
 
     } catch (error) {
