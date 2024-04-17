@@ -102,14 +102,14 @@ const Events = () => {
   return (
    
     <div>
-<h2 style={{ color: 'black' }}>Main Event Categories</h2>
+<h2>Main Event Categories</h2>
 
 
 
 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
   {categories.map((category, index) => (
-    <div key={index} style={{ border: '1px solid black', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
-      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`} style={{ color: 'black' }}>{category.topic}</a> &nbsp;
+    <div key={index} style={{ border: '1px solid white', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
+      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`} style={{ color: 'white' }}>{category.topic}</a> &nbsp;
       
       <a className="btn btn-warning" href={`/edit/cat/${category._id}`}>
          <i className="fas fa-edit"></i>&nbsp;Edit
