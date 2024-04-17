@@ -115,6 +115,29 @@ router.delete('/cat/delete/:id', (req, res) => {
       });
 });
 
+  // GET route to count judges with event "Dancing"
+  router.get('/judges/count/dancing', async (req, res) => {
+    try {
+      // Retrieve categories where topic is 'dancing' and only return judgesCount field
+      const categories = await EventCategories.find({ topic: 'Dancing' }, 'judgesCount');
+      res.json(categories);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  // GET route to count judges with event "Beatbox"
+  router.get('/judges/count/beatbox', async (req, res) => {
+    try {
+      // Retrieve categories where topic is 'dancing' and only return judgesCount field
+      const categories = await EventCategories.find({ topic: 'Beatbox' }, 'judgesCount');
+      res.json(categories);
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
           
 
           module.exports = router;

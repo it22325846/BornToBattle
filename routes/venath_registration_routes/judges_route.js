@@ -126,36 +126,36 @@ router.put('/judge/update/:id', async (req, res) => {
 });
 
   // GET route to count judges with event "Dancing"
-router.get('/judges/count/dancing', (req, res) => {
-    Judge.countDocuments({ event: 'dancing' })
-        .then(count => {
-            return res.status(200).json({
-                success: true,
-                jcount: count
-            });
-        })
-        .catch(err => {
-            return res.status(400).json({
-                error: err
-            });
-        });
-});
+// router.get('/judges/count/dancing', (req, res) => {
+//     Judge.countDocuments({ event: 'dancing' })
+//         .then(count => {
+//             return res.status(200).json({
+//                 success: true,
+//                 jcount: count
+//             });
+//         })
+//         .catch(err => {
+//             return res.status(400).json({
+//                 error: err
+//             });
+//         });
+// });
 
   // GET route to count judges with event "Beatbox"
-  router.get('/judges/count/beatbox', (req, res) => {
-    Judge.countDocuments({ event: 'beatbox' })
-        .then(count => {
-            return res.status(200).json({
-                success: true,
-                bcount:count
-            });
-        })
-        .catch(err => {
-            return res.status(400).json({
-                error: err
-            });
-        });
-});
+//   router.get('/judges/count/beatbox', (req, res) => {
+//     Judge.countDocuments({ event: 'beatbox' })
+//         .then(count => {
+//             return res.status(200).json({
+//                 success: true,
+//                 bcount:count
+//             });
+//         })
+//         .catch(err => {
+//             return res.status(400).json({
+//                 error: err
+//             });
+//         });
+// });
 
 
 module.exports = router;
