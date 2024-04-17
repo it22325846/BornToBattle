@@ -108,8 +108,6 @@ const AdminHome = () => {
         </a>
       </button> */}
 
-      <br></br>
-      <br></br>
 
       <div>
         <button className="btn btn-danger" onClick={handleSignOut}>
@@ -119,6 +117,8 @@ const AdminHome = () => {
 
       <br></br>
       <br></br>
+
+      
     </div>
   );
 };

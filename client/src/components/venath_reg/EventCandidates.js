@@ -66,7 +66,7 @@ const EventCandidates = () => {
           </button>
         </form>
         <p>Student details</p>
-        <table className="table">
+        <table className="table" style={{ color: 'black' }}>
           <thead>
             <tr>
               <th>#</th>
