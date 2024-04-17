@@ -22,9 +22,13 @@ const EditAllJudges = () => {
 
   const onDelete = (id) => {
     axios.delete(`/judge/delete/${id}`)
-      .then((res) => {
-        alert("Deleted");
+         .then((res) => {
         retrieveJudges();
+        window.alert("Deleted");
+        window.location.href = "/editJudges";
+      })
+      .catch((error) => {
+        console.error("Delete Error:", error);
       });
   }
 
