@@ -62,6 +62,16 @@ useEffect(() => {
       }
       
     }
+    if (name === 'phoneNumber') {
+      // Validate phone number to accept exactly 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
+      if (!isValidPhoneNumber && value.length > 0) { 
+        
+        setError('Phone number must be 10 digits');
+      } else {
+        setError('');
+      }
+    }
   
       setFormData({ ...formData, [name]: value });
     
@@ -182,7 +192,8 @@ useEffect(() => {
 
         <div className="mb-3">
           <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
-          <input type="Number" className="form-control" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required style={{ width: '30%' }} />
+          <input type="number" className="form-control" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required style={{ width: '30%' }} />
+          {error && <p className="text-danger">{error}</p>}
         </div>
 
       

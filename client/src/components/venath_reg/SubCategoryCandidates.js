@@ -48,7 +48,7 @@ const SubCategoryCandidates = () => {
   return (
     <div>
       <p>Student details</p>
-      <table className="table">
+      <table className="table" style={{ color: 'black' }}>
         <thead>
           <tr>
             <th>#</th>

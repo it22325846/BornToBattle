@@ -44,7 +44,7 @@ function AllGroups() {
   return (
     <div>
       <h1>All Groups</h1>
-      <table className="table">
+      <table className="table" style={{ color: 'black' }}>
         <thead>
           <tr>
             <th>#</th>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import './Styles/EditStallStyles.css';
+import '../../Style/stallStyles/EditStallStyles.css'; // Import your CSS file
 import { useNavigate } from 'react-router-dom';
 
 export default function UserStalls() {

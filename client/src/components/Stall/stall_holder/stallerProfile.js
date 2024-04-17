@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { BsEmojiSunglasses } from "react-icons/bs";
 
 export default function StallerProfile() {
     const [stallers, setStallers] = useState([]);
