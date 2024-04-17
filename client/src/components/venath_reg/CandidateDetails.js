@@ -30,8 +30,8 @@ const CandidateDetails = () => {
   // console.log('ddddd Details:', username);
 
   return (
-    <div>
-      <h2>Student Details</h2>
+    <div style={{ color: 'white' }}>
+      <h2>Candidate Details</h2>
       <p>Name: {candidate.name}</p>
       <p>Age: {candidate.age}</p>
       <p>Gender: {candidate.gender}</p>

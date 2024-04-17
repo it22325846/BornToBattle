@@ -112,8 +112,10 @@ app.use(eventCatRoutes);
 
 //nisitha line 113
 const stalllerRouter = require('./routes/Staller/stallerRoutes')
+app.use(stalllerRouter)
 
 const stallItems = require('./routes/Staller/itemRoutes')
+app.use(stallItems)
 
 
 

@@ -18,7 +18,7 @@ const SignIn = () => {
 
       } else {
 
-        const response = await axios.post('/api/signin', { username, password });
+        const response = await axios.post('/api/A_signin', { username, password });
         console.log("Response from server:", response.data);
   
         if (response.data.success) {
@@ -48,7 +48,7 @@ const SignIn = () => {
         
         <div className="card p-4">
 
-            <h2 className="text-center mb-4">Sign In Page</h2>
+            <h2 className="text-center mb-4" style={{ color: '#000000' }} >Sign In Page</h2>
             <form>
 
                 <div className="mb-3">

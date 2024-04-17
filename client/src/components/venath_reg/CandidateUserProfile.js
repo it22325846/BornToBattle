@@ -12,6 +12,14 @@ const UserProfile = () => {
   const [newProfilePhoto, setNewProfilePhoto] = useState(null);
 
   useEffect(() => {
+    const existingUsername = localStorage.getItem('username');
+    if (!existingUsername) {
+      alert("You don't have an account");
+      window.location.href = '/';
+    }
+  }, []);
+
+  useEffect(() => {
     const fetchCandidateData = async () => {
       try {
         const response = await axios.get(`/candidate/username/${encodeURIComponent(username)}`);
@@ -73,27 +81,25 @@ const UserProfile = () => {
   };
 
   const onDelete = (id) => {
-    axios.delete(`/candidate/delete/${id}`)
-      .then(() => {
-        alert('Candidate deleted successfully.');
-        window.location.href = '/';
-      })
-      .catch((error) => {
-        console.error('Error deleting candidate:', error);
-        alert('Failed to delete candidate.');
+    axios.delete(`/candidate/delete/${id}`).then((res) => {
+      axios.delete(`/signup/delete/${username}`).then((res) => {
+        localStorage.removeItem('username'); 
+        alert("deleted");
+        window.location.href=('/');
       });
-  };
+    });
+  }
 
   if (loading) {
     return <p>Loading...</p>;
   }
 
   return (
-    <div className="row">
+    <div className="row" >
       {/* User Details */}
-      <div className="col-md-3">
+      <div className="col-md-3" style={{ color: 'white' }}>
         <h2>Candidate Details</h2>
-        <p>Name: {candidate.name}</p>
+        <p style={{ color: 'white' }}>Name: {candidate.name}</p>
         <p>Age: {candidate.age}</p>
         <p>Gender: {candidate.gender}</p>
         <p>Event: {candidate.event}</p>

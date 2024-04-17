@@ -21,11 +21,7 @@ const judgeSchema =new mongoose.Schema({
         type: Number,
         required: true
     },
-    un:{
-        type: String,
-        required: true
-        
-    },
+    
     institute:{
         type: String,
         required: true
@@ -35,6 +31,15 @@ const judgeSchema =new mongoose.Schema({
         type: String,
         required: true
         
+    },
+    un:{
+        type: String,
+        required: true
+        
+    },
+    password: {
+        type: String,
+        required: true
     }
     // ,
     // photo: {

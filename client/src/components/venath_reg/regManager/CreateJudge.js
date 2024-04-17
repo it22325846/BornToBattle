@@ -10,6 +10,10 @@ const CreateJudge = () => {
 const [jcount, setJcount]=useState(0);
 const [bcount, setBcount]=useState(0);
 
+
+const [vjcount, setVJcount] = useState(0);
+const [vbcount, setVBcount] = useState(0);
+
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,22 +23,47 @@ const [usernameExists, setUsernameExists] = useState(false);
 let dancingJudges=4;
 let beatboxJudges=2;
 
-useEffect(() => {     
+useEffect(() => {
   axios.get(`/judges/count/dancing`).then((res) => {
-      if (res.data.success) {
-          setJcount(res.data.jcount);
-      }
+    if (res.data.success) {
+      console.log('Received G dancing judges count:', res.data.judgesCounts);
+
+      setJcount(res.data.judgesCounts);
+
+    }
   }).catch((error) => {
-      console.error('Error fetching count:', error);
+    console.error('Error fetching count:', error);
   });
 
   axios.get(`/judges/count/beatbox`).then((res) => {
-      if (res.data.success) {
-          setBcount(res.data.bcount); // Corrected to set bcount
-      }
+    if (res.data.success) {
+      console.log('Received G B judges count:', res.data.judgesCounts);
+
+      setBcount(res.data.judgesCounts);
+    }
   }).catch((error) => {
-      console.error('Error fetching count:', error);
+    console.error('Error fetching count:', error);
   });
+
+  axios.get(`/vjudges/count/dancing`).then((res) => {
+    if (res.data.success) {
+      console.log('Received dancing judges count:', res.data.jcount);
+
+      setVJcount(res.data.jcount);
+    }
+  }).catch((error) => {
+    console.error('Error fetching count:', error);
+  });
+
+  axios.get(`/vjudges/count/beatbox`).then((res) => {
+    if (res.data.success) {
+      setVBcount(res.data.bcount);
+    }
+  }).catch((error) => {
+    console.error('Error fetching count:', error);
+  });
+
+
 }, []);
 
 
@@ -61,6 +90,16 @@ useEffect(() => {
 
       }
       
+    }
+    if (name === 'phoneNumber') {
+      // Validate phone number to accept exactly 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
+      if (!isValidPhoneNumber && value.length > 0) { 
+        
+        setError('Phone number must be 10 digits');
+      } else {
+        setError('');
+      }
     }
   
       setFormData({ ...formData, [name]: value });
@@ -145,16 +184,16 @@ useEffect(() => {
           <select className="form-select" id="event" name="event" value={formData.event} onChange={handleChange} required style={{ width: '10%' }}>
             <option value="">Select event</option>
             <option value="dancing">Dancing</option>
-            <option value="rap">Rap</option>
+           
             <option value="beatbox">Beatbox</option>
           </select>
         </div>
         {formData.event === 'dancing' && (
-      <p> Add {dancingJudges-jcount} judges for dancing event</p>
+      <p> Add {jcount - vjcount} judges for dancing event</p>
     )}
 
 {formData.event === 'beatbox' && (
-      <p> Add {beatboxJudges-bcount} judges for beatbox event</p>
+      <p> Add {bcount - vbcount} judges for beatbox event</p>
     )}
 
 
@@ -182,7 +221,8 @@ useEffect(() => {
 
         <div className="mb-3">
           <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
-          <input type="Number" className="form-control" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required style={{ width: '30%' }} />
+          <input type="number" className="form-control" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required style={{ width: '30%' }} />
+          {error && <p className="text-danger">{error}</p>}
         </div>
 
       

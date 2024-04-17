@@ -16,7 +16,7 @@ const Events = () => {
 
   const retrieveEvents = () => {
    
-    axios.get("http://localhost:8000/events")
+    axios.get("http://localhost:8020/events")
       .then((res) => {
         if (res.data.success) {
         
@@ -37,7 +37,7 @@ const Events = () => {
   
 
   const retrieveCategories = () =>{
-    axios.get("http://localhost:8000/cat") // Update the API endpoint here
+    axios.get("http://localhost:8020/cat") // Update the API endpoint here
     .then((res) => {
       if (res.data.success) {
         console.log('Cat ID:',res.data )
@@ -57,14 +57,14 @@ const Events = () => {
   }
 
   const onDelete = (id) => {
-    axios.delete(`http://localhost:8000/event/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:8020/event/delete/${id}`).then((res) => {
       alert("Deleted successfully");
       retrieveEvents();
     });
   }
 
   const onCatDelete = (id) => {
-    axios.delete(`http://localhost:8000/cat/delete/${id}`).then((res) => {
+    axios.delete(`http://localhost:8020/cat/delete/${id}`).then((res) => {
       alert("Deleted successfully");
       retrieveEvents();
     });
@@ -89,7 +89,7 @@ const Events = () => {
   const handleSearchArea = (e) => {
     const searchKey = e.currentTarget.value;
 
-    axios.get("http://localhost:8000/events")
+    axios.get("http://localhost:8020/events")
       .then((res) => {
         if (res.data.success) {
           filterData(res.data.existingEvents, searchKey);
@@ -102,13 +102,15 @@ const Events = () => {
   return (
    
     <div>
-<h2> Main event Categories </h2>
+<h2>Main Event Categories</h2>
+
 
 
 <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px' }}>
   {categories.map((category, index) => (
-    <div key={index} style={{ border: '1px solid black', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
-      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`}>{category.topic}</a> &nbsp;
+    <div key={index} style={{ border: '1px solid white', flex: '1 1 auto', minWidth: '200px', padding: '5px', borderRadius: '5px' }}>
+      <p style={{ margin: '0', lineHeight: '1.5' }}> <a href={`/cat/${category._id}`} style={{ color: 'white' }}>{category.topic}</a> &nbsp;
+      
       <a className="btn btn-warning" href={`/edit/cat/${category._id}`}>
          <i className="fas fa-edit"></i>&nbsp;Edit
          </a>
@@ -145,7 +147,7 @@ const Events = () => {
 
           
     <div style={{
-      backgroundImage: "url('/b2b4.jpg')",
+      backgroundImage: `url("/Images/b2b4.jpg")`,
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       minHeight: '100vh',
@@ -172,38 +174,38 @@ const Events = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Event No</th>
-              <th scope="col">Event Category</th>
-              <th scope="col">Event Name</th>
-              <th scope="col">Individual/Group</th>
-              <th scope="col">Gender</th>
-              <th scope="col">Age category</th>
-              <th scope="col">Time</th>
+              <th scope="col"  style={{ color: 'black' }}>Event No</th>
+              <th scope="col"  style={{ color: 'black' }}>Event Category</th>
+              <th scope="col"  style={{ color: 'black' }}>Event Name</th>
+              <th scope="col"  style={{ color: 'black' }}>Individual/Group</th>
+              <th scope="col"  style={{ color: 'black' }}>Gender</th>
+              <th scope="col"  style={{ color: 'black' }}>Age category</th>
+              <th scope="col"  style={{ color: 'black' }}>Time</th>
               {/* <th scope="col">Time</th> */}
              
               
-              <th scope="col">Action</th>
+              <th scope="col" style={{ color: 'black' }}>Action</th>
             </tr>
           </thead>
           <tbody>
             {events.map((event, index) => (
               <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td>{event.category}</td>
-                <td>
-                  <a href={`/event/${event._id}`}>
+                <th scope="row" style={{ color: 'black' }}>{index + 1}</th>
+                <td style={{ color: 'black' }}>{event.category}</td>
+                <td style={{ color: 'black' }}>
+                  <a href={`/eventd/${event._id}`}>
                     {event.topic}
                   </a>
                 </td>
                 
-                <td>{event.type}</td>
-                <td>{event.gender}</td>
+                <td style={{ color: 'black' }}>{event.type}</td>
+                <td style={{ color: 'black' }}>{event.gender}</td>
                
-                <td>{event.ageGroup}</td>
-                <td>{event.time}</td>
+                <td style={{ color: 'black' }}>{event.ageGroup}</td>
+                <td style={{ color: 'black' }}>{event.time}</td>
                 {/* <td>{event.style}</td> */}
                 <td>
-                  <a className="btn btn-warning" href={`/edit/${event._id}`}>
+                  <a className="btn btn-warning" href={`/editevent/${event._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </a>
                   &nbsp;
@@ -218,7 +220,7 @@ const Events = () => {
 
         <div className="d-flex justify-content-between align-items-center">
           <button className="btn btn-dark">
-            <a href="/add" style={{ textDecoration: 'none', color: 'white' }}>
+            <a href="/addevent" style={{ textDecoration: 'none', color: 'white' }}>
               Add New Event
             </a>
           </button>
@@ -232,7 +234,12 @@ const Events = () => {
       </div>
 
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
-      <button> <a href="/calendar"> View Schedule </a></button>
+      <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '16px', borderRadius: '5px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+  <a href="/calendar" style={{ textDecoration: 'none', color: 'white' }}>
+    View Schedule
+  </a>
+</button>
+
       </div>
     </div>
 

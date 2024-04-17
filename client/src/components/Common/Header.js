@@ -11,7 +11,7 @@ function Header() {
         className="image_nav"
         style={{ marginRight: "auto", marginLeft: "10px" }}
       >
-        <a href="home">
+        <a href="/">
           <img src="../../Images/ids.png" alt="IDS" width="60" height="40" />
         </a>
       </div>
@@ -33,7 +33,7 @@ function Header() {
       <span className="separator">|</span>
 
 <li className="nav-item">
-  <a className="nav-link" href="judges">
+  <a className="nav-link" href="all_judges">
     JUDGES
   </a>
 </li>

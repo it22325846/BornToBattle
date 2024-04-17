@@ -95,7 +95,7 @@ const handleSubmit = (e) => {
   return (
     <div>
     <h2>Edit Judge</h2>
-    <form onSubmit={handleSubmit} style={{marginLeft: '1rem' }}>
+    <form onSubmit={handleSubmit} style={{marginLeft: '1rem' ,color: 'white'  }}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
           Name
@@ -244,6 +244,7 @@ const handleSubmit = (e) => {
           onChange={handleChange}
           required
           style={{ width: '30%' }}
+          disabled
         />
       </div>
 

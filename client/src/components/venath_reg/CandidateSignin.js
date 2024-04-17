@@ -34,7 +34,7 @@ const SignIn = () => {
     <div  className="container d-flex justify-content-center align-items-center vh-100">
        <div style={{ maxWidth: '500px', maxHeight: '700px', width: '100%', overflow: 'auto', }}>
 <div className="card p-4">
-      <h2 className="text-center mb-4">Sign In Page</h2>
+      <h2 className="text-center mb-4" style={{ color: 'black' }}>Sign In Page</h2>
       <form>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">

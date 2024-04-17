@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import './Style/AddScore.css'
+import '../Style/score/AddScore.css'
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -44,8 +44,11 @@ export default function UpdateScore() {
 
     return (
         <div className="Main">
+
+            <h2>Update Score and Feedback</h2>
+
             <form className="row g-3  formAdd" onSubmit={sendData}>
-                <h2>Score and Feedback</h2>
+                
                 <div className="mb-3 col-md-6">
                     <label htmlFor="CId">Candidate Name</label>
                     <input type="text" className="form-control" id="Cname" placeholder="Candidate Name" name="Cname" value={Cname} readOnly />
