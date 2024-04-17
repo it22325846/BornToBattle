@@ -61,7 +61,7 @@ import Calendar from './components/gimhani_event_management/Calendar';
 import EventCategoryDetails from './components/gimhani_event_management/EventCategoryDetails';
 import EditCategory from './components/gimhani_event_management/EditCategory';
 import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
-
+import Schedule from './components/gimhani_event_management/Schedule';
 // #endregion
 
 //#region Lakruwan
@@ -87,6 +87,13 @@ import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceMan
 // #endregion
 
 //#region Nisitha
+import StallReg from './components/Stall/stall_holder/stallerRegister';
+import StallerProfile from './components/Stall/stall_holder/stallerProfile';
+import StallerEdit from './components/Stall/stall_holder/stallerEdit';
+import TheStall from './components/Stall/stall_item/theStall';
+import ItemEdit from './components/Stall/stall_item/editItems';
+import UserStalls from './components/Stall/stall_item/stallPage';
+
 // #endregion
 
 //#region Dhananji
@@ -171,6 +178,8 @@ function App() {
         <Route path="/e" element={<Events />} />
         <Route path="/addevent" element={<CreateEvent />} />
         <Route path="/editevent/:id" element={<EditEvent />} />
+      <Route path="/schedule" element={<Schedule />} />
+      
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
        
         <Route path="/addcat" element={<CreateCategory />} />
@@ -207,6 +216,14 @@ function App() {
         </>
 
         <>{/* Nisitha registration routes */}
+        <Route path="/createStaller" element={<StallReg />} />
+        <Route path="/stallerprofile" element={<StallerProfile />} />
+        <Route path="/editStaller" element={<StallerEdit />} />
+
+        
+        <Route path="/theStall" element={<TheStall />} />
+        <Route path="/editItems" element={<ItemEdit />} />
+        <Route path="/stalls" element={<UserStalls />} />
         </>
 
         <>{/* Dhananji registration routes */}

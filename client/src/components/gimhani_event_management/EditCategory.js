@@ -17,7 +17,7 @@ export default function EditEvent() {
   // To retrieve data related to a specific post
   useEffect(() => {
     console.log('Fetching post with ID:', id);
-    axios.get(`http://localhost:8000/cat/${id}`).then((res) => {
+    axios.get(`http://localhost:8020/cat/${id}`).then((res) => {
       console.log('Axios response:', res);
       if (res.data.success) {
         setCategory(res.data.categories);
@@ -48,7 +48,7 @@ export default function EditEvent() {
 
     console.log(data);
 
-    axios.put(`http://localhost:8000/cat/update/${id}`, data).then((res) => {
+    axios.put(`http://localhost:8020/cat/update/${id}`, data).then((res) => {
       if (res.data.success) {
         alert("Category updated successfully!");
         setCategory({
@@ -132,36 +132,21 @@ export default function EditEvent() {
       </div>
 
       <div className="mb-3">
-  <label className="form-label">Is registration open?</label>
-  <div className="form-check">
-    <input
-      className="form-check-input"
-      type="radio"
-      id="registrationOpenYes"
-      name="registrationOpen"
-      value="true"
-      checked={category.registrationOpen === 'true'}
-      onChange={HandleInputChange}
-    />
-    <label className="form-check-label" htmlFor="registrationOpenYes">
-      Yes
-    </label>
-  </div>
-  <div className="form-check">
-    <input
-      className="form-check-input"
-      type="radio"
-      id="registrationOpenNo"
-      name="registrationOpen"
-      value="false"
-      checked={category.registrationOpen === 'false'}
-      onChange={HandleInputChange}
-    />
-    <label className="form-check-label" htmlFor="registrationOpenNo">
-      No
-    </label>
-  </div>
-  </div>
+          <label htmlFor="registrationOpen" className="form-label">
+            Is registration open?
+          </label>
+          <select
+            className="form-select"
+            value={category.registrationOpen}
+            onChange={HandleInputChange}
+            id="registrationOpen"
+            name="registrationOpen"
+          >
+            <option value="">Select</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+        </div>
 
           <button type="submit" className="btn btn-warning">
             Save

@@ -65,8 +65,8 @@ const EventCandidates = () => {
             Search
           </button>
         </form>
-        <p>Student details</p>
-        <table className="table">
+        <p style={{ color: 'white' }}>Candidate details</p>
+        <table className="table" style={{ color: 'white' }}>
           <thead>
             <tr>
               <th>#</th>
@@ -106,6 +106,7 @@ const EventCandidates = () => {
             ))}
           </tbody>
         </table>
+        <div style={{ color: 'white' }}>
         <h4>HipHop</h4>
         <h5> Under 18 <a href="/subcandidates/dancing?cat=u18bh">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
         <h5> Over  18 <a href="/subcandidates/dancing?cat=o18bh">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
@@ -122,7 +123,7 @@ const EventCandidates = () => {
         {/* <h5> Over  16 <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5> */}
         
 
-
+        </div>
 
 
 

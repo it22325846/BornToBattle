@@ -12,4 +12,4 @@ const signupSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("A_signup", signupSchema);
+module.exports = mongoose.model("Audi_signup", signupSchema);

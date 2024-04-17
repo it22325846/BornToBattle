@@ -104,7 +104,7 @@ const UserProfile = () => {
   return (
     <div className="row">
       {/* User Details */}
-      <div className="col-md-3">
+      <div className="col-md-3" style={{ color: 'white' }}>
       <p>Name: {judge.name}</p>
   <p>Age: {judge.age}</p>
   <p>Gender: {judge.gender}</p>

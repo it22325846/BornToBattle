@@ -20,7 +20,7 @@ const SignUp = () => {
   // => work 
   const checkUsername = async () => {
     try {
-      const response = await axios.post('/signup/checkUsername', { username });
+      const response = await axios.post('/A_signup/checkUsername', { username });
       setUsernameExists(response.data.usernameExists);
     } catch (error) {
       console.error("Error checking username:", error);
@@ -37,7 +37,7 @@ const SignUp = () => {
         console.log("Password:", password);
         
         // Sign-up 
-        await axios.post('/signup/save', { username, password });
+        await axios.post('/A_signup/save', { username, password });
         await axios.post('/audience/save/un', { username }); // Save username to audience models
         alert('Sign-up successful!');
         
@@ -63,7 +63,7 @@ const SignUp = () => {
  
  <div style={{ maxWidth: '500px', maxHeight: '700px', width: '100%', overflow: 'auto', }}>
   <div className="card p-4">
-    <h2 className="text-center mb-4">Sign Up Page</h2>
+    <h2 className="text-center mb-4" style={{ color: '#000000' }}  >Sign Up Page</h2>
     <form>
       <div className="mb-3">
         <label htmlFor="username" className="form-label">

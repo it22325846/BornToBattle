@@ -43,7 +43,7 @@ const A_UserProfile = () => {
     const handleDeleteAccount = async () => {
         try {
             await axios.delete(`/audience/${userDetails._id}`);
-            await axios.delete(`/signup/delete/${localStorage.getItem('username')}`);
+            await axios.delete(`/A_signup/delete/${localStorage.getItem('username')}`);
 
             localStorage.removeItem('username');
             alert("Deleted successfully");
@@ -101,7 +101,7 @@ const A_UserProfile = () => {
                             Delete Account
                         </button>
                         <button className="btn2" onClick={handleSignOut}>
-                            Sign Out
+                            Log Out
                         </button>
                     </div>
 

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// import '../Style/venath_reg/candidate.css';
+
 
 const Candidates = () => {
   const [username, setUsername] = useState(
@@ -37,24 +39,28 @@ const Candidates = () => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
-      <div className="flex justify-content-center align-items-center">
-        <iframe
-          title="YouTube Video"
-          width="560"
-          height="315"
-          src={`https://www.youtube.com/embed/LUpwdAqMUP4`}
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
-      </div>
+      <h3 style={{ color: 'white' }}>Welcome  {username}</h3>
+      <div className="row" style={{ backgroundColor: 'white', padding: '35px'}}>
+  <div className="col-12 d-flex justify-content-center align-items-center">
+    <iframe
+      title="YouTube Video"
+      width="1920"
+      height="615"
+      src={`https://www.youtube.com/embed/LUpwdAqMUP4`}
+      frameBorder="0"
+      allowFullScreen
+    ></iframe>
+  </div>
+</div>
+<br></br>
+<br></br>
 
       {/* <style>{'body { background-color: #A2A2A2; }'}</style> */}
-      <div className="row">
-        <div className="col-4 d-flex justify-content-center align-items-center">
+      <div className="row" >
+        <div className="col-6 d-flex justify-content-center align-items-center">
           <a href="/candidates/dancing">
             <img
-              src="venath_reg/dance.jpg"
+              src="venath_reg/Hiphop.jpg"
               className="img-fluid"
               alt="Models"
               width="400px"
@@ -75,10 +81,10 @@ const Candidates = () => {
           </a>
         </div> */}
 
-        <div className="col-4 d-flex justify-content-center align-items-center">
+        <div className="col-6 d-flex justify-content-center align-items-center">
           <a href="/candidates/beatbox">
             <img
-              src="venath_reg/dance.jpg"
+              src="venath_reg/Beatbox.jpg"
               className="img-fluid"
               alt="Models"
               width="400px"
@@ -89,10 +95,10 @@ const Candidates = () => {
       </div>
 
       <div className="row">
-        <div className="col-4 d-flex justify-content-center align-items-center">
-          <p>
+        <div className="col-6 d-flex justify-content-center align-items-center">
+          <h3>
             <a href="/candidates/dancing">All Candidates In Dancing</a>
-          </p>
+          </h3>
           <br />
         </div>
 
@@ -102,17 +108,19 @@ const Candidates = () => {
           </p>
           <br />
         </div> */}
+       
 
-        <div className="col-4 d-flex justify-content-center align-items-center">
-          <p>
+        <div className="col-6 d-flex justify-content-center align-items-center">
+          <h3>
             <a href="/candidates/beatbox">All Candidates In BeatBox</a>
-          </p>
+          </h3>
         </div>
+
       </div>
-      <div className="col-4 d-flex justify-content-center align-items-center">
-        <p>
+      <div className="col-12 d-flex justify-content-center align-items-center">
+        <h3>
           <a href="all_groups">All Groups</a>
-        </p>
+        </h3>
       </div>
 
       {/* <h><a href="/candidates/dancing">Dancing</a></h><br></br>
@@ -135,6 +143,27 @@ const Candidates = () => {
         */}
       <br></br>
       <br></br>
+      <div className="row" >
+        <div className="col-12 d-flex justify-content-center align-items-center">
+          <a href="/candidates/dancing">
+            <img
+              src="venath_reg/j.jpg"
+              className="img-fluid"
+              alt="Models"
+              width="850px"
+              height="400px"
+            />
+          </a>
+        </div>
+        </div>
+       < div className="row">
+        <div className="col-12 d-flex justify-content-center align-items-center">
+          <h3>
+            <a href="/all_judges">All Judges</a>
+          </h3>
+          <br />
+        </div>
+        </div>
 
       <button className="btn btn-success">
         <a href="/all_candidates" style={{ color: "black" }}>
@@ -144,17 +173,16 @@ const Candidates = () => {
 
       <br></br>
       <br></br>
-      <button className="btn btn-success">
+      {/* <button className="btn btn-success">
         <a href="/all_judges" style={{ color: "black" }}>
           All Judges
         </a>
-      </button>
+      </button> */}
       {/* <button className="btn btn-success">
           <a href="#" style={{ color: 'black' }}>Add judges</a>
         </button> */}
 
-      <br></br>
-      <br></br>
+ 
 
       {/* <button className="btn btn-success">
           <a href="/signup" style={{ color: 'black' }}>Sign up</a>
@@ -176,11 +204,11 @@ const Candidates = () => {
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
+      {/* <button className="btn btn-success">
         <a href="/signin" style={{ color: "black" }}>
           Sign In
         </a>
-      </button>
+      </button> */}
 
       <br></br>
       <br></br>

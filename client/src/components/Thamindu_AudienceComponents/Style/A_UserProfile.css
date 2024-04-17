@@ -5,13 +5,14 @@
         padding-right: 50px;
         padding-top: 10px;
         padding-bottom: 50px;
-        border: 2px solid #000;
+        border: 2px solid #878686;
         border-radius: 10px;
+        color: rgb(255, 255, 255);
         
     }
     
 .user-form {
-        background-color: #575555;
+        background-color: #ffffff;
         padding: 20px;
         border-radius:10px;
     }
@@ -67,7 +68,7 @@ select {
 
     }
 .h2 {
-        color: #272020;
+        color: #ffffff;
         font-weight: bold; 
         margin-top: 20px;
         margin-bottom: 30px;
