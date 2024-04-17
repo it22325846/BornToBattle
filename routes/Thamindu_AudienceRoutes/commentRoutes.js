@@ -113,7 +113,9 @@ router.get('/generate-report', async (req, res) => {
 
     // Generate => unique file name 
     const timestamp = Date.now();
-    const fileName = `report_${timestamp}.txt`;
+    // const fileName = `report_${timestamp}.txt`;
+    const fileName = `report_.txt`;
+
     const filePath = path.join(reportsDirectory, fileName);
 
     // const filePath = path.join(__dirname, 'reports', fileName); // Assuming 'reports' directory exists
