@@ -19,6 +19,7 @@ const A_UserProfile = () => {
         if (!existingUsername) {
             alert("You don't have an account");
             window.location.href = '/A_signin';
+            return;
         }
         else {
             fetchUserDetails();
@@ -32,6 +33,8 @@ const A_UserProfile = () => {
     const fetchUserDetails = async () => {
         try {
             const response = await axios.get(`/audience/${localStorage.getItem('username')}`);
+            // const response = await axios.get(`/audience/${userDetails._id}`);
+
             setUserDetails(response.data);
         } catch (error) {
             console.error('Error fetching user details:', error);
