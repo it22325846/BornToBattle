@@ -218,7 +218,7 @@ function App() {
         <>{/* Nisitha registration routes */}
         <Route path="/createStaller" element={<StallReg />} />
         <Route path="/stallerprofile" element={<StallerProfile />} />
-        <Route path="/editStaller" element={<StallerEdit />} />
+        <Route path="/editStaller/:Stallerid" element={<StallerEdit />} />
 
         
         <Route path="/theStall" element={<TheStall />} />
