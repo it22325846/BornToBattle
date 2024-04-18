@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function StallReg() {
+    const navigate = useNavigate();
 
     const [sbn, setSbn] = useState('');
     const [companyName, setCompanyName] = useState('');
@@ -30,9 +32,10 @@ export default function StallReg() {
             email
         }
 
-        axios.post("http://localhost:4000/staller/create", newStaller)
+        axios.post("http://localhost:8020/staller/create", newStaller)
             .then(() => {
                 alert("Staller added successfully.");
+                navigate('/stallerprofile');
             })
             .catch((err) => {
                 console.error("Error adding staller:", err);
