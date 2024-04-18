@@ -222,7 +222,7 @@ function App() {
 
         
         <Route path="/theStall" element={<TheStall />} />
-        <Route path="/editItems" element={<ItemEdit />} />
+        <Route path="/editItems/Itemid" element={<ItemEdit />} />
         <Route path="/stalls" element={<UserStalls />} />
         </>
 
