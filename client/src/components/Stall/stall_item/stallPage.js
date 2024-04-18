@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import '../../Style/stallStyles/EditStallStyles.css'; // Import your CSS file
+import '../../Style/stallStyles/EditStallStyles.css';
 import { useNavigate } from 'react-router-dom';
 
 export default function UserStalls() {
@@ -27,8 +27,8 @@ export default function UserStalls() {
                 <div className='row' >
                     {items.map((item) => (
                         <div className='col-md-6' key={item._id}>
-                            <div className='d-flex flex-column' style={{ position: 'relative' }}> {/* New container */}
-                                <div className='bg-white' style={{ marginInline: '70px' }}> {/* Card container */}
+                            <div className='d-flex flex-column' style={{ position: 'relative' }}>
+                                <div className='bg-white' style={{ marginInline: '70px' }}>
                                     <div className='card bg-white rounded-0'>
                                         <div className='card-block'>
                                             {item.pImage &&
