@@ -16,7 +16,7 @@ export default function ItemAdd() {
         formData.append("pPrice", pPrice);
         formData.append("pImage", pImage);
 
-        axios.post("http://localhost:4000/staller/items/create", formData, {
+        axios.post("http://localhost:8020/staller/items/create", formData, {
             headers: {
                 "Content-Type": "multipart/form-data",
             },

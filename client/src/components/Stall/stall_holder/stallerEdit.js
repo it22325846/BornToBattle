@@ -21,7 +21,7 @@ export default function StallerEdit() {
     const [email, setUpdateEmail] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/staller/get/${Stallerid}`).then((res) => {
+        axios.get(`http://localhost:8020/staller/get/${Stallerid}`).then((res) => {
 
             console.log(res);
 
@@ -58,7 +58,7 @@ export default function StallerEdit() {
             email
         }
 
-        axios.put(`http://localhost:4000/staller/update/${Stallerid}`, updateStaller)
+        axios.put(`http://localhost:8020/staller/update/${Stallerid}`, updateStaller)
             .then(result => {
                 console.log(result);
                 alert("Staller updated successfully.");
