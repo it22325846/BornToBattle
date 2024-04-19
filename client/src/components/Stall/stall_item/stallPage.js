@@ -9,7 +9,7 @@ export default function UserStalls() {
 
     useEffect(() => {
         function readItems() {
-            axios.post("http://localhost:4000/staller/items/read")
+            axios.post("http://localhost:8020/staller/items/read")
                 .then((res) => {
                     setItems(res.data);
                 })
@@ -33,7 +33,7 @@ export default function UserStalls() {
                                         <div className='card-block'>
                                             {item.pImage &&
                                                 <img
-                                                    src={`http://localhost:4000/staller/items/uploads/${item.pImage}`}
+                                                    src={`http://localhost:8020/staller/items/uploads/${item.pImage}`}
                                                     alt="Product Image"
                                                     style={{ maxWidth: '300px', height: '300px', alignSelf: 'center' }}
                                                 />}
