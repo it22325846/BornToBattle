@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function SponsorClaim() {
+  const navigate = useNavigate();
+
+
   // State variables to store form data
   const [sponsorName, setSponsorName] = useState("");
   const [companyName, setCompanyName] = useState("");
@@ -71,13 +75,15 @@ export default function SponsorClaim() {
     sponsorFormData.append("email", email);
     sponsorFormData.append("website", website);
 
-    axios.post("http://localhost:8070/sponsor/add", sponsorFormData, {
+    axios
+      .post("http://localhost:8070/sponsor/add", sponsorFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then(() => {
         alert("Sponsor added successfully.");
+        navigate('/Users')
       })
       .catch((err) => {
         console.error("Error adding sponsor:", err);
@@ -131,7 +137,9 @@ export default function SponsorClaim() {
               />
             </div>
             <div className="col-md-6">
-              <label htmlFor="companyLogo" className="form-label">Company Logo</label>
+              <label htmlFor="companyLogo" className="form-label">
+                Company Logo
+              </label>
               <input
                 type="file"
                 name="companyLogo"
@@ -218,9 +226,9 @@ export default function SponsorClaim() {
             </div>
           </div>
           <div className="col-12">
-            <button type="submit" className="btn btn-danger">
-              Get Sponsorship
-            </button>
+              <button type="submit" className="btn btn-danger">
+                Get Sponsorship
+              </button>
           </div>
         </form>
       </div>
