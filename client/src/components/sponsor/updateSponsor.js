@@ -1,102 +1,134 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 
-export default function SponsorClaim() {
+export default function UpdateUser() {
+  const { sponsorid } = useParams();
+  console.log("Sponsor id :", sponsorid);
+
   const navigate = useNavigate();
 
+  const [sponsorName, setUPSponsorName] = useState("");
+  const [companyName, setUPCompanyName] = useState("");
+  const [sponsorPosition, setUPSponsorPosition] = useState("");
+  const [companyLogo, setUPCompanyLogo] = useState();
+  const [contactPerson, setUPContactPerson] = useState(0);
+  const [companyPhone, setUPCompanyPhone] = useState(0);
+  const [address, setUPAddress] = useState("");
+  const [state, setUPCityState] = useState("");
+  const [email, setUPEmail] = useState("");
+  const [website, setUPWebsite] = useState("");
 
-  // State variables to store form data
-  const [sponsorName, setSponsorName] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [sponsorPosition, setSponsorPosition] = useState("");
-  const [companyLogo, setCompanyLogo] = useState();
-  const [contactPerson, setContactPerson] = useState(0);
-  const [companyPhone, setCompanyPhone] = useState(0);
-  const [address, setAddress] = useState("");
-  const [state, setCityState] = useState("");
-  const [email, setEmail] = useState("");
-  const [website, setWebsite] = useState("");
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8070/sponsor/get/${sponsorid}`)
+      .then((res) => {
+        console.log(res);
+
+        setUPSponsorName(res.data.sponsorName);
+        setUPCompanyName(res.data.companyName);
+        setUPSponsorPosition(res.data.sponsorPosition);
+        setUPCompanyLogo(res.data.companyLogo);
+        setUPContactPerson(res.data.contactPerson);
+        setUPCompanyPhone(res.data.companyPhone);
+        setUPAddress(res.data.address);
+        setUPCityState(res.data.state);
+        setUPEmail(res.data.email);
+        setUPWebsite(res.data.website);
+      })
+      .catch((err) => {
+        alert("sponsor updation failed.", err);
+      });
+  }, [sponsorid]);
+
+  const editSponsor = (t) => {
+    t.preventDefault();
+
+    const sponsorUpdateData = new FormData();
+    sponsorUpdateData.append("sponsorName", sponsorName);
+    sponsorUpdateData.append("companyName", companyName);
+    sponsorUpdateData.append("sponsorPosition", sponsorPosition);
+    sponsorUpdateData.append("companyLogo", companyLogo);
+    sponsorUpdateData.append("contactPerson", contactPerson);
+    sponsorUpdateData.append("companyPhone", companyPhone);
+    sponsorUpdateData.append("address", address);
+    sponsorUpdateData.append("state", state);
+    sponsorUpdateData.append("email", email);
+    sponsorUpdateData.append("website", website);
+
+    axios
+      .put(
+        `http://localhost:8070/sponsor/update/${sponsorid}`,
+        sponsorUpdateData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result);
+        alert("Sponsor updated successfully.");
+        navigate("/Users");
+      })
+      .catch((err) => {
+        console.error("Sponsor updation error:", err);
+        alert("Failed to update sponsor. Check console for details.");
+      });
+
+    console.log("Updation :", sponsorUpdateData);
+  };
 
   // Event handler functions to update state variables
   const handleSponsorNameChange = (event) => {
-    setSponsorName(event.target.value);
+    setUPSponsorName(event.target.value);
   };
 
   const handleCompanyNameChange = (event) => {
-    setCompanyName(event.target.value);
+    setUPCompanyName(event.target.value);
   };
 
   const handleSponsorPositionChange = (event) => {
-    setSponsorPosition(event.target.value);
+    setUPSponsorPosition(event.target.value);
   };
 
   const handleCompanyLogoChange = (event) => {
     console.log(event.target.files[0]);
-    setCompanyLogo(event.target.files[0]);
+    setUPCompanyLogo(event.target.files[0]);
   };
 
   const handleContactPersonChange = (event) => {
-    setContactPerson(event.target.value);
+    setUPContactPerson(event.target.value);
   };
 
   const handleCompanyPhoneChange = (event) => {
-    setCompanyPhone(event.target.value);
+    setUPCompanyPhone(event.target.value);
   };
 
   const handleAddressChange = (event) => {
-    setAddress(event.target.value);
+    setUPAddress(event.target.value);
   };
 
   const handleCityStateChange = (event) => {
-    setCityState(event.target.value);
+    setUPCityState(event.target.value);
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+    setUPEmail(event.target.value);
   };
 
   const handleWebsiteChange = (event) => {
-    setWebsite(event.target.value);
+    setUPWebsite(event.target.value);
   };
 
-  const submitSponosr = (t) => {
-    t.preventDefault();
-
-    const sponsorFormData = new FormData();
-    sponsorFormData.append("sponsorName", sponsorName);
-    sponsorFormData.append("companyName", companyName);
-    sponsorFormData.append("sponsorPosition", sponsorPosition);
-    sponsorFormData.append("companyLogo", companyLogo);
-    sponsorFormData.append("contactPerson", contactPerson);
-    sponsorFormData.append("companyPhone", companyPhone);
-    sponsorFormData.append("address", address);
-    sponsorFormData.append("state", state);
-    sponsorFormData.append("email", email);
-    sponsorFormData.append("website", website);
-
-    axios
-      .post("http://localhost:8070/sponsor/add", sponsorFormData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then(() => {
-        alert("Sponsor added successfully.");
-        navigate('/Users')
-      })
-      .catch((err) => {
-        console.error("Error adding sponsor:", err);
-        alert("Sponsor creation failed.");
-      });
-  };
   return (
     <div>
       <div classNameName="container m-5">
         <form
           className="row g-3 bg-dark bg-gradient text-white p-4 text-start rounded-4 m-5"
-          onSubmit={submitSponosr}
+          onSubmit={editSponsor}
         >
+          <h2>Update User</h2>
           <div className="row g-2">
             <div className="col-12">
               <label htmlFor="sponsorName" className="form-label">
@@ -107,6 +139,7 @@ export default function SponsorClaim() {
                 className="form-control"
                 id="sponsorName"
                 placeholder="Type name"
+                value={sponsorName}
                 onChange={handleSponsorNameChange}
               />
             </div>
@@ -120,6 +153,7 @@ export default function SponsorClaim() {
                 type="text"
                 className="form-control"
                 id="companyName"
+                value={companyName}
                 onChange={handleCompanyNameChange}
               />
             </div>
@@ -133,6 +167,7 @@ export default function SponsorClaim() {
                 type="text"
                 className="form-control"
                 id="sponsorPosition"
+                value={sponsorPosition}
                 onChange={handleSponsorPositionChange}
               />
             </div>
@@ -158,6 +193,7 @@ export default function SponsorClaim() {
                 type="number"
                 className="form-control"
                 id="contactPerson"
+                value={contactPerson}
                 onChange={handleContactPersonChange}
               />
             </div>
@@ -169,6 +205,7 @@ export default function SponsorClaim() {
                 type="number"
                 className="form-control"
                 id="companyPhone"
+                value={companyPhone}
                 onChange={handleCompanyPhoneChange}
               />
             </div>
@@ -183,6 +220,7 @@ export default function SponsorClaim() {
                 className="form-control"
                 id="address"
                 placeholder="1234 Main St"
+                value={address}
                 onChange={handleAddressChange}
               />
             </div>
@@ -197,6 +235,7 @@ export default function SponsorClaim() {
                 className="form-control"
                 id="state"
                 placeholder="Apartment, studio, or floor"
+                value={state}
                 onChange={handleCityStateChange}
               />
             </div>
@@ -210,6 +249,7 @@ export default function SponsorClaim() {
                 type="email"
                 className="form-control"
                 id="email"
+                value={email}
                 onChange={handleEmailChange}
               />
             </div>
@@ -221,15 +261,12 @@ export default function SponsorClaim() {
                 type="text"
                 className="form-control"
                 id="website"
+                value={website}
                 onChange={handleWebsiteChange}
               />
             </div>
           </div>
-          <div className="col-12">
-              <button type="submit" className="btn btn-danger">
-                Get Sponsorship
-              </button>
-          </div>
+          <button className="btn btn-success">Update</button>
         </form>
       </div>
     </div>
