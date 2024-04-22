@@ -27,7 +27,7 @@ export default function SponsorPkg() {
                 </p>
 
                 <div>
-                  <Link to={"/sponsorForm"}>
+                  <Link to={"/Sponsorcreate"}>
                     <button className="btn btn-primary px-3 border border-2">Buy</button>
                   </Link>
                 </div>
@@ -47,7 +47,7 @@ export default function SponsorPkg() {
                 </p>
 
                 <div>
-                  <Link to={"/sponsorForm"}>
+                  <Link to={"/Sponsorcreate"}>
                     <button className="btn btn-danger px-3 border border-2">Buy</button>
                   </Link>
                 </div>
@@ -67,7 +67,7 @@ export default function SponsorPkg() {
                 </p>
 
                 <div>
-                  <Link to={"/sponsorForm"}>
+                  <Link to={"/Sponsorcreate"}>
                     <button className="btn btn-warning px-3 border border-2">Buy</button>
                   </Link>
                 </div>

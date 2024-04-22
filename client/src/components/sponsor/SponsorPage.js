@@ -70,7 +70,7 @@ export default function SponsorPage() {
               </div>
             </div>
             <div>
-              <Link to={"/sponsorPkg"}>
+              <Link to={"/Sponsorpackage"}>
                 <button className="btn btn-danger m-4 rounded-4" style={{ paddingInline: '150px', paddingTop: '50px', paddingBottom: '50px', fontSize: '50px', fontWeight: 'bolder' }}>Get Sponsorship</button>
               </Link>
             </div>

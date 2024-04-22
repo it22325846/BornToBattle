@@ -2,13 +2,13 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Users() {
+export default function ReadSponsor() {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigateToUpdateSponsor = (sponsorid) => {
-    navigate(`/update/${sponsorid}`);
+    navigate(`/Sponsorupdate/${sponsorid}`);
   };
 
   useEffect(() => {

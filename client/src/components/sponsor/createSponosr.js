@@ -83,7 +83,7 @@ export default function SponsorClaim() {
       })
       .then(() => {
         alert("Sponsor added successfully.");
-        navigate('/Users')
+        navigate('/Sponsorreads')
       })
       .catch((err) => {
         console.error("Error adding sponsor:", err);
