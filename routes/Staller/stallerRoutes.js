@@ -44,6 +44,7 @@ router.route("/staller/read").post((req, res) => {
 
     Staller.find().then((stallerRoutes) => {
         res.json(stallerRoutes)
+        console.log(stallerRoutes);
     }).catch((err) => {
         console.log(err)
     })
