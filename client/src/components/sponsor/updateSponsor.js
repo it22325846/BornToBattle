@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-export default function UpdateUser() {
+export default function UpdateSponsor() {
   const { sponsorid } = useParams();
   console.log("Sponsor id :", sponsorid);
 
