@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function StallReg() {
+    const navigate = useNavigate();
 
-    // State variables to store form data
     const [sbn, setSbn] = useState('');
     const [companyName, setCompanyName] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -18,43 +19,6 @@ export default function StallReg() {
     const submitStaller = (t) => {
         t.preventDefault();
 
-        /* Process the form data (you can send it to a server, etc.)
-        console.log('SBN:', sbn);
-        console.log('Company Name:', companyName);
-        console.log('First Name:', firstName);
-        console.log('Last Name:', lastName);
-        console.log('Mobile:', mobile);
-        console.log('Address:', address);
-        console.log('City:', city);
-        console.log('province:', province);
-        console.log('Postal Code:', postalCode);
-        console.log('Email:', email);*/
-
-        /*Reset the form after submission
-        setSbn('');
-        setCompanyName('');
-        setFirstName('');
-        setLastName('');
-        setMobile(0);
-        setaddress('')
-        setCity('');
-        setProvince('');
-        setPostalCode(0);
-        setEmail('');*/
-
-        /*Reset the form after submission
-        setSbn(sbn = '');
-        setCompanyName(companyName = '');
-        setFirstName(firstName = '');
-        setLastName(lastName = '');
-        setMobile(mobile = 0);
-        setaddress(address = '')
-        setCity(city = '');
-        setProvince(province = '');
-        setPostalCode(postalCode = 0);
-        setEmail(email = '');*/
-
-
         const newStaller = {
             sbn,
             companyName,
@@ -68,10 +32,10 @@ export default function StallReg() {
             email
         }
 
-        axios.post("http://localhost:4000/staller/create", newStaller)
+        axios.post("http://localhost:8020/staller/create", newStaller)
             .then(() => {
                 alert("Staller added successfully.");
-                // Reset the form here if needed
+                navigate('/stallerprofile');
             })
             .catch((err) => {
                 console.error("Error adding staller:", err);
