@@ -61,7 +61,7 @@ const AdminHome = () => {
       <br></br>
 
       <button className="btn btn-success">
-        <a href="/M_Comment_main" style={{ color: "black" }}>
+        <a href="/Manager_Audience" style={{ color: "black" }}>
          Audience  Management
         </a>
       </button>

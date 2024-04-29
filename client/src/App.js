@@ -78,7 +78,7 @@ import A_SignUp from './components/Thamindu_AudienceComponents/Signup';
 import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile';
 import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' ;
 import Comment_main from './components/Thamindu_AudienceComponents/Comment_main';
-
+import Manager_Audience from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Audience'
 // #endregion
 import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
 
@@ -178,7 +178,7 @@ function App() {
         <Route path="/e" element={<Events />} />
         <Route path="/addevent" element={<CreateEvent />} />
         <Route path="/editevent/:id" element={<EditEvent />} />
-      <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule" element={<Schedule />} />
       
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
        
@@ -198,9 +198,9 @@ function App() {
 
         <>{/* Lakruwan registration routes */}
         <Route path='/finalscoresheet' Component={FinalScore}/>
-      <Route path='/addscore' Component={AddScore}/>
-      <Route path='/updatescore' Component={UpdateScore}/>
-      <Route path='/candidateaddscore' Component={CandidateAddScore}/>
+        <Route path='/addscore' Component={AddScore}/>
+        <Route path='/updatescore' Component={UpdateScore}/>
+        <Route path='/candidateaddscore' Component={CandidateAddScore}/>
         </>
 
         <>{/* Thamindu registration routes */}

@@ -1,4 +1,3 @@
-
 const express = require("express");
 const router = express.Router();
 const Audience = require("../../models/Thamindu_Audience/audience");
@@ -33,9 +32,6 @@ router.post("/audience/save/un", async (req, res) => {
 
 
 
-
-
-
 // Edit audience details
 router.put("/audience/update/:id", async (req, res) => {
     try {
@@ -60,21 +56,17 @@ router.put("/audience/update/:id", async (req, res) => {
 
 
 
-
-
-
-
 // Delete audience details
 router.delete("/audience/:id", async (req, res) => {
     try {
         const {id} = req.params;
         const audience = await Audience.findByIdAndDelete(id);
         if (!audience) {
-            res.status(404).send("Audience not found");
+            res.status(404).json("Audience not found");
         }
         res.status(200).json(audience);
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).json({ success: false, error: error.message });
     }
 });
 
