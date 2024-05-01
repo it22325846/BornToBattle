@@ -14,7 +14,7 @@ export default function ItemEdit() {
     const [pImage, setUpdatePimage] = useState();
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/staller/items/get/${Itemid}`).then((res) => {
+        axios.get(`http://localhost:8020/staller/items/get/${Itemid}`).then((res) => {
 
             console.log(res);
 
@@ -37,11 +37,11 @@ export default function ItemEdit() {
             pImage,
         }
 
-        axios.put(`http://localhost:4000/staller/update/${Itemid}`, updateItem)
+        axios.put(`http://localhost:8020/staller/update/${Itemid}`, updateItem)
             .then(result => {
                 console.log(result);
                 alert("Item updated successfully.");
-                navigate('/stalls');
+                navigate('/theStall');
             })
             .catch((err) => {
                 console.error("Error updating item:", err);

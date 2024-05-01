@@ -111,7 +111,7 @@ export default function Home(){
             <div className="overlay7">
                 <h1 className="payment">Buy Your Own Tickets.</h1>
                 <button type="button" class="btn btn-primary btn-lg custom-btn2">
-                    <a href="/#" style={{ color:'black' , fontWeight:'bolder', cursor:'default' }}>BUY</a>
+                    <a href="/A_SignIn" style={{ color:'black' , fontWeight:'bolder', cursor:'default' }}>BUY</a>
                 </button>
                 
             </div>

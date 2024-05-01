@@ -59,8 +59,16 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="shops">
+        <a className="nav-link" href="/createStaller">
           SHOPS
+        </a>
+      </li>
+
+      <span className="separator">|</span>
+
+      <li className="nav-item">
+        <a className="nav-link" href="/Sponsordashboard">
+          SPONSORS
         </a>
       </li>
 

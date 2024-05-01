@@ -8,7 +8,7 @@ export default function StallerProfile() {
 
     useEffect(() => {
         function readStallers() {
-            axios.post("http://localhost:4000/staller/read")
+            axios.post("http://localhost:8020/staller/read")
                 .then((res) => {
                     setStallers(res.data);
                 })
@@ -20,7 +20,7 @@ export default function StallerProfile() {
     }, []);
 
     function handleDelete(Stallerid) {
-        axios.delete(`http://localhost:4000/staller/delete/${Stallerid}`)
+        axios.delete(`http://localhost:8020/staller/delete/${Stallerid}`)
             .then(() => {
                 alert("Staller Deleted.")
                 navigate('/')
@@ -100,7 +100,7 @@ export default function StallerProfile() {
                             </div>
                             <div className="row">
                                 <div className='mt-4 d-flex justify-content-between'>
-                                    <Link to={`/editProfile/${staller._id}`}>
+                                    <Link to={`/editStaller/${staller._id}`}>
                                         <button type='submit' className='btn btn-success'>Edit profile</button>
                                     </Link>
                                     <button className='btn btn-danger' onClick={(d) => handleDelete(staller._id)}>Delete</button>

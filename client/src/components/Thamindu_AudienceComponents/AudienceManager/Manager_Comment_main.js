@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import CommentForm from './Manager_Comment_form';
 import CommentList from './Manager_Comment_list';
 
@@ -83,39 +84,41 @@ const M_MainComponent = () => {
     localStorage.removeItem('username');
     window.location.href = '/';
   };
-  
+  const handleGenerateReport = () => {
+    window.print();
+};
 
 
-  const generateReport = async () => {
+  // const generateReport = async () => {
 
-    try {
+  //   try {
 
-      const response = await axios.get('/generate-report');
-      const filePath = response.data.filePath;
-      console.log('Report generated successfully. File path:', filePath);
+  //     const response = await axios.get('/generate-report');
+  //     const filePath = response.data.filePath;
+  //     console.log('Report generated successfully. File path:', filePath);
       
-      const fileName = filePath.split('/').pop(); // Extracts the file name from the file path
+  //     const fileName = filePath.split('/').pop(); // Extracts the file name from the file path
 
 
 
-      // Create a download link for the report
-      const downloadLink = document.createElement('a');
-      downloadLink.href = filePath;
-      downloadLink.setAttribute('download', fileName);
-                                                            // downloadLink.setAttribute('download', 'report.txt');
-      downloadLink.textContent = 'Download Report';
-      document.body.appendChild(downloadLink);
+  //     // Create a download link for the report
+  //     const downloadLink = document.createElement('a');
+  //     downloadLink.href = filePath;
+  //     downloadLink.setAttribute('download', fileName);
+  //                                                           // downloadLink.setAttribute('download', 'report.txt');
+  //     downloadLink.textContent = 'Download Report';
+  //     document.body.appendChild(downloadLink);
       
-      downloadLink.click();                     // Trigger  download
-      document.body.removeChild(downloadLink);     // Remove the download link 
-      alert("Report generating successful ");
+  //     downloadLink.click();                     // Trigger  download
+  //     document.body.removeChild(downloadLink);     // Remove the download link 
+  //     alert("Report generating successful ");
 
-    } catch (error) {
-      console.error('Error generating report:', error);
-      alert("Error in generating Report");
+  //   } catch (error) {
+  //     console.error('Error generating report:', error);
+  //     alert("Error in generating Report");
 
-    }
-  };
+  //   }
+  // };
 
 
   
@@ -129,9 +132,12 @@ const M_MainComponent = () => {
       <button className="btn2" onClick={handleSignOut}>
         Sign Out
       </button>
-      <button className="btn2" onClick={generateReport}>
+      <button className="btn2" onClick={handleGenerateReport}>
         Generate Report
       </button>
+      <Link to="/Manager_Audience" className="btn2">
+        Audience Manager
+      </Link>
 
       
       <div className='comment_form'>

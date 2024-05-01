@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export default function SponsorPage() {
   return (
@@ -18,13 +18,12 @@ export default function SponsorPage() {
             Sponsorship
           </h1>
           <p className="text-white">
-            I've wrapped the image and the text div inside a container div with
-            position-relative. The text div has position-absolute class to
-            position it absolutely within the container. top-0, start-0, and
-            translate-middle are Bootstrap utility classes to center the text
-            horizontally and place it at the top of the image. p-3 adds padding
-            to the text div. You can replace "Text on Top of Image" with the
-            desired text you want to display on the image.
+            Experience the electrifying energy of "Born to Battle" dance
+            competition. Showcase your brand to a captivated audience while
+            supporting aspiring dancers. Benefit from extensive brand exposure,
+            networking opportunities, and community engagement. Join us in
+            shaping the future of dance and leave a lasting impression on the
+            stage of champions.
           </p>
           <div>
             <button
@@ -39,24 +38,23 @@ export default function SponsorPage() {
       </div>
       <div>
         <div>
-          <Link to={'/sponsorForm'}>
-          <button className='btn btn-warning'>sponsorform</button>
-          </Link>
-        </div>
-        <div>
-          <Link to={'/sponsorPkg'}>
-          <button className='btn btn-danger'>sponsorpkg</button>
-          </Link>
-        </div>
-        <div>
-          <h2 className="text-start ms-5 mt-5">useful resources</h2>
+          <h2 className="text-start ms-5 mt-5">Useful resources</h2>
           <div>
             <div className="row p-4 m-2">
               <div className="col-md-4">
                 <div class="">
                   <img
-                    src="https://images.pexels.com/photos/1212487/pexels-photo-1212487.jpeg?cs=srgb&dl=pexels-rahul-pandit-1212487.jpg&fm=jpg"
-                    class="img-fluid rounded-4"
+                    src="https://www.maggi.lk/sites/default/files/maggi_logo_png_1.png"
+                    className="img-fluid rounded-4 pt-5"
+                    alt=""
+                  ></img>
+                </div>
+              </div>
+              <div className="col-md-4">
+                <div class="bg-white">
+                  <img
+                    src="https://mooseclothingcompa7fe3d.zapwp.com/q:l/r:0/wp:1/w:1/u:https://mooseclothingcompany.com/wp-content/uploads/2020/12/cropped-2560x1440-white-solid-color-background.png"
+                    className="img-fluid rounded-4"
                     alt=""
                   ></img>
                 </div>
@@ -64,21 +62,17 @@ export default function SponsorPage() {
               <div className="col-md-4">
                 <div class="">
                   <img
-                    src="https://images.pexels.com/photos/1212487/pexels-photo-1212487.jpeg?cs=srgb&dl=pexels-rahul-pandit-1212487.jpg&fm=jpg"
-                    class="img-fluid rounded-4"
+                    src="https://play-lh.googleusercontent.com/mwdLls3RSBW6xeG2thn22e8yBbrJF-oTNAZaR0ADQTkrnFXMGrmHhkwnCtnSlFplboUn"
+                    className="img-fluid rounded-4"
                     alt=""
                   ></img>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div class="">
-                  <img
-                    src="https://images.pexels.com/photos/1212487/pexels-photo-1212487.jpeg?cs=srgb&dl=pexels-rahul-pandit-1212487.jpg&fm=jpg"
-                    class="img-fluid rounded-4"
-                    alt=""
-                  ></img>
-                </div>
-              </div>
+            </div>
+            <div>
+              <Link to={"/Sponsorpackage"}>
+                <button className="btn btn-danger m-4 rounded-4" style={{ paddingInline: '150px', paddingTop: '50px', paddingBottom: '50px', fontSize: '50px', fontWeight: 'bolder' }}>Get Sponsorship</button>
+              </Link>
             </div>
           </div>
         </div>
