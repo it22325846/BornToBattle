@@ -40,7 +40,7 @@ const SignIn = () => {
                 window.location.href = '/#';
             }
             else if(manager && manager.type && manager.type === "comment_manager") {
-                window.location.href = '/M_Comment_main';
+                window.location.href = '/Manager_Audience';
             }
             localStorage.setItem('username', username);
         } else {
