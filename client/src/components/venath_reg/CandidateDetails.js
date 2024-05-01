@@ -30,7 +30,9 @@ const CandidateDetails = () => {
   // console.log('ddddd Details:', username);
 
   return (
-    <div style={{ color: 'white' }}>
+    <div style={{ display: 'flex', alignItems: 'center', color: 'white' }}>
+            <div style={{ flex: 1 }}>
+
       <h2>Candidate Details</h2>
       <p>Name: {candidate.name}</p>
       <p>Age: {candidate.age}</p>
@@ -38,6 +40,13 @@ const CandidateDetails = () => {
       <p>Event: {candidate.event}</p>
       <p>Category: {candidate.category}</p>
       <p>Phone Number: {candidate.phoneNumber}</p>
+</div>
+      <div style={{ flex: 3 }}>
+
+      {candidate.photo && (
+        <img src={`/uploads/profile-photos/${candidate.photo}`} alt="Candidate Photo" style={{ maxWidth: '200px' }} />
+      )}
+</div>
 
       {candidate.un === username ? (
         <Link to={`/edit/${candidate._id}`} className="btn btn-warning">

@@ -17,7 +17,7 @@ import EditJudge from './components/venath_reg/EditJudge';
 import CandidateDetails from './components/venath_reg/CandidateDetails';
 import AllCandidates from './components/venath_reg/AllCandidates';
 import AllGroups from './components/venath_reg/AllGroups';
-
+import JudgeDetails from './components/venath_reg/JudgeDetails'
 
 import Signup from './components/venath_reg/CandidateSignup';
 import CandidateSignup from './components/venath_reg/CandidateSignin';
@@ -249,7 +249,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/CandidateSignup" element={<CandidateSignup />} />
         <Route path="/JudgeSignup" element={<JudgeSignup />} />
-
+        <Route path="/Judge/:id" element={<JudgeDetails />} />
         
         <Route path="/regDash" element={<RegDash />} />
         <Route path="/judgeCount" element={<JudgeCount />} />
