@@ -239,6 +239,9 @@ app.use("/requestform",requestForm);
 
 
 //dhananji line 234
+const sponsorRouter = require('./routes/sponsor/sponsorrouts')
+app.use(sponsorRouter)
+
 
 
 
