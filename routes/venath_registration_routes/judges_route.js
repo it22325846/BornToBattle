@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Judge = require("../../models/venath_registration_models/judges_model");
+const { signup, getbill } = require('../../client/src/components/venath_reg/regManager/sendEmail')
 
 // POST route for adding a new Judge
 router.post('/judges/save', (req, res) => {
@@ -157,5 +158,7 @@ router.get('/vjudges/count/dancing', (req, res) => {
         });
 });
 
+router.post('/user/signup', signup);
+router.post('/product/getbill', getbill);
 
 module.exports = router;
