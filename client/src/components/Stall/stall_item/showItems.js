@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 export default function ItemShow() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
+
 
   const goToEditItem = (Itemid) => {
     navigate(`/editItems/${Itemid}`);
@@ -39,10 +42,17 @@ export default function ItemShow() {
   return (
     <div className='fullDiv rounded-4'>
       <h2>Items</h2>
+      <form>
+        <input className='form-control' placeholder='Search items...' onChange={ (e) => { setSearch(e.target.value )}} />
+      </form>
 
       <div className='container'>
         <div className='row'>
-          {items.map((item) => (
+          {items.filter( (item) => {
+            return search.toLowerCase() === ''
+            ? item
+            : item.pName.toLowerCase().includes(search);
+          }).map((item) => (
             item && ( // Check if item is not null
             <div className='col-md-6' key={item._id}>
               <div className='d-flex flex-column' style={{ position: 'relative' }}>
