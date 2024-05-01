@@ -8,9 +8,9 @@ const UserProfile = () => {
   const { userName, id } = useParams();
   const username = localStorage.getItem('username') || '';
   const [profilePhoto, setProfilePhoto] = useState('user.jpg');
+  const [newProfilePhoto, setNewProfilePhoto] = useState(null);
 
- // const [profilePhoto, setProfilePhoto] = useState('user.jpg'); // Set the default photo
-  //const [newProfilePhoto, setNewProfilePhoto] = useState(null);
+
 
   useEffect(() => {
     const existingUsername = localStorage.getItem('username');
@@ -21,20 +21,29 @@ const UserProfile = () => {
   }, []);
 
   useEffect(() => {
-    // Fetch candidate data based on username
+    console.log('Fetching judge data...');
     axios.get(`/judge/username/${encodeURIComponent(username)}`)
       .then((res) => {
         if (res.data.success) {
+          console.log('Judge data:', res.data.judge);
+  
           setJudge(res.data.judge);
-            }
+          const photoUrl = res.data.judge.photo || '/user.jpg';
+          console.log('Judge photo:', res.data.judge.photo);
+  
+          setProfilePhoto(photoUrl); // Set profile photo from fetched data
+        } else {
+          console.error('Failed to fetch candidate data');
+        }
       })
       .catch((error) => {
-        console.error("Error fetching candidate data:", error);
+        console.error("Error fetching judge data:", error);
       })
       .finally(() => {
         setLoading(false);
       });
   }, [userName, username]);
+  
 
 //   useEffect(() => {
 //     // Check if id is defined before making the request
@@ -51,54 +60,68 @@ const UserProfile = () => {
 //     }
 //   }, [id]);
 
-//   const onDelete = (id) => {
-//     axios.delete(`/candidate/delete/${id}`).then((res) => {
-//       axios.delete(`/signup/delete/${username}`).then((res) => {
-//         localStorage.removeItem('username'); 
-//         alert("deleted");
-//         window.location.href=('/');
-//       });
-//     });
-//   }
+  const onDelete = (id) => {
+    axios.delete(`/judge/delete/${id}`).then((res) => {
+      axios.delete(`/jsignup/delete/${username}`).then((res) => {
+        localStorage.removeItem('username'); 
+        alert("deleted");
+        window.location.href=('/');
+      });
+    });
+  }
 
-//   const handleFileChange = (e) => {
-//     const file = e.target.files[0];
-//     if (file) {
-//       // Set the uploaded photo as the profile photo
-//       setProfilePhoto(URL.createObjectURL(file));
-//       setNewProfilePhoto(file);
-//     }
-//   }
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      console.log('Selected profile photo:', file);
 
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
+      setNewProfilePhoto(file);
+      const imageUrl = URL.createObjectURL(file);
+      setProfilePhoto(imageUrl); // Update profile photo with newly selected image
+    }
+  }
 
-//   const handleConfirm = () => {
-//     // Assuming you want to send the newProfilePhoto to the server when confirming
-//     if (newProfilePhoto) {
-//       // Send the newProfilePhoto to the server
-//       const formData = new FormData();
-//       formData.append('photo', newProfilePhoto);
-//       axios.post('/profile-photo/save', formData, {
-//         headers: {
-//           'Content-Type': 'multipart/form-data',
-//         },
-//       })
-//       .then((res) => {
-//         console.log(res.data.success); // Log success message from the server
-//         // You may want to update the state or do other actions after a successful upload
-//       })
-//       .catch((error) => {
-//         console.error("Error saving profile photo:", error);
-//         alert("error");
-//             });
-//     }
-//   }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-//   if (loading) {
-//     return <p>Loading...</p>;
-//   }
+  const handleConfirm = (id) => {
+    console.log('Confirm button clicked');
+    // Assuming you want to send the newProfilePhoto to the server when confirming
+    if (newProfilePhoto) {
+      // Send the newProfilePhoto to the server
+      console.log('iddddddd:', id);
+
+      const formData = new FormData();
+      formData.append('photo', newProfilePhoto);
+      const url = `/judge/update/${id}/photo`;
+      axios.put(url, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      .then((res) => {
+        console.log(res.data.success);
+        if (res.data && res.data.success) {
+          const photoUrl = URL.createObjectURL(newProfilePhoto);
+          setProfilePhoto(photoUrl);
+          setNewProfilePhoto(null);
+          alert('Profile photo updated successfully.');
+          window.location.href='/judgeprofile'
+        } else {
+          alert('Failed to update profile photo.');
+        }
+      })
+      .catch((error) => {
+        console.error("Error saving profile photo:", error);
+        alert("error");
+            });
+    }
+  }
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   // Render candidate details once data is loaded
   return (
@@ -120,46 +143,52 @@ const UserProfile = () => {
           <i className="fas fa-edit"></i>&nbsp;Edit
         </Link>
 
-        {/* <button className="btn btn-danger" onClick={() => onDelete(judge._id)}>
+        <button className="btn btn-danger" onClick={() => onDelete(judge._id)}>
           <i className="far fa-trash-alt"></i>&nbsp;Delete
-        </button> */}
+        </button>
+
       </div>
 
       {/* Card */}
-      <div className="col-md-2"  >
+      <div className="col-md-2">
   <div className="card" style={{ marginTop: '50px', width: '100%', textAlign: 'center' }}>
-   
-
-    {/* <input type="file" accept="image/*" onChange={handleFileChange} id="profilePhoto" style={{display: 'none' }}/> */}
-
-    {/* Photo */}
-    {/* <div className="mx-auto" style={{overflow: 'hidden' }}> 
-    <img
-    id="profilePhoto"
-    src={profilePhoto}
-   alt=""
-    style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-/>
-
-
-    </div> */}
-    
-    {/* <div className="card-body">
-    <label for="profilePhoto" className="btn btn-warning" >Upload a profile photo</label>
-    {newProfilePhoto && (
-              <div>
-                <button className="btn btn-info" onClick={handleConfirm}>
-                  Confirm
-                </button>
-                <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
-                  Change
-                </button>
-              </div>
-            )}
-      <p className="card-text"></p>
-    </div> */}
+    <input type="file" accept="image/*" onChange={handleFileChange} id="profilePhotoInput" style={{ display: 'none' }} />
+    <div className="mx-auto" style={{ overflow: 'hidden' }}>
+      {newProfilePhoto ? (
+        // Show the newly selected photo before confirming
+        <img
+          id="profilePhoto"
+          src={profilePhoto}
+          alt=""
+          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+        />
+      ) : (
+        // Show the current profile photo
+        <img
+          id="profilePhoto"
+          src={`/uploads/judges/${profilePhoto}`}
+          alt=""
+          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+        />
+      )}
+    </div>
+    <div className="card-body">
+      <label htmlFor="profilePhotoInput" className="btn btn-warning mb-2">Upload a profile photo</label>
+      {newProfilePhoto && (
+        // Show confirm button only when a new photo is selected
+        <button className="btn btn-info mr-2" onClick={() => handleConfirm(judge._id)}>
+        Confirm
+      </button>
+      
+      )}
+      {/* You can optionally include a "Change" button */}
+      {/* <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
+        Change
+      </button> */}
+    </div>
   </div>
 </div>
+
 
     </div>
   );
