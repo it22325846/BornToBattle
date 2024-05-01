@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 export default function UserStalls() {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         function readItems() {
@@ -23,9 +24,18 @@ export default function UserStalls() {
         <div className='fullDiv rounded-4'>
             <h3 className='header my-3'>IDS Sri Lanka</h3>
 
+            <form>
+                <input className='form-control' placeholder='Search items...' onChange={(e) => { setSearch(e.target.value) }} />
+            </form>
+
+
             <div className='container rounded'>
                 <div className='row' >
-                    {items.map((item) => (
+                    {items.filter((item) => {
+                        return search.toLowerCase() === ''
+                            ? item
+                            : item.pName.toLowerCase().includes(search);
+                    }).map((item) => (
                         <div className='col-md-6' key={item._id}>
                             <div className='d-flex flex-column' style={{ position: 'relative' }}>
                                 <div className='bg-white' style={{ marginInline: '70px' }}>
