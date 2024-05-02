@@ -157,6 +157,9 @@ const MainComponent = () => {
   return (
     <div className='comment_main'>
       <div className='comment_form'>
+        <h2 style={{ color: 'white', fontFamily: 'cursive', fontWeight: 'bolder', textShadow: '5px 5px 2px black', fontSize: '40px' }}>
+          Share Your Thoughts with Us - Audience Comments & Feedback Hub
+        </h2>
         <CommentForm onAddComment={addComment} />
       </div>
 
