@@ -13,8 +13,6 @@ const M_MainComponent = () => {
   const [comments, setComments] = useState([]);
 
 
-
-
   useEffect(() => {
     fetchComments();
   }, []);
@@ -44,8 +42,6 @@ const M_MainComponent = () => {
   };
 
 
-
-
   const deleteComment = async (id) => {
     try {
       await axios.delete(`/comments/${id}`);
@@ -54,7 +50,6 @@ const M_MainComponent = () => {
       console.error('Error deleting comment:', error);
     }
   };
-
 
 
   const editComment = async (id, updatedComment) => {
@@ -84,9 +79,66 @@ const M_MainComponent = () => {
     localStorage.removeItem('username');
     window.location.href = '/';
   };
+  
+
   const handleGenerateReport = () => {
-    window.print();
-};
+    const printableContent = `
+        <html>
+            <head>
+                <title>Comments Report</title>
+                <style>
+                    .comment {
+                        margin-bottom: 10px;
+                        padding: 10px;
+                        border: 2px solid #ccc;
+                        background-color: #f9f9f9;
+                    }
+                    .comment .title {
+                        font-weight: bold;
+                    }
+                    .content1 {
+                      font-size: 20px;
+                    }
+                    .content2 {
+                      font-size: 14px;
+                      font-weight: bold;
+                      color: blue;
+                    }
+                    button {
+                      background-color: #000;
+                      color: aliceblue;
+                      height: 40px;
+                      width: 100px;
+                    }
+                    button:hover {
+                        background-color: #951212;
+                        color: aliceblue;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Comments Report</h1>
+                <button onclick="window.print()">
+                    Print Report
+                </button>
+                <div class="comments">
+                    ${comments.map((comment, index) => `
+                        <div class="comment">
+                            <div class="title">Comment ${index + 1}</div>
+                            <div class="content1">${comment.comments}</div>
+                            <div class="content2">${comment.username} : ${new Date(comment.create).toLocaleString()}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </body>
+        </html>
+    `;
+
+    const reportWindow = window.open('', '_blank');
+    reportWindow.document.open();
+    reportWindow.document.write(printableContent);
+    reportWindow.document.close();
+  };
 
 
   // const generateReport = async () => {
@@ -122,7 +174,9 @@ const M_MainComponent = () => {
 
 
   
-
+  // const handleGenerateReport = () => {
+  //   window.print();
+  // };
 
 
 
