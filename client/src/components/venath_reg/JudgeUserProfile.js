@@ -28,7 +28,10 @@ const UserProfile = () => {
           console.log('Judge data:', res.data.judge);
   
           setJudge(res.data.judge);
-          const photoUrl = res.data.judge.photo || '/user.jpg';
+          const photoUrl = res.data.judge.photo;
+          if (!photoUrl || typeof photoUrl !== 'string') {
+            photoUrl = 'user.jpg';
+        }
           console.log('Judge photo:', res.data.judge.photo);
   
           setProfilePhoto(photoUrl); // Set profile photo from fetched data
@@ -136,7 +139,10 @@ const UserProfile = () => {
   <p>Institute: {judge.institute}</p>
   <p>Description: {judge.description}</p>
   <p>Username: {judge.un}</p>
-  <p>Password: {judge.password}</p>
+  {/* <p>Password: {judge.password}</p> */}
+  <div>
+  <a href='/editpwd' style={{ color: 'white' }}>Change the password <i className="fa-solid fa-pen-to-square"></i></a>
+</div>
 
 
         <Link to={`/jedit/${judge._id}`} className="btn btn-warning">

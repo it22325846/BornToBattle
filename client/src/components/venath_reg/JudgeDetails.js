@@ -25,26 +25,28 @@ const JudgeDetails = () => {
       <div style={{ flex: 1 }}>
         <h2>Judge Details</h2>
         <p>Name: {judge.name}</p>
-        <p>Age: {judge.age}</p>
-        <p>Gender: {judge.gender}</p>
-        <p>Event: {judge.event}</p>
-        <p>Category: {judge.category}</p>
-        <p>Phone Number: {judge.phoneNumber}</p>
+  <p>Age: {judge.age}</p>
+  <p>Gender: {judge.gender}</p>
+  <p>Event: {judge.event}</p>
+  <p>Phone Number: {judge.phoneNumber}</p>
+  <p>Institute: {judge.institute}</p>
+  <p>Description: {judge.description}</p>
+  <p>Username: {judge.un}</p>
 
-      
+        {judge.un === username ? (
+          <Link to={`/jedit/${judge._id}`} className="btn btn-warning">
+            <i className="fas fa-edit"></i>&nbsp;Edit
+          </Link>
+        ) : (
+          <p></p>
+        )}
       </div>
       <div style={{ flex: 3 }}>
         {judge.photo && (
           <img src={`/uploads/judges/${judge.photo}`} alt="Judge Photo" style={{ maxWidth: '200px' }} />
         )}
       </div>
-      {judge.un === username ? (
-          <Link to={`/edit/${judge._id}`} className="btn btn-warning">
-            <i className="fas fa-edit"></i>&nbsp;Edit
-          </Link>
-        ) : (
-          <p></p>
-        )}
+  
     </div>
   );
 };

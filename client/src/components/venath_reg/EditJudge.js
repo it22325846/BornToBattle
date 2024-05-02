@@ -16,6 +16,7 @@ const EditJudge = () => {
     phoneNumber: '',
     institute: '',
     description: '',
+    email:'',
     un: '',
     password: ''
   });
@@ -27,7 +28,7 @@ console.log("id is ",id);
 
 const handleSubmit = (e) => {
   e.preventDefault();
-  const { name, age, gender, event, phoneNumber, institute, description, un, password } = formData;
+  const { name, age, gender, event, phoneNumber, institute, description,email, un, password } = formData;
 
   const data = {
     name: name,
@@ -37,6 +38,7 @@ const handleSubmit = (e) => {
     phoneNumber: phoneNumber,
     institute: institute,
     description: description,
+    email: email,
     un: un,
     password: password
   };
@@ -56,6 +58,7 @@ const handleSubmit = (e) => {
           phoneNumber: '',
           institute: '',
           description: '',
+          email:'',
           un: '',
           password: ''
         });
@@ -81,6 +84,7 @@ const handleSubmit = (e) => {
           phoneNumber: res.data.Judge.phoneNumber,
           institute: res.data.Judge.institute,
           description: res.data.Judge.description,
+          email:res.data.Judge.email,
           un: res.data.Judge.un,
           password: res.data.Judge.password
         });
@@ -184,6 +188,23 @@ const handleSubmit = (e) => {
         />
       </div>
 
+      
+      <div className="mb-3">
+        <label htmlFor="phoneNumber" className="form-label">
+         Email
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          style={{ width: '30%' }}
+        />
+      </div>
+
       <div className="mb-3">
         <label htmlFor="institute" className="form-label">
           Institute
@@ -247,6 +268,11 @@ const handleSubmit = (e) => {
           disabled
         />
       </div>
+      
+      <div>
+  <a href='/editpwd' style={{ color: 'white' }}>Change the password <i className="fa-solid fa-pen-to-square"></i></a>
+</div>
+
 
       <button type="submit" className="btn btn-primary">
         Submit
