@@ -1,12 +1,14 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../../Style/stallStyles/EditStallStyles.css';
 import { useNavigate } from 'react-router-dom';
+import { useReactToPrint } from 'react-to-print';
 
 export default function UserStalls() {
     const [items, setItems] = useState([]);
     const navigate = useNavigate();
     const [search, setSearch] = useState("");
+    const componentPDF = useRef();
 
     useEffect(() => {
         function readItems() {
@@ -20,12 +22,25 @@ export default function UserStalls() {
         }
         readItems();
     }, []);
+
+    const handlePrint = (event) => {
+        event.preventDefault();
+        generatePDF(); 
+    }
+
+    const generatePDF = useReactToPrint({
+        content: () => componentPDF.current,
+        documentTitle: "StallItemData"
+    });
+
+
     return (
         <div className='fullDiv rounded-4'>
             <h3 className='header my-3'>IDS Sri Lanka</h3>
 
             <form>
                 <input className='form-control' placeholder='Search items...' onChange={(e) => { setSearch(e.target.value) }} />
+                <button className='btn btn-success' onClick={handlePrint}>PDF</button>
             </form>
 
 
