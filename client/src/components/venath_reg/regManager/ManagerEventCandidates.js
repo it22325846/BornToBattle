@@ -90,7 +90,7 @@ const AdminEventCandidates = () => {
                 <td>{candidate.phoneNumber}</td>
                 
                 <td>
-                  <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
+                  <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </Link>
                   <a className="btn btn-danger" href="#" onClick={() => onDelete(candidate._id)}>

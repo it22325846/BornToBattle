@@ -26,7 +26,10 @@ const UserProfile = () => {
         if (response.data.success) {
           const { candidate } = response.data;
           setCandidate(candidate);
-          const photoUrl = candidate.photo || '/user.jpg';
+          const photoUrl = candidate.photo;
+          if (!photoUrl || typeof photoUrl !== 'string') {
+            photoUrl = 'user.jpg';
+        }
           setProfilePhoto(photoUrl); // Set profile photo from fetched data
         } else {
           console.error('Failed to fetch candidate data');
@@ -145,9 +148,9 @@ const UserProfile = () => {
                 <button className="btn btn-info" onClick={() => handleConfirm(candidate._id)}>
                   Confirm
                 </button>
-                <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
+                {/* <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
                   Change
-                </button>
+                </button> */}
               </div>
             ) : (
               // Show upload button when no new photo is selected
