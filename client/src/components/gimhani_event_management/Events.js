@@ -99,6 +99,34 @@ const Events = () => {
 
   const totalEvents = events.length;
 
+  const handleSignOut = () => {
+    localStorage.removeItem('username');
+    window.location.href = '/managerSignin';
+  };
+
+  const generateReport = () => {
+    // Generate CSV content
+    const csvContent = generateCSV(events);
+
+    // Download CSV file
+    downloadCSV(csvContent, 'event_summary_report.csv');
+  };
+
+  const generateCSV = (data) => {
+    const header = 'Event Category, Event Name, Individual/Group, Gender, Age Category, Time\n';
+    const rows = data.map(event => `${event.category}, ${event.topic}, ${event.type}, ${event.gender}, ${event.ageGroup}, ${event.time}`);
+    return header + rows.join('\n');
+  };
+
+  const downloadCSV = (content, filename) => {
+    const blob = new Blob([content], { type: 'text/csv' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  };
+
+
   return (
    
     <div>
@@ -130,6 +158,7 @@ const Events = () => {
               Add New Event Category
             </a>
           </button>
+       
           </div>
 
 {/* retrive and display main event category names */}
@@ -234,16 +263,28 @@ const Events = () => {
       </div>
 
       <div style={{ marginTop: '20px', textAlign: 'center' }}>
-      <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '16px', borderRadius: '5px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
-  <a href="/calendar" style={{ textDecoration: 'none', color: 'white' }}>
-    View Schedule
-  </a>
-</button>
+  <button className="btn btn-primary" style={{ padding: '10px 20px', fontSize: '16px', borderRadius: '5px', boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)' }}>
+    <a href="/calendar" style={{ textDecoration: 'none', color: 'white' }}>
+      Manage Calendar
+    </a>
+  </button>
+  <div>
+  <button className="btn btn-primary" onClick={generateReport} style={{ marginTop: '10px' }}>
+    Generate Report
+  </button>
+  </div>
+</div>
 
-      </div>
+    </div>
+    <div>
+            <button className="btn btn-danger" onClick={handleSignOut}>
+              Sign Out
+            </button>
+          </div>
     </div>
 
-    </div>
+
+
   );
 
   //view schedule button
