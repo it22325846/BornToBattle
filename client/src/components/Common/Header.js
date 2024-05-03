@@ -5,6 +5,36 @@ import { useNavigate } from "react-router-dom";
 function Header() {
   const navigate = useNavigate();
 
+  const userType=localStorage.getItem('userType');
+
+  console.log("Type is",userType)
+
+  const handleProfileClick = () => {
+    switch (userType) {
+      case "candidate":
+        navigate("/profile"); // Redirect to candidate.js
+        break;
+      case "judge":
+        navigate("/judgeprofile"); // Redirect to judge.js
+        break;
+      
+        case "audience":
+          navigate("/#"); // Redirect to judge.js
+          break;
+
+        case "sponsor":
+           navigate("/#"); // Redirect to judge.js
+          break;
+
+        case "stall_owner":
+            navigate("/#"); // Redirect to judge.js
+          break;
+      default:
+        // Handle other user types or invalid user type
+        console.error("Invalid user type:", userType);
+    }
+  };
+
   return (
     <ul className="nav justify-content-end">
       <div
@@ -120,16 +150,18 @@ function Header() {
           CONTACT US
         </a>
       </li>
-      <div className="image_nav2" style={{ marginRight: "10px" }}>
-        <a href="#don't add profile link">
-          <img
-            src="../../Images/profile.png"
-            alt="IDS"
-            width="40"
-            height="40"
-          />
-        </a>
-      </div>
+      {userType && (
+        <div className="image_nav2" style={{ marginRight: "10px" }}>
+          <a href="#" onClick={handleProfileClick}>
+            <img
+              src="../../Images/profile.png"
+              alt="IDS"
+              width="40"
+              height="40"
+            />
+          </a>
+        </div>
+      )}
     </ul>
   );
 }

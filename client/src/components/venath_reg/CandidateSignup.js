@@ -33,6 +33,8 @@ const SignUp = () => {
         alert('Sign-up successful!');
         
         localStorage.setItem('username', username);//session
+        localStorage.setItem('userType', "candidate");//set session for user type
+
         window.location.href = '/addc';
 
       } catch (error) {

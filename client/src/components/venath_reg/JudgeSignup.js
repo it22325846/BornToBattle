@@ -17,6 +17,8 @@ const SignIn = () => {
         if (response.data.success) {
           // Sign-in successful
           localStorage.setItem('username', username); // Store username in session
+          localStorage.setItem('userType', "judge");//set session for user type
+
           window.location.href = '/Judgeprofile'; // Redirect to dashboard or another page
         } else {
           setError('Invalid username or password. Please try again.');
