@@ -14,6 +14,7 @@ const Candidates = () => {
   const handleSignOut = () => {
     localStorage.removeItem("username");
     setUsername("");
+    localStorage.removeItem("userType");
     alert("Signed Out");
     window.location.href = "/";
   };
