@@ -159,7 +159,7 @@ export default function EditEvent() {
               Time
             </label>
             <input
-              type="text"
+              type="time"
               className="form-control"
               placeholder="Enter Time"
               value={event.time}
