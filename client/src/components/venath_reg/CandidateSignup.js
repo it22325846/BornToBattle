@@ -12,7 +12,7 @@ const SignUp = () => {
     const existingUsername = localStorage.getItem('username');
     if (existingUsername) {
       alert("You are already signed in");
-      window.location.href = '/profile';
+      window.location.href = '/cprofile';
     }
   }, []);
 
