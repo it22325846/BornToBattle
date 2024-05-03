@@ -1,6 +1,8 @@
 const router = require ("express").Router();
 let Sponsor = require ("../../models/sponsor/sponsor.js");
 const multer = require('multer');
+const express = require('express');
+const path = require('path');
 
 //data inserting or adding route
 //http://localhost:8070/sponsor/add
@@ -58,11 +60,13 @@ router.route("/add").post(upload.single('companyLogo'), (req,res)=>{
 })
 //see who is in the list addedd by manager
 
+router.use('/uploads', express.static(path.join(__dirname, '../uploads')))
+
 //http://localhost:8070/sponsor/display
 
 router.route("/read").get((req,res)=> {
 
-    Sponsor:find().then((sponsors) =>{
+    Sponsor.find().then((sponsors) =>{
 
         res.json(sponsors)
     }).catch((err)=>{
@@ -72,39 +76,84 @@ router.route("/read").get((req,res)=> {
     })
 
 })
+
+
+
+
 //want to update the added list
 //http://localhost:8070/sponsor/update/325fgsty23b6778dfjh
 //for put method we can use post method also
-router.route("/update/:id").put(async(req,res)=>{
+
+
+//this is use to get the current sponsor details from the database
+router.route("/get/:sponsorid").get(async (req, res) => {
+    let Sponsorid = req.params.sponsorid;
+  
+    const getID = await Sponsor.findById(Sponsorid)
+    .then( (sponsor) => {
+      res.json({
+        sponsorName: sponsor.sponsorName,
+        companyName: sponsor.companyName,
+        sponsorPosition: sponsor.sponsorPosition,
+        companyLogo: sponsor.companyLogo,
+        contactPerson: sponsor.contactPerson, 
+        companyPhone: sponsor.companyPhone,
+        address: sponsor.address, 
+        state: sponsor.state,
+        email: sponsor.email, 
+        website: sponsor.website,
+      });
+    }).catch((err) => {
+        console.log(err) 
+    })
+  
+  })
+
+
+router.route("/update/:sponsorid").put(upload.single('companyLogo'), async(req,res)=>{
 //get user id from url
-    let userId = req.params.id;//fetch the user id
-    const {name , companyname,email,address} = req.body;//DStructure=going to update things get from the request body
+    let Sponsorid = req.params.sponsorid;//fetch the user id
+    //DStructure=going to update things get from the request body
+    const {sponsorName, companyName, sponsorPosition, contactPerson, companyPhone, address, state, email, website} = req.body;
+
+    //updating the image
+    let companyLogo;
+    if(req.file){
+        companyLogo = req.file.filename;
+    }
 //create a object putting what are going to update 
 
 //get details via console
     console.log("Recieved updated payload", req.body);
     const updateSponsor = {
 
-        name,
-        companyname,
-        email,
-        address
+        sponsorName,
+        companyName,
+        sponsorPosition,
+        ...(companyLogo && {companyLogo}),
+        contactPerson, 
+        companyPhone,
+        address, 
+        state,
+        email, 
+        website,
 //these data coming from front end 
     }
 //find the one who needs to update
 // without if condition
 //first parameter is primary key and 2nd one is whtas want to update parameter
-    const update = await Sponsor.findByIdAndUpdate(userId,updateSponsor).then(() =>
-    {
+try{
+    const update = await Sponsor.findByIdAndUpdate(Sponsorid,updateSponsor, { new: true});
 //status = response for a error like 404(notfound(),401(unauthorized),200(success)
-    res.status(200).send({status:"Sponsor updated"})//if update is success send s status to user,"user updated" and the updated details after the status
+    res.status(200).json({status:"Sponsor updated", update});
+    //if update is success send s status to user,"user updated" and the updated details after the status
 
-}).catch((err) => { 
+} catch(err)  { 
     console.log(err);
-    res.status(200).send({status:"Sponsor updation error"})
+    res.status(200).json({status:"Sponsor updation error", error: err.message});
     //res.status(500).send({status:"error with updating data",error:err.message});
     //when you want to send a message to the front end use this
-    })
+    }
     //findByIdAndUpdate = in here we are using only the id
 //findOneAndUpdate=when we create actual aplications we have to  use nic,email,that moment we can say find one and update
 })

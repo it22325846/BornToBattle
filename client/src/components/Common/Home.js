@@ -70,7 +70,7 @@ export default function Home(){
             <div className="overlay8">
             
                 <div className="image">
-                    <img src="../../Images/read and black.jpg" alt="Read and Black"  width="100%" height="auto"  />
+                    <img src="../../Images/red_and_black.jpg" alt="Read and Black"  width="100%" height="auto"  />
                 </div>
                 <h1 className="gallery">GALLERY</h1>
 
@@ -110,25 +110,26 @@ export default function Home(){
                 <hr />
             <div className="overlay7">
                 <h1 className="payment">Buy Your Own Tickets.</h1>
-                <button type="button" class="btn btn-primary btn-lg custom-btn2">BUY</button>
+                <button type="button" class="btn btn-primary btn-lg custom-btn2">
+                    <a href="/A_SignIn" style={{ color:'black' , fontWeight:'bolder', cursor:'default' }}>BUY</a>
+                </button>
                 
             </div>
-            <button className="btn btn-success">
-          <a href="/CandidateSignup" style={{ color: 'black' }}>Register To A Event</a>
-        </button>
-        <p></p>
-        <button className="btn btn-success">
-          <a href="/managerSignin" style={{ color: 'black' }}>Sign in as a manager</a>
-        </button>
-
-        <p></p>
-        <button className="btn btn-success">
-          <a href="/AdminSignin" style={{ color: 'black' }}>Admin Sign In</a>
-        </button>
-<p></p>
-        <button className="btn btn-success">
-          <a href="/JudgeSignup" style={{ color: 'black' }}>Sign In as a judge</a>
-        </button>
+                <button className="btn btn-success">
+                    <a href="/CandidateSignup" style={{ color: 'black'}}>Register To A Event</a>
+                </button>
+                <p></p>
+                <button className="btn btn-success">
+                    <a href="/managerSignin" style={{ color: 'black' }}>Sign in as a manager</a>
+                </button>
+                <p></p>
+                <button className="btn btn-success">
+                    <a href="/AdminSignin" style={{ color: 'black' }}>Admin Sign In</a>
+                </button>
+                <p></p>
+                <button className="btn btn-success">
+                <a href="/JudgeSignup" style={{ color: 'black' }}>Sign In as a judge</a>
+                </button>
             </div>
                
 

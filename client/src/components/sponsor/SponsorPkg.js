@@ -1,77 +1,81 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function SponsorPkg() {
   return (
-
     <div>
-          <div>
-          <div>
-          <img
-            className="img-fluid"
-            src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="sponsseImg"
-          />
-        </div>
+      <div className="mb-4">
+        <img
+          className="img-fluid"
+          src="https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          alt="sponsseImg"
+        />
+      </div>
 
+      <div className="container">
+        <h2 className="text-center mb-4">Sponsorship Packages</h2>
+        <div className="row">
+          {/* Gold Sponsorship */}
+          <div className="col-md-4 mb-4">
+            <div className="card bg-warning text-dark rounded-4">
+              <div className="card-body">
+                <h5 className="card-title">Gold Sponsorship</h5>
+                <p className="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam.
+                </p>
 
-
-
-
+                <div>
+                  <Link to={"/Sponsorcreate"}>
+                    <button className="btn btn-primary px-3 border border-2">Buy</button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
 
+          {/* Silver Sponsorship */}
+          <div className="col-md-4 mb-4">
+            <div className="card bg-secondary text-white rounded-4">
+              <div className="card-body">
+                <h5 className="card-title">Silver Sponsorship</h5>
+                <p className="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam.
+                </p>
 
-
-
-
-    <div>
-            <div className="row p-4 m-2">
-              <div className="col-md-4 bg-dark rounded-4">
-                <div class="">
-                <p className="text-white">
-            I've wrapped the image and the text div inside a container div with
-            position-relative. The text div has position-absolute class to
-            position it absolutely within the container. top-0, start-0, and
-            translate-middle are Bootstrap utility classes to center the text
-            horizontally and place it at the top of the image. p-3 adds padding
-            to the text div. You can replace "Text on Top of Image" with the
-            desired text you want to display on the image.
-          </p>
-                </div>
-              </div>
-              <div className="col-md-4 bg-dark rounded-4" >
-                <div class="">
-                <p className="text-white">
-            I've wrapped the image and the text div inside a container div with
-            position-relative. The text div has position-absolute class to
-            position it absolutely within the container. top-0, start-0, and
-            translate-middle are Bootstrap utility classes to center the text
-            horizontally and place it at the top of the image. p-3 adds padding
-            to the text div. You can replace "Text on Top of Image" with the
-            desired text you want to display on the image.
-          </p>
-                </div>
-              </div>
-              <div className="col-md-4 bg-dark rounded-4">
-                <div class="">
-                <p className="text-white">
-            I've wrapped the image and the text div inside a container div with
-            position-relative. The text div has position-absolute class to
-            position it absolutely within the container. top-0, start-0, and
-            translate-middle are Bootstrap utility classes to center the text
-            horizontally and place it at the top of the image. p-3 adds padding
-            to the text div. You can replace "Text on Top of Image" with the
-            desired text you want to display on the image.
-          </p>
+                <div>
+                  <Link to={"/Sponsorcreate"}>
+                    <button className="btn btn-danger px-3 border border-2">Buy</button>
+                  </Link>
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Bronze Sponsorship */}
+          <div className="col-md-4 mb-4">
+            <div className="card bg-info text-white rounded-4">
+              <div className="card-body">
+                <h5 className="card-title">Bronze Sponsorship</h5>
+                <p className="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam.
+                </p>
+
+                <div>
+                  <Link to={"/Sponsorcreate"}>
+                    <button className="btn btn-warning px-3 border border-2">Buy</button>
+                  </Link>
+                </div>
+              </div>
             </div>
-            </div>
-
-
-
-
-
-    
-  )
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

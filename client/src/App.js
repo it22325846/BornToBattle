@@ -94,9 +94,15 @@ import TheStall from './components/Stall/stall_item/theStall';
 import ItemEdit from './components/Stall/stall_item/editItems';
 import UserStalls from './components/Stall/stall_item/stallPage';
 
+
 // #endregion
 
 //#region Dhananji
+import SponsorPage from './components/sponsor/SponsorPage';
+import SponsorPkg from './components/sponsor/SponsorPkg';
+import SponsorClaim from './components/sponsor/createSponosr';
+import ReadSponsor from './components/sponsor/readSponsor';
+import UpdateSponsor from './components/sponsor/updateSponsor';
 // #endregion
 
 //#region Vishmitha
@@ -218,15 +224,21 @@ function App() {
         <>{/* Nisitha registration routes */}
         <Route path="/createStaller" element={<StallReg />} />
         <Route path="/stallerprofile" element={<StallerProfile />} />
-        <Route path="/editStaller" element={<StallerEdit />} />
+        <Route path="/editStaller/:Stallerid" element={<StallerEdit />} />
 
         
         <Route path="/theStall" element={<TheStall />} />
-        <Route path="/editItems" element={<ItemEdit />} />
+        <Route path="/editItems/:Itemid" element={<ItemEdit />} />
         <Route path="/stalls" element={<UserStalls />} />
         </>
 
         <>{/* Dhananji registration routes */}
+        <Route path="/Sponsordashboard" element={<SponsorPage />} />
+        <Route path="/Sponsorpackage" element={<SponsorPkg />} />
+
+        <Route path="/Sponsorcreate" element={<SponsorClaim />} />
+        <Route path="/Sponsorread" element={<ReadSponsor />} />
+        <Route path="/Sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
         </>
 
         <>{/* Vishmitha registration routes */}
