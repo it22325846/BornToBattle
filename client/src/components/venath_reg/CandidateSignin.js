@@ -19,7 +19,7 @@ const SignIn = () => {
           localStorage.setItem('username', username); // Store username in session
           localStorage.setItem('userType', "candidate");//set session for user type
 
-          window.location.href = '/profile'; // Redirect to dashboard or another page
+          window.location.href = '/cprofile'; // Redirect to dashboard or another page
         } else {
           setError('Invalid username or password. Please try again.');
         }

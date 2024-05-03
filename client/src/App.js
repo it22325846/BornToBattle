@@ -259,7 +259,7 @@ function App() {
         <Route path="/addJudge" element={<CreateJudge />} />
 
 
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/cprofile" element={<UserProfile />} />
         <Route path="/judgeprofile" element={<JUserProfile />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/editpwd" element={<EditPassword />} />
