@@ -46,7 +46,7 @@ const Candidates = () => {
       title="YouTube Video"
       width="1920"
       height="615"
-      src={`https://www.youtube.com/embed/LUpwdAqMUP4`}
+      src={`https://www.youtube.com/embed/LUpwdAqMUP4?autoplay=1&mute=1`}
       frameBorder="0"
       allowFullScreen
     ></iframe>
@@ -145,7 +145,7 @@ const Candidates = () => {
       <br></br>
       <div className="row" >
         <div className="col-12 d-flex justify-content-center align-items-center">
-          <a href="/candidates/dancing">
+          <a href="/all_judges">
             <img
               src="venath_reg/j.jpg"
               className="img-fluid"

@@ -32,6 +32,11 @@ const judgeSchema =new mongoose.Schema({
         required: true
         
     },
+    email:{
+        type: String,
+        required: true
+        
+    },
     un:{
         type: String,
         required: true
@@ -41,11 +46,17 @@ const judgeSchema =new mongoose.Schema({
         type: String,
         required: true
     }
-    // ,
-    // photo: {
-    //     type: String,
-    //     required: true
-    // }
+    ,
+photo: {
+    data: {
+        type: Buffer,
+        default: Buffer.from('default_photo_data_in_base64_or_binary', 'base64') // Set default photo data as Buffer
+    },
+    contentType: {
+        type: String,
+        default: 'user/jpeg' // Default content type (replace with appropriate type)
+    }
+}
     
 });
 

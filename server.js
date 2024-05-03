@@ -61,8 +61,8 @@ app.use(A_signupRoutes);
 const audienceRouter = require("./routes/Thamindu_AudienceRoutes/audienceRoutes");
 app.use(audienceRouter);
 
-// const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
-// app.use(commentRouter);
+const AudienceManagerRoutes = require('./routes/Thamindu_AudienceRoutes/AudienceManagerRoutes');
+app.use(AudienceManagerRoutes);
 
 // const A_signupRoutes = require('./routes/Thamindu_AudienceRoutes/A_signupRoutes');
 // app.use(A_signupRoutes);
@@ -239,6 +239,9 @@ app.use("/requestform",requestForm);
 
 
 //dhananji line 234
+const sponsorRouter = require('./routes/sponsor/sponsorrouts')
+app.use(sponsorRouter)
+
 
 
 

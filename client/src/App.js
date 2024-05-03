@@ -6,7 +6,7 @@ import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
 import Home from './components/Common/Home';
 
-//#region Venath
+//#region Venath line 9 - 60
 import Candidates from './components/venath_reg/Candidates';
 import EventCandidates from './components/venath_reg/EventCandidates';
 import SubCategoryCandidates from './components/venath_reg/SubCategoryCandidates';
@@ -17,7 +17,7 @@ import EditJudge from './components/venath_reg/EditJudge';
 import CandidateDetails from './components/venath_reg/CandidateDetails';
 import AllCandidates from './components/venath_reg/AllCandidates';
 import AllGroups from './components/venath_reg/AllGroups';
-
+import JudgeDetails from './components/venath_reg/JudgeDetails'
 
 import Signup from './components/venath_reg/CandidateSignup';
 import CandidateSignup from './components/venath_reg/CandidateSignin';
@@ -43,13 +43,24 @@ import AdminSignin from './components/admin/AdminSignIn';
 import AdminSignup from './components/admin/AdminSignup';
 import AllJudges from './components/venath_reg/AllJudges';
 import AddManagers from './components/admin/AddManagers';
-// #endregion
-
 import ManagerSignin from './components/managers/ManagerSignin';
 
 
 
-//#region Gimhani
+
+
+
+
+
+
+
+
+
+
+// #endregion
+
+
+//#region Gimhani line 62 - 85
 
 import Events from './components/gimhani_event_management/Events';
 import CreateEvent from './components/gimhani_event_management/CreateEvent';
@@ -62,31 +73,77 @@ import EventCategoryDetails from './components/gimhani_event_management/EventCat
 import EditCategory from './components/gimhani_event_management/EditCategory';
 import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 import Schedule from './components/gimhani_event_management/Schedule';
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Lakruwan
+//#region Lakruwan line 87 - 102
 import FinalScore from './components/Score/FinalScore';
 import AddScore from './components/Score/AddScore';
 import UpdateScore from './components/Score/UpdateScore';
 import CandidateAddScore from './components/Score/CandidateAddScore';
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Thamindu
+//#region Thamindu line 104 - 124
 
 import A_SignIn from './components/Thamindu_AudienceComponents/SignIn';
 import A_SignUp from './components/Thamindu_AudienceComponents/Signup';
 import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile';
 import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' ;
 import Comment_main from './components/Thamindu_AudienceComponents/Comment_main';
-
-// #endregion
+import Manager_Audience from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Audience'
 import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
 
 
-//#region Naduni
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Nisitha
+//#region Naduni line 126 - 143
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #endregion
+
+//#region Nisitha line 145 - 164
 import StallReg from './components/Stall/stall_holder/stallerRegister';
 import StallerProfile from './components/Stall/stall_holder/stallerProfile';
 import StallerEdit from './components/Stall/stall_holder/stallerEdit';
@@ -95,17 +152,55 @@ import ItemEdit from './components/Stall/stall_item/editItems';
 import UserStalls from './components/Stall/stall_item/stallPage';
 
 
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Dhananji
+//#region Dhananji line 166 - 183
 import SponsorPage from './components/sponsor/SponsorPage';
 import SponsorPkg from './components/sponsor/SponsorPkg';
 import SponsorClaim from './components/sponsor/createSponosr';
 import ReadSponsor from './components/sponsor/readSponsor';
 import UpdateSponsor from './components/sponsor/updateSponsor';
+
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Vishmitha
+//#region Vishmitha line 185 -203
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
 // import NavBar from './components/Venath/NavBar';
@@ -129,8 +224,8 @@ function App() {
 
       <Routes>
         
-      <Route path="/" element={<Home />} />
-      {/* 
+        <Route path="/" element={<Home />} />
+        {/* 
       
         <Route path="/Signup" element={<Signup />} />
       
@@ -138,7 +233,7 @@ function App() {
         <Route path="/editpwd" element={<EditPassword />} />
         <Route path="/" element={<Candidates />} /> */}
 
-        <>{/* Venath registration routes */}
+        <>{/* Venath registration routes                    line 236 - 286*/}
         <Route path="/" element={<Home />} />
         <Route path="/candidates" element={<Candidates />} />
         <Route path="/candidates/:event" element={<EventCandidates />} />
@@ -154,7 +249,7 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/CandidateSignup" element={<CandidateSignup />} />
         <Route path="/JudgeSignup" element={<JudgeSignup />} />
-
+        <Route path="/Judge/:id" element={<JudgeDetails />} />
         
         <Route path="/regDash" element={<RegDash />} />
         <Route path="/judgeCount" element={<JudgeCount />} />
@@ -178,13 +273,23 @@ function App() {
 
         <Route path="/managerSignin" element={<ManagerSignin />} />
 
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Gimhani registration routes */}
+        <>{/* Gimhani registration routes                    line 288 - 318*/}
         <Route path="/e" element={<Events />} />
         <Route path="/addevent" element={<CreateEvent />} />
         <Route path="/editevent/:id" element={<EditEvent />} />
-      <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule" element={<Schedule />} />
       
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
        
@@ -200,28 +305,78 @@ function App() {
 
         <Route path="/eventd/:id" element={<EventDetails />} />
         <Route path="/cat/:id" element={<EventCategoryDetails />} />
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Lakruwan registration routes */}
+        <>{/* Lakruwan registration routes                    line 320 - 335*/}
         <Route path='/finalscoresheet' Component={FinalScore}/>
-      <Route path='/addscore' Component={AddScore}/>
-      <Route path='/updatescore' Component={UpdateScore}/>
-      <Route path='/candidateaddscore' Component={CandidateAddScore}/>
+        <Route path='/addscore' Component={AddScore}/>
+        <Route path='/updatescore' Component={UpdateScore}/>
+        <Route path='/candidateaddscore' Component={CandidateAddScore}/>
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Thamindu registration routes */}
+        <>{/* Thamindu registration routes                    line 337 - 354 */}
         <Route path="/A_signup" element={<A_SignUp />} />
         <Route path="/A_signin" element={<A_SignIn />} />
         <Route path="/A_profile" element={<A_UserProfile />} />
         <Route path="/edit/:username" element={<A_EditUserProfile />} />
         <Route path="/M_Comment_main" element={<M_Comment_main />} />
         <Route path="/contactus" element={<Comment_main />} />
+        <Route path="/Manager_Audience" element={<Manager_Audience />} />
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Naduni registration routes */}
+        <>{/* Naduni registration routes                   line 356 - 377 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Nisitha registration routes */}
+        <>{/* Nisitha registration routes                   line 379 - 398 */}
         <Route path="/createStaller" element={<StallReg />} />
         <Route path="/stallerprofile" element={<StallerProfile />} />
         <Route path="/editStaller/:Stallerid" element={<StallerEdit />} />
@@ -230,22 +385,62 @@ function App() {
         <Route path="/theStall" element={<TheStall />} />
         <Route path="/editItems/:Itemid" element={<ItemEdit />} />
         <Route path="/stalls" element={<UserStalls />} />
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Dhananji registration routes */}
+        <>{/* Dhananji registration routes                   line 400 - 417 */}
         <Route path="/Sponsordashboard" element={<SponsorPage />} />
         <Route path="/Sponsorpackage" element={<SponsorPkg />} />
 
         <Route path="/Sponsorcreate" element={<SponsorClaim />} />
         <Route path="/Sponsorread" element={<ReadSponsor />} />
         <Route path="/Sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Vishmitha registration routes */}
+        <>{/* Vishmitha registration routes                   line 419 - 440 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </>
 
          
-</Routes>
+      </Routes>
       <Footer />{}
     </Router>
   );

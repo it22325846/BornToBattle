@@ -10,7 +10,7 @@ function CreateGroup() {
     phoneNumber: '',
     category: 'Open', // Default category value
     username: localStorage.getItem('username') || '',
-    members: Array.from({ length: 2 }, () => ({
+    members: Array.from({ length: 8 }, () => ({
       name: '',
       age: '',
       gender: '',
