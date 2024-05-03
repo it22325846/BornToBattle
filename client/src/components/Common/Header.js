@@ -12,7 +12,7 @@ function Header() {
   const handleProfileClick = () => {
     switch (userType) {
       case "candidate":
-        navigate("/profile"); // Redirect to candidate.js
+        navigate("/cprofile"); // Redirect to candidate.js
         break;
       case "judge":
         navigate("/judgeprofile"); // Redirect to judge.js
