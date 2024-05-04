@@ -204,7 +204,7 @@ import UpdateSponsor from './components/sponsor/updateSponsor';
 // #endregion
 
 import Rules from './components/Common/Rules';
-// import Footer from './components/Venath/Footer'; // Import the NavBar component
+import Aboutus from './components/Common/AboutUs'; // Import the NavBar component
 // import Signup from './components/Venath/Signup';
 
 //  import Candidates from './components/venath_reg/CandidateSignup';
@@ -228,9 +228,9 @@ function App() {
          
       
         <Route path="/Rules" element={<Rules />} />
-      {/*
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/editpwd" element={<EditPassword />} />
+        <Route path="/Aboutus" element={<Aboutus />} />
+        
+        {/*<Route path="/editpwd" element={<EditPassword />} />
         <Route path="/" element={<Candidates />} /> */}
 
         <>{/* Venath registration routes                    line 236 - 286*/}
