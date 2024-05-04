@@ -13,6 +13,11 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
+    candidate: {
+      type: Schema.Types.ObjectId,
+      ref: 'Candidate', // Reference to the Candidate model
+      required: false
+    },
     create: {
       type: Date,
       default: Date.now,

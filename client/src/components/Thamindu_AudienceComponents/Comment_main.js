@@ -12,17 +12,6 @@ const MainComponent = () => {
   const [comments, setComments] = useState([]);
 
 
-//   const fetchComments = async () => {
-//     try {
-//       const response = await fetch('/comments');
-//       const data = await response.json();
-//       setComments(data);
-//     } catch (error) {
-//       console.error('Error fetching comments:', error);
-//     }
-//   };
-
-
 
   useEffect(() => {
     fetchComments();
