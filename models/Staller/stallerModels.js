@@ -65,7 +65,7 @@ const stallerSchema = new schema({
 })
 
 // Add a pre-save hook to validate the data before saving it to the database
-StallerSchemaValidation.pre('save', async function (next) {
+stallerSchema.pre('save', async function (next) {
     try {
         await StallerSchemaValidation.validate(this.toObject());
         next();

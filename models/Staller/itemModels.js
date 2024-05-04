@@ -8,7 +8,7 @@ const schema = mongoose.Schema;
 // Define a Yup schema for validation
 const ItemSchemaValidation = yup.object().shape({
     pName: yup.string().min(5).max(20).required(),
-    pPrice: yup.string().positive().lessthan(500).required(), 
+    pPrice: yup.number().required(), 
     pImage: yup.string().required(),
 });
 
@@ -30,7 +30,7 @@ const itemSchema = new schema({
 })
 
 // Add a pre-save hook to validate the data before saving it to the database
-ItemSchemaValidation.pre('save', async function(next) {
+itemSchema.pre('save', async function(next) {
     try {
         await ItemSchemaValidation.validate(this.toObject());
         next();
