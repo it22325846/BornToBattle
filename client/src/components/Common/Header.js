@@ -14,6 +14,9 @@ function Header() {
       case "candidate":
         navigate("/cprofile"); // Redirect to candidate.js
         break;
+        case "group":
+          navigate("/groupprofile"); // newly addedddddd
+          break;
       case "judge":
         navigate("/judgeprofile"); // Redirect to judge.js
         break;

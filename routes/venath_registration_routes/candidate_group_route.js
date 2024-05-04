@@ -3,7 +3,7 @@ const router = express.Router();
 const Group = require("../../models/venath_registration_models/candidate_group_model"); // Import your Group model
 
 // Route to create a new group
-router.post('/groups', (req, res) => {
+router.post('/group/save', (req, res) => {
     
       const groupData =new Group( req.body); // Get group data from request body
     //   const newGroup = await Group.create(groupData); // Create a new group document
@@ -48,7 +48,7 @@ router.post('/groups', (req, res) => {
   });
   
   // Route to update a group by ID
-  router.put('/groups/:id', async (req, res) => {
+  router.put('/updategroups/:id', async (req, res) => {
     try {
       const groupId = req.params.id;
       const updatedGroupData = req.body; // Get updated group data from request body
@@ -75,5 +75,30 @@ router.post('/groups', (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
+
+  router.get("/group/username/:username", (req, res) => {
+    let username = req.params.username;
+
+    Group.findOne({ username: username })
+        .then(group => {
+            if (!group) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'group not found'
+                });
+            }
+
+            return res.status(200).json({
+                success: true,
+                group
+            });
+        })
+        .catch(err => {
+            return res.status(400).json({
+                success: false,
+                error: err
+            });
+        });
+});
   
   module.exports = router;

@@ -20,6 +20,7 @@ const UserProfile = () => {
   }, []);
 
   useEffect(() => {
+    console.log("user is", username)
     const fetchCandidateData = async () => {
       try {
         const response = await axios.get(`/candidate/username/${encodeURIComponent(username)}`);
@@ -32,6 +33,7 @@ const UserProfile = () => {
         }
           setProfilePhoto(photoUrl); // Set profile photo from fetched data
         } else {
+          
           console.error('Failed to fetch candidate data');
         }
       } catch (error) {
@@ -43,6 +45,12 @@ const UserProfile = () => {
 
     fetchCandidateData();
   }, [username]);
+
+  useEffect(() => {
+    if (!candidate.name) {
+      window.location.href = '/groupprofile'; // Redirect to groupprofile if fetched user has no name.
+    }
+  }, [candidate.name]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -156,8 +164,14 @@ const UserProfile = () => {
               // Show upload button when no new photo is selected
               <label htmlFor="profilePhotoInput" className="btn btn-warning">Upload a profile photo</label>
             )}
+            
           </div>
         </div>
+        {/* <button className="btn btn-info" onClick={() => window.location.href = "/groupprofile"}>
+        View Group Profile
+</button> */}
+
+
       </div>
     </div>
   );
