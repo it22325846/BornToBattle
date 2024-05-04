@@ -1,11 +1,12 @@
 .all_rules {
     background-image: url('../../../public/Images/red_and_black.jpg');
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.347) , rgba(255, 0, 0, 0.356));
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-
-    border: 2px solid #000000; 
+    
+    border: 2px solid #ff0000; 
     border-radius: 10px; 
     height: auto;
     width: auto;
@@ -19,6 +20,7 @@
     border-radius: 10px;
     color: rgb(0, 0, 0);
     background-color: rgba(255, 255, 255, 0.551);
+    /* background-image: linear-gradient(to right, rgba(0, 0, 0, 0.648) , rgba(255, 0, 0, 0.616)); */
     padding: 50px;
     margin: 50px;
     margin-left: 100px;
@@ -28,11 +30,11 @@
     height: auto;
 }
 #Rt {
-    font-size: 80px;
+    font-size: 70px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-shadow: 2px 2px 2px rgb(96, 14, 14);
-    text-decoration: underline;
+    text-decoration: underline dashed;
 }
 .Rules_box {
     border: 2px solid rgb(113, 14, 14);

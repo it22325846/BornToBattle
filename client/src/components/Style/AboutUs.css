@@ -1,13 +1,29 @@
+.layout0 {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.648) , rgba(255, 0, 0, 0.616));
+    text-align: center;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 30px 50px;
+    border-radius: 20px
+}
+.topic1 {
+    color: rgb(255, 244, 244);
+    font-style: italic;
+    font-size: 50px;
+    text-decoration: overline dashed;
+}
 .layout1 {
     border: 2px solid white;
     border-radius: 20px;
     padding-left: 50px;
     padding-right: 50px;
-    /* padding-top: 50px; */
-    /* padding-bottom: 50px; */
+    padding-top: 20px;
+    padding-bottom: 10px;
     margin: 50px 130px;
+    height: auto;
     /* background-image: url(../../../public/Images/red_and_black.jpg); */
-    
 }
 .layout2 {
     border: 2px solid white;
@@ -17,35 +33,36 @@
     /* padding-bottom: 50px; */
     margin: 50px 130px;
     background-image: url(../../../public/Images/red_and_black.jpg);
-    
+    /* background-image: linear-gradient(to left, rgb(0, 0, 0) , rgba(255, 0, 0, 0)); */
 }
 .Organizers {
     color: white;
     font-size: 25px;
     font-style: italic;
     font-weight: bold;
-    
     text-align: left;
 }
 .img_ids {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
-    margin-top: 50px;
-    background-image: url(../../../public/Images/red_and_black.jpg);
+    /* margin-top: 50px; */
+    /* background-image: url(../../../public/Images/red_and_black.jpg); */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.648) , rgba(255, 0, 0, 0.333));
     background-size: cover;
     background-position: unset;
     background-repeat: no-repeat;
     width: 600px;
-    height: auto;
+    height: 420px;
 }
 .img_org {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 20px;
-    margin-top: 50px;
     background-image: url(../../../public/Images/red_and_black.jpg);
     /* background-size: cover; */
     /* background-position: unset; */
     /* background-repeat: no-repeat; */
     width: auto;
-    height: auto;
+    height: 420px;
+    /* margin-top: 50px; */
+    margin-left: 50px;
 }
