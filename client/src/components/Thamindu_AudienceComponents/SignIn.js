@@ -12,26 +12,22 @@ const SignIn = () => {
       console.log("Username:", username);
       console.log("Password:", password);
   
-      if (username === "admin" && password === "admin") {
-        localStorage.setItem('username', username);
-        window.location.href = '/admin';               // admin location
-
-      } else {
-
+      
         const response = await axios.post('/api/A_signin', { username, password });
         console.log("Response from server:", response.data);
   
         if (response.data.success) {
           // Sign-in successful
-          localStorage.setItem('username', username); // Store username in session
-          window.location.href = '/A_profile';                // Redirect to dashboard
+          localStorage.setItem('username', username);         // Store username in session
+          localStorage.setItem('userType', "audience")
+          window.location.href = '/';                // Redirect to dashboard
 
         } else {
           setError('Invalid username or password. Please try again.');
           // alert("You don't have an account");
         }
 
-      }
+      
     } catch (error) {
       setError('Error in sign-in. Please try again.');
       console.error("Error in sign-in:", error);

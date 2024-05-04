@@ -1,6 +1,6 @@
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import './Style/Comment_form.css';
@@ -8,7 +8,26 @@ import './Style/Comment_form.css';
 const CommentForm = ({ onAddComment }) => {
 
   const [comment, setComment] = useState('');
-  
+  const [selectedCandidate, setSelectedCandidate] = useState('');
+  const [candidates, setCandidates] = useState([]);
+
+  useEffect(() => {
+    fetchCandidates();
+  }, []);
+
+  const fetchCandidates = async () => {
+    try {
+      const response = await axios.get('/candidates');
+    console.log('Candidates response:', response.data); // Log response data
+    if (response.data.success && Array.isArray(response.data.existingCandidates)) {
+      setCandidates(response.data.existingCandidates);
+    } else {
+      console.error('Invalid candidates data:', response.data);
+    }
+    } catch (error) {
+      console.error('Error fetching candidates:', error);
+    }
+  };//////////////////////////////
 
 
   const handleSubmit = async (event) => {
@@ -16,28 +35,24 @@ const CommentForm = ({ onAddComment }) => {
     try {
 
       const username = localStorage.getItem('username');
+
       const response = await axios.post('/comments', {
         comment,
-        username
+        username,
+        candidateId: selectedCandidate || null // Include selected candidate in the comment data
       });
+
       onAddComment(response.data);
       setComment('');
+      setSelectedCandidate('');///////////
+
+
     } catch (error) {
       console.error('Error adding comment:', error);
       alert("You don't have an account");
       window.location.href = '/A_signin';
     }
   };
-
-
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     onSubmit({ comment, username });
-//     setComment('');
-//   };
-
-
-
 
   
   return (
@@ -51,6 +66,16 @@ const CommentForm = ({ onAddComment }) => {
         onChange={(e) => setComment(e.target.value)} 
         required 
       />
+      <select
+        value={selectedCandidate}
+        onChange={(e) => setSelectedCandidate(e.target.value)}
+        className='candidate_dropdown'
+      >
+        <option value="">Select a candidate</option>
+        {candidates.map(candidate => (
+          <option key={candidate._id} value={candidate._id}>{candidate.name}</option>
+        ))}
+      </select>
 
       <button type="submit" className='btn-submit'>
         Submit

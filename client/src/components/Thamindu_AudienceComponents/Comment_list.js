@@ -61,7 +61,14 @@ const CommentList = ({ comments, onDelete, onEdit }) => {
                 <li className='li-list' key={comment._id}>
 
                 <div >
-                    {/* <span className='username' >{comment.username}: </span> */}
+                    {/* Displaying the candidate name */}
+                    {/* <span className='candidate-name'>{comment.candidate ? comment.candidate.name + ': ' : ''}</span> */}
+                    {/* Displaying the candidate name if available */}
+                    {/* {comment.candidate && (
+                        <span className='candidate-name'>{comment.candidate.name}: </span>
+                    )} */}
+                    
+                    {/* Display the comment */}
                     <span className='comment' >
                         {editedComment.id === comment._id ? (
                             <textarea
@@ -71,7 +78,10 @@ const CommentList = ({ comments, onDelete, onEdit }) => {
                                 onChange={e => setEditedComment({ id: comment._id, text: e.target.value })}
                                 required
                             />
-                        ) : comment.comments}
+                        ) : comment.comments  }
+                        {comment.candidate && (
+                            <span className='candidate-name'>:{comment.candidate.name} </span>
+                        )}
                     </span>
                         
                     <span className='username' >

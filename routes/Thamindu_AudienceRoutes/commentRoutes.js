@@ -89,67 +89,26 @@ const router = express.Router();
 const fs = require('fs'); // for file system operations
 const path = require('path');
 const Comment = require('../../models/Thamindu_Audience/comments');
+const Candidate = require('../../models/venath_registration_models/candidates');
+
 
 //http://localhost:8020/comments
-
-
-
-// Directory => storing reports
-const reportsDirectory = path.join(__dirname, 'reports');
-
-
-
-if (!fs.existsSync(reportsDirectory)) {              // Check if 'reports' directory exists
-  fs.mkdirSync(reportsDirectory);
-}
-
-
-// generating reports => admin manager => still checking 
-router.get('/generate-report', async (req, res) => {
-  try {
-
-    const comments = await Comment.find();
-    const reportData = comments.map(comment => `${comment.username}: ${comment.comments}`).join('\n');
-
-    // Generate => unique file name 
-    const timestamp = Date.now();
-    // const fileName = `report_${timestamp}.txt`;
-    const fileName = `report_.txt`;
-
-    const filePath = path.join(reportsDirectory, fileName);
-
-    // const filePath = path.join(__dirname, 'reports', fileName); // Assuming 'reports' directory exists
-
-
-    fs.writeFileSync(filePath, reportData);
-
-    res.setHeader('Content-Type', 'text/plain');
-    res.setHeader('Content-Disposition', `attachment; filename=${fileName}`);
-
-    // Stream the file to the response
-    const fileStream = fs.createReadStream(filePath);
-    fileStream.pipe(res);
-
-    res.status(200).json({ message: 'Report generated successfully.', filePath: 'report.txt' });
-
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Failed to generate report.' });
-  }
-});
 
 
 
 // Add a comment
 router.post('/comments', async (req, res) => {
   try {
-    const { comment, username } = req.body;
-    const newComment = new Comment({ comments: comment, username });
-
-    // const newComment = new Comment({ comment, username });
+    const { comment, username, candidateId } = req.body;///////////////////
+    const newComment = new Comment({ 
+      comments: comment, 
+      username, 
+      candidate: candidateId///////////////////////////
+    });
 
     await newComment.save();
     res.status(201).json(newComment);
+    
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -159,7 +118,9 @@ router.post('/comments', async (req, res) => {
 // Display comments
 router.get('/comments', async (req, res) => {
   try {
-    const comments = await Comment.find();
+    // const comments = await Comment.find();
+    const comments = await Comment.find().populate('candidate', 'name');              // Populate the 'candidate' field with the 'name'
+
     res.json(comments);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -201,6 +162,17 @@ router.delete('/comments/:id', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
+
+
+router.get('/candidates', async(req, res) => {
+  try {
+    const candidates = await Candidate.find({}, 'name'); // Fetch only the 'name' field
+    res.json(candidates);
+
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch candidates' });
+  }
+})
 
 
 

@@ -19,7 +19,7 @@ function Header() {
         break;
       
         case "audience":
-          navigate("/#"); // Redirect to judge.js
+          navigate("/A_profile"); // Redirect to audience profiles
           break;
 
         case "sponsor":
@@ -62,24 +62,24 @@ function Header() {
 
       <span className="separator">|</span>
 
-<li className="nav-item">
-  <a className="nav-link" href="all_judges">
-    JUDGES
-  </a>
-</li>
-
-<span className="separator">|</span>
-
-<li className="nav-item">
-  <a className="nav-link" href="candidates">
-    CONTESTANTS
-  </a>
-</li>
+      <li className="nav-item">
+        <a className="nav-link" href="all_judges">
+          JUDGES
+        </a>
+      </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="rules">
+        <a className="nav-link" href="candidates">
+          CONTESTANTS
+        </a>
+      </li>
+
+      <span className="separator">|</span>
+
+      <li className="nav-item">
+        <a className="nav-link" href="/Rules">
           RULES
         </a>
       </li>
@@ -146,7 +146,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="contactus">
+        <a className="nav-link" href="Comment_main">
           CONTACT US
         </a>
       </li>
