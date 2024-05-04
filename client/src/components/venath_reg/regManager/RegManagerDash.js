@@ -137,6 +137,15 @@ const RegDash =()=>{
       };
       
       const handleGenerateReportJudges = () => {
+
+    // Generate CSV content
+    const csvContent = generateCSV(judges);
+
+    // Download CSV file
+    downloadCSV(csvContent, 'judges_report.csv');
+
+
+
         // Check if candidates is an array
         if (!Array.isArray(judges)) {
           console.error('Candidates is not an array');
@@ -207,12 +216,24 @@ const RegDash =()=>{
         reportWindow.document.write(printableContent);
         reportWindow.document.close();
       };
+      const generateCSV = (data) => {
+        const header = 'Event Category, Event Name, Individual/Group, Gender, Age Category, Time\n';
+        const rows = data.map(judges => `${judges.name}, ${judges.username}, ${judges.phoneNumber}, ${judges.email}`);
+        return header + rows.join('\n');
+      };
+      const downloadCSV = (content, filename) => {
+        const blob = new Blob([content], { type: 'text/csv' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+      };
 
       return (
         <div>
           <style>{'body { background-color: #A2A2A2; }'}</style>
           <h3><a href="/managercandidates/dancing">Dancing All Candidates</a></h3><br></br>
-          {/* <h3><a href="/managercandidates/rap">Rap All Candidates</a></h3><br></br> */}
+          <h3><a href="/editGroups">Dancing All Groups</a></h3><br></br>
           <h3><a href="/managercandidates/beatbox">BeatBox All Candidates</a></h3>
     
           

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function AllGroups() {
+function ManagerEditRoute() {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
@@ -20,9 +20,16 @@ function AllGroups() {
       });
   };
 
-  const onDelete = (id) => {
-    axios.delete(`/group/delete/${id}`)
+  const onDelete = (id, username) => {
+    axios.delete(`/groups/${id}`)
       .then((res) => {
+        axios.delete(`/signup/delete/${username}`).then((res) => {
+            console.log("usernameeeee", username);
+             window.alert("Deleted");
+            window.location.href = "/editGroups";
+          });
+       
+
         alert("Group deleted");
         retrieveGroups(); // Refresh groups after deletion
       })
@@ -71,14 +78,14 @@ function AllGroups() {
               <td>{group.category}</td>
               <td>{group.phoneNumber}</td>
               <td>{renderMemberNames(group.members)}</td>
-              {/* <td>
-                <button className="btn btn-primary" onClick={() => alert(`Edit group: ${group._id}`)}>
-                  Edit
-                </button>
-                <button className="btn btn-danger ml-2" onClick={() => onDelete(group._id)}>
+              <td>
+              <a className="btn btn-warning" href={`/gedit/${group._id}`}>
+                    <i className="fas fa-edit"></i>&nbsp;Edit
+                  </a>
+                <button className="btn btn-danger ml-2" onClick={() => onDelete(group._id, group.username)}>
                   Delete
                 </button>
-              </td> */}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -87,4 +94,4 @@ function AllGroups() {
   );
 }
 
-export default AllGroups;
+export default ManagerEditRoute;

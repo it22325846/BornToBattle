@@ -67,8 +67,10 @@ const A_UserProfile = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem('username');
+        localStorage.removeItem('userType');
+        alert("Signed Out");
         window.location.href = '/';
-      };
+    };
 
 
 

@@ -66,6 +66,15 @@ export default function EditEvent() {
     });
   };
 
+  const inputStyle = {
+    width: '100%', // Full width
+    padding: '6px', // Padding around text
+    fontSize: '16px', // Font size
+    marginBottom: '15px', // Spacing between inputs
+    boxSizing: 'border-box', // Include padding in width calculation
+    borderRadius: '5px', // Rounded corners
+  };
+
   return (
     <div className="container mt-5" style={{border: '2px solid black', padding: '20px',backgroundColor: 'gray',  maxWidth: '600px'}}>
        {/* <div className="card-header text-white bg-danger"> */}
@@ -85,6 +94,7 @@ export default function EditEvent() {
             onChange={HandleInputChange}
             id="topic"
             name="topic"
+            style={inputStyle}
           
           />
         </div>
@@ -99,6 +109,7 @@ export default function EditEvent() {
             onChange={HandleInputChange}
             id="type"
             name="type"
+            style={inputStyle}
           >
             <option value="individual">Individual</option>
             <option value="group">Group</option>
@@ -115,6 +126,7 @@ export default function EditEvent() {
             onChange={HandleInputChange}
             id="gender"
             name="gender"
+            style={inputStyle}
           >
             <option value="">Select Gender</option>
             <option value="male">Male</option>
@@ -133,6 +145,7 @@ export default function EditEvent() {
               onChange={HandleInputChange}
               id="ageGroup"
               name="ageGroup"
+              style={inputStyle}
             >
               <option value="">Select Age Category</option>
               <option value="under18">Under 18</option>
@@ -146,13 +159,14 @@ export default function EditEvent() {
               Time
             </label>
             <input
-              type="text"
+              type="time"
               className="form-control"
               placeholder="Enter Time"
               value={event.time}
               onChange={HandleInputChange}
               id="time"
               name="time"
+              style={inputStyle}
             ></input>
           </div>
 

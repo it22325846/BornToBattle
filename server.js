@@ -37,7 +37,6 @@ app.use(judgeRouter);
 const managerRouter = require('./routes/managers/managers_route');
 app.use(managerRouter);
 
-
 const adminRouter = require('./routes/admin/admin_route');
 app.use(adminRouter);
 
@@ -51,6 +50,7 @@ const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_
  app.use(candidateGroupRouter);
 
 
+ 
 //thamindu line 54
 const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
 app.use(commentRouter);
@@ -141,8 +141,6 @@ app.use(stallItems)
 
 
 
-
-
 //lakruwan line 144
 
 
@@ -180,11 +178,6 @@ app.use("/media",mediaRouter);
 
 const requestForm = require("./routes/Media/mediaRequestForm");
 app.use("/requestform",requestForm);
-
-
-
-
-
 
 
 

@@ -21,7 +21,7 @@
     height: 100px;
     border: 2px solid #000;
     border-radius: 10px; 
-    margin-left: 100px;
+    /* margin-left: 100px; */
     margin-right: 5px;
 }
 .btn-submit {
@@ -30,7 +30,7 @@
     /* border: 2px solid #000; */
     border: 2px solid #ff0000;
     border-radius: 8px; 
-    margin-right: 100px;
+    /* margin-right: 80px; */
     padding: 5px 20px;
     font-size: 14px;
     font-weight: bold;
@@ -39,4 +39,7 @@
 .btn-submit:hover {
     background-color: #ff0000;
     border: 2px solid #000000;
+}
+.candidate_dropdown {
+    width: 200px;
 }

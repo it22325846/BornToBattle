@@ -12,7 +12,7 @@ const SignUp = () => {
     const existingUsername = localStorage.getItem('username');
     if (existingUsername) {
       alert("You are already signed in");
-      window.location.href = '/profile';
+      window.location.href = '/cprofile';
     }
   }, []);
 
@@ -33,6 +33,8 @@ const SignUp = () => {
         alert('Sign-up successful!');
         
         localStorage.setItem('username', username);//session
+        localStorage.setItem('userType', "candidate");//set session for user type
+
         window.location.href = '/addc';
 
       } catch (error) {
