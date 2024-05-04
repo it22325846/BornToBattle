@@ -1,3 +1,4 @@
+//creaetevents
 // import React, { useState, useEffect  } from 'react';
 // import axios from 'axios';
 
@@ -390,85 +391,59 @@ const CreateEvent = () => {
       [name]: value,
     });
   
-    // Handle specific logic based on category selection
-    if (name === 'category' && value === 'Beatbox') {
-      // Set type to 'individual' and disable type selection for 'Beatbox' category
-      setFormData({
-        ...formData,
-        type: 'individual', // Lock type to 'individual'
-      });
-    }
-
-    if (name === 'time') {
-      const timeRegex = /^(?:[01]\d|2[0-3]):(?:[0-5]\d)$/; // Regular expression for (HH:mm) format
-      if (!timeRegex.test(value)) {
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          time: 'Please enter a valid time in the format HH:mm',
-        }));
-      } else {
-        setErrors(prevErrors => ({
-          ...prevErrors,
-          time: '', // Clear the error message if format is valid
-        }));
-      }
-    }
-
-    
+    // Clear the error message for the current input field
+    setErrors({
+      ...errors,
+      [name]: '', // Clear the error message for the current field
+    });
+  
+    // // Handle specific logic based on category selection
+    // if (name === 'category' && value === 'Beatbox') {
+    //   // Set type to 'individual' and disable type selection for 'Beatbox' category
+    //   setFormData({
+    //     ...formData,
+    //     type: 'individual', // Lock type to 'individual'
+    //   });
+    // }
+  
+    // if (name === 'time') {
+    //   const timeRegex = /^(?:[01]\d|2[0-3]):(?:[0-5]\d)$/; // Regular expression for (HH:mm) format
+    //   if (!timeRegex.test(value)) {
+    //     setErrors(prevErrors => ({
+    //       ...prevErrors,
+    //       time: 'Please enter a valid time in the format HH:mm',
+    //     }));
+    //   } else {
+    //     setErrors(prevErrors => ({
+    //       ...prevErrors,
+    //       time: '', // Clear the error message if format is valid
+    //     }));
+    //   }
+    // }
   };
   
-
-  // const handleInputChange = (e) => {
-  //   const { name, value } = e.target;
-
-  //   // Update form data
-  //   setFormData({
-  //     ...formData,
-  //     [name]: value,
-  //   });
-
-  //   // Handle specific logic based on category selection
-  //   if (name === 'category') {
-  //     if (value === 'Beatbox') {
-  //       // Set type to 'individual' if category is 'beatbox'
-  //       setFormData({
-  //         ...formData,
-  //         type: 'individual',
-  //         gender: 'Open',
-  //         ageGroup: 'Open',
-  //       });
-  //     } else {
-  //       // Reset type if category is not 'beatbox'
-  //       setFormData({
-  //         ...formData,
-  //         type: '', // Reset type to default (empty)
-  //       });
-  //     }
-  //   }
-  // };
-
   const onSubmit = async (e) => {
     e.preventDefault();
-
-     // Perform form validation
-     const validationErrors = {};
-     if (!formData.topic) {
-       validationErrors.topic = 'Event name is required';
-     }
-     if (!formData.type) {
-       validationErrors.type = 'Please select Individual/Group';
-     }
-     if (!formData.gender) {
-       validationErrors.gender = 'Please select Gender';
-     }
-     if (!formData.ageGroup) {
-       validationErrors.ageGroup = 'Please select Age Category';
-     }
-     if (!formData.time) {
-       validationErrors.time = 'Event time is required';
-     }
-
-     try {
+  
+    // Perform form validation
+    const validationErrors = {};
+    if (!formData.topic) {
+      validationErrors.topic = 'Event name is required';
+    }
+    if (!formData.type) {
+      validationErrors.type = 'Please select Individual/Group';
+    }
+    if (!formData.gender) {
+      validationErrors.gender = 'Please select Gender';
+    }
+    if (!formData.ageGroup) {
+      validationErrors.ageGroup = 'Please select Age Category';
+    }
+    if (!formData.time) {
+      validationErrors.time = 'Event time is required';
+    }
+  
+    try {
       // Check if the entered time already exists in the database
       const response = await axios.get('http://localhost:8020/events');
       const existingEvents = response.data.existingEvents;
@@ -483,14 +458,13 @@ const CreateEvent = () => {
     }
   
     setErrors(validationErrors);
-
-      // Check if there are any validation errors
-      if (Object.keys(validationErrors).length > 0) {
-        alert("Select a different time");
-        return; // Stop submission if there are validation errors
-      }
- 
-
+  
+    // Check if there are any validation errors
+    if (Object.keys(validationErrors).length > 0) {
+      alert("Select a different time");
+      return; // Stop submission if there are validation errors
+    }
+  
     try {
       const response = await axios.post('http://localhost:8020/event/save', formData);
       if (response.data.success) {
@@ -500,8 +474,11 @@ const CreateEvent = () => {
           gender: '',
           ageGroup: '',
           time: '',
-
+          
         });
+        console.log('time is set');
+        // Clear all errors after successful submission
+        setErrors({});
         alert("Event created successfully");
         // Redirect to events page after successful submission
         window.location.href = '/e';
@@ -513,6 +490,7 @@ const CreateEvent = () => {
       alert("Failed to create event. Please try again.");
     }
   };
+  
 
   const containerStyle = {
     border: '2px solid black',
@@ -594,7 +572,7 @@ const CreateEvent = () => {
             onChange={handleInputChange}
             id="type"
             name="type"
-            disabled={formData.category === 'Beatbox'}
+            // disabled={formData.category === 'Beatbox'}
             style={inputStyle}
           >
             <option value="">Select Type</option>
@@ -674,6 +652,7 @@ const CreateEvent = () => {
             name="time"
             required
           />
+          
         </div>
 
         
