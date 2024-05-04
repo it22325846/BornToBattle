@@ -233,7 +233,7 @@ const RegDash =()=>{
         <div>
           <style>{'body { background-color: #A2A2A2; }'}</style>
           <h3><a href="/managercandidates/dancing">Dancing All Candidates</a></h3><br></br>
-          {/* <h3><a href="/managercandidates/rap">Rap All Candidates</a></h3><br></br> */}
+          <h3><a href="/editGroups">Dancing All Groups</a></h3><br></br>
           <h3><a href="/managercandidates/beatbox">BeatBox All Candidates</a></h3>
     
           

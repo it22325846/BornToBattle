@@ -18,12 +18,14 @@ import CandidateDetails from './components/venath_reg/CandidateDetails';
 import AllCandidates from './components/venath_reg/AllCandidates';
 import AllGroups from './components/venath_reg/AllGroups';
 import JudgeDetails from './components/venath_reg/JudgeDetails'
+import EditGroup from './components/venath_reg/EditGroup' 
 
 import Signup from './components/venath_reg/CandidateSignup';
 import CandidateSignup from './components/venath_reg/CandidateSignin';
 import JudgeSignup from './components/venath_reg/JudgeSignup';
 import UserProfile from './components/venath_reg/CandidateUserProfile';
 import JUserProfile from './components/venath_reg/JudgeUserProfile';
+import GroupUserProfile from './components/venath_reg/GroupUserProfile';
 
 import SignIn from './components/venath_reg/SignIn';
 import EditPassword from './components/venath_reg/EditPassword';
@@ -34,7 +36,7 @@ import ManagerEventCandidates from './components/venath_reg/regManager/ManagerEv
 import ManagerEditAll from './components/venath_reg/regManager/ManagerEditAll';
 import EditJudges from './components/venath_reg/regManager/ManagerEditJudges';
 import CreateJudge from './components/venath_reg/regManager/CreateJudge';
-
+import ManagerEditGroup from './components/venath_reg/regManager/ManagerEditGroups';
 
 
 //admin
@@ -55,10 +57,7 @@ import ManagerSignin from './components/managers/ManagerSignin';
 
 
 
-
-
 // #endregion
-
 
 //#region Gimhani line 62 - 85
 
@@ -233,6 +232,7 @@ function App() {
         <Route path="/editpwd" element={<EditPassword />} />
         <Route path="/" element={<Candidates />} /> */}
 
+
         <>{/* Venath registration routes                    line 236 - 286*/}
         <Route path="/" element={<Home />} />
         <Route path="/candidates" element={<Candidates />} />
@@ -250,16 +250,18 @@ function App() {
         <Route path="/CandidateSignup" element={<CandidateSignup />} />
         <Route path="/JudgeSignup" element={<JudgeSignup />} />
         <Route path="/Judge/:id" element={<JudgeDetails />} />
-        
+        <Route path="/gedit/:id" element={<EditGroup />} />
+
         <Route path="/regDash" element={<RegDash />} />
         <Route path="/judgeCount" element={<JudgeCount />} />
         <Route path="/managercandidates/:event" element={<ManagerEventCandidates />} />
         <Route path="/editcandidates" element={<ManagerEditAll />} />
         <Route path="/editJudges" element={<EditJudges />} />
         <Route path="/addJudge" element={<CreateJudge />} />
-
+        <Route path="/editGroups" element={<ManagerEditGroup />} /> 
 
         <Route path="/cprofile" element={<UserProfile />} />
+        <Route path="/groupprofile" element={<GroupUserProfile />} />
         <Route path="/judgeprofile" element={<JUserProfile />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/editpwd" element={<EditPassword />} />
@@ -272,8 +274,6 @@ function App() {
         <Route path="/user/:userName/:id" component={UserProfile} />
 
         <Route path="/managerSignin" element={<ManagerSignin />} />
-
-
 
 
 

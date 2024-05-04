@@ -83,7 +83,7 @@ const AdminEditAll = () => {
           />
           <button className="btn btn-success" type="button">Search</button>
         </form>
-        <p style={{ color: 'white' }}>Student details</p>
+        <p style={{ color: 'white' }}>Candidate details</p>
         <table className="table" style={{ color: 'white' }}>
           <thead>
             <tr>

@@ -67,7 +67,7 @@ const AdminEventCandidates = () => {
             Search
           </button>
         </form>
-        <p>Student details</p>
+        <h3 style={{ color: 'white' }}>Candidate details</h3>
         <table className="table">
           <thead>
             <tr>
@@ -108,12 +108,12 @@ const AdminEventCandidates = () => {
             ))}
           </tbody>
         </table>
-
+{/* 
         <button className="btn btn-success">
           <Link to="/add" style={{ color: 'black' }}>
             Create New Student
           </Link>
-        </button>
+        </button> */}
       </div>
     </div>
   );
