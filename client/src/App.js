@@ -203,7 +203,7 @@ import UpdateSponsor from './components/sponsor/updateSponsor';
 
 // #endregion
 
-// import NavBar from './components/Venath/NavBar';
+import Rules from './components/Common/Rules';
 // import Footer from './components/Venath/Footer'; // Import the NavBar component
 // import Signup from './components/Venath/Signup';
 
@@ -225,10 +225,10 @@ function App() {
       <Routes>
         
         <Route path="/" element={<Home />} />
-        {/* 
+         
       
-        <Route path="/Signup" element={<Signup />} />
-      
+        <Route path="/Rules" element={<Rules />} />
+      {/*
         <Route path="/signin" element={<SignIn />} />
         <Route path="/editpwd" element={<EditPassword />} />
         <Route path="/" element={<Candidates />} /> */}
@@ -340,7 +340,7 @@ function App() {
         <Route path="/A_profile" element={<A_UserProfile />} />
         <Route path="/edit/:username" element={<A_EditUserProfile />} />
         <Route path="/M_Comment_main" element={<M_Comment_main />} />
-        <Route path="/contactus" element={<Comment_main />} />
+        <Route path="/Comment_main" element={<Comment_main />} />
         <Route path="/Manager_Audience" element={<Manager_Audience />} />
 
 
