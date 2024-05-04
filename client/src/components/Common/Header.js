@@ -150,7 +150,7 @@ function Header() {
 
       <li className="nav-item">
         <a className="nav-link" href="Comment_main">
-          CONTACT US
+          COMMENTS & FEEDBACK
         </a>
       </li>
       {userType && (

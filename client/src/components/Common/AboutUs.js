@@ -1,6 +1,5 @@
 import React from 'react';
 import "../Style/AboutUs.css";
-// import "../../../public/Images/ids.png"
 
 
 export default function AboutUs(){
@@ -8,9 +7,9 @@ export default function AboutUs(){
         <div className="img1">
             
 
-            <div className="overlay2">
+            <div className="layout0">
                 <h1 className="intro">2024 Srilanka Dance Championship.</h1>
-                <h1 className="date">July 24 - September 25</h1>
+                <h1 className="topic1">Born To Battle</h1>
                 
                 <div className="layout1">
                     <img 
@@ -23,6 +22,9 @@ export default function AboutUs(){
                         src="../../Images/Dileepa_Ariyarathna.jpg" 
                         alt="Dileepa Ariyarathna" 
                     />
+                    <p style={{color:'white', fontWeight:'bold', textAlign:'right', marginRight:'210px'}}>
+                        Dileepa_Ariyarathna
+                    </p>
                 </div>
 
                 <div className="layout2">

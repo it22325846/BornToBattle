@@ -15,7 +15,7 @@ const AdminHome = () => {
   };
 
   return (
-    <div>
+    <div style={{ marginLeft:'50px' }}>
       <style>{"body { background-color: #A2A2A2; }"}</style>
       {/* <h><a href="/admincandidates/dancing">Dancing</a></h><br></br>
       <h><a href="/admincandidates/rap">Rap</a></h><br></br>
@@ -24,73 +24,73 @@ const AdminHome = () => {
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="/e" style={{ color: "black" }}>
+      <button className="btn btn-success" onClick={() => window.location.href = "/e"}
+        style={{ color: "black" }}>
           Event Management
-        </a>
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="/regDash" style={{ color: "black" }}>
+      <button className="btn btn-success" onClick={() => window.location.href = "/regDash"}
+        style={{ color: "black" }}>
           Registration Management
-        </a>
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
-         Payment Management
-        </a>
+      <button className="btn btn-success" onClick={() => window.location.href = "/#"}
+        style={{ color: "black" }}>
+          Payment Management
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
+      <button className="btn btn-success" onClick={() => window.location.href = "/#"}
+        style={{ color: "black" }}>
           Result Management
-        </a>
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="/Manager_Audience" style={{ color: "black" }}>
-         Audience  Management
-        </a>
+      <button className="btn btn-success" onClick={() => window.location.href = "/Manager_Audience"}
+        style={{ color: "black" }}>
+          Audience  Management
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
-         Stall Management
-        </a>
+      <button className="btn btn-success" onClick={() => window.location.href = "/#"}
+        style={{ color: "black" }}>
+          Stall Management
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
-         Media Management
-        </a>
+      <button className="btn btn-success" onClick={() => window.location.href = "/#"}
+        style={{ color: "black" }}>
+          Media Management
+        
       </button>
 
       <br></br>
       <br></br>
 
-      <button className="btn btn-success">
-        <a href="#" style={{ color: "black" }}>
-         Sponsor Management
-        </a>
+      <button className="btn btn-success" onClick={() => window.location.href = "/#"}
+        style={{ color: "black" }}>
+          Sponsor Management
+        
       </button>
 
       <br></br>
