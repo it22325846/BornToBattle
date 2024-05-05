@@ -47,17 +47,17 @@ export default function StallReg() {
 
     return (
 
-        <div className="container mt-5 text-start text-white p-5 rounded-4 bg-gradient" style={{ backgroundColor: '#05242a' }}>
+        <div className="container mt-5 mb-5 p-5">
 
             <div className="text-center mb-5">
                 <h2>2024 Dance Event</h2>
-                <p>Stallholder Operations Form</p>
+                <p className="text-white">Stallholder Registration Form</p>
             </div>
 
-            <form className="row g-3 text-primary" onSubmit={submitStaller} >
+            <form className="streg row g-3 text-primary" onSubmit={submitStaller} >
 
                 <div className="col-md-12">
-                    <label htmlFor="sbn" className="form-label">Sri lankan Business Number</label>
+                    <label htmlFor="sbn" className="form-label">Sri lankan Business Number : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -68,7 +68,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="col-md-12">
-                    <label htmlFor="companyName" className="form-label">Company Name</label>
+                    <label htmlFor="companyName" className="form-label">Company Name : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -79,7 +79,7 @@ export default function StallReg() {
                 </div>
 
                 <div className="col-md-6">
-                    <label htmlFor="firstName" className="form-label">First Name</label>
+                    <label htmlFor="firstName" className="form-label">First Name : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -89,7 +89,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="col-md-6">
-                    <label htmlFor="lastName" className="form-label">Last Name</label>
+                    <label htmlFor="lastName" className="form-label">Last Name : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -100,7 +100,7 @@ export default function StallReg() {
                 </div>
 
                 <div className="col-md-12">
-                    <label htmlFor="mobile" className="form-label">Mobile</label>
+                    <label htmlFor="mobile" className="form-label">Mobile : </label>
                     <input
                         type="number"
                         className="form-control"
@@ -111,7 +111,7 @@ export default function StallReg() {
                 </div>
 
                 <div className="col-12">
-                    <label htmlFor="address" className="form-label">Address</label>
+                    <label htmlFor="address" className="form-label">Address : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -121,7 +121,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="col-md-4">
-                    <label htmlFor="city" className="form-label">City</label>
+                    <label htmlFor="city" className="form-label">City : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -132,7 +132,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="col-md-4">
-                    <label htmlFor="province" className="form-label">Province</label>
+                    <label htmlFor="province" className="form-label">Province : </label>
                     <input
                         type="text"
                         className="form-control"
@@ -143,7 +143,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="col-md-4">
-                    <label htmlFor="postalCode" className="form-label">Postal / Zip Code</label>
+                    <label htmlFor="postalCode" className="form-label">Postal / Zip Code : </label>
                     <input
                         type="number"
                         className="form-control"
@@ -154,7 +154,7 @@ export default function StallReg() {
                 </div>
 
                 <div className="col-md-12">
-                    <label htmlFor="Validationemail" className="form-label">Email*</label>
+                    <label htmlFor="Validationemail" className="form-label">Email : </label>
                     <input
                         type="email"
                         className="form-control"
@@ -164,8 +164,8 @@ export default function StallReg() {
 
                     />
                 </div>
-                <div className="mb-2 mt-4">
-                        <button className="btn btn-primary" type="submit">Register</button>
+                <div className="mb-2 mt-4 ml-3">
+                        <button className="btn btn-primary fw-bolder" type="submit">Register</button>
                 </div>
             </form>
         </div>
