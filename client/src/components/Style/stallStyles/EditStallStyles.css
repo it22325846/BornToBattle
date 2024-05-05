@@ -14,7 +14,8 @@
   body {
     margin: 0;
     padding: 0;
-    background-color: rgb(1, 20, 38); /* Adjust the path based on your project structure */
+    background-color: rgb(220, 178, 106);
+    background-image: url('https://img.freepik.com/premium-photo/old-black-background-grunge-texture-dark-wallpaper-blackboard-chalkboard-room-wall_959084-10.jpg'); /* Adjust the path based on your project structure */
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Optional: keeps the background fixed while scrolling */
@@ -36,23 +37,4 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-}
-  
-.container {
-  background-image: url("../../../../public/Images/red_and_black.jpg");
-  background-size: cover;
-  border-radius: 30px;
-}
-
-.streg {
-  text-align: start;
-}
-
-.btns{
-  display: flex;
-  justify-content: space-between;
-}
-
-.profimg {
-  background-image: url("../../../../public/Images/dancer.png");
 }
