@@ -183,7 +183,6 @@ import UpdateSponsor from './components/sponsor/updateSponsor';
 // #endregion
 
 //#region Vishmitha
-import MediaManager from './components/Media/media_manager/mediaManagerUI';
 
 
 // #endregion
@@ -403,9 +402,6 @@ function App() {
         </>
 
         <>{/* Vishmitha registration routes */}
-
-        <Route path="/mediaM" component={MediaManager} />
-
         </>
 
          
