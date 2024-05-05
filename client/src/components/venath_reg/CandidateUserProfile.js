@@ -80,7 +80,7 @@ const UserProfile = () => {
           setProfilePhoto(photoUrl);
           setNewProfilePhoto(null);
           alert('Profile photo updated successfully.');
-          window.location.href='/profile'
+          window.location.href='/cprofile'
         } else {
           alert('Failed to update profile photo.');
         }

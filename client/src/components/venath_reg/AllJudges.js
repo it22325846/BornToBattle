@@ -59,7 +59,7 @@ const AllJudges = () => {
           <input className="form-control mr-sm-2 ml-auto" type="search" placeholder="Search" aria-label="Search" onChange={handleSearchArea} />
           <button className="btn btn-success" type="submit">Search</button>
         </form>
-        <p>Student details</p>
+        <h3 style={{ color: 'white' }}>Judge Details</h3>
         <table className="table">
           <thead>
             <tr>
@@ -102,9 +102,9 @@ const AllJudges = () => {
           </tbody>
         </table>
 
-        <button className="btn btn-success">
-          <a href="/add" style={{ color: 'black' }}>Create New Student</a>
-        </button>
+        {/* <button className="btn btn-success">
+          <a href="/add" style={{ color: 'white' }}>Create New Student</a>
+        </button> */}
       </div>
     </div>
   );

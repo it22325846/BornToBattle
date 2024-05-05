@@ -17,7 +17,7 @@ function CreateCandidate() {
     categoryOptions: {
       dancing: ['Hiphop', 'AllStyles'],
       rap: ['N/A'],
-      beatbox: ['N/A'],
+      beatbox: ['FreeStyle', 'Sound Effect'],
     },
   });
   const [ageError, setAgeError] = useState("");
@@ -34,15 +34,16 @@ function CreateCandidate() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'age' && parseInt(value) <= 0) {
-      setAgeError("Invalid");
+    
+    if (name === 'age' && parseInt(value) <= 0 ||  parseInt(value)>100) {
+      setAgeError("Invalid Age");
+      setFormData(prevState => ({ ...prevState, [name]: '' }));
       return;
-    }
-
-    // Clear the error if age is valid
-    if (name === 'age' && ageError) {
+    }else{
       setAgeError("");
     }
+
+
 
     if (name === 'phoneNumber') {
       // Validate phone number to accept exactly 10 digits
@@ -172,8 +173,7 @@ function CreateCandidate() {
           >
             <option value="">Select event</option>
             <option value="dancing">Dancing</option>
-            {/* <option value="rap">Rap</option> */}
-            <option value="beatbox">beatbox</option>
+            <option value="beatbox">Beatbox</option>
           </select>
         </div>
 

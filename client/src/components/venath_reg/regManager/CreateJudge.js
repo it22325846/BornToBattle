@@ -27,6 +27,8 @@ const [usernameExists, setUsernameExists] = useState(false);
 let dancingJudges=4;
 let beatboxJudges=2;
 
+const [ageError, setAgeError] = useState("");
+const [perror, setPerror] = useState("");
 useEffect(() => {
   axios.get(`/judges/count/dancing`).then((res) => {
     if (res.data.success) {
@@ -102,11 +104,36 @@ useEffect(() => {
       const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
       if (!isValidPhoneNumber && value.length > 0) { 
         
-        setError('Phone number must be 10 digits');
+        setPerror('Phone number must be 10 digits');
       } else {
-        setError('');
+        setPerror('');
       }
     }
+
+    // Regular expression to match only letters (alphabetic characters)
+    const onlyLettersRegex = /^[A-Za-z]+$/;
+
+    // Check if the input value contains only letters
+    if (name === 'name' && !onlyLettersRegex.test(value)) {
+      // Set an error message if the input value contains non-letter characters
+      setError('Name should only contain letters');
+      setFormData(prevState => ({ ...prevState, [name]: '' }));
+      return;
+    } else {
+      // Clear the error message if the input value is valid
+      setError('');
+    }
+
+
+    if (name === 'age' && parseInt(value) <= 0 ||  parseInt(value)>100) {
+      setAgeError("Invalid Age");
+      setFormData(prevState => ({ ...prevState, [name]: '' }));
+
+      return;
+    }else{
+      setAgeError("");
+    }
+    
   
       setFormData({ ...formData, [name]: value });
     
@@ -230,11 +257,14 @@ useEffect(() => {
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Name of the judge</label>
           <input type="text" className="form-control" id="name" name="name" value={formData.name} onChange={handleChange} required style={{ width: '30%' }} />
+          {error && <p style={{ color: 'red' }}>{error}</p>}
         </div>
 
         <div className="mb-3">
           <label htmlFor="age" className="form-label">Age</label>
           <input type="number" className="form-control" id="age" name="age" value={formData.age} onChange={handleChange} required style={{ width: '30%' }} />
+          {ageError && <div style={{ color: 'red' }}>{ageError}</div>}
+
         </div>
 
         <div className="mb-3">
@@ -252,7 +282,7 @@ useEffect(() => {
         <div className="mb-3">
           <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
           <input type="number" className="form-control" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required style={{ width: '30%' }} />
-          {error && <p className="text-danger">{error}</p>}
+          {perror && <p className="text-danger">{perror}</p>}
         </div>
 
         <div className="mb-3">
