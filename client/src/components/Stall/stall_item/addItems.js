@@ -31,9 +31,9 @@ export default function ItemAdd() {
     return (
         <div>
             <div>
-                <div className="fullDiv rounded-4">
+                <div className="fullDiv rounded-4" style={{ borderRadius: '30px', marginInline: '100px' }}>
                     <div className="p-4">
-                        <form className="row g-3 text-start" onSubmit={addItem}>
+                        <form className="row g-3" style={{textAlign: 'start'}} onSubmit={addItem}>
                             <div className="col-md-8">
                                 <label htmlFor="pName" className="form-label">Product Name</label>
                                 <input
@@ -73,8 +73,8 @@ export default function ItemAdd() {
                                     }} // Use files[0] to get the file object
                                 />
                             </div>
-                            <div className="mb-2 mt-4">
-                                <button type="submit" className="btn btn-primary" >Add to List</button>
+                            <div className="mb-2 mt-4 ml-3">
+                                <button type="submit" className="button btn-primary" >Add to List</button>
                             </div>
                         </form>
                     </div>
