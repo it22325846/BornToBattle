@@ -41,10 +41,10 @@ export default function RequestForm() {
 
   return (
     <div>
-      <div className="overlay11">
+      <div className="overlay111">
         <img src="../../Images/iimg.jpg" alt="IDS" />
-        <div className="overlay11-text">
-          <h1 className="img_ga">MEDIA CENTER</h1>
+        <div className="overlay111-text">
+          <h1 className="img_ga111">MEDIA CENTER</h1>
         </div>
       </div>
       <div className="overlay22">
@@ -53,8 +53,8 @@ export default function RequestForm() {
         </div>
       </div>
 
-      <div className="container">
-        <form className="form" onSubmit={addContent}>
+      <div className="container111">
+        <form className="form111" onSubmit={addContent}>
           <div className="row">
             <div className="col">
               <label className="black-label" htmlFor="FirstName">
