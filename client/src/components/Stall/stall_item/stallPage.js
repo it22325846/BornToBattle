@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
-import '../../Style/stallStyles/EditStallStyles.css';
 import { useNavigate } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 
@@ -47,7 +46,7 @@ export default function UserStalls() {
             </form>
 
 
-            <div className='container rounded-4 p-4' style={{ opacity: '75%' }}>
+            <div className='container rounded-4 p-4' style={{ opacity: '75%',backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
                 <div ref={componentPDF} style={{ width: '100%' }}>
                     <div className='row' >
                         {items.filter((item) => {
