@@ -4,7 +4,7 @@ let Staller = require("../../models/Staller/stallerModels");
 
 //create
 
-router.route("/create").post((req, res) => {
+router.route("/staller/create").post((req, res) => {
 
     const sbn = req.body.sbn;
     const companyName = req.body.companyName;
@@ -40,10 +40,11 @@ router.route("/create").post((req, res) => {
 
 //Read
 
-router.route("/read").post((req, res) => {
+router.route("/staller/read").post((req, res) => {
 
     Staller.find().then((stallerRoutes) => {
         res.json(stallerRoutes)
+        console.log(stallerRoutes);
     }).catch((err) => {
         console.log(err)
     })
@@ -54,7 +55,7 @@ router.route("/read").post((req, res) => {
 
 //get ID route
 
-router.route("/get/:Stallerid").get(async (req, res) => {
+router.route("/staller/get/:Stallerid").get(async (req, res) => {
     let Stallerid = req.params.Stallerid;
 
     const getID = await Staller.findById(Stallerid)
@@ -66,7 +67,7 @@ router.route("/get/:Stallerid").get(async (req, res) => {
 
 })
 
-router.route("/update/:Stallerid").put(async (req, res) => {
+router.route("/staller/update/:Stallerid").put(async (req, res) => {
     let Stallerid = req.params.Stallerid;
     const { sbn, companyName, firstName, lastName, mobile, address, city, province, postalCode, email, } = req.body;
 
@@ -97,7 +98,7 @@ router.route("/update/:Stallerid").put(async (req, res) => {
 
 //Delete
 
-router.route("/delete/:Stallerid").delete( async(req, res) => {
+router.route("/staller/delete/:Stallerid").delete( async(req, res) => {
     let Stallerid = req.params.Stallerid;
 
     await Staller.findByIdAndDelete(Stallerid).then(()=> {

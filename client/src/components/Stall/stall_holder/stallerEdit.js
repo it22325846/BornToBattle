@@ -21,7 +21,7 @@ export default function StallerEdit() {
     const [email, setUpdateEmail] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/staller/get/${Stallerid}`).then((res) => {
+        axios.get(`http://localhost:8020/staller/get/${Stallerid}`).then((res) => {
 
             console.log(res);
 
@@ -58,7 +58,7 @@ export default function StallerEdit() {
             email
         }
 
-        axios.put(`http://localhost:4000/staller/update/${Stallerid}`, updateStaller)
+        axios.put(`http://localhost:8020/staller/update/${Stallerid}`, updateStaller)
             .then(result => {
                 console.log(result);
                 alert("Staller updated successfully.");
@@ -73,13 +73,13 @@ export default function StallerEdit() {
     };
 
     return (
-        <div className="container mt-5 text-start text-white p-5 rounded-4 bg-gradient" style={{ backgroundColor: '#05242a' }}>
+        <div className="container mt-5 text-start text-white p-3 rounded-4 bg-gradient mb-5" style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
 
             <div className="text-center mb-5">
-                <h2>Edit Your Profile</h2>
+                <h2 style={{fontWeight: 'bolder'}}>Edit Your Profile</h2>
             </div>
 
-            <form className="row g-3  text-primary " onSubmit={editStaller} >
+            <form className="row g-3  text-primary" style={{textAlign: 'start'}} onSubmit={editStaller} >
 
                 <div className="col-md-6">
                     <label htmlFor="sbn" className="form-label">Sri lankan Business Number</label>
@@ -185,7 +185,7 @@ export default function StallerEdit() {
                 </div>
 
                 <div className="col-md-6">
-                    <label htmlFor="Validationemail" className="form-label">Email*</label>
+                    <label htmlFor="Validationemail" className="form-label">Email</label>
                     <input
                         type="email"
                         className="form-control"
@@ -195,7 +195,7 @@ export default function StallerEdit() {
 
                     />
                 </div>
-                <div className="mb-2 mt-4">
+                <div className="mb-2 mt-4 ml-3">
                     <button type="submit" className="btn btn-warning">Update</button>
                 </div>
             </form>

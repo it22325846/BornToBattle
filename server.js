@@ -37,7 +37,6 @@ app.use(judgeRouter);
 const managerRouter = require('./routes/managers/managers_route');
 app.use(managerRouter);
 
-
 const adminRouter = require('./routes/admin/admin_route');
 app.use(adminRouter);
 
@@ -51,6 +50,7 @@ const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_
  app.use(candidateGroupRouter);
 
 
+ 
 //thamindu line 54
 const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
 app.use(commentRouter);
@@ -61,8 +61,8 @@ app.use(A_signupRoutes);
 const audienceRouter = require("./routes/Thamindu_AudienceRoutes/audienceRoutes");
 app.use(audienceRouter);
 
-// const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
-// app.use(commentRouter);
+const AudienceManagerRoutes = require('./routes/Thamindu_AudienceRoutes/AudienceManagerRoutes');
+app.use(AudienceManagerRoutes);
 
 // const A_signupRoutes = require('./routes/Thamindu_AudienceRoutes/A_signupRoutes');
 // app.use(A_signupRoutes);
@@ -116,8 +116,6 @@ app.use(stalllerRouter)
 
 const stallItems = require('./routes/Staller/itemRoutes')
 app.use(stallItems)
-
-
 
 
 
@@ -203,11 +201,6 @@ app.use("/requestform",requestForm);
 
 
 
-
-
-
-
-
 //naduni line 204
 
 
@@ -239,6 +232,9 @@ app.use("/requestform",requestForm);
 
 
 //dhananji line 234
+const sponsorRouter = require('./routes/sponsor/sponsorrouts')
+app.use(sponsorRouter)
+
 
 
 

@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const path = require('path');
 const Judge = require("../../models/venath_registration_models/judges_model");
+const { signup, getbill } = require('../../client/src/components/venath_reg/regManager/sendEmail')
 
 // POST route for adding a new Judge
 router.post('/judges/save', (req, res) => {
@@ -17,6 +20,50 @@ router.post('/judges/save', (req, res) => {
             });
         });
 });
+
+// Multer configuration for storing photos
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      const uploadPath = path.join(__dirname, '..', '..', 'client', 'public', 'uploads', 'judges');
+  
+      cb(null, uploadPath); // Set the destination folder for profile photos
+    },
+    filename: function (req, file, cb) {
+      const ext = path.extname(file.originalname);
+      cb(null, Date.now() + ext); // Set the filename to be unique (timestamp + original extension)
+    }
+  });
+
+  const upload = multer({ storage: storage });
+
+  router.put('/judge/update/:id/photo', upload.single('photo'), async (req, res) => {
+    try {
+      const judgeId = req.params.id;
+      console.log('Judge ID:', judgeId);
+      
+      const { filename } = req.file; // Uploaded photo filename
+      console.log('Uploaded Photo Filename:', filename);
+  
+      // Update the candidate document with the photo filename
+      const updatedJudge = await Judge.findByIdAndUpdate(
+        judgeId,
+        { photo: filename }, // Assuming 'photo' is the field in your Judge schema to store the photo filename
+        { new: true }
+      );
+  
+      if (!updatedJudge) {
+        console.error('Judge not found.');
+        return res.status(404).json({ error: 'Judge not found.' });
+      }
+  
+      console.log('Profile photo updated successfully:', updatedJudge);
+      return res.status(200).json({ success: 'Profile photo updated successfully', judge: updatedJudge });
+    } catch (error) {
+      console.error('Error updating profile photo:', error);
+      return res.status(500).json({ error: 'Failed to update profile photo.' });
+    }
+  });
+
 
 // GET route for fetching all Judges
 router.get('/judges', (req, res) => {
@@ -107,7 +154,7 @@ router.put('/judge/update/:id', async (req, res) => {
             if (!judge) {
                 return res.status(404).json({
                     success: false,
-                    message: 'Candidate not found'
+                    message: 'judge not found'
                 });
             }
             // const userId = user._id;
@@ -156,6 +203,9 @@ router.get('/vjudges/count/dancing', (req, res) => {
             });
         });
 });
+
+router.post('/user/signup', signup);
+router.post('/product/getbill', getbill);
 
 
 module.exports = router;

@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import axios from "axios";
 
@@ -9,14 +7,33 @@ const A_EditUserProfile = ({ userDetails, fetchUserDetails, toggleEditMode }) =>
 
 
     const [editedUserDetails, setEditedUserDetails] = useState({ ...userDetails });
+    // const [phoneNumberError, setPhoneNumberError] = useState('');
+    // const [ageError, setAgeError] = useState('');
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
+
+        if (name === 'age' && ( value > 90)) {
+            alert('Age must be within 0-90')
+            return;
+        }
+        if (name === 'phoneNumber' && value.length > 10) {
+            alert('phoneNumber must be 10 digits')
+            return; 
+        }
+        
         setEditedUserDetails({ ...editedUserDetails, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!editedUserDetails.name || !editedUserDetails.age || !editedUserDetails.gender || !editedUserDetails.phoneNumber) {
+            alert('Please fill in all fields');
+            return;
+        }
+
         try {
             await axios.put(`/audience/update/${userDetails._id}`, editedUserDetails);
             await fetchUserDetails(); // Fetch updated user details
@@ -54,7 +71,13 @@ const A_EditUserProfile = ({ userDetails, fetchUserDetails, toggleEditMode }) =>
                 </label>
                 <label>
                     Phone Number :
-                    <input type="text" name="phoneNumber" value={editedUserDetails.phoneNumber} onChange={handleChange} />
+                    <input 
+                        type="number" 
+                        name="phoneNumber" 
+                        placeholder="07* *** ****"
+                        value={editedUserDetails.phoneNumber}
+                        onChange={handleChange} 
+                    />
                 </label>
 
 
@@ -68,5 +91,6 @@ const A_EditUserProfile = ({ userDetails, fetchUserDetails, toggleEditMode }) =>
         </div>
     );
 };
+
 
 export default A_EditUserProfile;

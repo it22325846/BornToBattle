@@ -20,26 +20,38 @@ const UserProfile = () => {
   }, []);
 
   useEffect(() => {
+    console.log("user is", username)
     const fetchCandidateData = async () => {
       try {
         const response = await axios.get(`/candidate/username/${encodeURIComponent(username)}`);
         if (response.data.success) {
-          const { candidate } = response.data;
-          setCandidate(candidate);
-          const photoUrl = candidate.photo || '/user.jpg';
-          setProfilePhoto(photoUrl); // Set profile photo from fetched data
+          setCandidate(response.data.candidate);
+          const photoUrl = response.data.candidate.photo;
+          if (!photoUrl || typeof photoUrl !== 'string') {
+            setProfilePhoto('user.jpg');
+          } else {
+            setProfilePhoto(photoUrl);
+          }
         } else {
           console.error('Failed to fetch candidate data');
         }
       } catch (error) {
+          window.location.href = '/groupprofile';
         console.error('Error fetching candidate data:', error);
       } finally {
         setLoading(false);
       }
     };
+    
 
     fetchCandidateData();
   }, [username]);
+
+  // useEffect(() => {
+  //   if (!candidate.name) {
+  //     window.location.href = '/groupprofile'; // Redirect to groupprofile if fetched user has no name.
+  //   }
+  // }, [candidate.name]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -68,7 +80,7 @@ const UserProfile = () => {
           setProfilePhoto(photoUrl);
           setNewProfilePhoto(null);
           alert('Profile photo updated successfully.');
-          window.location.href='/profile'
+          window.location.href='/cprofile'
         } else {
           alert('Failed to update profile photo.');
         }
@@ -145,16 +157,22 @@ const UserProfile = () => {
                 <button className="btn btn-info" onClick={() => handleConfirm(candidate._id)}>
                   Confirm
                 </button>
-                <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
+                {/* <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
                   Change
-                </button>
+                </button> */}
               </div>
             ) : (
               // Show upload button when no new photo is selected
               <label htmlFor="profilePhotoInput" className="btn btn-warning">Upload a profile photo</label>
             )}
+            
           </div>
         </div>
+        {/* <button className="btn btn-info" onClick={() => window.location.href = "/groupprofile"}>
+        View Group Profile
+</button> */}
+
+
       </div>
     </div>
   );

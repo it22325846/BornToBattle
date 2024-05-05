@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
 
 const EditAllJudges = () => {
   const [judges, setJudges] = useState([]);
@@ -20,12 +21,17 @@ const EditAllJudges = () => {
       });
   }
 
-  const onDelete = (id) => {
+  const onDelete = (id, username) => {
     axios.delete(`/judge/delete/${id}`)
          .then((res) => {
+          
+          axios.delete(`/jsignup/delete/${username}`).then((res) => {
+            console.log("usernameeeee", username);
+             window.alert("Deleted");
+            window.location.href = "/editJudges";
+          });
         retrieveJudges();
-        window.alert("Deleted");
-        window.location.href = "/editJudges";
+       
       })
       .catch((error) => {
         console.error("Delete Error:", error);
@@ -97,7 +103,7 @@ const EditAllJudges = () => {
                   <a className="btn btn-warning" href={`/jedit/${judge._id}`}>
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </a>
-                  <a className="btn btn-danger" href="/" onClick={() => onDelete(judge._id)}>
+                  <a className="btn btn-danger" onClick={() => onDelete(judge._id, judge.un)}>
                     <i className="far fa-trash-alt"></i>&nbsp;Delete
                   </a>
                 </td>
@@ -105,10 +111,10 @@ const EditAllJudges = () => {
             ))}
           </tbody>
         </table>
-
+{/* 
         <button className="btn btn-success">
           <a href="/add" style={{ color: 'black' }}>Create New Student</a>
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -15,9 +15,16 @@ const AdminEventCandidates = () => {
     });
   }, [event]);
 
-  const onDelete = (id) => {
-    axios.delete(`/candidate/delete/${id}`).then((res) => {
-      alert("deleted");
+  const onDelete = (id, username) => {
+    axios.delete(`/candidate/delete/${id}`)
+    .then((res) => {
+      axios.delete(`/signup/delete/${username}`).then((res) => {
+        console.log("usernameeeee", username);
+
+        // localStorage.removeItem('username'); 
+        window.alert("Deleted");
+        window.location.href = "/editcandidates";
+      });
       // Update the state directly to refresh the list
       setCandidates((prevCandidates) =>
         prevCandidates.filter((candidate) => candidate._id !== id)
@@ -60,7 +67,7 @@ const AdminEventCandidates = () => {
             Search
           </button>
         </form>
-        <p>Student details</p>
+        <h3 style={{ color: 'white' }}>Candidate details</h3>
         <table className="table">
           <thead>
             <tr>
@@ -90,10 +97,10 @@ const AdminEventCandidates = () => {
                 <td>{candidate.phoneNumber}</td>
                 
                 <td>
-                  <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
+                  <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </Link>
-                  <a className="btn btn-danger" href="#" onClick={() => onDelete(candidate._id)}>
+                  <a className="btn btn-danger" href="#" onClick={() => onDelete(candidate._id, candidate.un)}>
                     <i className="far fa-trash-alt"></i>&nbsp;Delete
                   </a>
                 </td>
@@ -101,12 +108,12 @@ const AdminEventCandidates = () => {
             ))}
           </tbody>
         </table>
-
+{/* 
         <button className="btn btn-success">
           <Link to="/add" style={{ color: 'black' }}>
             Create New Student
           </Link>
-        </button>
+        </button> */}
       </div>
     </div>
   );

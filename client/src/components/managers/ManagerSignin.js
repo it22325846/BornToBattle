@@ -18,7 +18,7 @@ const SignIn = () => {
         if (response.data.success) {
             setManager(response.data.manager);
             if(manager && manager.type && manager.type === "event_manager") {
-                window.location.href = '/';
+                window.location.href = '/e';
             }
             else if(manager && manager.type && manager.type === "registration_manager") {
                 window.location.href = '/regDash';
@@ -40,7 +40,7 @@ const SignIn = () => {
                 window.location.href = '/#';
             }
             else if(manager && manager.type && manager.type === "comment_manager") {
-                window.location.href = '/M_Comment_main';
+                window.location.href = '/Manager_Audience';
             }
             localStorage.setItem('username', username);
         } else {

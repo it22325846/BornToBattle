@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+
 
 const AdminEditAll = () => {
   const [candidates, setCandidates] = useState([]);
   const [searchKey, setSearchKey] = useState('');
+  const username = localStorage.getItem('username') || '';
+
 
   useEffect(() => {
     retrieveCandidates();
@@ -14,6 +18,7 @@ const AdminEditAll = () => {
       .then((res) => {
         if (res.data.success) {
           setCandidates(res.data.existingCandidates);
+          console.log("username", username);
         }
       })
       .catch((error) => {
@@ -21,12 +26,19 @@ const AdminEditAll = () => {
       });
   };
 
-  const onDelete = (id) => {
+  const onDelete = (id, username) => {
     axios.delete(`/candidate/delete/${id}`)
       .then((res) => {
+        axios.delete(`/signup/delete/${username}`).then((res) => {
+          console.log("usernameeeee", username);
+
+          // localStorage.removeItem('username'); 
+          window.alert("Deleted");
+          window.location.href = "/editcandidates";
+        });
         retrieveCandidates();
-        window.alert("Deleted");
-        window.location.href = "/editcandidates";
+        // window.alert("Deleted");
+        // window.location.href = "/editcandidates";
       })
       .catch((error) => {
         console.error("Delete Error:", error);
@@ -71,8 +83,8 @@ const AdminEditAll = () => {
           />
           <button className="btn btn-success" type="button">Search</button>
         </form>
-        <p>Student details</p>
-        <table className="table" style={{ color: 'black' }}>
+        <p style={{ color: 'white' }}>Candidate details</p>
+        <table className="table" style={{ color: 'white' }}>
           <thead>
             <tr>
               <th>#</th>
@@ -102,13 +114,13 @@ const AdminEditAll = () => {
                 <td>
                   <button
                     className="btn btn-warning"
-                    onClick={() => window.location.href = `/edit/${candidate._id}`}
+                    onClick={() => window.location.href = `/editc/${candidate._id}`}
                   >
                     <i className="fas fa-edit"></i>&nbsp;Edit
                   </button>
                   <button
                     className="btn btn-danger"
-                    onClick={() => onDelete(candidate._id)}
+                    onClick={() => onDelete(candidate._id, candidate.un)}
                   >
                     <i className="far fa-trash-alt"></i>&nbsp;Delete
                   </button>

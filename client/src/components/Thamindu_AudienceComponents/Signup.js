@@ -8,13 +8,13 @@ const SignUp = () => {
   const [error, setError] = useState('');
   const [usernameExists, setUsernameExists] = useState(false);
 
-  // useEffect(() => {
-  //   const existingUsername = localStorage.getItem('username');
-  //   if (existingUsername) {
-  //     alert("You are already signed in");
-  //     window.location.href = '/profile';
-  //   }
-  // }, []);
+  useEffect(() => {
+    const existingUsername = localStorage.getItem('username');
+    if (existingUsername) {
+      alert("You are already signed in");
+      window.location.href = '/A_profile';
+    }
+  }, []);
 
 
   // => work 
@@ -43,7 +43,8 @@ const SignUp = () => {
         
         
         localStorage.setItem('username', username);//session =>username
-        window.location.href = '/';
+        localStorage.setItem('userType', "audience")
+        window.location.href = '/A_profile';
 
       } catch (error) {
         setError('Error in sign-up. Please try again.');

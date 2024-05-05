@@ -7,7 +7,7 @@ let Media = require("../../models/Media/gallery");
 // Multer configuration
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads');
+        cb(null, './uploads/media');
     },
     filename: function(req, file, cb) {
         cb(null, `${Date.now()}_${file.originalname}`);
@@ -16,6 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+//create
 router.route("/add").post(upload.single('image'), (req, res) => {
     const name = req.body.name;
     const description = req.body.description;
@@ -39,7 +40,7 @@ router.route("/add").post(upload.single('image'), (req, res) => {
         });
 });
 
-router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+router.use('/uploads/media', express.static(path.join(__dirname, '../uploads/media')));
 
 router.route("/read").get((req, res) => {
     Media.find()
