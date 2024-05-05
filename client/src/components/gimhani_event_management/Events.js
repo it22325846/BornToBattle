@@ -183,7 +183,7 @@ const Events = () => {
       padding: '20px',
       fontFamily: 'sans-serif'
     }}>
-      <div className="container" style={{ backgroundColor: '#ced4da' }}>
+      <div className="container" style={{ backgroundColor: '#ced4da', backgroundImage: 'none' }}>
         <div className="row">
           <div className="col-lg-9 mt-2 mb-2">
 
