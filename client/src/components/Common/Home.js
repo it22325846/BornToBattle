@@ -110,7 +110,7 @@ export default function Home(){
                 <hr />
             <div className="overlay7">
                 <h1 className="payment">Buy Your Own Tickets.</h1>
-                <button type="button" class="btn btn-primary btn-lg custom-btn2" style={{ color:'black' , fontWeight:'bolder', cursor:'default', borderRadius:'50px' }}  
+                <button type="button" class="btn btn-primary btn-lg custom-btn2" style={{ color:'black' , fontWeight:'bolder', cursor:'default', borderRadius:'50px', fontSize:'25px' }}  
                     onClick={() => window.location.href = "/A_SignIn"}>BUY
                 </button>
                 
