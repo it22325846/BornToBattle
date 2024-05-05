@@ -72,7 +72,7 @@ import EventCategoryDetails from './components/gimhani_event_management/EventCat
 import EditCategory from './components/gimhani_event_management/EditCategory';
 import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 import Schedule from './components/gimhani_event_management/Schedule';
-
+import NotificationPage from './components/gimhani_event_management/NotificationPage';  
 
 
 
@@ -305,7 +305,7 @@ function App() {
 
         <Route path="/eventd/:id" element={<EventDetails />} />
         <Route path="/cat/:id" element={<EventCategoryDetails />} />
-
+        <Route path="/notif" element={<NotificationPage />} />
 
 
 
