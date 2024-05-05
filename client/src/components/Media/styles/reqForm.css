@@ -16,6 +16,7 @@ table {
     margin: auto; /* Center the table */
     border-collapse: collapse;
     border-spacing: 0;
+    margin-bottom: 20%;
 }
 
 /* Style for table headers */
