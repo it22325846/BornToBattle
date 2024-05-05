@@ -13,8 +13,8 @@ export default function mediaManagerUI() {
         
         {/* Centered links */}
         <div className="link-container">
-          <a href="/gallery" className="link">ADD GALLERY</a>
-          <a href="/displyrequest" className="link">REQUEST FORMS</a>
+          <a href="/gallery" className="link" style={{color:'white'}}>ADD GALLERY</a>
+          <a href="/displyrequest" className="link" style={{color:'white'}}>REQUEST FORMS</a>
         </div>
       </div>
     </div>

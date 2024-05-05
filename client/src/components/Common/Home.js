@@ -96,7 +96,7 @@ export default function Home(){
                     </div>
                     
                 </div>
-                <button class="view-more-button">View More</button>
+                <button class="view-more-button" onClick={() => window.location.href = "/galleryDisplay"}>View More</button>
             </div>
 
 
