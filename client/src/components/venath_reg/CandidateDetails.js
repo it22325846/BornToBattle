@@ -49,7 +49,7 @@ const CandidateDetails = () => {
 </div>
 
       {candidate.un === username ? (
-        <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
+        <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
           <i className="fas fa-edit"></i>&nbsp;Edit
         </Link>
       ) : (

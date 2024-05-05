@@ -25,32 +25,33 @@ const UserProfile = () => {
       try {
         const response = await axios.get(`/candidate/username/${encodeURIComponent(username)}`);
         if (response.data.success) {
-          const { candidate } = response.data;
-          setCandidate(candidate);
-          const photoUrl = candidate.photo;
+          setCandidate(response.data.candidate);
+          const photoUrl = response.data.candidate.photo;
           if (!photoUrl || typeof photoUrl !== 'string') {
-            photoUrl = 'user.jpg';
-        }
-          setProfilePhoto(photoUrl); // Set profile photo from fetched data
+            setProfilePhoto('user.jpg');
+          } else {
+            setProfilePhoto(photoUrl);
+          }
         } else {
-          
           console.error('Failed to fetch candidate data');
         }
       } catch (error) {
+          window.location.href = '/groupprofile';
         console.error('Error fetching candidate data:', error);
       } finally {
         setLoading(false);
       }
     };
+    
 
     fetchCandidateData();
   }, [username]);
 
-  useEffect(() => {
-    if (!candidate.name) {
-      window.location.href = '/groupprofile'; // Redirect to groupprofile if fetched user has no name.
-    }
-  }, [candidate.name]);
+  // useEffect(() => {
+  //   if (!candidate.name) {
+  //     window.location.href = '/groupprofile'; // Redirect to groupprofile if fetched user has no name.
+  //   }
+  // }, [candidate.name]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

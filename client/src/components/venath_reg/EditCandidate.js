@@ -41,7 +41,7 @@ const handleSubmit = (e) => {
       console.log("Update response:", res.data);
       if (res.data && res.data.status === "Candidate updated") {
         alert("Success")
-        window.location.href = '/profile';
+        window.location.href = '/cprofile';
         setFormData({
           name: '',
           age: '',
