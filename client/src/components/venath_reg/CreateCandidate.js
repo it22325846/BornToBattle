@@ -17,7 +17,7 @@ function CreateCandidate() {
     categoryOptions: {
       dancing: ['Hiphop', 'AllStyles'],
       rap: ['N/A'],
-      beatbox: ['N/A'],
+      beatbox: ['FreeStyle', 'Sound Effect'],
     },
   });
   const [ageError, setAgeError] = useState("");
@@ -172,8 +172,7 @@ function CreateCandidate() {
           >
             <option value="">Select event</option>
             <option value="dancing">Dancing</option>
-            {/* <option value="rap">Rap</option> */}
-            <option value="beatbox">beatbox</option>
+            <option value="beatbox">Beatbox</option>
           </select>
         </div>
 
