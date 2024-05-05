@@ -14,8 +14,7 @@ export default function mediaManagerUI() {
         {/* Centered links */}
         <div className="link-container">
           <a href="/gallery" className="link">ADD GALLERY</a>
-          <a href="#" className="link">Link 2</a>
-          <a href="/reqForm" className="link">REQUEST FORMS</a>
+          <a href="/displyrequest" className="link">REQUEST FORMS</a>
         </div>
       </div>
     </div>
