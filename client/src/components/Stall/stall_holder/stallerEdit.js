@@ -73,10 +73,10 @@ export default function StallerEdit() {
     };
 
     return (
-        <div className="container mt-5 text-start text-white p-3 rounded-4 bg-gradient mb-5" style={{ backgroundColor: '#05242a'}}>
+        <div className="container mt-5 text-start text-white p-3 rounded-4 bg-gradient mb-5" style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
 
             <div className="text-center mb-5">
-                <h2>Edit Your Profile</h2>
+                <h2 style={{fontWeight: 'bolder'}}>Edit Your Profile</h2>
             </div>
 
             <form className="row g-3  text-primary" style={{textAlign: 'start'}} onSubmit={editStaller} >
