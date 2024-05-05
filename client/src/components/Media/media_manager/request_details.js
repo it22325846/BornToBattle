@@ -7,7 +7,7 @@ export default function MediaManagerUI() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/requestForm/read")
+      .get("http://localhost:8020/requestForm/read")
       .then((response) => {
         setForms(response.data);
       })
