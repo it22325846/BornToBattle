@@ -47,14 +47,13 @@ export default function StallReg() {
 
     return (
 
-        <div className="container mt-5 mb-5 p-5">
-
+        <div className="container mt-5 mb-5 p-5" style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px', opacity: ''}}>
             <div className="text-center mb-5">
                 <h2>2024 Dance Event</h2>
                 <p className="text-white">Stallholder Registration Form</p>
             </div>
 
-            <form className="streg row g-3 text-primary" onSubmit={submitStaller} >
+            <form className="streg row g-3 text-primary" onSubmit={submitStaller} style={{textAlign: 'start'}}>
 
                 <div className="col-md-12">
                     <label htmlFor="sbn" className="form-label">Sri lankan Business Number : </label>
@@ -165,7 +164,7 @@ export default function StallReg() {
                     />
                 </div>
                 <div className="mb-2 mt-4 ml-3">
-                        <button className="btn btn-primary fw-bolder" type="submit">Register</button>
+                        <button className="btn btn-primary fw-bolder" type="submit" style={{fontWeight: 'bolder'}}>Register</button>
                 </div>
             </form>
         </div>
