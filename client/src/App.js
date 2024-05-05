@@ -100,14 +100,7 @@ import UserStalls from './components/Stall/stall_item/stallPage';
 // #endregion
 
 //#region Vishmitha
-import gallery from "../src/components/Media/media_view/gallery_view";
-import gallery2 from "../src/components/Media/media_manager/add_gallery";
-import mediaCenter from "../src/components/Media/media_manager/Media_center";
-import requestForm from "../src/components/Media/media_view/requestform";
-import mediaM from "../src/components/Media/media_manager/mediaManagerUI";
-import reqFormDisplay from "../src/components/Media/media_manager/request_details";
-import UpdateContent from "../src/components/Media/media_manager/UpdateContent";
-import policy from "../src/components/Media/media_view/policy";
+
 // #endregion
 
 // import NavBar from './components/Venath/NavBar';
@@ -238,14 +231,7 @@ function App() {
         </>
 
         <>{/* Vishmitha registration routes */}
-        <Route path="/galleryDisplay" Component={gallery} />
-        <Route path="/gallery" Component={gallery2} />
-        <Route path="/mediaCenter" Component={mediaCenter} />
-        <Route path="/requestForm" Component={requestForm} />
-        <Route path="/mediaM" Component={mediaM} />
-        <Route path="/reqForm" Component={reqFormDisplay} />
-        <Route path="/update/:id" element={<UpdateContent />} />
-        <Route path="/policy" Component={policy} />
+
         </>
 
          
