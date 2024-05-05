@@ -44,7 +44,7 @@ export default function MediaCenter() {
 
       <div className="overlay444">
         <div className="butt44">
-          <button className="custom-button44">
+          <button className="custom-button44" onClick={() => window.location.href = "/mediaM"}>
             <Link to="/mediaM">STAY POSTED ON EVERYTHING| SIGN UP</Link>
           </button>
         </div>

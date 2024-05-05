@@ -84,7 +84,7 @@ export default function Gallery() {
       <form className="form1" onSubmit={addContent}>
         {/* Form inputs */}
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput1" className="form-label" style={{color:'white'}}>
             Picture Caption
           </label>
           <input
@@ -96,7 +96,7 @@ export default function Gallery() {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label" style={{color:'white'}}>
             Description
           </label>
           <textarea
@@ -108,7 +108,7 @@ export default function Gallery() {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="photoFile" className="form-label">
+          <label htmlFor="photoFile" className="form-label" style={{color:'white'}}>
             Upload Content
           </label>
           <input
@@ -118,7 +118,7 @@ export default function Gallery() {
             onChange={handleFileChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary111">
+        <button type="submit" className="btn btn-primary111" style={{color:'white', fontWeight:'bold'}}>
           Add Content
         </button>
       </form>
