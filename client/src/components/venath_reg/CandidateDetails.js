@@ -40,6 +40,13 @@ const CandidateDetails = () => {
       <p>Event: {candidate.event}</p>
       <p>Category: {candidate.category}</p>
       <p>Phone Number: {candidate.phoneNumber}</p>
+      {candidate.un === username ? (
+        <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
+          <i className="fas fa-edit"></i>&nbsp;Edit
+        </Link>
+      ) : (
+        <p></p>
+      )}
 </div>
       <div style={{ flex: 3 }}>
 
@@ -48,13 +55,7 @@ const CandidateDetails = () => {
       )}
 </div>
 
-      {candidate.un === username ? (
-        <Link to={`/editc/${candidate._id}`} className="btn btn-warning">
-          <i className="fas fa-edit"></i>&nbsp;Edit
-        </Link>
-      ) : (
-        <p></p>
-      )}
+    
     </div>
   );
 };
