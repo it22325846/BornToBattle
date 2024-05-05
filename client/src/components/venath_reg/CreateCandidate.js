@@ -82,7 +82,7 @@ function CreateCandidate() {
           if (username === 'admin') {
             window.location.href = '/admin';
           } else {
-            window.location.href = '/profile';
+            window.location.href = '/cprofile';
           }
         }
       })
