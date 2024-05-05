@@ -1,16 +1,16 @@
-.overlay {
+.overlay111 {
     position: relative;
     width: 100%;
 }
 
-.overlay img {
+.overlay111 img {
     width: 100%;
     height: auto;
     margin-bottom: 20px;
     opacity: 0.9; /* Changed to decimal value */
 }
 
-.overlay-text {
+.overlay-text111 {
     position: absolute;
     top: 50%;
     left: 40%;
@@ -19,36 +19,38 @@
     color: rgb(0, 0, 0);
 }
 
-.img_ga {
+.img_ga111 {
     font-size: 100px;
     color: #ff1515;
     font-weight: bold;
 }
 
-.overlay2 {
+.overlay222 {
     width: 50%;
     height: auto;
+    margin-bottom: 20%;
+    display: flex;
 }
 
-.overlay2-text {
-    position: absolute;
-    top: 80%;
-    left: 30%;
-    transform: translate(-50%, -50%);
+.overlay-text222 {
+    position: relative;
+    transform: translate(30%, 20%);
     text-align: left;
-    color: rgb(0, 0, 0);
-    width: 50%; /* Adjust width as needed */
+    color: rgb(255, 255, 255);
+    width: 70%; /* Adjust width as needed */
+    
 }
 
-.ph {
+.ph22 {
     font-size: 20px;
 }
 
-.overlay3 {
-    position: absolute;
-    top: 70%;
+.overlay333 {
+    position: relative;
     left: 60%;
     width: 30%;
+    display: flex;
+    margin-top: -30%;
 }
 
 .hh1 {
@@ -56,14 +58,14 @@
     color: #ff0000;
 }
 
-.hh2 {
+.hh22 {
     position: absolute;
     margin-left: 20px;
     margin-top: -38px;
     font-size: 25px;
     color: #ff0000;
 }
-.hh21 {
+.hh211 {
     position: absolute;
     margin-left: 20px;
     
@@ -71,7 +73,7 @@
     color: #ff0000;
 }
 
-.overlay4{
+.overlay444{
     background-color: #ff9696;
     margin-top: 350px;
     margin-bottom: 50px;
@@ -79,20 +81,21 @@
     justify-content: center;
     align-items: center;
     
+    
 }
 
-.butt{
+.butt44{
     padding-top: 40px;
     padding-bottom: 40px;
 }
 
-.custom-button{
+.custom-button44{
     width: 500px;
     height: 80px;
     border-radius: 10px;
     font-size: 25px;
     color: #ffffff;
-    background-color: #ff0000;
+    background-color: #ffffff;
     
 }
 

@@ -74,10 +74,10 @@ export default function Gallery() {
   return (
     <div>
       {/* Background image */}
-      <div className="overlay">
+      <div className="overlay111">
         <img src="../../Images/iimg.jpg" alt="IDS" />
-        <div className="overlay-text">
-          <h1 className="img_ga">IMAGE GALLERY</h1>
+        <div className="overlay-text111">
+          <h1 className="img_ga111">IMAGE GALLERY</h1>
         </div>
       </div>
 
@@ -118,7 +118,7 @@ export default function Gallery() {
             onChange={handleFileChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary111">
           Add Content
         </button>
       </form>
