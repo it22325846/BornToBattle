@@ -8,7 +8,7 @@ const schema = mongoose.Schema;
 // Define a Yup schema for validation
 const ItemSchemaValidation = yup.object().shape({
     pName: yup.string().min(5).max(20).required(),
-    pPrice: yup.number().required(), 
+    pPrice: yup.number().positive().lessThan(5000).required(), 
     pImage: yup.string().required(),
 });
 

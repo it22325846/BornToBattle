@@ -128,6 +128,7 @@ export default function EditEvent() {
           onChange={HandleInputChange}
           id="rules"
           name="rules"
+          style={{ fontWeight: 'normal', textDecoration: 'none',fontSize: '16px' }} 
         />
       </div>
 

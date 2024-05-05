@@ -6,16 +6,21 @@ const yup = require('yup');
 const schema = mongoose.Schema;
 
 // Define a Yup schema for validation
-const StallerSchemaValidation = yup.object().shape({    
-    sbn: yup.string().matches(/^SLR\d{4}$/, 'sbn should start with SLR').length(7, 'sbn should have 7 digits').required(),
+const StallerSchemaValidation = yup.object().shape({
+    sbn: yup.string()
+        .matches(/^SLR\d{4}$/, 'sbn should start with SLR')
+        .length(7, 'sbn should have 7 digits').required(),
     companyName: yup.string().min(5).max(20).required(),
     firstName: yup.string().min(5).max(20).required(),
     lastName: yup.string().min(5).max(20).required(),
-    mobile: yup.string().matches(/^7\d{8}$/, "Mobile number must start with '07'").required(),
+    mobile: yup.string()
+        .matches(/^7\d{8}$/, "Mobile number must start with '07'").required(),
     address: yup.string().min(10).max(50).required(),
     city: yup.string().min(5).max(20).required(),
     province: yup.string().min(5).max(20).required(),
-    postalCode: yup.string().matches(/^\d{5}$/, 'postal code should have exactly 5 digits').required(),
+    postalCode: yup.number().integer()
+        .min(10000, "Postal code should have 5 digits")
+        .max(99999, "Postal code should have 5 digits").required(),
     email: yup.string().email().required(),
 });
 
