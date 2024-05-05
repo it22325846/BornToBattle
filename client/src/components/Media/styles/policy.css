@@ -1,0 +1,49 @@
+/* Container styles */
+.policy-container {
+  width: 80%;
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px;
+}
+
+/* Heading styles */
+.policy-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Paragraph styles */
+.policy-paragraph {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* List styles */
+.policy-list {
+  margin-bottom: 15px;
+}
+
+.policy-list li {
+  margin-bottom: 5px;
+}
+
+/* Link styles */
+.policy-link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.policy-link:hover {
+  color: darkblue;
+}
+.container11 {
+  max-width: 900px; /* Adjust as needed */
+  margin: 0 auto; /* Center the container horizontally */
+  text-align: justify; /* Justify the text */
+  margin-top: 60px;
+}
+
+.container11 p {
+  margin-bottom: 20px; /* Add some space between paragraphs */
+}

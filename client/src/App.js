@@ -182,23 +182,7 @@ import UpdateSponsor from './components/sponsor/updateSponsor';
 
 // #endregion
 
-//#region Vishmitha line 185 -203
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//#region Vishmitha
 
 // #endregion
 
@@ -292,7 +276,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
       
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
-       
+
         <Route path="/addcat" element={<CreateCategory />} />
         <Route path="/edit/cat/:id" element={<EditCategory />} />
 
@@ -416,26 +400,7 @@ function App() {
 
         </>
 
-        <>{/* Vishmitha registration routes                   line 419 - 440 */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <>{/* Vishmitha registration routes */}
 
         </>
 
