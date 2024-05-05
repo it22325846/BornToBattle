@@ -5,10 +5,10 @@ export default function mediaManagerUI() {
   return (
     <div>
       {/* Background image */}
-      <div className="overlay">
+      <div className="overlay111">
         <img src="../../Images/iimg.jpg" alt="IDS" />
-        <div className="overlay-text">
-          <h1 className="img_ga">MEDIA MANAGER</h1>
+        <div className="overlay-text111">
+          <h1 className="img_ga111">MEDIA MANAGER</h1>
         </div>
         
         {/* Centered links */}
