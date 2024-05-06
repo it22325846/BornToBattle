@@ -1,6 +1,7 @@
 import React from "react";
 import "../Style/Header.css";
 import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   const navigate = useNavigate();
@@ -50,41 +51,41 @@ function Header() {
       </div>
 
       <li className="nav-item">
-        <a className="nav-link" aria-current="page" href="/">
-          HOME
-        </a>
+      <NavLink className="nav-link" activeClassName="active" to="/">
+  HOME
+</NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="displayevents">
+      <NavLink className="nav-link" activeClassName="active" to="/displayevents">
           EVENTS
-        </a>
+        </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="all_judges">
+      <NavLink className="nav-link" activeClassName="active" to="/all_judges">
           JUDGES
-        </a>
+        </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="candidates">
-          CONTESTANTS
-        </a>
+      <NavLink className="nav-link" activeClassName="active" to="/candidates">
+        CONTESTANTS
+      </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="/Rules">
+      <NavLink className="nav-link" activeClassName="active" to="/Rules">
           RULES
-        </a>
+        </NavLink>
       </li>
 
      
@@ -92,24 +93,24 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="/createStaller">
+      <NavLink className="nav-link" activeClassName="active" to="/createStaller">
           SHOPS
-        </a>
+        </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="/Sponsordashboard">
+      <NavLink className="nav-link" activeClassName="active" to="/sponsordashboard">
           SPONSORS
-        </a>
+        </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <div class="dropdown">
         <a
-          className="nav-link active"
+          className="nav-link"
           data-bs-toggle="dropdown"
           aria-expanded="false"
           
@@ -141,17 +142,17 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="/Aboutus">
+      <NavLink className="nav-link" activeClassName="active" to="/Aboutus">
           ABOUT US
-        </a>
+        </NavLink>
       </li>
 
       <span className="separator">|</span>
 
       <li className="nav-item">
-        <a className="nav-link" href="Comment_main">
+      <NavLink className="nav-link" activeClassName="active" to="Comment_main">
           COMMENTS & FEEDBACK
-        </a>
+        </NavLink>
       </li>
       {userType && (
         <div className="image_nav2" style={{ marginRight: "10px" }}>

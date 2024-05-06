@@ -8,13 +8,13 @@ export default function ReadSponsor() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigateToUpdateSponsor = (sponsorid) => {
-    navigate(`/Sponsorupdate/${sponsorid}`);
+    navigate(`/sponsorupdate/${sponsorid}`);
   };
 
   useEffect(() => {
     function fetchUsers() {
       axios
-        .get("http://localhost:8070/sponsor/read")
+        .get("http://localhost:8020/sponsor/read")
         .then((res) => {
           setUsers(res.data);
         })

@@ -7,7 +7,7 @@ let Media = require("../../models/Media/gallery");
 // Multer configuration
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './uploads');
+        cb(null, './client/public/uploads/media');
     },
     filename: function(req, file, cb) {
         cb(null, `${Date.now()}_${file.originalname}`);
@@ -16,7 +16,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.route("/add").post(upload.single('image'), (req, res) => {
+//create
+router.route("/gallery/add").post(upload.single('image'), (req, res) => {
     const name = req.body.name;
     const description = req.body.description;
     const image = req.file.filename;
@@ -39,9 +40,9 @@ router.route("/add").post(upload.single('image'), (req, res) => {
         });
 });
 
-router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+router.use('/gallery/uploads/media', express.static(path.join(__dirname, '../../client/public/uploads/media')));
 
-router.route("/read").get((req, res) => {
+router.route("/gallery/read").get((req, res) => {
     Media.find()
         .then((media) => {
             res.json(media);
@@ -52,7 +53,7 @@ router.route("/read").get((req, res) => {
         });
 });
 
-router.route("/update/:id").put(async(req, res) => {
+router.route("/gallery/update/:id").put(async(req, res) => {
     const userId = req.params.id;
     const { name, description, image } = req.body;
 
@@ -74,7 +75,7 @@ router.route("/update/:id").put(async(req, res) => {
     }
 });
 
-router.route("/delete/:id").delete(async(req, res) => {
+router.route("/gallery/delete/:id").delete(async(req, res) => {
     const userId = req.params.id;
     try {
         await Media.findByIdAndDelete(userId);
@@ -85,7 +86,7 @@ router.route("/delete/:id").delete(async(req, res) => {
     }
 });
 
-router.route("/get/:id").get(async(req, res) => {
+router.route("/gallery/get/:id").get(async(req, res) => {
     const userId = req.params.id;
     try {
         const media = await Media.findById(userId);

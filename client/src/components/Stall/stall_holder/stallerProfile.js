@@ -32,21 +32,21 @@ export default function StallerProfile() {
 
 
     return (
-        <div className='container'>
+        <div className='container mt-5 mb-5' style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
             <div className="row col-sm-12 rounded-3 bg-opacity-25 no-gutters">
                 <div className="col-sm-5 user-profile my-auto">
                     <div className="card-block text-center text-white">
                         <div className="my-auto pb-1 rounded-3">
                             <img
-                                src=''
-                                className="profimg img-radius img-flex rounded-circle img-fluid"
+                                src="../../../Images/dancer.png"
+                                className="img mr-5"
                                 alt="User-Profile-Image"
                             />
                         </div>
                     </div>
                 </div>
                 {stallers.map((staller) => (
-                    <div className="col-sm-7 p-3">
+                    <div className="col-sm-7 p-3 mt-3">
                         <div className="profdata card-block rounded-3 text-warning">
                             <div className="row">
                                 <div className="col-sm-6">
@@ -99,7 +99,7 @@ export default function StallerProfile() {
                                 </div>
                             </div>
                             <div className="row ml-3">
-                                <div className='btns mt-4' style={{display: "flex", justifyContent:"space-between", width:"100vh"}}>
+                                <div className='btns mt-2' style={{display: "flex", justifyContent:"space-between", width:"100vh"}}>
                                     <Link to={`/editStaller/${staller._id}`}>
                                         <button type='submit' className='btn btn-success'>Edit profile</button>
                                     </Link>

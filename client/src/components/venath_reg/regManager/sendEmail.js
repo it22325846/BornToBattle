@@ -63,18 +63,18 @@ const getbill = (req, res) => {
     let MailGenerator = new Mailgen({
         theme: "default",
         product : {
-            name: "Mailgen",
+            name: "Born To Battle",
             link : 'https://mailgen.js/'
         }
     })
 
     let response = {
         body: {
-            name : "Born To Battle",
-            intro: `You enrolled as a judge!<br>Your username is ${username}<br>Your password is ${password}`,
+            name : `${username}`,
+            intro: `You enrolled as a judge!<br>Your username : ${username}<br>Your password : ${password}`,
 
           
-            outro: "Looking forward to do more business"
+            outro: "Sign in with the given credentials"
           }
     }
 

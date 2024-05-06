@@ -182,22 +182,14 @@ import UpdateSponsor from './components/sponsor/updateSponsor';
 
 // #endregion
 
-//#region Vishmitha line 185 -203
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//#region Vishmitha
+import MediaManagerUI from './components/Media/media_manager/mediaManagerUI';
+import RequestDetails from './components/Media/media_manager/request_details';
+import Gallery_view from './components/Media/media_view/gallery_view';
+import AddGallery from './components/Media/media_manager/add_gallery';
+import MediaCenter from './components/Media/media_view/Media_center';
+import Policy from './components/Media/media_view/policy';
+import RequestForm from './components/Media/media_view/requestform';
 
 
 // #endregion
@@ -292,7 +284,7 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
       
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
-       
+
         <Route path="/addcat" element={<CreateCategory />} />
         <Route path="/edit/cat/:id" element={<EditCategory />} />
 
@@ -398,12 +390,12 @@ function App() {
         </>
 
         <>{/* Dhananji registration routes                   line 400 - 417 */}
-        <Route path="/Sponsordashboard" element={<SponsorPage />} />
-        <Route path="/Sponsorpackage" element={<SponsorPkg />} />
+        <Route path="/sponsordashboard" element={<SponsorPage />} />
+        <Route path="/sponsorpackage" element={<SponsorPkg />} />
 
-        <Route path="/Sponsorcreate" element={<SponsorClaim />} />
-        <Route path="/Sponsorread" element={<ReadSponsor />} />
-        <Route path="/Sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
+        <Route path="/sponsorcreate" element={<SponsorClaim />} />
+        <Route path="/sponsorread" element={<ReadSponsor />} />
+        <Route path="/sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
 
 
 
@@ -416,26 +408,13 @@ function App() {
 
         </>
 
-        <>{/* Vishmitha registration routes                   line 419 - 440 */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <>{/* Vishmitha registration routes */}
+        <Route path="/mediaM" element={<MediaManagerUI />} />
+        <Route path="/displyrequest" element={<RequestDetails />} />
+        <Route path="/galleryDisplay" element={<Gallery_view />} />
+        <Route path="/gallery" element={<AddGallery />} />
+        <Route path="/mediaCenter" element={<MediaCenter />} />
+        <Route path="/requestForm" element={<RequestForm />} />
 
         </>
 
