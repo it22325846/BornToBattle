@@ -5,22 +5,23 @@
 }
 
 /* Style for the container */
-.container {
+.container11 {
     margin: 20px auto;
     max-width: 800px;
 }
 
 /* Style for the table */
-table {
+.table111 {
     width: 80%;
     margin: auto; /* Center the table */
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 20%;
+    background-color: #f2f2f2;
 }
 
 /* Style for table headers */
-th {
+.th111 {
     background-color: #f2f2f2;
     padding: 8px;
     text-align: left;
@@ -28,17 +29,11 @@ th {
 }
 
 /* Style for table cells */
-td {
+.td111 {
     padding: 8px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Style for odd rows */
-tr:nth-child(odd) {
-    background-color: #f9f9f9;
-}
 
-/* Hover effect on rows */
-tr:hover {
-    background-color: #f2f2f2;
-}
+
+

@@ -174,7 +174,7 @@ app.use(stallItems)
 //vishmitha line 174
 
 const mediaRouter = require("./routes/Media/gallery");
-app.use("/media",mediaRouter);
+app.use(mediaRouter);
 
 const requestForm = require("./routes/Media/mediaRequestForm");
 app.use("/requestform",requestForm);
