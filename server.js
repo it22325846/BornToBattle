@@ -174,7 +174,7 @@ app.use("/score",scoreRouter);
 //vishmitha line 174
 
 const mediaRouter = require("./routes/Media/gallery");
-app.use("/media",mediaRouter);
+app.use(mediaRouter);
 
 const requestForm = require("./routes/Media/mediaRequestForm");
 app.use("/requestform",requestForm);
@@ -233,7 +233,7 @@ app.use("/requestform",requestForm);
 
 //dhananji line 234
 const sponsorRouter = require('./routes/sponsor/sponsorrouts')
-app.use(sponsorRouter)
+app.use("/sponsor",sponsorRouter)
 
 
 
