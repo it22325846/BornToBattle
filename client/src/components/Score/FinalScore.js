@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import '../Style/score/FinalScore.css'
 import axios from "axios";
+import { useReactToPrint } from "react-to-print";
 
 export default function FinalScore() {
     const [finalScores, setFinalScores] = useState([]);
@@ -48,6 +49,15 @@ export default function FinalScore() {
             });
     };
 
+    const componentPDF= useRef();
+        
+    const generatepdf = useReactToPrint({
+        content: ()=> componentPDF.current,
+        documentTitle:"Final Score Sheet",
+        onAfterPrint:()=>alert("Data saved as a pdf")
+    });
+
+
     // Function to filter finalScores based on search query
     const filteredScores = searchQuery === '' ? finalScores : finalScores.filter(score => {
         return score.Cname.toLowerCase().includes(searchQuery.toLowerCase());
@@ -56,65 +66,72 @@ export default function FinalScore() {
     return (
         <div className="wrapper">
             <div>
-                <div className="row">
-                    <div className="col">
-                        <h2>Final Resultsheet</h2>
+                <div ref={componentPDF} style={{width:'100%'}}>
+                    <div className="row">
+                        <div className="col">
+                            <h2 className="h2center  !important">Final Resultsheet</h2>
+                        </div>
+                        <div className="col">
+                            <form className="d-flex justify-content-end" role="search">
+                                <input
+                                    className="form-control me-2  hide-on-print"
+                                    type="search"
+                                    placeholder="Search candidate name here"
+                                    aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                                {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+                            </form>
+                        </div>
                     </div>
-                    <div className="col">
-                        <form className="d-flex justify-content-end" role="search">
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search candidate name here"
-                                aria-label="Search"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
-                        </form>
-                    </div>
-                </div>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th>Candidate Name</th>
-                            <th>Dance Category</th>
-                            <th>Score</th>
-                            <th>Feedback</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredScores.map(score => (
-                            <tr key={score._id}>
-                                <td>{score.Cname}</td>
-                                <td>{score.Category}</td>
-                                <td>{score.Performance + score.Costume + score.Technique + score.Timing}</td>
-                                <td>{score.Feedback}</td>
-                                <td>
-                                    <div className="row">
-                                        <div className="col">
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary-custom"
-                                                onClick={() => handleUpdateButtonClick(score._id, score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}
-                                            >
-                                                Update
-                                            </button>
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary-custom"
-                                                onClick={() => handleDeleteButtonClick(score._id)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </div>
-                                </td>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Candidate Name</th>
+                                <th>Dance Category</th>
+                                <th>Score</th>
+                                <th>Feedback</th>
+                                <th className="hide-on-print">Action</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {filteredScores.map(score => (
+                                <tr key={score._id}>
+                                    <td>{score.Cname}</td>
+                                    <td>{score.Category}</td>
+                                    <td>{score.Performance + score.Costume + score.Technique + score.Timing}</td>
+                                    <td>{score.Feedback}</td>
+                                    <td>
+                                        <div className="row .print-hide">
+                                            <div className="col">
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-primary-custom hide-on-print"
+                                                    onClick={() => handleUpdateButtonClick(score._id, score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}
+                                                >
+                                                    Update
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-primary-custom hide-on-print"
+                                                    onClick={() => handleDeleteButtonClick(score._id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="d-grid d-md-flex justify-content-md-end md-3 hide-on-print">
+                    <button type="button" className="btn btn-download" onClick={generatepdf}>
+                        Download as a pdf
+                    </button>
+                </div>
             </div>
         </div>
     );
