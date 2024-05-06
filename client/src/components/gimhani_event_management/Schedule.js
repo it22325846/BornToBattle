@@ -54,7 +54,7 @@ const Schedule = () => {
 
     {/* <p style={{ color: 'black', fontSize: '1.5rem' }}>Welcome to the biggest battle of the year!</p> */}
     <div>
-      <h2 style={{ color: 'black'}}> Discover All Events! </h2>
+      <h2 style={{ color: 'black'}}> Discover All Events Here! </h2>
 
  {/* Search Bar */}
       <div className="row mb-3">
