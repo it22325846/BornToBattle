@@ -52,7 +52,7 @@ export default function Home(){
                         <div class="text-overlay">
                             <h1 class="text-over-image">2024 SCHEDULE</h1>
                             <h2 class="text-over-image2">SEE THE ROUTINE SCHEDULE</h2>
-                            <button type="button" class="btn btn-primary btn-lg custom-btn4"  onClick={() => window.location.href = "/calendar"}>VIEW SCHEDULE</button>
+                            <button type="button" class="btn btn-primary btn-lg custom-btn4"  onClick={() => window.location.href = "/schedule"}>VIEW SCHEDULE</button>
                         </div>
                     </div>
                     <div class="image-container">
