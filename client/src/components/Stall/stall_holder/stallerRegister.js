@@ -47,7 +47,7 @@ export default function StallReg() {
 
     return (
 
-        <div className="container mt-5 mb-5 p-5" style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px', opacity: ''}}>
+        <div className="container mt-5 mb-5 p-5" style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
             <div className="text-center mb-5">
                 <h2>2024 Dance Event</h2>
                 <p className="text-white">Stallholder Registration Form</p>
