@@ -38,3 +38,36 @@ h2{
     margin-left: 10px;
     color: #ffffff;
 }
+
+.btn.btn-download{
+    background-color: red;
+    color: #ffffff;
+}
+
+.h2center{
+    display: 'flex';
+    text-align: end;
+}
+
+@media print {
+    table.table {
+        color: black; /* Set text color to black */
+    }
+
+    .print-hide {
+        display: none; /* Hide buttons with print-hide class */
+    }
+
+    .hide-on-print {
+        display: none;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    h2 {
+        display: block;
+        color: rgb(0, 0, 0);
+    }
+}
