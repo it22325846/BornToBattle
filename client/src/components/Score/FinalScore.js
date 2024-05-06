@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
-import{useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../Style/score/FinalScore.css'
 import axios from "axios";
 
-export default function FinalScore(){
-
+export default function FinalScore() {
     const [finalScores, setFinalScores] = useState([]);
-    const [deleteScore, setDeleteScore] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
     const navigate = useNavigate();
-    //const [selectedCId, setSelectedCId] = useState('');
 
     useEffect(() => {
-        // Fetch final scores from the backend when the component mounts
-        axios.get("http://localhost:8070/score")
+        axios.get("http://localhost:8020/score")
             .then(response => {
                 // Organize scores by CId
                 const scoresByCname = response.data.reduce((acc, score) => {
@@ -25,9 +22,7 @@ export default function FinalScore(){
                         existingScore.Timing += score.Timing;
                     } else {
                         // If score with this CId doesn't exist, add it to the accumulator
-                        acc.push({
-                            ...score
-                        });
+                        acc.push({ ...score });
                     }
                     return acc;
                 }, []);
@@ -37,13 +32,13 @@ export default function FinalScore(){
                 console.error("Error fetching final scores:", error);
             });
     }, []);
-    
-    const handleAddButtonClick = (Cname, Category, Performance, Costume, Technique, Timing, Feedback) => {
-        navigate(`/updatescore?Cname=${Cname}&Category=${Category}&Performance=${Performance}&Costume=${Costume}&Technique=${Technique}&Timing=${Timing}&Feedback=${Feedback}`);
+
+    const handleUpdateButtonClick = (_id, Cname, Category, Performance, Costume, Technique, Timing, Feedback) => {
+        navigate(`/updatescore?scoreId=${_id}&Cname=${Cname}&Category=${Category}&Performance=${Performance}&Costume=${Costume}&Technique=${Technique}&Timing=${Timing}&Feedback=${Feedback}`);
     };
 
     const handleDeleteButtonClick = (scoreId) => {
-        axios.delete(`http://localhost:8070/score/delete/${scoreId}`)
+        axios.delete(`http://localhost:8020/score/delete/${scoreId}`)
             .then(response => {
                 setFinalScores(finalScores.filter(score => score._id !== scoreId));
                 alert("Score Deleted Successfully");
@@ -52,7 +47,11 @@ export default function FinalScore(){
                 console.error("Error deleting score:", error);
             });
     };
-    
+
+    // Function to filter finalScores based on search query
+    const filteredScores = searchQuery === '' ? finalScores : finalScores.filter(score => {
+        return score.Cname.toLowerCase().includes(searchQuery.toLowerCase());
+    });
 
     return (
         <div className="wrapper">
@@ -62,9 +61,16 @@ export default function FinalScore(){
                         <h2>Final Resultsheet</h2>
                     </div>
                     <div className="col">
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                        <form className="d-flex justify-content-end" role="search">
+                            <input
+                                className="form-control me-2"
+                                type="search"
+                                placeholder="Search candidate name here"
+                                aria-label="Search"
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                            />
+                            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                         </form>
                     </div>
                 </div>
@@ -79,7 +85,7 @@ export default function FinalScore(){
                         </tr>
                     </thead>
                     <tbody>
-                        {finalScores.map(score => (
+                        {filteredScores.map(score => (
                             <tr key={score._id}>
                                 <td>{score.Cname}</td>
                                 <td>{score.Category}</td>
@@ -88,8 +94,20 @@ export default function FinalScore(){
                                 <td>
                                     <div className="row">
                                         <div className="col">
-                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}>Update</button>
-                                            <button type="button" className="btn btn-primary" onClick={() => handleDeleteButtonClick(score._id)}>Delete</button>
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary-custom"
+                                                onClick={() => handleUpdateButtonClick(score._id, score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}
+                                            >
+                                                Update
+                                            </button>
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary-custom"
+                                                onClick={() => handleDeleteButtonClick(score._id)}
+                                            >
+                                                Delete
+                                            </button>
                                         </div>
                                     </div>
                                 </td>

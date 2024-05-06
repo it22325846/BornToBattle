@@ -21,7 +21,7 @@ export default function UpdateSponsor() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8070/sponsor/get/${sponsorid}`)
+      .get(`http://localhost:8020/sponsor/get/${sponsorid}`)
       .then((res) => {
         console.log(res);
 
@@ -58,7 +58,7 @@ export default function UpdateSponsor() {
 
     axios
       .put(
-        `http://localhost:8070/sponsor/update/${sponsorid}`,
+        `http://localhost:8020/sponsor/update/${sponsorid}`,
         sponsorUpdateData,
         {
           headers: {
@@ -69,7 +69,7 @@ export default function UpdateSponsor() {
       .then((result) => {
         console.log(result);
         alert("Sponsor updated successfully.");
-        navigate("/Users");
+        navigate("/sponsorread");
       })
       .catch((err) => {
         console.error("Sponsor updation error:", err);
