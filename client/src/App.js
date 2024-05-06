@@ -390,12 +390,12 @@ function App() {
         </>
 
         <>{/* Dhananji registration routes                   line 400 - 417 */}
-        <Route path="/Sponsordashboard" element={<SponsorPage />} />
-        <Route path="/Sponsorpackage" element={<SponsorPkg />} />
+        <Route path="/sponsordashboard" element={<SponsorPage />} />
+        <Route path="/sponsorpackage" element={<SponsorPkg />} />
 
-        <Route path="/Sponsorcreate" element={<SponsorClaim />} />
-        <Route path="/Sponsorread" element={<ReadSponsor />} />
-        <Route path="/Sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
+        <Route path="/sponsorcreate" element={<SponsorClaim />} />
+        <Route path="/sponsorread" element={<ReadSponsor />} />
+        <Route path="/sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
 
 
 

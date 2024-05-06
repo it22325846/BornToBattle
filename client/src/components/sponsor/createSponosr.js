@@ -76,14 +76,14 @@ export default function SponsorClaim() {
     sponsorFormData.append("website", website);
 
     axios
-      .post("http://localhost:8070/sponsor/add", sponsorFormData, {
+      .post("http://localhost:8020/sponsor/add", sponsorFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then(() => {
         alert("Sponsor added successfully.");
-        navigate('/Sponsorreads')
+        navigate('/sponsorread')
       })
       .catch((err) => {
         console.error("Error adding sponsor:", err);
