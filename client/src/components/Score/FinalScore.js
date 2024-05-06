@@ -96,14 +96,14 @@ export default function FinalScore() {
                                         <div className="col">
                                             <button
                                                 type="button"
-                                                className="btn btn-primary"
+                                                className="btn btn-primary-custom"
                                                 onClick={() => handleUpdateButtonClick(score._id, score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}
                                             >
                                                 Update
                                             </button>
                                             <button
                                                 type="button"
-                                                className="btn btn-primary"
+                                                className="btn btn-primary-custom"
                                                 onClick={() => handleDeleteButtonClick(score._id)}
                                             >
                                                 Delete
