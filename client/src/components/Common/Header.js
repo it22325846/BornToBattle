@@ -101,7 +101,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="active" to="/Sponsordashboard">
+      <NavLink className="nav-link" activeClassName="active" to="/sponsordashboard">
           SPONSORS
         </NavLink>
       </li>
