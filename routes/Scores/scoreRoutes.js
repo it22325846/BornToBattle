@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { request } = require("express");
-let score = require("../models/score.js");
+let score = require("../../models/Score/scoreModels.js");
 
 router.route("/add").post((req,res)=>{
     const Cname = req.body.Cname;
@@ -37,7 +37,7 @@ router.route("/").get((req,res)=>{
 })
 
 router.route("/update/:id").put(async (req, res) => {
-    let scoreId = req.params.id;
+    let scoreid = req.params.id;
     const { Performance, Costume, Technique, Timing, Feedback } = req.body;
 
     const updatescore = {
@@ -49,7 +49,7 @@ router.route("/update/:id").put(async (req, res) => {
     }
 
     try {
-        const updatedScore = await score.findByIdAndUpdate(scoreId, updatescore);
+        const updatedScore = await score.findByIdAndUpdate(scoreid, updatescore);
         res.status(200).send({ status: "Score updated" });
     } catch (err) {
         console.log(err.message);

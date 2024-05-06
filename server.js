@@ -142,8 +142,8 @@ app.use(stallItems)
 
 
 //lakruwan line 144
-
-
+const scoreRouter = require("./routes/Scores/scoreRoutes");
+app.use("/score",scoreRouter);
 
 
 
