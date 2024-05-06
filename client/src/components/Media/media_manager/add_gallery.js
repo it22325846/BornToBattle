@@ -71,6 +71,10 @@ export default function Gallery() {
       });
   };
 
+  const updateContent = (id) => {
+    navigate(`/update/${id}`);
+  };
+
   return (
     <div>
       {/* Background image */}
@@ -124,27 +128,33 @@ export default function Gallery() {
       </form>
 
       {/* Display fetched media */}
-      <div className="media">
+      <div className="media111">
         {media.map((item) => (
-          <div key={item._id} className="media-item">
+          <div key={item._id} className="media-item111">
             {/* Check if image exists before rendering */}
             {item.image && (
               <img
-                src={`http://localhost:8020/gallery/uploads/${item.image}`}
+                src={`http://localhost:8020/gallery/uploads/media/${item.image}`}
                 alt="Product Image"
-                className="media-image"
+                className="media-image111"
               />
             )}
-            <div className="dropdown1">
-              <button className="dropbtn1">More</button>
-              <div className="dropdown-content1">
+            <div className="dropdown111">
+              <button className="dropbtn111">More</button>
+              <div className="dropdown-content111">
                 {/* Attach delete function to the "Delete" button */}
-                <button className="dropbtn1" onClick={() => deleteContent(item._id)}>Delete</button>
+                <button className="dropbtn111" onClick={() => deleteContent(item._id)}>Delete</button>
+                <button
+                  className="dropbtn111"
+                  onClick={() => updateContent(item._id)}
+                >
+                  Update
+                </button>
               </div>
             </div>
-            <div className="media-content">
-              <h3 className="imagename">{item.name}</h3>
-              <p className="imagedescription">{item.description}</p>
+            <div className="media-content111">
+              <h3 className="imagename111">{item.name}</h3>
+              <p className="imagedescription111">{item.description}</p>
             </div>
           </div>
         ))}
