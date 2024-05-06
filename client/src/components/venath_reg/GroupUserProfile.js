@@ -9,6 +9,7 @@ const GroupUserProfile = () => {
   const username = localStorage.getItem('username') || '';
 
   useEffect(() => {
+    localStorage.setItem('userType','group')
     const fetchGroupData = async () => {
       try {
         const response = await axios.get(`/group/username/${username}`);

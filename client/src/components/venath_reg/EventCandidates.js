@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 const EventCandidates = () => {
   const [candidates, setCandidates] = useState([]);
   const { event } = useParams();
+  const [gevents, setGevents] = useState([]);
+
 
 
   useEffect(() => {
@@ -46,9 +48,31 @@ const EventCandidates = () => {
     });
   };
 
-  // const handleConfirm = (id) => {
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
-  // }
+  const fetchEvents = () => {
+    axios.get('/events').then((res) => {
+      if (res.data.success) {
+        if(event=='dancing'){
+          const dancingEvents = res.data.existingEvents.filter(event => event.category === "Dancing");
+          setGevents(dancingEvents);
+        }
+        else{
+          const dancingEvents = res.data.existingEvents.filter(event => event.category === "Beatbox");
+          setGevents(dancingEvents);
+        }
+       
+       // console.log("dancing events", dancingEvents)
+      }
+    }).catch((error) => {
+      console.error("Error fetching events:", error);
+    });
+  }
+
+
+  
 
   return (
     <div>
@@ -106,6 +130,36 @@ const EventCandidates = () => {
             ))}
           </tbody>
         </table>
+        <div>
+          <h2>Available Events</h2>
+          <div style={{ margin: 'auto', width: 'fit-content' }}>
+  <div style={{ display: 'flex', justifyContent: 'center', border: '2px solid white', padding: '10px', maxWidth: '800px' }}>
+    <div style={{ color: 'white' }}>
+      {gevents.map((event, index) => (
+        <tr key={index}>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{index+1}</h5>
+          </td>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{event.topic}</h5>
+          </td>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{event.type}</h5>
+          </td>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{event.gender}</h5>
+          </td>
+          <td>
+            <h5>{event.ageGroup}</h5>
+          </td>
+        </tr>
+      ))}
+    </div>
+  </div>
+</div>
+
+
+        </div>
         <div style={{ color: 'white' }}>
         <h4>HipHop</h4>
         <h5> Under 18 <a href="/subcandidates/dancing?cat=u18bh">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
