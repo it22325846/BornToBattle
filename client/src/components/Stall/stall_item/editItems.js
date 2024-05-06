@@ -37,7 +37,7 @@ export default function ItemEdit() {
             pImage,
         }
 
-        axios.put(`http://localhost:8020/staller/update/${Itemid}`, updateItem)
+        axios.put(`http://localhost:8020/staller/items/update/${Itemid}`, updateItem)
             .then(result => {
                 console.log(result);
                 alert("Item updated successfully.");

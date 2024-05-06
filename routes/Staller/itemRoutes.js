@@ -44,7 +44,7 @@ router.route("/staller/items/create").post(upload.single('pImage'), (req, res) =
 //Read
 
 // Serving images from the 'uploads' directory/folder
-router.use('/uploads/stallItems', express.static(path.join(__dirname, '../../uploads/stallItems')));
+router.use('/staller/items/uploads/stallItems', express.static(path.join(__dirname, '../../uploads/stallItems')));
 
 // Read route
 router.route("/staller/items/read").post((req, res) => {
