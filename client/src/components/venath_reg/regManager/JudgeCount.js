@@ -57,14 +57,14 @@ const JudgeCount = () => {
   return (
     <div>
       <button className="btn btn-success">
-        <a href="/addjudge" style={{ color: 'black', textDecoration: 'none' }}>Add Judges</a>
+        <a href="/addjudge" style={{ color: 'white', textDecoration: 'none' }}>Add Judges</a>
       </button> 
 
-      <h3 style={{ marginTop: '20px', fontSize: '18px' }}>
+      <h3 style={{ marginTop: '20px', fontSize: '18px',  color: 'white' }}>
         Add {jcount - vjcount} judges for dancing event
       </h3>
 
-      <h3 style={{ fontSize: '18px' }}>
+      <h3 style={{ fontSize: '18px',  color: 'white' }}>
         Add {bcount - vbcount} judges for beatbox event
       </h3>
     </div>

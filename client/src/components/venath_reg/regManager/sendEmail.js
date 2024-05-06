@@ -71,7 +71,8 @@ const getbill = (req, res) => {
     let response = {
         body: {
             name : `${username}`,
-            intro: `You enrolled as a judge!<br>Your username : ${username}<br>Your password : ${password}`,
+            intro: `You enrolled as a judge!<br>Your username : ${username}<br>Your password : ${password}
+            <br> Signin through this link http://localhost:3000/JudgeSignup`,
 
           
             outro: "Sign in with the given credentials"
