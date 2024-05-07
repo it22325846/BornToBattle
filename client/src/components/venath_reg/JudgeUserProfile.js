@@ -135,81 +135,76 @@ const UserProfile = () => {
   // Render candidate details once data is loaded
   return (
     <div className="row">
-      {/* User Details */}
+    
       <div className="col-md-3" style={{ color: 'white' }}>
-      <p>Name: {judge.name}</p>
-  <p>Age: {judge.age}</p>
-  <p>Gender: {judge.gender}</p>
-  <p>Event: {judge.event}</p>
-  <p>Phone Number: {judge.phoneNumber}</p>
-  <p>Institute: {judge.institute}</p>
-  <p>Description: {judge.description}</p>
-  <p>Username: {judge.un}</p>
-  {/* <p>Password: {judge.password}</p> */}
-  <div>
-  <a href='/editpwd' style={{ color: 'white' }}>Change the password <i className="fa-solid fa-pen-to-square"></i></a>
-</div>
-
-
+        <p>Name: {judge.name}</p>
+        <p>Age: {judge.age}</p>
+        <p>Gender: {judge.gender}</p>
+        <p>Event: {judge.event}</p>
+        <p>Phone Number: {judge.phoneNumber}</p>
+        <p>Institute: {judge.institute}</p>
+        <p>Description: {judge.description}</p>
+        <p>Username: {judge.un}</p>
+        <div>
+          <a href='/editpwd' style={{ color: 'white' }}>Change the password <i className="fa-solid fa-pen-to-square"></i></a>
+        </div>
         <Link to={`/jedit/${judge._id}`} className="btn btn-warning">
           <i className="fas fa-edit"></i>&nbsp;Edit
         </Link>
-
         <button className="btn btn-danger" onClick={() => onDelete(judge._id)}>
           <i className="far fa-trash-alt"></i>&nbsp;Delete
         </button>
-
       </div>
-
-      {/* Card */}
+  
+    
       <div className="col-md-2">
-  <div className="card" style={{ marginTop: '50px', width: '100%', textAlign: 'center' }}>
-    <input type="file" accept="image/*" onChange={handleFileChange} id="profilePhotoInput" style={{ display: 'none' }} />
-    <div className="mx-auto" style={{ overflow: 'hidden' }}>
-      {newProfilePhoto ? (
-        // Show the newly selected photo before confirming
-        <img
-          id="profilePhoto"
-          src={profilePhoto}
-          alt=""
-          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-        />
-      ) : (
-        // Show the current profile photo
-        <img
-          id="profilePhoto"
-          src={`/uploads/judges/${profilePhoto}`}
-          alt=""
-          style={{ width: '100%', height: '200px', objectFit: 'cover' }}
-        />
-      )}
-    </div>
-    <div className="card-body">
-      <label htmlFor="profilePhotoInput" className="btn btn-warning mb-2">Upload a profile photo</label>
-      {newProfilePhoto && (
-        // Show confirm button only when a new photo is selected
-        <button className="btn btn-info mr-2" onClick={() => handleConfirm(judge._id)}>
-        Confirm
-      </button>
-      
-      )}
-      {/* You can optionally include a "Change" button */}
-      {/* <button className="btn btn-secondary" onClick={() => setNewProfilePhoto(null)}>
-        Change
-      </button> */}
-    </div>
-   
-  </div>
-  <div>
+        <div className="card" style={{ marginTop: '50px', width: '100%', textAlign: 'center' }}>
+          <input type="file" accept="image/*" onChange={handleFileChange} id="profilePhotoInput" style={{ display: 'none' }} />
+          <div className="mx-auto" style={{ overflow: 'hidden' }}>
+            {newProfilePhoto ? (
+            
+              <img
+                id="profilePhoto"
+                src={profilePhoto}
+                alt=""
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
+            ) : (
+            
+              <img
+                id="profilePhoto"
+                src={`/uploads/judges/${profilePhoto}`}
+                alt=""
+                style={{ width: '100%', height: '200px', objectFit: 'cover' }}
+              />
+            )}
+          </div>
+          <div className="card-body">
+            <label htmlFor="profilePhotoInput" className="btn btn-warning mb-2">Upload a profile photo</label>
+            {newProfilePhoto && (
+              
+              <button className="btn btn-info mr-2" onClick={() => handleConfirm(judge._id)}>
+                Confirm
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+  
+      {/* Bottom buttons */}
+      <div className="col-md-12 text-left" style={{ marginTop: '20px' }}>
         <button className="btn btn-danger" onClick={handleSignOut}>
           Sign Out
         </button>
       </div>
-</div>
-
-
+      <div className="col-md-6 text-left" style={{ marginTop: '20px' }}>
+        <button className="btn btn-danger" onClick={() => { window.location.href = '/candidateaddscore'; }}>
+          Add Score
+        </button>
+      </div>
     </div>
   );
+  
 };
 
 export default UserProfile;
