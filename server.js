@@ -87,8 +87,8 @@ app.use(eventRoutes);
 const eventCatRoutes = require('./routes/gimhani_event_routes/Event_categories');
 app.use(eventCatRoutes);
 
-
-
+const notifRoutes = require('./routes/gimhani_event_routes/Notifications_route');
+app.use(notifRoutes);
 
 
 

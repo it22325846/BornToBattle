@@ -291,7 +291,7 @@ function App() {
         <Route path="/eventmanager" element={<EventManagerDashboard />} />
         <Route path="/calendar" element={<Calendar />} />
 
-        <Route path="/displayevents" element={<DisplayEvents />} />
+        <Route path="/displayevents/:id" element={<DisplayEvents />} />
 
        
 
