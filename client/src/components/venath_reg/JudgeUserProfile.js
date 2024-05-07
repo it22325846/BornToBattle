@@ -126,6 +126,12 @@ const UserProfile = () => {
     return <p>Loading...</p>;
   }
 
+  const handleSignOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("userType");
+    alert("Signed Out");
+    window.location.href = "/";
+  };
   // Render candidate details once data is loaded
   return (
     <div className="row">
@@ -192,7 +198,13 @@ const UserProfile = () => {
         Change
       </button> */}
     </div>
+   
   </div>
+  <div>
+        <button className="btn btn-danger" onClick={handleSignOut}>
+          Sign Out
+        </button>
+      </div>
 </div>
 
 

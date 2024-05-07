@@ -101,6 +101,12 @@ const UserProfile = () => {
       });
     });
   }
+  const handleSignOut = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("userType");
+    alert("Signed Out");
+    window.location.href = "/";
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -167,7 +173,13 @@ const UserProfile = () => {
             )}
             
           </div>
+        
         </div>
+        <div>
+        <button className="btn btn-danger" onClick={handleSignOut}>
+          Sign Out
+        </button>
+      </div>
         {/* <button className="btn btn-info" onClick={() => window.location.href = "/groupprofile"}>
         View Group Profile
 </button> */}
