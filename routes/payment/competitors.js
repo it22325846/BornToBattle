@@ -1,92 +1,110 @@
-const router = require ("express").Router();
-let Candidate = require("../../models/payment/competitor");
+const router = require("express").Router();
+const Candidate = require("../models/candidate");
+const express = require('express');
+const path = require('path');
+const multer = require('multer');
 
-router.route("/add").post((req,res)=>{
-
-    const name = req.body.name;
-    const age = Number(req.body.age);
-    const email = req.body.email;
-    const contact_number = Number(req.body.contact_number);
-    const gender = req.body.gender;
-    const comp_type = req.body.comp_type;
-    const card_number = Number(req.body.card_number);
-    const expiration = Date(req.body.expiration);
-    const cvv = Number(req.body.cvv);
-
-    const newCandidate = new Candidate ({
-        name,
-        age,
-        email,
-        contact_number,
-        gender,
-        comp_type,
-        card_number,
-        expiration,
-        cvv
-    })
-
-    newCandidate.save().then(()=>{
-        res.json("Candidate Added")
-    }).catch((err)=>{
-        console.log(err);
-    })
-})
-
-router.route("/").get((req,res)=>{
-    
-    Candidate.find().then((candidates)=>{
-        res.json(candidates)
-    }).catch((err)=>{
-        console.log(err)
-    })
-})
-
-router.route("/update/:id").put(async(req,res)=>{
-    let userId = req.params.id;
-    const {name,age,email,contact_number,gender,comp_type,card_number,expiration,cvv} = req.body;
-
-    const updateCandidate ={
-        name,
-        age,
-        email,
-        contact_number,
-        gender,
-        comp_type,
-        card_number,
-        expiration,
-        cvv 
+// Multer configuration
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads');
+    },
+    filename: function (req, file, cb) {
+        cb(null, `${Date.now()}_${file.originalname}`);
     }
+});
 
-    const update = await Candidate.findByIdAndUpdate(userId, updateCandidate).then(()=>{
-        res.status(200).send({status: "User updated", user: update})
-    }).catch((err)=>{
+const upload = multer({ storage });
+
+// Add a candidate
+router.post("/add", upload.single('image'), (req, res) => {
+    const { name, age, email, gender, contact_number, comp_type} = req.body;
+    const image = req.file.filename;
+
+    const newCandidate = new Candidate({
+        name,
+        age,
+        email,
+        gender,
+        contact_number,
+        comp_type,
+        image,
+    });
+
+    newCandidate.save()
+        .then(() => {
+            res.json("Candidate Added");
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send("Error adding candidate");
+        });
+});
+
+// Serve uploaded images
+router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+
+// Read all candidates
+router.get("/read", (req, res) => {
+    Candidate.find()
+        .then((candidates) => {
+            res.json(candidates);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Error reading candidates");
+        });
+});
+
+// Update a candidate
+router.put("/update/:id", async (req, res) => {
+    const userId = req.params.id;
+    const { name, age, email, contact_number, gender, comp_type, image } = req.body;
+
+    try {
+        const updateCandidate = {
+            name,
+            age,
+            email,
+            gender,
+            contact_number,
+            comp_type,
+            image,
+        };
+
+        await Candidate.findByIdAndUpdate(userId, updateCandidate);
+        res.status(200).send({ status: "User updated" });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ status: "Error in updating data", error: err.message });
+    }
+});
+
+// Delete a candidate
+router.delete("/delete/:id", async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        await Candidate.findByIdAndDelete(userId);
+        res.status(200).send({ status: "User deleted" });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send({ status: "Error in deleting user", error: err.message });
+    }
+});
+
+// Get a candidate by ID
+router.get("/get/:id", async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await Candidate.findById(userId);
+        res.status(200).send({ status: "User fetched",
+         user: user });
+    } catch (err) {
         console.log(err);
-        res.status(500).send({status: "Error in updating data", error: err.message});
-    })
- 
-})
-
-router.route("/delete/:id").delete(async(req,res)=>{
-    let userId = req.params.id;
-
-    await Candidate.findByIdAndDelete(userId)
-    .then(()=>{
-        res.status(200).send({status: "User deleted"})
-    }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({status: "Error in deleting user", error: err.message});
-    })
-})
-
-router.route("/get/:id").get(async(req,res)=>{
-    let userId = req.params.id;
-    await Candidate.findById(userId)
-    .then(()=>{
-        res.status(200).send({status: "User fetched",user:user})
-    }).catch(()=>{
-        console.log(err.message);
-        res.status(500).send({status: "Error in getting user", error: err.message});
-    })
-})
+        res.status(500).send({ status: "Error in getting user", error: err.message });
+    }
+});
 
 module.exports = router;
