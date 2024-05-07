@@ -87,6 +87,7 @@ const handleSubmit = (e) => {
 
   console.log("Submitting data:", data);
 
+  
   axios.put(`/judge/update/${id}`, data)
     .then((res) => {
       console.log("Update response:", res.data);
@@ -192,6 +193,7 @@ const handleSubmit = (e) => {
           name="gender"
           value={formData.gender}
           onChange={handleChange}
+          style={{ width: '30%' }}
           //required
           disabled
         >
@@ -213,8 +215,7 @@ const handleSubmit = (e) => {
           name="event"
           value={formData.event}
           onChange={handleChange}
-          //required
-          disabled
+          style={{ width: '30%' }}          disabled
         >
          <option value="">Select event</option>
           <option value="dancing" >dancing</option>
