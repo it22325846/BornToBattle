@@ -125,12 +125,13 @@ export default function UpdateSponsor() {
     <div>
       <div classNameName="container m-5">
         <form
-          className="row g-3 bg-dark bg-gradient text-white p-4 text-start rounded-4 m-5"
+          className="row g-3 bg-gradient text-white p-4 text-start rounded-4 m-5"
+          style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover',borderRadius: '20px'}}
           onSubmit={editSponsor}
         >
-          <h2>Update User</h2>
-          <div className="row g-2">
-            <div className="col-12">
+          <h2 className="justify-content-center" style={{marginLeft: '5in'}}>Update User</h2>
+          <div className="row col-12" style={{textAlign: 'start' }}>
+            <div className="col-md-12">
               <label htmlFor="sponsorName" className="form-label">
                 Sponsor Name
               </label>
@@ -144,7 +145,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="companyName" className="form-label">
                 Company Name
@@ -158,7 +159,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="sponsorPosition" className="form-label">
                 Sponsor Position
@@ -184,7 +185,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="contactPerson" className="form-label">
                 Contact Person
@@ -210,7 +211,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="address" className="form-label">
                 Address
@@ -225,7 +226,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="state" className="form-label">
                 City/State
@@ -240,7 +241,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="email" className="form-label">
                 Email
@@ -266,7 +267,7 @@ export default function UpdateSponsor() {
               />
             </div>
           </div>
-          <button className="btn btn-success">Update</button>
+          <button className="btn btn-success ml-4">Update</button>
         </form>
       </div>
     </div>
