@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Candidate = require("../models/candidate");
+const Candidate = require("../../models/payment/competitor");
 const express = require('express');
 const path = require('path');
 const multer = require('multer');
@@ -7,7 +7,7 @@ const multer = require('multer');
 // Multer configuration
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads');
+        cb(null, './client/public/uploads/payment');
     },
     filename: function (req, file, cb) {
         cb(null, `${Date.now()}_${file.originalname}`);
@@ -42,7 +42,7 @@ router.post("/add", upload.single('image'), (req, res) => {
 });
 
 // Serve uploaded images
-router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+router.use('/uploads/payment', express.static(path.join(__dirname, '../../client/public/uploads/payment')));
 
 // Read all candidates
 router.get("/read", (req, res) => {
