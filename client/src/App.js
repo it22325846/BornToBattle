@@ -124,6 +124,7 @@ import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceMan
 // #endregion
 
 //#region Naduni line 126 - 143
+import Payform from './components/payment/competitor';
 
 
 
@@ -346,7 +347,7 @@ function App() {
         </>
 
         <>{/* Naduni registration routes                   line 356 - 377 */}
-
+        <Route path="/payment" element={<Payform />} />
 
 
 
