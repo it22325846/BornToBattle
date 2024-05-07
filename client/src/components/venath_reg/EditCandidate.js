@@ -81,7 +81,7 @@ const EditCandidate = () => {
   };
 
   const eventCategoryOptions = {
-    dancing: ['Hiphop', 'AllStyles'],
+    dancing: ['Hiphop', 'FreeStyle'],
     beatbox: ['FreeStyle', 'Sound Effect']
   };
 
@@ -134,6 +134,7 @@ const EditCandidate = () => {
             value={formData.gender}
             onChange={handleChange}
             // required
+            style={{ width: '30%' }}
             disabled
           >
             <option value="">Select Gender</option>
@@ -151,6 +152,7 @@ const EditCandidate = () => {
             className="form-select"
             id="event"
             name="event"
+            style={{ width: '30%' }}
             value={formData.event}
             onChange={handleEventChange}
             // required
@@ -172,6 +174,7 @@ const EditCandidate = () => {
             name="category"
             value={formData.category}
             onChange={handleChange}
+            style={{ width: '30%' }}
             required
           >
             <option value="">Select Category</option>
@@ -199,7 +202,7 @@ const EditCandidate = () => {
         </div>
 
         <div>
-          <a href='/editpwd' className="text-dark">Change the password <i className="fa-solid fa-pen-to-square"></i></a>
+          <a href='/editpwd'  style={{ color: 'white' }}>Change the password <i className="fa-solid fa-pen-to-square"></i></a>
         </div>
 
         <button type="submit" className="btn btn-primary">
