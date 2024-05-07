@@ -1,58 +1,51 @@
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 const candidateSchema = new Schema({
-
-    name : {
-        type : String,
+    name: {
+        type: String,
         required: true
     },
-
-    age : {
-        type : Number,
-        required : true
+    age: {
+        type: Number,
+        required: true,
+        min: 18 // Assuming candidates must be at least 18 years old
     },
-
-    email : {
-        type : String,
+    gender: {
+        type: String,
+        required: true,
+        enum: ['Male', 'Female', 'Other'] // Enumerate possible genders
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true, // Assuming each candidate has a unique email address
+        lowercase: true, // Convert email to lowercase to ensure consistency
+        trim: true // Remove leading/trailing whitespace from email
+    },
+    contact_number: {
+        type: String,
+        required: true,
+        validate: {
+            validator: function(v) {
+                // Regular expression to match a phone number with optional country code
+                return /^\+?[0-9]+$/g.test(v);
+            },
+            message: props => `${props.value} is not a valid phone number!`
+        }
+    },
+    comp_type: {
+        type: String,
         required: true
+        // Assuming you might want to define enum values for competition types
     },
+    image: {
+        type: String,
+        required: true
+    }
+});
 
-    contact_number : {
-        type : Number,
-        required : true
-
-    },
-
-    gender : {
-        type : String,
-        required :true
-    },
-
-    comp_type : {
-        type : String,
-        required : true
-    },
-
-    card_number : {
-        type : Number,
-        required : true
-    },
-
-    expiration : {
-        type : Date,
-        required : true
-    },
-
-    cvv : {
-        type : Number,
-        required : true
-
-    },
-
-})
-
-const Candidate = mongoose.model("candidate",candidateSchema);
+const Candidate = mongoose.model('Candidate', candidateSchema);
 
 module.exports = Candidate;
