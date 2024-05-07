@@ -21,12 +21,12 @@ const [vbcount, setVBcount] = useState(0);
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [confirmPassword, setConfirmPassword] = useState('');
-const [error, setError] = useState('');
 const [usernameExists, setUsernameExists] = useState(false);
 
 let dancingJudges=4;
 let beatboxJudges=2;
 
+const [error, setError] = useState('');
 const [ageError, setAgeError] = useState("");
 const [perror, setPerror] = useState("");
 useEffect(() => {
@@ -140,6 +140,7 @@ useEffect(() => {
       setFormData({ ...formData, [name]: value });
     
   };
+
   const checkUsername = async () => {
     try {
       const response = await axios.post('/jsignup/checkUsername', { username });

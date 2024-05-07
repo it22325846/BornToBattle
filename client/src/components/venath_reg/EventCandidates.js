@@ -112,8 +112,8 @@ const EventCandidates = () => {
                     {candidate.name}
                   </Link>
                 </td>
-                <td>{candidate.age}</td>
-                <td>{candidate.gender}</td>
+                <td>{candidate.event === 'beatbox' ? 'Open' :candidate.age}</td>
+                <td>{candidate.event === 'beatbox' ? 'Open' : candidate.gender}</td>
                 <td>{candidate.event}</td>
                 <td>{candidate.category}</td>
                 <td>{candidate.phoneNumber}</td>
