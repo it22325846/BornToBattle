@@ -39,13 +39,13 @@ const CommentForm = ({ onAddComment }) => {
       const response = await axios.post('/comments', {
         comment,
         username,
-        candidateId: selectedCandidate || null // Include selected candidate in the comment data
+        candidateId: selectedCandidate || null 
       });
 
       onAddComment(response.data);
       setComment('');
       setSelectedCandidate('');///////////
-
+      window.location.reload();
 
     } catch (error) {
       console.error('Error adding comment:', error);
