@@ -190,6 +190,7 @@ import AddGallery from './components/Media/media_manager/add_gallery';
 import MediaCenter from './components/Media/media_view/Media_center';
 import Policy from './components/Media/media_view/policy';
 import RequestForm from './components/Media/media_view/requestform';
+import Update from './components/Media/media_manager/UpdateContent';
 
 
 // #endregion
@@ -415,6 +416,8 @@ function App() {
         <Route path="/gallery" element={<AddGallery />} />
         <Route path="/mediaCenter" element={<MediaCenter />} />
         <Route path="/requestForm" element={<RequestForm />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/update/:id" element={<Update />} />
 
         </>
 
