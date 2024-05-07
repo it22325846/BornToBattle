@@ -96,58 +96,124 @@ const CreateEvent = () => {
       alert("Event time is required")
     }
   
-    try {
-      // Check if the entered time already exists in the database
-      const response = await axios.get('http://localhost:8020/events');
-      const existingEvents = response.data.existingEvents;
+    // try {
+    //   // Check if the entered time already exists in the database
+    //   const response = await axios.get('http://localhost:8020/events');
+    //   const existingEvents = response.data.existingEvents;
 
-      const isTimeExists = existingEvents.some((event) => event.time === formData.time);
+    //   const isTimeExists = existingEvents.some((event) => event.time === formData.time);
   
-      if (isTimeExists) {
-        validationErrors.time = 'Event time clashes with another event';
-      }
-    }
+    //   if (isTimeExists) {
+    //     validationErrors.time = 'Event time clashes with another event';
+    //   }
+    // }
+
+    const timeString = formData.time; // Example time string in HH:mm format
+
+// Split the time string into hours and minutes
+const [hoursStr, minutesStr] = timeString.split(":");
+
+// Parse hours and minutes as integers
+const hour = parseInt(hoursStr);
+const minute = parseInt(minutesStr);
+
+try {
+  // Check if the entered time has at least a one-hour gap from existing events in the database
+  const response = await axios.get('http://localhost:8020/events');
+  const existingEvents = response.data.existingEvents;
+
+  // Extracting only the "time" column from the events data
+  const eventTimes = existingEvents.map(event => event.time);
+
+  // Convert event times to hours and minutes arrays
+  const hoursAndMinutesArray = eventTimes.map(timeString => {
+    const [hoursStr, minutesStr] = timeString.split(":");
+    return { hour: parseInt(hoursStr), minute: parseInt(minutesStr) };
+  });
+
+  // Check if there's at least a one-hour gap between events
+  const isTimeAvailable = !hoursAndMinutesArray.some(eventTime => {
+    // Calculate the time difference in minutes
+    const timeDifference = (hour - eventTime.hour) * 60 + (minute - eventTime.minute);
+    // Check if the time difference is less than or equal to 60 minutes
+    return Math.abs(timeDifference) <= 60;
+  });
+
+  if (!isTimeAvailable) {
+    validationErrors.time = 'There should be at least a one-hour gap between events';
+    alert("There should be at least a one-hour gap between events");
+    return;
+  }
+
+} catch (error) {
+  console.error('Error checking existing events:', error);
+  validationErrors.time = 'Error checking existing events';
+}
+
+
+//     const timeString = formData.time; // Example time string in HH:mm format
+//     console.log("time takenn");
+    
+// // Split the time string into hours and minutes
+// const [hoursStr, minutesStr] = timeString.split(":");
+
+// // Parse hours and minutes as integers
+// const hours = parseInt(hoursStr);
+// const minutes = parseInt(minutesStr);
+
+// // Now you have hours and minutes as numbers, you can perform any manipulation you want
+// console.log("Hours:", hours);
+// console.log("Minutes:", minutes);
+
 //     try {
-//   // Check if the entered time has at least a one-hour gap from existing events in the database
+// //   // Check if the entered time has at least a one-hour gap from existing events in the database
 //   const response = await axios.get('http://localhost:8020/events');
 //   const existingEvents = response.data.existingEvents;
 
-//   // Convert time strings to Date objects for easier comparison
-//   const newEventTime = new Date(formData.time);
+//   // Extracting only the "time" column from the events data
+// const eventTimes = existingEvents.map(event => event.time);
 
-//   const isTimeAvailable = !existingEvents.some((event) => {
-//     // Convert existing event time string to Date object
-//     const existingEventTime = new Date(event.time);
-    
-//     // Calculate the time difference in milliseconds
-//     const timeDifference = Math.abs(newEventTime - existingEventTime);
+// console.log("existing event times",eventTimes);
 
-//     // Check if the time difference is less than or equal to one hour (in milliseconds)
-//     // 1 hour = 60 minutes * 60 seconds * 1000 milliseconds
-//     return timeDifference <= (1 * 60 * 60 * 1000);
-//   });
+// const hoursArray = eventTimes.map(timeString => {
+//   // Split the time string into hours and minutes
+//   const [hoursStr, _] = timeString.split(":");
+//   // Parse hours as an integer
+//   return parseInt(hoursStr);
+// });
 
-//   if (!isTimeAvailable) {
-//     validationErrors.time = 'There should be at least a one-hour gap between events';
+// console.log("hours of all existing times",hoursArray);
+
+// hoursArray.forEach(hourFromData => {
+//   // Compare hour with hourFromData
+//   if (hours === hourFromData) {
+//       console.log(`Hour ${hours} matches an hour from the array.`);
+//       validationErrors.time = 'Event time clashes with another event';
+//     //  alert("Event time clashes with another event");
+//   } else {
+//       console.log(`Hour ${hours} does not match an hour from the array.`);
 //   }
-// } 
-catch (error) {
-      console.error('Error checking existing events:', error);
-      validationErrors.time = 'Error checking existing events';
-    }
-  
-    setErrors(validationErrors);
-  
-    // // Check if there are any validation errors
-    // if (Object.keys(validationErrors).length > 0) {
-    //   alert("Select a different time");
-    //   return; // Stop submission if there are validation errors
-    // }
+// });
 
-    if (validationErrors.time) {
-         alert("Event time clashes with another event. Select a different time");
-         return; // Stop submission if there are validation errors
-       }
+
+// } 
+// catch (error) {
+//       console.error('Error checking existing events:', error);
+//       validationErrors.time = 'Error checking existing events';
+//     }
+  
+//     setErrors(validationErrors);
+  
+//     // // Check if there are any validation errors
+//     // if (Object.keys(validationErrors).length > 0) {
+//     //   alert("Select a different time");
+//     //   return; // Stop submission if there are validation errors
+//     // }
+
+//     if (validationErrors.time) {
+//          alert("Event time clashes with another event. Select a different time");
+//          return; // Stop submission if there are validation errors
+//        }
   
     try {
       const response = await axios.post('http://localhost:8020/event/save', formData);

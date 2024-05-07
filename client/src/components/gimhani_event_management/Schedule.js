@@ -48,69 +48,91 @@ const Schedule = () => {
   const totalEvents = events.length;
 
   return (
-    <div>
-      <h2>Events</h2>
 
-      <div className="row">
-        <div className="col-lg-3 mt-2 mb-2">
+    <div style={{ minHeight: '100vh', padding: '20px', fontFamily: 'sans-serif' }}>
+    <div className="container" style={{ backgroundColor: '#ced4da' }}>
+
+    {/* <p style={{ color: 'black', fontSize: '1.5rem' }}>Welcome to the biggest battle of the year!</p> */}
+    <div>
+      <h2 style={{ color: 'black'}}> Discover All Events Here! </h2>
+
+ {/* Search Bar */}
+      <div className="row mb-3">
+        <div className="col-lg-12">
           <input
             className="form-control"
             type="search"
             placeholder="Search by event name"
             onChange={handleSearchArea}
+            style={{ height: '50px', fontSize: '1.5rem' }}
           />
         </div>
       </div>
 
       <div>
-      <h3 style={{ color: 'white' }}>Dancing Events</h3>
+      <h3 style={{ color: 'black' }}>Dancing Events</h3>
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Event Name</th>
-              <th scope="col">Time</th>
+                <th scope="col" style={{ color: 'black' }}>Event Name</th>
+                <th scope="col" style={{ color: 'black' }}>Individual/Group</th>
+                <th scope="col" style={{ color: 'black' }}>Gender</th>
+                <th scope="col" style={{ color: 'black' }}>Age category</th>
+                <th scope="col" style={{ color: 'black' }}>Time</th>
             </tr>
           </thead>
           <tbody>
             {dancingEvents.map((event, index) => (
               <tr key={index}>
-                <td>{event.topic}</td>
-                <td>{event.time}</td>
+                <td style={{ color: 'black' }}>{event.topic}</td>
+                <td style={{ color: 'black' }}>{event.type}</td>
+                  <td style={{ color: 'black' }}>{event.gender}</td>
+                  <td style={{ color: 'black' }}>{event.ageGroup}</td>
+                  <td style={{ color: 'black' }}>{event.time}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div>
-          <h5  style={{ color: 'white' }}>Total Dancing Events: {totalDancingEvents}</h5>
+          <h5  style={{ color: 'red' }}>Total Dancing Events: {totalDancingEvents}</h5>
         </div>
       </div>
 
       <div>
-        <h3  style={{ color: 'white' }}>Beatbox Events</h3>
+        <h3  style={{ color: 'black' }}>Beatbox Events</h3>
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">Event Name</th>
-              <th scope="col">Time</th>
+            <th scope="col" style={{ color: 'black' }}>Event Name</th>
+                <th scope="col" style={{ color: 'black' }}>Individual/Group</th>
+                <th scope="col" style={{ color: 'black' }}>Gender</th>
+                <th scope="col" style={{ color: 'black' }}>Age category</th>
+                <th scope="col" style={{ color: 'black' }}>Time</th>
             </tr>
           </thead>
           <tbody>
             {beatboxEvents.map((event, index) => (
               <tr key={index}>
-                <td>{event.topic}</td>
-                <td>{event.time}</td>
+                <td style={{ color: 'black' }}>{event.topic}</td>
+                <td style={{ color: 'black' }}>{event.type}</td>
+                  <td style={{ color: 'black' }}>{event.gender}</td>
+                  <td style={{ color: 'black' }}>{event.ageGroup}</td>
+                  <td style={{ color: 'black' }}>{event.time}</td>
               </tr>
             ))}
           </tbody>
         </table>
         <div>
-          <h5  style={{ color: 'white' }}>Total Beatbox Events: {totalBeatboxEvents}</h5>
+          <h5  style={{ color: 'red' }}>Total Beatbox Events: {totalBeatboxEvents}</h5>
         </div>
       </div>
 
       <div>
-        <h4  style={{ color: 'white' }}>Total Events: {totalEvents}</h4>
+        <h4  style={{ color: 'black', fontWeight:'bold' }}>Total Events: {totalEvents}</h4>
       </div>
+    </div>
+
+    </div>
     </div>
   );
 };

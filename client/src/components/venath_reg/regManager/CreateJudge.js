@@ -21,12 +21,12 @@ const [vbcount, setVBcount] = useState(0);
 const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 const [confirmPassword, setConfirmPassword] = useState('');
-const [error, setError] = useState('');
 const [usernameExists, setUsernameExists] = useState(false);
 
 let dancingJudges=4;
 let beatboxJudges=2;
 
+const [error, setError] = useState('');
 const [ageError, setAgeError] = useState("");
 const [perror, setPerror] = useState("");
 useEffect(() => {
@@ -125,19 +125,22 @@ useEffect(() => {
     }
 
 
-    if (name === 'age' && parseInt(value) <= 0 ||  parseInt(value)>100) {
-      setAgeError("Invalid Age");
-      setFormData(prevState => ({ ...prevState, [name]: '' }));
-
-      return;
-    }else{
-      setAgeError("");
+    if (name === 'age') {
+      if (value === '' || parseInt(value) <= 0 || parseInt(value) > 100) {
+        setAgeError("Invalid Age");
+        setFormData(prevState => ({ ...prevState, [name]: '' }));
+        return;
+      } else {
+        setAgeError("");
+      }
     }
     
+
   
       setFormData({ ...formData, [name]: value });
     
   };
+
   const checkUsername = async () => {
     try {
       const response = await axios.post('/jsignup/checkUsername', { username });
@@ -195,8 +198,8 @@ useEffect(() => {
             
                 alert('Judge added successfully!');
                 handleSendEmail();
-
-                window.location.href('/judgeCount');
+                window.location.reload();
+                //window.location.href('/judgeCount');
               }
             })
             .catch((error) => {

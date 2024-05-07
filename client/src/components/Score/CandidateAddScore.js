@@ -1,26 +1,38 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import '../Style/score/FinalScore.css';
 import axios from "axios";
 
 export default function CandidateAddScore() {
-    //const [candidates, setCandidates] = useState([]);
-    const [finalScores, setFinalScores] = useState([]);
+    const [candidates, setCandidates] = useState([]);
+    const [clickedButtons, setClickedButtons] = useState([]);
+    const [scoredNames, setScoredNames] = useState([]); // State to store names with scores
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch candidates and final scores from the backend when the component mounts
-        axios.get("http://localhost:8020/candidate/candidates")
+        // Fetch candidate data
+        axios.get("http://localhost:8020/candidates")
             .then(response => {
-                setFinalScores(response.data);
+                setCandidates(response.data.existingCandidates);
             })
             .catch(error => {
                 console.error("Error fetching candidates:", error);
             });
+
+        // Fetch names with scores
+        axios.get("http://localhost:8020/score")
+            .then(response => {
+                const names = response.data.map(score => score.Cname);
+                console.log("Names:", names);
+                setScoredNames(names);
+            })
+            .catch(error => {
+                console.error("Error fetching names with scores:", error);
+            });
     }, []);
 
-    const handleAddButtonClick = (name, category) => {
-        navigate(`/addscoreandfeedback?Cname=${name}&Category=${category}`);
+    const handleAddButtonClick = (name, category, index) => {
+        navigate(`/addscore?Cname=${name}&Category=${category}`);
+        setClickedButtons(prevState => [...prevState, index]);
     };
 
     return (
@@ -31,25 +43,33 @@ export default function CandidateAddScore() {
                     <thead>
                         <tr>
                             <th>Candidate Name</th>
+                            <th>Event</th>
                             <th>Category</th>
+                            <th>Age</th>
+                            <th>Contact</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {finalScores.map(candidate => {
-                            //const candidate = candidates.find(candidate => candidate.Cname === score.Cname);
-                            return (
-                                <tr key={candidate._id}>
-                                    <td>{candidate.name}</td>
-                                    <td>{candidate.category}</td>
-                                    <td>
-                                        <div className="mb-3 col-12">
-                                            <button type="button" className="btn btn-primary" onClick={() => handleAddButtonClick(candidate.name,candidate.category)}>Add Score</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            );
-                        })}
+                        {candidates.map((candidate, index) => (
+                            <tr key={candidate._id}>
+                                <td>{candidate.name}</td>
+                                <td>{candidate.event}</td>
+                                <td>{candidate.category}</td>
+                                <td>{candidate.age}</td>
+                                <td>{candidate.phoneNumber}</td>
+                                <td>
+                                    <button 
+                                        type="button" 
+                                        className="btn btn-primary" 
+                                        onClick={() => handleAddButtonClick(candidate.name, candidate.category, index)} 
+                                        disabled={scoredNames.includes(candidate.name) || clickedButtons.includes(index)} 
+                                    >
+                                        {scoredNames.includes(candidate.name) ? "Score Added" : (clickedButtons.includes(index) ? "Adding Score" : "Add Score")}
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

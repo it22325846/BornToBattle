@@ -87,8 +87,8 @@ app.use(eventRoutes);
 const eventCatRoutes = require('./routes/gimhani_event_routes/Event_categories');
 app.use(eventCatRoutes);
 
-
-
+const notifRoutes = require('./routes/gimhani_event_routes/Notifications_route');
+app.use(notifRoutes);
 
 
 
@@ -142,8 +142,8 @@ app.use(stallItems)
 
 
 //lakruwan line 144
-
-
+const scoreRouter = require("./routes/Scores/scoreRoutes");
+app.use("/score",scoreRouter);
 
 
 
@@ -233,7 +233,7 @@ app.use("/requestform",requestForm);
 
 //dhananji line 234
 const sponsorRouter = require('./routes/sponsor/sponsorrouts')
-app.use(sponsorRouter)
+app.use("/sponsor",sponsorRouter)
 
 
 
