@@ -20,7 +20,7 @@ const UpdateContent = () => {
     setLoading(true);
 
     axios
-      .put(`http://localhost:8070/media/update/${id}`, {
+      .put(`http://localhost:8020/gallery/update/${id}`, {
         name,
         description,
       })
