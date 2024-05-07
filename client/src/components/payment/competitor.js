@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./form.css";
+import "./styles/payform.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Form() {
@@ -32,7 +32,7 @@ export default function Form() {
     formData.append("image", image);
 
     axios
-      .post("http://localhost:8020/candidate/add", formData, {
+      .post("http://localhost:8020/Candidate/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
