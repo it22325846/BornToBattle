@@ -125,15 +125,17 @@ useEffect(() => {
     }
 
 
-    if (name === 'age' && parseInt(value) <= 0 ||  parseInt(value)>100) {
-      setAgeError("Invalid Age");
-      setFormData(prevState => ({ ...prevState, [name]: '' }));
-
-      return;
-    }else{
-      setAgeError("");
+    if (name === 'age') {
+      if (value === '' || parseInt(value) <= 0 || parseInt(value) > 100) {
+        setAgeError("Invalid Age");
+        setFormData(prevState => ({ ...prevState, [name]: '' }));
+        return;
+      } else {
+        setAgeError("");
+      }
     }
     
+
   
       setFormData({ ...formData, [name]: value });
     
@@ -195,8 +197,8 @@ useEffect(() => {
             
                 alert('Judge added successfully!');
                 handleSendEmail();
-
-                window.location.href('/judgeCount');
+                window.location.reload();
+                //window.location.href('/judgeCount');
               }
             })
             .catch((error) => {

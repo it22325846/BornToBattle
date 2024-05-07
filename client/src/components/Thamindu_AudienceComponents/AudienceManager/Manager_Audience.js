@@ -120,6 +120,7 @@ const ManagerDisplayPage = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem('username');
+        alert('Sign Out');
         window.location.href = '/';
     };
       

@@ -65,4 +65,21 @@ router.post('/api/jsignin', async (req, res) => {
   }
 });
 
+router.delete('/jsignup/delete/:username', async (req, res) => {
+  const { username } = req.params;
+
+  try {
+    const deletedUser = await JLogin.findOneAndDelete({ username });
+
+    if (deletedUser) {
+      res.json({ success: 'User deleted successfully' });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 module.exports = router;
