@@ -7,6 +7,12 @@ const EditJudge = () => {
   const [judge, setJudge] = useState({});
   const { id } = useParams();
   const username = localStorage.getItem('username') || '';
+  const userType = localStorage.getItem('userType') || '';
+
+
+  const [error, setError] = useState('');
+const [ageError, setAgeError] = useState("");
+const [perror, setPerror] = useState("");
 
   const [formData, setFormData] = useState({
     name: '',
@@ -24,6 +30,42 @@ const EditJudge = () => {
 console.log("id is ",id);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'phoneNumber') {
+      // Validate phone number to accept exactly 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
+      if (!isValidPhoneNumber && value.length > 0) { 
+        
+        setPerror('Phone number must be 10 digits');
+      } else {
+        setPerror('');
+      }
+    }
+
+
+    const onlyLettersRegex = /^[A-Za-z]+$/;
+       // Check if the input value contains only letters
+       if (name === 'name' && !onlyLettersRegex.test(value)) {
+        // Set an error message if the input value contains non-letter characters
+        setError('Name should only contain letters');
+        setFormData(prevState => ({ ...prevState, [name]: '' }));
+        return;
+      } else {
+        // Clear the error message if the input value is valid
+        setError('');
+      }
+
+      if (name === 'age') {
+        if (value === '' || parseInt(value) <= 0 || parseInt(value) > 100) {
+          setAgeError("Invalid Age");
+          setFormData(prevState => ({ ...prevState, [name]: '' }));
+          return;
+        } else {
+          setAgeError("");
+        }
+      }
+
   };
 
 const handleSubmit = (e) => {
@@ -50,7 +92,14 @@ const handleSubmit = (e) => {
       console.log("Update response:", res.data);
       if (res.data && res.data.status === "Judge updated") {
         alert("Success")
-        window.location.href = '/judgeprofile';
+        if(userType=='judge')
+        {
+          window.location.href = '/judgeprofile';
+        }
+        else{
+          window.location.href = '/editJudges';
+        }
+        
         setFormData({
           name: '',
           age: '',
@@ -70,6 +119,8 @@ const handleSubmit = (e) => {
       alert("Error occurred while updating judge details.");
     });
 };
+
+
 
 
   useEffect(() => {
@@ -186,6 +237,8 @@ const handleSubmit = (e) => {
           required
           style={{ width: '30%' }}
         />
+                  {perror && <p className="text-danger">{perror}</p>}
+
       </div>
 
       
@@ -248,6 +301,7 @@ const handleSubmit = (e) => {
           value={formData.un}
           onChange={handleChange}
           required
+          disabled
           style={{ width: '30%' }}
         />
       </div>
