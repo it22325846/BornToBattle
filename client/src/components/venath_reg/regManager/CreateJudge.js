@@ -111,7 +111,7 @@ useEffect(() => {
     }
 
     // Regular expression to match only letters (alphabetic characters)
-    const onlyLettersRegex = /^[A-Za-z]+$/;
+    const onlyLettersRegex = /^[A-Za-z\s]+$/;
 
     // Check if the input value contains only letters
     if (name === 'name' && !onlyLettersRegex.test(value)) {

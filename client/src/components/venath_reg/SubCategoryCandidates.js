@@ -29,11 +29,21 @@ const SubCategoryCandidates = () => {
                 return candidate.age < 16 && candidate.gender.toLowerCase() === 'male' && candidate.category === 'Hiphop';
               case 'u16gh':
                 return candidate.age < 16 && candidate.gender.toLowerCase() === 'female' && candidate.category === 'Hiphop';
-              case 'o16bh':
-                return candidate.age >= 16 && candidate.age < 18 &&  candidate.gender.toLowerCase() === 'male' && candidate.category === 'Hiphop';
-              case 'o16gh':
-                return candidate.age >= 16 && candidate.gender.toLowerCase() === 'female' && candidate.category === 'Hiphop';
+              case 'u18ba':
+                return candidate.age <= 18 && candidate.age > 16 &&  candidate.gender.toLowerCase() === 'male' && candidate.category === 'Allstyle';
+              case 'u18ga':
+                return candidate.age <= 16 && candidate.age > 16 && candidate.gender.toLowerCase() === 'female' && candidate.category === 'Allstyle';
               default:
+                case 'o18ba':
+                return candidate.age >= 18 && candidate.gender.toLowerCase() === 'male' && candidate.category === 'AllStyles';
+              case 'o18ga':
+                return candidate.age >= 18 && candidate.gender.toLowerCase() === 'female' && candidate.category === 'AllStyles';
+                case 'u16bh':
+                  return candidate.age < 16 && candidate.gender.toLowerCase() === 'male' && candidate.category === 'AllStyles';
+                case 'u16ga':
+                  return candidate.age <= 16 && candidate.gender.toLowerCase() === 'female' && candidate.category === 'AllStyles';
+                case 'u16ba':
+                  return candidate.age <= 16  &&  candidate.gender.toLowerCase() === 'male' && candidate.category === 'AllStyles';
                 return true; // Default case, no filtering applied
             }
           });

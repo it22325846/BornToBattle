@@ -176,9 +176,10 @@ const UserProfile = () => {
         
         </div>
         <div>
-        <button className="btn btn-danger" onClick={handleSignOut}>
-          Sign Out
-        </button>
+        <button className="btn btn-danger text-left" onClick={handleSignOut}>
+  Sign Out
+</button>
+
       </div>
         {/* <button className="btn btn-info" onClick={() => window.location.href = "/groupprofile"}>
         View Group Profile
