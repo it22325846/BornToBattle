@@ -269,6 +269,8 @@ export default function EditEvent() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    
     const data = {
       topic: event.topic,
       type: event.type,
@@ -279,6 +281,8 @@ export default function EditEvent() {
       // eventCategory: event.eventCategory,
       // style: event.style,
     };
+
+    
 
     console.log(data);
 
@@ -315,6 +319,72 @@ export default function EditEvent() {
   
   
   };
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  
+  //   const data = {
+  //     topic: event.topic,
+  //     type: event.type,
+  //     gender: event.gender,
+  //     ageGroup: event.ageGroup,
+  //     time: event.time,
+  //     // eventCategory: event.eventCategory,
+  //     // style: event.style,
+  //   };
+  
+  //   console.log(data);
+  
+  //   try {
+  //     // Time validation logic
+  //     const timeString = data.time; // Example time string in HH:mm format
+  //     const [hoursStr, minutesStr] = timeString.split(":");
+  //     const hour = parseInt(hoursStr);
+  //     const minute = parseInt(minutesStr);
+  
+  //     const response = await axios.get('http://localhost:8020/events');
+  //     const existingEvents = response.data.existingEvents;
+  //     const eventTimes = existingEvents.map(event => event.time);
+  //     const hoursAndMinutesArray = eventTimes.map(timeString => {
+  //       const [hoursStr, minutesStr] = timeString.split(":");
+  //       return { hour: parseInt(hoursStr), minute: parseInt(minutesStr) };
+  //     });
+  
+  //     const isTimeAvailable = !hoursAndMinutesArray.some(eventTime => {
+  //       const timeDifference = (hour - eventTime.hour) * 60 + (minute - eventTime.minute);
+  //       return Math.abs(timeDifference) <= 60;
+  //     });
+  
+  //     if (!isTimeAvailable) {
+  //       alert("There should be at least a one-hour gap between events");
+  //       return;
+  //     }
+  
+  //     const res = await axios.put(`http://localhost:8020/event/update/${id}`, data);
+  //     if (res.data.success) {
+  //       const notificationData = {
+  //         text: "Event Updated",
+  //         topic: event.topic,
+  //         topicId: event._id,
+  //         time: event.time,
+  //       };
+  //       localStorage.setItem('Ltext', 'Latest Updated Event ');
+  //       localStorage.setItem('Ltopic', event.topic);
+  //       localStorage.setItem('LtopicId', event._id);
+  
+  //       const response = await axios.post('http://localhost:8020/notif/save', notificationData);
+  //       if (response.data.success) {
+  //         alert("Event updated successfully!");
+  //         window.location.href = '/e';
+  //       } else {
+  //         console.error("Error saving notification:", response.data.message);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating event:", error);
+  //   }
+  // };
+  
 
   const inputStyle = {
     width: '100%', // Full width
@@ -398,6 +468,7 @@ export default function EditEvent() {
               style={inputStyle}
             >
               <option value="">Select Age Category</option>
+              <option value="under16">Under 16</option>
               <option value="under18">Under 18</option>
               <option value="above18">Above 18</option>
               <option value="open">Open</option>

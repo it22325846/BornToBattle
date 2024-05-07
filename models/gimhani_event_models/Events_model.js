@@ -25,7 +25,7 @@ const eventSchema = new mongoose.Schema({
   ageGroup: {
     type: String,
     // Assuming you want to restrict ageGroup to certain values (under18 or above18)
-    enum: ['under18', 'above18','open'],//If a value other than 'under18' or 'above18' is attempted to be assigned to ageGroup, it will result in a validation error.
+    enum: ['under16', 'under18', 'above18','open'],//If a value other than 'under18' or 'above18' is attempted to be assigned to ageGroup, it will result in a validation error.
   },
 
   time: {

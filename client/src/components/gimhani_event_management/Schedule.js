@@ -48,9 +48,9 @@ const Schedule = () => {
   const totalEvents = events.length;
 
   return (
-
+    <div style={{ backgroundImage: `url("/Images/b2b4.jpg")`}}>
     <div style={{ minHeight: '100vh', padding: '20px', fontFamily: 'sans-serif' }}>
-    <div className="container" style={{ backgroundColor: '#ced4da' }}>
+    <div className="container" style={{ backgroundColor: '#ced4da', opacity: 0.9 }}>
 
     {/* <p style={{ color: 'black', fontSize: '1.5rem' }}>Welcome to the biggest battle of the year!</p> */}
     <div>
@@ -132,6 +132,7 @@ const Schedule = () => {
       </div>
     </div>
 
+    </div>
     </div>
     </div>
   );
