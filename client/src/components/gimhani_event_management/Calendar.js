@@ -111,9 +111,9 @@ function Calendar() {
       // Filter events that occur on May 4th
       const may4Events = allEvents.map(event => ({
         title: event.topic,
-        start: new Date("2024-05-04T" + event.time), // Assuming the time is in HH:mm format
+        start: new Date("2024-10-04T" + event.time), // Assuming the time is in HH:mm format
         // Assuming each event lasts for one hour
-        end: new Date(new Date("2024-05-04T" + event.time).getTime() + (60 * 60 * 1000)).toISOString(),
+        end: new Date(new Date("2024-10-04T" + event.time).getTime() + (60 * 60 * 1000)).toISOString(),
         allDay: false // Assuming events have specific start and end times
       }));
   
@@ -155,6 +155,7 @@ function Calendar() {
       <FullCalendar
         plugins={[timeGridPlugin, interactionPlugin]}
         initialView="timeGridDay"
+        initialDate="2024-10-04"
         height="80vh"
         selectable={true}
         select={handleDateSelect}
@@ -162,7 +163,10 @@ function Calendar() {
         headerToolbar={{
           left: "prev,next today",
           center: "title",
-          right: "timeGridDay",
+          right: "timeGridDay,timeGridWeek,dayGridMonth"
+
+          //right: "timeGridDay"
+         // end: "timeGridMonth"
         }}
         eventClick={handleEventClick} // Assign the eventClick handler
         slotMinTime="08:00:00" // Set the minimum time to 8 am
