@@ -8,7 +8,7 @@ export default function StallerProfile() {
 
     useEffect(() => {
         function readStallers() {
-            axios.post("http://localhost:4000/staller/read")
+            axios.post("http://localhost:8020/staller/read")
                 .then((res) => {
                     setStallers(res.data);
                 })
@@ -20,7 +20,7 @@ export default function StallerProfile() {
     }, []);
 
     function handleDelete(Stallerid) {
-        axios.delete(`http://localhost:4000/staller/delete/${Stallerid}`)
+        axios.delete(`http://localhost:8020/staller/delete/${Stallerid}`)
             .then(() => {
                 alert("Staller Deleted.")
                 navigate('/')
@@ -32,78 +32,78 @@ export default function StallerProfile() {
 
 
     return (
-        <div className='container'>
-            <div className="row col-sm-12 bg-white rounded-3 bg-opacity-25 no-gutters">
+        <div className='container mt-5 mb-5' style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover', borderRadius: '20px'}}>
+            <div className="row col-sm-12 rounded-3 bg-opacity-25 no-gutters">
                 <div className="col-sm-5 user-profile my-auto">
                     <div className="card-block text-center text-white">
-                        <div className=" my-auto pb-1 rounded-3">
+                        <div className="my-auto pb-1 rounded-3">
                             <img
-                                src="https://png.pngtree.com/png-vector/20220807/ourmid/pngtree-man-avatar-wearing-gray-suit-png-image_6102786.png"
-                                className="img-radius img-flex rounded-circle img-fluid"
+                                src="../../../Images/dancer.png"
+                                className="img mr-5"
                                 alt="User-Profile-Image"
                             />
                         </div>
                     </div>
                 </div>
                 {stallers.map((staller) => (
-                    <div className="col-sm-7 p-3">
-                        <div className="card-block p-4 rounded-3 text-start text-warning" style={{ backgroundColor: '#05242a' }}>
+                    <div className="col-sm-7 p-3 mt-3">
+                        <div className="profdata card-block rounded-3 text-warning">
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <p>Sri lankan Business Number</p>
+                                    <label style={{textAlign: 'start'}}>Sri lankan Business Number</label>
                                     <input value={staller.sbn} className='form-control' disabled />
                                 </div>
-                                <div className="col-sm-6">
-                                    <p>Company Name</p>
+                                <div className="col-sm-6    ">
+                                    <label style={{textAlign: 'start'}}>Company Name</label>
                                     <input value={staller.companyName} className='form-control' disabled />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <p>First Name</p>
+                                    <label style={{textAlign: 'start'}}>First Name</label>
                                     <input value={staller.firstName} className='form-control' disabled />
                                 </div>
                                 <div className="col-sm-6">
-                                    <p>Last Name</p>
+                                    <label style={{textAlign: 'start'}}>Last Name</label>
                                     <input value={staller.lastName} className='form-control' disabled />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <p>Mobile</p>
+                                    <label style={{textAlign: 'start'}}>Mobile</label>
                                     <input value={staller.mobile} className='form-control' disabled />
                                 </div>
                                 <div className="col-sm-6">
-                                    <p>Address</p>
+                                    <label style={{textAlign: 'start'}}>Address</label>
                                     <input value={staller.address} className='form-control' disabled />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <p>City</p>
+                                    <label style={{textAlign: 'start'}}>City</label>
                                     <input value={staller.city} className='form-control' disabled />
                                 </div>
                                 <div className="col-sm-6">
-                                    <p>Province</p>
+                                    <label style={{textAlign: 'start'}}>Province</label>
                                     <input value={staller.province} className='form-control' disabled />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
-                                    <p>Postal code</p>
+                                    <label style={{textAlign: 'start'}}>Postal code</label>
                                     <input value={staller.postalCode} className='form-control' disabled />
                                 </div>
                                 <div className="col-sm-6">
-                                    <p>Email</p>
+                                    <label style={{textAlign: 'start'}}>Email</label>
                                     <input value={staller.email} className='form-control' disabled />
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className='mt-4 d-flex justify-content-between'>
-                                    <Link to={`/editProfile/${staller._id}`}>
+                            <div className="row ml-3">
+                                <div className='btns mt-2' style={{display: "flex", justifyContent:"space-between", width:"100vh"}}>
+                                    <Link to={`/editStaller/${staller._id}`}>
                                         <button type='submit' className='btn btn-success'>Edit profile</button>
                                     </Link>
-                                    <button className='btn btn-danger' onClick={(d) => handleDelete(staller._id)}>Delete</button>
+                                    <button className='del btn btn-danger mr-3' onClick={(d) => handleDelete(staller._id)}>Delete</button>
                                 </div>
                             </div>
                         </div>

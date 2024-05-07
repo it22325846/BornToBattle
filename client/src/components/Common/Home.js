@@ -38,7 +38,7 @@ export default function Home(){
                     <p class="ph">Registration will be accepted on a first-come, first-served basis. Spots are limited in each division. Once a division is full, no more entries will be accepted for that division</p>
                     <p class="ph">Payment must be made in FULL in order for registration to be processed.</p>
                     <button type="button" class="btn btn-primary btn-lg custom-btn">More Information</button>
-                    <button type="button" class="btn btn-primary btn-lg custom-btn"> <a href="/CandidateSignup" style={{ color: 'white' }}>Register To A Event</a></button>
+                    <button type="button" class="btn btn-primary btn-lg custom-btn"  onClick={() => window.location.href = "/CandidateSignup"}>Register To A Event</button>
 
                
                 </div>
@@ -52,7 +52,7 @@ export default function Home(){
                         <div class="text-overlay">
                             <h1 class="text-over-image">2024 SCHEDULE</h1>
                             <h2 class="text-over-image2">SEE THE ROUTINE SCHEDULE</h2>
-                            <button type="button" class="btn btn-primary btn-lg custom-btn4"> <a href="/schedule">VIEW SCHEDULE</a></button>
+                            <button type="button" class="btn btn-primary btn-lg custom-btn4"  onClick={() => window.location.href = "/calendar"}>VIEW CALENDAR SCHEDULE</button>
                         </div>
                     </div>
                     <div class="image-container">
@@ -60,7 +60,7 @@ export default function Home(){
                         <div class="text-overlay">
                             <h1 class="text-over-image">RULES</h1>
                             <h2 class="text-over-image2">SEE THE COMPETITION RULES</h2>
-                            <button type="button" class="btn btn-primary btn-lg custom-btn4">VIEW RULES</button>
+                            <button type="button" class="btn btn-primary btn-lg custom-btn4" onClick={() => window.location.href = "/Rules"}>VIEW RULES</button>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ export default function Home(){
             <div className="overlay8">
             
                 <div className="image">
-                    <img src="../../Images/read and black.jpg" alt="Read and Black"  width="100%" height="auto"  />
+                    <img src="../../Images/red_and_black.jpg" alt="Read and Black"  width="100%" height="auto"  />
                 </div>
                 <h1 className="gallery">GALLERY</h1>
 
@@ -96,7 +96,7 @@ export default function Home(){
                     </div>
                     
                 </div>
-                <button class="view-more-button">View More</button>
+                <button class="view-more-button" onClick={() => window.location.href = "/galleryDisplay"}>View More</button>
             </div>
 
 
@@ -110,25 +110,26 @@ export default function Home(){
                 <hr />
             <div className="overlay7">
                 <h1 className="payment">Buy Your Own Tickets.</h1>
-                <button type="button" class="btn btn-primary btn-lg custom-btn2">BUY</button>
+                <button type="button" class="btn btn-primary btn-lg custom-btn2" style={{ color:'black' , fontWeight:'bolder', cursor:'default', borderRadius:'50px', fontSize:'25px' }}  
+                    onClick={() => window.location.href = "/A_SignIn"}>BUY
+                </button>
                 
             </div>
-            <button className="btn btn-success">
-          <a href="/CandidateSignup" style={{ color: 'black' }}>Register To A Event</a>
-        </button>
-        <p></p>
-        <button className="btn btn-success">
-          <a href="/managerSignin" style={{ color: 'black' }}>Sign in as a manager</a>
-        </button>
-
-        <p></p>
-        <button className="btn btn-success">
-          <a href="/AdminSignin" style={{ color: 'black' }}>Admin Sign In</a>
-        </button>
-<p></p>
-        <button className="btn btn-success">
-          <a href="/JudgeSignup" style={{ color: 'black' }}>Sign In as a judge</a>
-        </button>
+                <button className="btn btn-success"  onClick={() => window.location.href = "/CandidateSignup"}>
+                    Register To A Event
+                </button>
+                <p></p>
+                <button className="btn btn-success" onClick={() => window.location.href = "/managerSignin"}>
+                    Sign in as a manager
+                </button>
+                <p></p>
+                <button className="btn btn-success" onClick={() => window.location.href = "/AdminSignin"}>
+                    Admin Sign In
+                </button>
+                <p></p>
+                <button className="btn btn-success" onClick={() => window.location.href = "/JudgeSignup"}>
+                    Sign In as a judge
+                </button>
             </div>
                
 

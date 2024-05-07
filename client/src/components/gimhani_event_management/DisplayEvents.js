@@ -1,4 +1,5 @@
 //displayevents
+//not used
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -130,7 +131,7 @@ const DisplayEvents = () => {
 
           {/* Calendar Image */}
   <div className="col-lg-4 col-md-4 col-sm-6 d-flex align-items-center justify-content-center">
-    <a href="/calendar">
+    <a href="/schedule">
       <img src="/Images/calendar1.jpg" alt="Calendar" style={{ width: '50%', height: '50%', cursor: 'pointer' }} />
     </a>
   </div>

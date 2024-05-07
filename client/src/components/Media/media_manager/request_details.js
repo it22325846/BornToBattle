@@ -7,7 +7,7 @@ export default function MediaManagerUI() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8070/requestForm/read")
+      .get("http://localhost:8020/requestForm/read")
       .then((response) => {
         setForms(response.data);
       })
@@ -28,35 +28,35 @@ export default function MediaManagerUI() {
   };
 
   return (
-    <div>
+    <div className="container11">
       <h2 className="h21">Request Forms</h2>
-      <table>
+      <table className="table111">
         <thead>
           <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Address 1</th>
-            <th>Address 2</th>
-            <th>City</th>
-            <th>State</th>
-            <th>ZIP</th>
-            <th>Description</th>
-            <th>Action</th>
+            <th className="th111">First Name</th>
+            <th className="th111">Last Name</th>
+            <th className="th111">Email</th>
+            <th className="th111">Address 1</th>
+            <th className="th111">Address 2</th>
+            <th className="th111">City</th>
+            <th className="th111">State</th>
+            <th className="th111">ZIP</th>
+            <th className="th111">Description</th>
+            <th className="th111">Action</th>
           </tr>
         </thead>
         <tbody>
           {forms.map((form) => (
             <tr key={form._id}>
-              <td>{form.fname}</td>
-              <td>{form.lname}</td>
-              <td>{form.email}</td>
-              <td>{form.address1}</td>
-              <td>{form.address2}</td>
-              <td>{form.city}</td>
-              <td>{form.state}</td>
-              <td>{form.zip}</td>
-              <td>{form.description}</td>
+              <td className="td111">{form.fname}</td>
+              <td className="td111">{form.lname}</td>
+              <td className="td111">{form.email}</td>
+              <td className="td111">{form.address1}</td>
+              <td className="td111">{form.address2}</td>
+              <td className="td111">{form.city}</td>
+              <td className="td111">{form.state}</td>
+              <td className="td111">{form.zip}</td>
+              <td className="td111">{form.description}</td>
               <td>
                 <button onClick={() => handleDelete(form._id)}>Delete</button>
               </td>

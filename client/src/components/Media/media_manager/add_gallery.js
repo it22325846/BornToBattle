@@ -21,7 +21,7 @@ export default function Gallery() {
     formData.append("image", image);
 
     axios
-      .post("http://localhost:8020/media/add", formData, {
+      .post("http://localhost:8020/gallery/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -43,7 +43,7 @@ export default function Gallery() {
 
   const fetchMedia = () => {
     axios
-      .get("http://localhost:8020/media/read")
+      .get("http://localhost:8020/gallery/read")
       .then((res) => {
         setMedia(res.data);
       })
@@ -59,7 +59,7 @@ export default function Gallery() {
 
   const deleteContent = (id) => {
     axios
-      .delete(`http://localhost:8020/media/delete/${id}`)
+      .delete(`http://localhost:8020/gallery/delete/${id}`)
       .then(() => {
         alert("Item deleted.");
         // After deleting, fetch media again to update the list
@@ -71,20 +71,24 @@ export default function Gallery() {
       });
   };
 
+  const updateContent = (id) => {
+    navigate(`/update/${id}`);
+  };
+
   return (
     <div>
       {/* Background image */}
-      <div className="overlay">
+      <div className="overlay111">
         <img src="../../Images/iimg.jpg" alt="IDS" />
-        <div className="overlay-text">
-          <h1 className="img_ga">IMAGE GALLERY</h1>
+        <div className="overlay-text111">
+          <h1 className="img_ga111">IMAGE GALLERY</h1>
         </div>
       </div>
 
       <form className="form1" onSubmit={addContent}>
         {/* Form inputs */}
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label">
+          <label htmlFor="exampleFormControlInput1" className="form-label" style={{color:'white'}}>
             Picture Caption
           </label>
           <input
@@ -96,7 +100,7 @@ export default function Gallery() {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label">
+          <label htmlFor="exampleFormControlTextarea1" className="form-label" style={{color:'white'}}>
             Description
           </label>
           <textarea
@@ -108,7 +112,7 @@ export default function Gallery() {
         </div>
 
         <div className="mb-3">
-          <label htmlFor="photoFile" className="form-label">
+          <label htmlFor="photoFile" className="form-label" style={{color:'white'}}>
             Upload Content
           </label>
           <input
@@ -118,33 +122,39 @@ export default function Gallery() {
             onChange={handleFileChange}
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary111" style={{color:'white', fontWeight:'bold'}}>
           Add Content
         </button>
       </form>
 
       {/* Display fetched media */}
-      <div className="media">
+      <div className="media111">
         {media.map((item) => (
-          <div key={item._id} className="media-item">
+          <div key={item._id} className="media-item111">
             {/* Check if image exists before rendering */}
             {item.image && (
               <img
-                src={`http://localhost:8020/media/uploads/${item.image}`}
+                src={`http://localhost:8020/gallery/uploads/media/${item.image}`}
                 alt="Product Image"
-                className="media-image"
+                className="media-image111"
               />
             )}
-            <div className="dropdown1">
-              <button className="dropbtn1">More</button>
-              <div className="dropdown-content1">
+            <div className="dropdown111">
+              <button className="dropbtn111">More</button>
+              <div className="dropdown-content111">
                 {/* Attach delete function to the "Delete" button */}
-                <button className="dropbtn1" onClick={() => deleteContent(item._id)}>Delete</button>
+                <button className="dropbtn111" onClick={() => deleteContent(item._id)}>Delete</button>
+                <button
+                  className="dropbtn111"
+                  onClick={() => updateContent(item._id)}
+                >
+                  Update
+                </button>
               </div>
             </div>
-            <div className="media-content">
-              <h3 className="imagename">{item.name}</h3>
-              <p className="imagedescription">{item.description}</p>
+            <div className="media-content111">
+              <h3 className="imagename111">{item.name}</h3>
+              <p className="imagedescription111">{item.description}</p>
             </div>
           </div>
         ))}

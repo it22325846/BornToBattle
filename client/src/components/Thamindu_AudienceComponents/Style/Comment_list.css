@@ -28,7 +28,7 @@
     padding: 10px;
     word-wrap: break-word;
     white-space: pre-wrap;
-    
+    color: rgb(0, 0, 0);
 }
 .username {
     font-size: 14px;
@@ -49,7 +49,8 @@
     margin-bottom: 50px;
     margin-left: 150px;
     margin-right: 150px; */
-    background-color: #bdb8b8;
+    /* background-color: #bdb8b8; */
+    background-color: #bdb8b8a8;
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: bold;

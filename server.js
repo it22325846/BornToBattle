@@ -37,7 +37,6 @@ app.use(judgeRouter);
 const managerRouter = require('./routes/managers/managers_route');
 app.use(managerRouter);
 
-
 const adminRouter = require('./routes/admin/admin_route');
 app.use(adminRouter);
 
@@ -51,6 +50,7 @@ const JloginsRouter = require('./routes/venath_registration_routes/judge_signup_
  app.use(candidateGroupRouter);
 
 
+ 
 //thamindu line 54
 const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
 app.use(commentRouter);
@@ -61,8 +61,8 @@ app.use(A_signupRoutes);
 const audienceRouter = require("./routes/Thamindu_AudienceRoutes/audienceRoutes");
 app.use(audienceRouter);
 
-// const commentRouter = require('./routes/Thamindu_AudienceRoutes/commentRoutes');
-// app.use(commentRouter);
+const AudienceManagerRoutes = require('./routes/Thamindu_AudienceRoutes/AudienceManagerRoutes');
+app.use(AudienceManagerRoutes);
 
 // const A_signupRoutes = require('./routes/Thamindu_AudienceRoutes/A_signupRoutes');
 // app.use(A_signupRoutes);
@@ -141,11 +141,9 @@ app.use(stallItems)
 
 
 
-
-
 //lakruwan line 144
-
-
+const scoreRouter = require("./routes/Scores/scoreRoutes");
+app.use("/score",scoreRouter);
 
 
 
@@ -176,15 +174,10 @@ app.use(stallItems)
 //vishmitha line 174
 
 const mediaRouter = require("./routes/Media/gallery");
-app.use("/media",mediaRouter);
+app.use(mediaRouter);
 
 const requestForm = require("./routes/Media/mediaRequestForm");
 app.use("/requestform",requestForm);
-
-
-
-
-
 
 
 
@@ -239,6 +232,9 @@ app.use("/requestform",requestForm);
 
 
 //dhananji line 234
+const sponsorRouter = require('./routes/sponsor/sponsorrouts')
+app.use("/sponsor",sponsorRouter)
+
 
 
 

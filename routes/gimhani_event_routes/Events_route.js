@@ -7,21 +7,6 @@ const router =  require('express').Router();
 let Events = require("../../models/gimhani_event_models/Events_model");
 
 //save posts
-// router.post('/post/save',(req,res)=>{
-
-//     let newPost = new Posts(req.body);
-
-//     newPost.save((err) =>{
-//         if(err){
-//             return res.status(400).json({
-//                 error:err
-//             });
-//         }
-//         return res.status(200).json({
-//             success:"Posts saved successfully"
-//         });
-//     })
-// })
 
 router.post('/event/save', (req, res)=>{
     let newPost = new Events(req.body);

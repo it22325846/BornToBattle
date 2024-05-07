@@ -6,7 +6,7 @@ import Header from './components/Common/Header';
 import Footer from './components/Common/Footer';
 import Home from './components/Common/Home';
 
-//#region Venath
+//#region Venath line 9 - 60
 import Candidates from './components/venath_reg/Candidates';
 import EventCandidates from './components/venath_reg/EventCandidates';
 import SubCategoryCandidates from './components/venath_reg/SubCategoryCandidates';
@@ -17,13 +17,15 @@ import EditJudge from './components/venath_reg/EditJudge';
 import CandidateDetails from './components/venath_reg/CandidateDetails';
 import AllCandidates from './components/venath_reg/AllCandidates';
 import AllGroups from './components/venath_reg/AllGroups';
-
+import JudgeDetails from './components/venath_reg/JudgeDetails'
+import EditGroup from './components/venath_reg/EditGroup' 
 
 import Signup from './components/venath_reg/CandidateSignup';
 import CandidateSignup from './components/venath_reg/CandidateSignin';
 import JudgeSignup from './components/venath_reg/JudgeSignup';
 import UserProfile from './components/venath_reg/CandidateUserProfile';
 import JUserProfile from './components/venath_reg/JudgeUserProfile';
+import GroupUserProfile from './components/venath_reg/GroupUserProfile';
 
 import SignIn from './components/venath_reg/SignIn';
 import EditPassword from './components/venath_reg/EditPassword';
@@ -34,7 +36,7 @@ import ManagerEventCandidates from './components/venath_reg/regManager/ManagerEv
 import ManagerEditAll from './components/venath_reg/regManager/ManagerEditAll';
 import EditJudges from './components/venath_reg/regManager/ManagerEditJudges';
 import CreateJudge from './components/venath_reg/regManager/CreateJudge';
-
+import ManagerEditGroup from './components/venath_reg/regManager/ManagerEditGroups';
 
 
 //admin
@@ -43,13 +45,21 @@ import AdminSignin from './components/admin/AdminSignIn';
 import AdminSignup from './components/admin/AdminSignup';
 import AllJudges from './components/venath_reg/AllJudges';
 import AddManagers from './components/admin/AddManagers';
-// #endregion
-
 import ManagerSignin from './components/managers/ManagerSignin';
 
 
 
-//#region Gimhani
+
+
+
+
+
+
+
+
+// #endregion
+
+//#region Gimhani line 62 - 85
 
 import Events from './components/gimhani_event_management/Events';
 import CreateEvent from './components/gimhani_event_management/CreateEvent';
@@ -62,31 +72,77 @@ import EventCategoryDetails from './components/gimhani_event_management/EventCat
 import EditCategory from './components/gimhani_event_management/EditCategory';
 import DisplayEvents from './components/gimhani_event_management/DisplayEvents';
 import Schedule from './components/gimhani_event_management/Schedule';
+import NotificationPage from './components/gimhani_event_management/NotificationPage';  
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Lakruwan
+//#region Lakruwan line 87 - 102
 import FinalScore from './components/Score/FinalScore';
 import AddScore from './components/Score/AddScore';
 import UpdateScore from './components/Score/UpdateScore';
 import CandidateAddScore from './components/Score/CandidateAddScore';
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Thamindu
+//#region Thamindu line 104 - 124
 
 import A_SignIn from './components/Thamindu_AudienceComponents/SignIn';
 import A_SignUp from './components/Thamindu_AudienceComponents/Signup';
 import A_UserProfile from './components/Thamindu_AudienceComponents/A_UserProfile';
 import A_EditUserProfile from './components/Thamindu_AudienceComponents/A_EditUserProfile' ;
 import Comment_main from './components/Thamindu_AudienceComponents/Comment_main';
-
-// #endregion
+import Manager_Audience from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Audience'
 import M_Comment_main from './components/Thamindu_AudienceComponents/AudienceManager/Manager_Comment_main';
 
 
-//#region Naduni
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Nisitha
+//#region Naduni line 126 - 143
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// #endregion
+
+//#region Nisitha line 145 - 164
 import StallReg from './components/Stall/stall_holder/stallerRegister';
 import StallerProfile from './components/Stall/stall_holder/stallerProfile';
 import StallerEdit from './components/Stall/stall_holder/stallerEdit';
@@ -94,16 +150,52 @@ import TheStall from './components/Stall/stall_item/theStall';
 import ItemEdit from './components/Stall/stall_item/editItems';
 import UserStalls from './components/Stall/stall_item/stallPage';
 
+
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
-//#region Dhananji
+//#region Dhananji line 166 - 183
+import SponsorPage from './components/sponsor/SponsorPage';
+import SponsorPkg from './components/sponsor/SponsorPkg';
+import SponsorClaim from './components/sponsor/createSponosr';
+import ReadSponsor from './components/sponsor/readSponsor';
+import UpdateSponsor from './components/sponsor/updateSponsor';
+
+
+
+
+
+
+
+
+
+
+
 // #endregion
 
 //#region Vishmitha
+import MediaManagerUI from './components/Media/media_manager/mediaManagerUI';
+import RequestDetails from './components/Media/media_manager/request_details';
+import Gallery_view from './components/Media/media_view/gallery_view';
+import AddGallery from './components/Media/media_manager/add_gallery';
+import MediaCenter from './components/Media/media_view/Media_center';
+import Policy from './components/Media/media_view/policy';
+import RequestForm from './components/Media/media_view/requestform';
+
+
 // #endregion
 
-// import NavBar from './components/Venath/NavBar';
-// import Footer from './components/Venath/Footer'; // Import the NavBar component
+import Rules from './components/Common/Rules';
+import Aboutus from './components/Common/AboutUs'; // Import the NavBar component
 // import Signup from './components/Venath/Signup';
 
 //  import Candidates from './components/venath_reg/CandidateSignup';
@@ -123,16 +215,17 @@ function App() {
 
       <Routes>
         
-      <Route path="/" element={<Home />} />
-      {/* 
+        <Route path="/" element={<Home />} />
+         
       
-        <Route path="/Signup" element={<Signup />} />
-      
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/editpwd" element={<EditPassword />} />
+        <Route path="/Rules" element={<Rules />} />
+        <Route path="/Aboutus" element={<Aboutus />} />
+        
+        {/*<Route path="/editpwd" element={<EditPassword />} />
         <Route path="/" element={<Candidates />} /> */}
 
-        <>{/* Venath registration routes */}
+
+        <>{/* Venath registration routes                    line 236 - 286*/}
         <Route path="/" element={<Home />} />
         <Route path="/candidates" element={<Candidates />} />
         <Route path="/candidates/:event" element={<EventCandidates />} />
@@ -148,17 +241,19 @@ function App() {
         <Route path="/Signup" element={<Signup />} />
         <Route path="/CandidateSignup" element={<CandidateSignup />} />
         <Route path="/JudgeSignup" element={<JudgeSignup />} />
+        <Route path="/Judge/:id" element={<JudgeDetails />} />
+        <Route path="/gedit/:id" element={<EditGroup />} />
 
-        
         <Route path="/regDash" element={<RegDash />} />
         <Route path="/judgeCount" element={<JudgeCount />} />
         <Route path="/managercandidates/:event" element={<ManagerEventCandidates />} />
         <Route path="/editcandidates" element={<ManagerEditAll />} />
         <Route path="/editJudges" element={<EditJudges />} />
         <Route path="/addJudge" element={<CreateJudge />} />
+        <Route path="/editGroups" element={<ManagerEditGroup />} /> 
 
-
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/cprofile" element={<UserProfile />} />
+        <Route path="/groupprofile" element={<GroupUserProfile />} />
         <Route path="/judgeprofile" element={<JUserProfile />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/editpwd" element={<EditPassword />} />
@@ -172,16 +267,24 @@ function App() {
 
         <Route path="/managerSignin" element={<ManagerSignin />} />
 
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Gimhani registration routes */}
+        <>{/* Gimhani registration routes                    line 288 - 318*/}
         <Route path="/e" element={<Events />} />
         <Route path="/addevent" element={<CreateEvent />} />
         <Route path="/editevent/:id" element={<EditEvent />} />
-      <Route path="/schedule" element={<Schedule />} />
+        <Route path="/schedule" element={<Schedule />} />
       
         {/* <Route path="/edit/:id" render={(props) => <EditPost {...props} />} /> */}
-       
+
         <Route path="/addcat" element={<CreateCategory />} />
         <Route path="/edit/cat/:id" element={<EditCategory />} />
 
@@ -194,46 +297,129 @@ function App() {
 
         <Route path="/eventd/:id" element={<EventDetails />} />
         <Route path="/cat/:id" element={<EventCategoryDetails />} />
+        <Route path="/notif" element={<NotificationPage />} />
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Lakruwan registration routes */}
+        <>{/* Lakruwan registration routes                    line 320 - 335*/}
         <Route path='/finalscoresheet' Component={FinalScore}/>
-      <Route path='/addscore' Component={AddScore}/>
-      <Route path='/updatescore' Component={UpdateScore}/>
-      <Route path='/candidateaddscore' Component={CandidateAddScore}/>
+        <Route path='/addscore' Component={AddScore}/>
+        <Route path='/updatescore' Component={UpdateScore}/>
+        <Route path='/candidateaddscore' Component={CandidateAddScore}/>
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Thamindu registration routes */}
+        <>{/* Thamindu registration routes                    line 337 - 354 */}
         <Route path="/A_signup" element={<A_SignUp />} />
         <Route path="/A_signin" element={<A_SignIn />} />
         <Route path="/A_profile" element={<A_UserProfile />} />
         <Route path="/edit/:username" element={<A_EditUserProfile />} />
         <Route path="/M_Comment_main" element={<M_Comment_main />} />
-        <Route path="/contactus" element={<Comment_main />} />
+        <Route path="/Comment_main" element={<Comment_main />} />
+        <Route path="/Manager_Audience" element={<Manager_Audience />} />
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Naduni registration routes */}
+        <>{/* Naduni registration routes                   line 356 - 377 */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Nisitha registration routes */}
+        <>{/* Nisitha registration routes                   line 379 - 398 */}
         <Route path="/createStaller" element={<StallReg />} />
         <Route path="/stallerprofile" element={<StallerProfile />} />
-        <Route path="/editStaller" element={<StallerEdit />} />
+        <Route path="/editStaller/:Stallerid" element={<StallerEdit />} />
 
         
         <Route path="/theStall" element={<TheStall />} />
-        <Route path="/editItems" element={<ItemEdit />} />
+        <Route path="/editItems/:Itemid" element={<ItemEdit />} />
         <Route path="/stalls" element={<UserStalls />} />
+
+
+
+
+
+
+
+
+
+
         </>
 
-        <>{/* Dhananji registration routes */}
+        <>{/* Dhananji registration routes                   line 400 - 417 */}
+        <Route path="/sponsordashboard" element={<SponsorPage />} />
+        <Route path="/sponsorpackage" element={<SponsorPkg />} />
+
+        <Route path="/sponsorcreate" element={<SponsorClaim />} />
+        <Route path="/sponsorread" element={<ReadSponsor />} />
+        <Route path="/sponsorupdate/:sponsorid" element={<UpdateSponsor />} />
+
+
+
+
+
+
+
+
+
+
         </>
 
         <>{/* Vishmitha registration routes */}
+        <Route path="/mediaM" element={<MediaManagerUI />} />
+        <Route path="/displyrequest" element={<RequestDetails />} />
+        <Route path="/galleryDisplay" element={<Gallery_view />} />
+        <Route path="/gallery" element={<AddGallery />} />
+        <Route path="/mediaCenter" element={<MediaCenter />} />
+        <Route path="/requestForm" element={<RequestForm />} />
+
         </>
 
          
-</Routes>
+      </Routes>
       <Footer />{}
     </Router>
   );

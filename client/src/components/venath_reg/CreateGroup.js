@@ -3,6 +3,7 @@ import axios from 'axios';
 
 function CreateGroup() {
   const [formData, setFormData] = useState({
+    groupName:'',
     name: '',
     age: '',
     gender: '',
@@ -10,7 +11,7 @@ function CreateGroup() {
     phoneNumber: '',
     category: 'Open', // Default category value
     username: localStorage.getItem('username') || '',
-    members: Array.from({ length: 2 }, () => ({
+    members: Array.from({ length: 4 }, () => ({
       name: '',
       age: '',
       gender: '',
@@ -20,6 +21,9 @@ function CreateGroup() {
   const [phoneNumberError, setPhoneNumberError] = useState('');
 
   useEffect(() => {
+    localStorage.setItem('userType', "group");//set session for user type for testing, chard to input manymembers
+
+
     const storedUsername = localStorage.getItem('username');
     if (!storedUsername) {
       alert('Please log in');
@@ -54,11 +58,13 @@ function CreateGroup() {
   };
 
   const handleSubmit = (e) => {
+    //localStorage.setItem('userType', "group");//set session for user type
     e.preventDefault();
 
-    const { name, age, gender, event, phoneNumber, category, members } = formData;
+    const { groupName, name, age, gender, event, phoneNumber, category, members } = formData;
 
     const data = {
+      groupName,
       name,
       age,
       gender,
@@ -70,7 +76,7 @@ function CreateGroup() {
     };
 
     axios
-      .post('/groups', data)
+      .post('/group/save', data)
       .then((res) => {
         if (res.data.success) {
           alert('Sign-up successful!');
@@ -89,12 +95,29 @@ function CreateGroup() {
       {username === 'admin' ? (
         <p>Add candidate and give username and password to them</p>
       ) : (
-        <p>Welcome, {username}</p>
+        <p style={{ color: 'white' }}> Welcome, {username}</p>
       )}
 
-      <h2 style={{ marginLeft: '1rem' }}>Apply for Event</h2>
+      <h2 style={{ marginLeft: '1rem' }}>Apply For Group Battle</h2>
 
-      <form onSubmit={handleSubmit} style={{ marginLeft: '1rem' }}>
+      <form onSubmit={handleSubmit} style={{ marginLeft: '1rem' , color: 'white' }}>
+
+      <div className="mb-3">
+          <label htmlFor="name" className="form-label">
+            Group Name
+          </label>
+          <input
+            type="text"
+            className="form-control"
+            id="groupName"
+            name="groupName"
+            value={formData.groupName}
+            onChange={handleChange}
+            required
+            style={{ width: '30%' }}
+          />
+        </div>
+
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Group Leader Name
@@ -167,8 +190,10 @@ function CreateGroup() {
 
         {/* Members Section */}
         <h3>Group Members</h3>
+        <br></br>
         {formData.members.map((member, index) => (
           <div key={index} className="mb-3">
+<h4><b style={{ color: 'red' }}> Member {index + 1} Name:</b></h4>
             <label htmlFor={`name_${index}`} className="form-label">
               Member {index + 1} Name:
             </label>
@@ -177,6 +202,7 @@ function CreateGroup() {
               id={`name_${index}`}
               value={member.name}
               onChange={(e) => handleMemberChange(index, 'name', e.target.value)}
+              style={{ width: '30%' }}
             />
 
             <label htmlFor={`age_${index}`} className="form-label">
@@ -185,6 +211,7 @@ function CreateGroup() {
             <input
               type="number"
               id={`age_${index}`}
+              style={{ width: '30%' }}
               value={member.age}
               onChange={(e) => handleMemberChange(index, 'age', e.target.value)}
             />
@@ -194,6 +221,7 @@ function CreateGroup() {
             </label>
             <select
               id={`gender_${index}`}
+              style={{ width: '30%' }}
               value={member.gender}
               onChange={(e) => handleMemberChange(index, 'gender', e.target.value)}
             >
@@ -201,7 +229,10 @@ function CreateGroup() {
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
+            <br></br>
+            <br></br>
           </div>
+          
         ))}
 
         <button type="submit" className="btn btn-primary">

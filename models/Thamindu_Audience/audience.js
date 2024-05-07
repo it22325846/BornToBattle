@@ -18,7 +18,7 @@ const audienceSchema = new mongoose.Schema({
         required: false
     },
     phoneNumber:{
-        type: String,
+        type: Number,
         required: false
     },
     username:{

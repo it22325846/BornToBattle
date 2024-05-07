@@ -43,11 +43,12 @@ function AllGroups() {
 
   return (
     <div>
-      <h1>All Groups</h1>
+      <h1 style={{ color: 'white' }}>All Groups</h1>
       <table className="table" style={{ color: 'white' }}>
         <thead>
           <tr>
             <th>#</th>
+            <th>Group Name</th>
             <th>Name</th>
             <th>Age</th>
             <th>Gender</th>
@@ -62,6 +63,7 @@ function AllGroups() {
           {groups.map((group, index) => (
             <tr key={group._id}>
               <td>{index + 1}</td>
+              <td>{group.groupName}</td>
               <td>{group.name}</td>
               <td>{group.age}</td>
               <td>{group.gender}</td>
@@ -69,14 +71,14 @@ function AllGroups() {
               <td>{group.category}</td>
               <td>{group.phoneNumber}</td>
               <td>{renderMemberNames(group.members)}</td>
-              <td>
+              {/* <td>
                 <button className="btn btn-primary" onClick={() => alert(`Edit group: ${group._id}`)}>
                   Edit
                 </button>
                 <button className="btn btn-danger ml-2" onClick={() => onDelete(group._id)}>
                   Delete
                 </button>
-              </td>
+              </td> */}
             </tr>
           ))}
         </tbody>

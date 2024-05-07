@@ -7,7 +7,7 @@ const express = require('express');
 // Multer configuration
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      return cb(null, './uploads')
+      return cb(null, './uploads/stallItems')
     },
     filename: function (req, file, cb) { 
       return cb(null, `${Date.now()}_${file.originalname}`) 
@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 
 
 // Create
-router.route("/create").post(upload.single('pImage'), (req, res) => {
+router.route("/staller/items/create").post(upload.single('pImage'), (req, res) => {
 
     const pName = req.body.pName;
     const pPrice = Number(req.body.pPrice);
@@ -44,10 +44,10 @@ router.route("/create").post(upload.single('pImage'), (req, res) => {
 //Read
 
 // Serving images from the 'uploads' directory/folder
-router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+router.use('/staller/items/uploads/stallItems', express.static(path.join(__dirname, '../../uploads/stallItems')));
 
 // Read route
-router.route("/read").post((req, res) => {
+router.route("/staller/items/read").post((req, res) => {
   Item.find().then((items) => {
     res.json(items);
   }).catch((err) => {
@@ -59,7 +59,7 @@ router.route("/read").post((req, res) => {
 
 //get ID route
 
-router.route("/get/:Itemid").get(async (req, res) => {
+router.route("/staller/items/get/:Itemid").get(async (req, res) => {
   let itemId = req.params.Itemid;
 
   const getID = await Item.findById(itemId)
@@ -76,7 +76,7 @@ router.route("/get/:Itemid").get(async (req, res) => {
 })
 
 // Update route
-router.route("/update/:Itemid").put(upload.single('pImage'), async (req, res) => {
+router.route("/staller/items/update/:Itemid").put(upload.single('pImage'), async (req, res) => {
   const itemId = req.params.Itemid;
   const { pName, pPrice } = req.body;
 
@@ -103,7 +103,7 @@ router.route("/update/:Itemid").put(upload.single('pImage'), async (req, res) =>
 
 
 // Delete route
-router.route("/delete/:Itemid").delete(async (req, res) => {
+router.route("/staller/items/delete/:Itemid").delete(async (req, res) => {
   const itemid = req.params.Itemid;
 
   try {

@@ -17,8 +17,9 @@ const A_UserProfile = () => {
         const existingUsername = localStorage.getItem('username');
 
         if (!existingUsername) {
-            alert("You don't have an account");
+            // alert("You don't have an account");
             window.location.href = '/A_signin';
+            return;
         }
         else {
             fetchUserDetails();
@@ -32,7 +33,11 @@ const A_UserProfile = () => {
     const fetchUserDetails = async () => {
         try {
             const response = await axios.get(`/audience/${localStorage.getItem('username')}`);
-            setUserDetails(response.data);
+            // const response = await axios.get(`/audience/${userDetails._id}`);
+
+            setUserDetails(response.data.audience);
+            console.log("user_details:", response);
+
         } catch (error) {
             console.error('Error fetching user details:', error);
         }
@@ -62,8 +67,10 @@ const A_UserProfile = () => {
 
     const handleSignOut = () => {
         localStorage.removeItem('username');
+        localStorage.removeItem('userType');
+        alert("Signed Out");
         window.location.href = '/';
-      };
+    };
 
 
 

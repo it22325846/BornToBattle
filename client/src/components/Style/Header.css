@@ -77,3 +77,42 @@ text{
     background-color: #000000;
     color: #ff0000;
 }
+/* Styles for the dropdown container */
+.dropdown {
+    position: relative;
+  }
+  
+  /* Styles for the dropdown toggle link */
+  .dropdown .nav-link {
+    color: #fff; /* Text color */
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Styles for the dropdown menu */
+  .dropdown-menu {
+    display: none; /* Hide the dropdown menu by default */
+    position: absolute;
+    background-color: #343a40; /* Background color */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Styles for the dropdown menu items */
+  .dropdown-menu .dropdown-item {
+    color: #fff; /* Text color */
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+  }
+  
+  /* Styles for the active dropdown menu item */
+  .dropdown-menu .dropdown-item.active {
+    background-color: #adb5bd; /* Background color */
+  }
+  
+  /* Show the dropdown menu when the dropdown toggle link is clicked */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
