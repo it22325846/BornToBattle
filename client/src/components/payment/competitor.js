@@ -4,7 +4,6 @@ import "./styles/payform.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Form() {
-
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -13,7 +12,7 @@ export default function Form() {
   const [email, setEmail] = useState("");
   const [contact_number, setContactNumber] = useState(0);
   const [comp_type, setCompType] = useState("");
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState("");
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
@@ -32,15 +31,16 @@ export default function Form() {
     formData.append("image", image);
 
     axios
-      .post("http://localhost:8020/Candidate/add", formData, {
+      .post("http://localhost:8020/payment/add", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       })
       .then(() => {
         console.log(Error);
+
         alert("Request sent.");
-        navigate('/pDetails');
+        navigate("/paymentdetails");
       })
       .catch((err) => {
         alert(err.message);
@@ -48,18 +48,18 @@ export default function Form() {
   };
 
   return (
-    <div className="container bg-dark p-3 rounded text-white">
+    <div className="bg-dark p-3 rounded text-white my-5" style={{marginInline: '3in'}}>
       <div className="overlay22">
-        <div className="overlay22-text">
-          <h1>Payment Form</h1>
+        <div className="-text">
+          <h1 className="text-danger" style={{marginLeft: '3.3in', fontWeight: 'bold'}}>Payment Form</h1>
         </div>
       </div>
 
       <div className="container">
-        <form className="form" onSubmit={addContent}>
-          <div className="row">
+        <form className="form ">
+          <div className="row" style={{textAlign: 'start'}}>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="name">
+              <label className="black-label text-white" htmlFor="name">
                 Name
               </label>
               <input
@@ -71,7 +71,7 @@ export default function Form() {
               />
             </div>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="age">
+              <label className="black-label text-white" htmlFor="age">
                 Age
               </label>
               <input
@@ -83,9 +83,9 @@ export default function Form() {
               />
             </div>
           </div>
-          <div className="row">
+          <div className="row" style={{textAlign: 'start'}}>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="gender">
+              <label className="black-label text-white" htmlFor="gender">
                 Gender
               </label>
               <select
@@ -100,7 +100,7 @@ export default function Form() {
               </select>
             </div>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="email">
+              <label className="black-label text-white" htmlFor="email">
                 Email
               </label>
               <input
@@ -112,9 +112,9 @@ export default function Form() {
               />
             </div>
           </div>
-          <div className="row">
+          <div className="row" style={{textAlign: 'start'}}>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="contact_number">
+              <label className="black-label text-white" htmlFor="contact_number">
                 Contact Number
               </label>
               <input
@@ -126,7 +126,7 @@ export default function Form() {
               />
             </div>
             <div className="col-md-6">
-              <label className="black-label" htmlFor="comp_type">
+              <label className="black-label text-white" htmlFor="comp_type">
                 Competition Type
               </label>
               <input
@@ -138,7 +138,7 @@ export default function Form() {
               />
             </div>
           </div>
-          <div className="mb-3">
+          <div className="col-md-12">
             <label htmlFor="image" className="form-label">
               Slip Input
             </label>
@@ -149,8 +149,13 @@ export default function Form() {
               onChange={handleFileChange}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
+          <button
+            type="submit"
+            className="btn btn-primary ml-3 mt-3"
+            style={{fontWeight: 'bolder'}}
+            onClick={addContent}
+          >
+            Pay
           </button>
         </form>
       </div>

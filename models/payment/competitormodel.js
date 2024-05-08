@@ -46,6 +46,6 @@ const candidateSchema = new Schema({
     }
 });
 
-const Candidate = mongoose.model('Candidate', candidateSchema);
+const payment = mongoose.model('payment', candidateSchema);
 
-module.exports = Candidate;
+module.exports = payment;

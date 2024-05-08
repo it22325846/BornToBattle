@@ -203,7 +203,7 @@ app.use("/requestform",requestForm);
 
 //naduni line 204
 const paymentForm = require("./routes/payment/competitors");
-app.use("/paymentform",paymentForm);
+app.use("/payment",paymentForm);
 
 
 
