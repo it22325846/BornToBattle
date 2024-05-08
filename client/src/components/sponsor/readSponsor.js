@@ -29,10 +29,10 @@ export default function ReadSponsor() {
 
   function deleteSponsor(Sponsorid) {
     axios
-      .delete(`http://localhost:8070/sponsor/delete/${Sponsorid}`)
+      .delete(`http://localhost:8020/sponsor/delete/${Sponsorid}`)
       .then(() => {
         alert("Sponsor Deleted.");
-        navigate("/Users");
+        navigate("/sponsorread");
       })
       .catch((err) => {
         alert("couldn't delete the sponsor.", err);
@@ -51,10 +51,10 @@ export default function ReadSponsor() {
 
   return (
     <div className="mt-5">
-      <div className="row" style={{marginLeft: '1.8in'}}>
+      <div className="row" style={{ marginLeft: "1.8in" }}>
         <input
           className="form-control me-2"
-          style={{width: '8in'}}
+          style={{ width: "8in" }}
           type="search"
           placeholder="Search company name here"
           aria-label="Search"
@@ -88,53 +88,58 @@ export default function ReadSponsor() {
               }}
             >
               <div>
-                <div className="d-flex justify-content-between">
-                  <div>
-                    <h3>{user.companyName}</h3>
+                <div ref={componentPDF}>
+                  <div className="d-flex justify-content-between">
+                    <div>
+                      <h3>{user.companyName}</h3>
+                    </div>
+                    <div>
+                      {user.companyLogo && (
+                        <img
+                          src={`http://localhost:8020/sponsor/uploads/${user.companyLogo}`}
+                          alt="company logo"
+                          style={{ width: "100px", height: "100px" }}
+                        />
+                      )}
+                    </div>
                   </div>
-                  <div>
-                    {user.companyLogo && (
-                      <img
-                        src={`http://localhost:8070/sponsor/uploads/${user.companyLogo}`}
-                        alt="company logo"
-                        style={{ width: "100px", height: "100px" }}
-                      />
-                    )}
-                  </div>
+                  <table
+                    className="table bg-white text-dark"
+                    style={{ textAlign: "start" }}
+                  >
+                    <tr>
+                      <th>sponsorName</th>
+                      <td> {user.sponsorName} </td>
+
+                      <th>website</th>
+                      <td> {user.website}</td>
+                    </tr>
+
+                    <tr>
+                      <th>sponsorPosition</th>
+                      <td> {user.sponsorPosition} </td>
+
+                      <th>contactPerson</th>
+                      <td> {user.contactPerson} </td>
+                    </tr>
+
+                    <tr>
+                      <th>companyPhone</th>
+                      <td> {user.companyPhone}</td>
+
+                      <th>address</th>
+                      <td> {user.address}</td>
+                    </tr>
+
+                    <tr>
+                      <th>state</th>
+                      <td> {user.state}</td>
+
+                      <th>email</th>
+                      <td> {user.email}</td>
+                    </tr>
+                  </table>
                 </div>
-                <table className="table text-dark" ref={componentPDF}>
-                  <tr>
-                    <th>sponsorName</th>
-                    <td> {user.sponsorName} </td>
-
-                    <th>website</th>
-                    <td> {user.website}</td>
-                  </tr>
-
-                  <tr>
-                    <th>sponsorPosition</th>
-                    <td> {user.sponsorPosition} </td>
-
-                    <th>contactPerson</th>
-                    <td> {user.contactPerson} </td>
-                  </tr>
-
-                  <tr>
-                    <th>companyPhone</th>
-                    <td> {user.companyPhone}</td>
-
-                    <th>address</th>
-                    <td> {user.address}</td>
-                  </tr>
-
-                  <tr>
-                    <th>state</th>
-                    <td> {user.state}</td>
-
-                    <th>email</th>
-                    <td> {user.email}</td>
-                  </tr>
-                </table>
                 <div className="d-flex justify-content-between">
                   <button
                     className="btn btn-warning"
