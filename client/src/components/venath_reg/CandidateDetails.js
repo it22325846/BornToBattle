@@ -51,7 +51,11 @@ const CandidateDetails = () => {
       <div style={{ flex: 3 }}>
 
       {candidate.photo && (
-        <img src={`/uploads/profile-photos/${candidate.photo}`} alt="Candidate Photo" style={{ maxWidth: '200px' }} />
+        <img src={`/uploads/profile-photos/${candidate.photo}`} alt="Candidate Photo" style={{
+          maxWidth: '200px',
+          border: '2px solid white', // Add border styling here
+          borderRadius: '5px' // Add border radius for rounded corners
+        }} />
       )}
 </div>
 
