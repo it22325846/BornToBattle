@@ -27,7 +27,7 @@ function Header() {
           break;
 
         case "sponsor":
-           navigate("/#"); // Redirect to judge.js
+           navigate("/stalls"); // Redirect to judge.js
           break;
 
         case "stall_owner":
@@ -93,7 +93,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="active" to="/createStaller">
+      <NavLink className="nav-link" activeClassName="active" to="/stalls">
           SHOPS
         </NavLink>
       </li>
