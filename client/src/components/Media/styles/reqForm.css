@@ -7,7 +7,12 @@
 /* Style for the container */
 .container11 {
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 1000px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
 }
 
 /* Style for the table */
@@ -16,8 +21,9 @@
     margin: auto; /* Center the table */
     border-collapse: collapse;
     border-spacing: 0;
-    margin-bottom: 20%;
-    background-color: #f2f2f2;
+    margin-bottom: 5%;
+    background-color: #ffffff;
+
 }
 
 /* Style for table headers */
@@ -32,6 +38,10 @@
 .td111 {
     padding: 8px;
     border-bottom: 1px solid #ddd;
+}
+.table1{
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 

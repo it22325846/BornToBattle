@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "../styles/reqForm.css";
+import { useReactToPrint } from "react-to-print";
 
 export default function MediaManagerUI() {
+
+  const componentPDF = useRef();
   const [forms, setForms] = useState([]);
 
   useEffect(() => {
@@ -27,9 +30,17 @@ export default function MediaManagerUI() {
       });
   };
 
+  const generatePDF= useReactToPrint({
+    content: ()=>componentPDF.current,
+    documentTitle:"Userdata",
+    onAfterPrint:()=>alert("Data saved in PDF")
+});
+
   return (
     <div className="container11">
       <h2 className="h21">Request Forms</h2>
+      <div className="table1">
+      <div ref={componentPDF} style={{width:'100%'}}>
       <table className="table111">
         <thead>
           <tr>
@@ -64,6 +75,12 @@ export default function MediaManagerUI() {
           ))}
         </tbody>
       </table>
+      </div>
+      </div>
+      <div className="d-grid d-md-flex justify-content-md-end mb-3">
+          <button className="btn btn-success" onClick={ generatePDF}>CREATE PDF</button>                       
+      </div> 
+
     </div>
   );
 }
