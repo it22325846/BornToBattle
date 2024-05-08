@@ -13,11 +13,11 @@ export default function SponsorPage() {
           />
         </div>
 
-        <div className="position-absolute top-50 start-50 translate-middle p-3 text-center">
+        <div className="position-absolute top-50 start-50 translate-middle p-3 text-center" style={{marginTop: '-5.5in'}}>
           <h1 className="text-white" style={{ fontSize: "80px" }}>
             Sponsorship
           </h1>
-          <p className="text-white">
+          <p className="text-white ml-5" style={{width: '5in'}}>
             Experience the electrifying energy of "Born to Battle" dance
             competition. Showcase your brand to a captivated audience while
             supporting aspiring dancers. Benefit from extensive brand exposure,
@@ -44,8 +44,9 @@ export default function SponsorPage() {
               <div className="col-md-4">
                 <div class="">
                   <img
-                    src="https://www.maggi.lk/sites/default/files/maggi_logo_png_1.png"
+                    src="https://yt3.googleusercontent.com/ytc/AIdro_mn-nu_HXjjrDulwLtNu9Nq-C68BAm-vRA0fJODQZZH0Q=s900-c-k-c0x00ffffff-no-rj"
                     className="img-fluid rounded-4 pt-5"
+                    style={{marginTop: '-50px'}}
                     alt=""
                   ></img>
                 </div>
@@ -69,9 +70,21 @@ export default function SponsorPage() {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="my-4" style={{marginLeft: '3in'}}>
               <Link to={"/sponsorpackage"}>
-                <button className="btn btn-danger m-4 rounded-4" style={{ paddingInline: '150px', paddingTop: '50px', paddingBottom: '50px', fontSize: '50px', fontWeight: 'bolder' }}>Get Sponsorship</button>
+                <button
+                  className="btn btn-danger m-4"
+                  style={{
+                    paddingInline: "150px",
+                    paddingTop: "50px",
+                    paddingBottom: "50px",
+                    fontSize: "50px",
+                    fontWeight: "bolder",
+                    borderRadius: '30px'
+                  }}
+                >
+                  Get Sponsorship
+                </button>
               </Link>
             </div>
           </div>
