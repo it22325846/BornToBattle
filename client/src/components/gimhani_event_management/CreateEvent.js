@@ -45,7 +45,7 @@ const CreateEvent = () => {
     //   [name]: '', // Clear the error message for the current field
     // });
 
-    const onlyLettersRegex = /^[A-Za-z]+$/;
+    const onlyLettersRegex = /^[A-Za-z\s]*$/;
     if (name === 'topic' && !onlyLettersRegex.test(value)) {
       // Set an error message if the input value contains non-letter characters
       setError('Name should only contain letters');
@@ -151,56 +151,13 @@ try {
 }
 
 
-//     const timeString = formData.time; // Example time string in HH:mm format
-//     console.log("time takenn");
-    
-// // Split the time string into hours and minutes
-// const [hoursStr, minutesStr] = timeString.split(":");
-
-// // Parse hours and minutes as integers
-// const hours = parseInt(hoursStr);
-// const minutes = parseInt(minutesStr);
-
-// // Now you have hours and minutes as numbers, you can perform any manipulation you want
-// console.log("Hours:", hours);
-// console.log("Minutes:", minutes);
-
-//     try {
-// //   // Check if the entered time has at least a one-hour gap from existing events in the database
-//   const response = await axios.get('http://localhost:8020/events');
-//   const existingEvents = response.data.existingEvents;
-
-//   // Extracting only the "time" column from the events data
-// const eventTimes = existingEvents.map(event => event.time);
-
-// console.log("existing event times",eventTimes);
-
-// const hoursArray = eventTimes.map(timeString => {
-//   // Split the time string into hours and minutes
-//   const [hoursStr, _] = timeString.split(":");
-//   // Parse hours as an integer
-//   return parseInt(hoursStr);
-// });
-
-// console.log("hours of all existing times",hoursArray);
-
-// hoursArray.forEach(hourFromData => {
-//   // Compare hour with hourFromData
-//   if (hours === hourFromData) {
-//       console.log(`Hour ${hours} matches an hour from the array.`);
-//       validationErrors.time = 'Event time clashes with another event';
-//     //  alert("Event time clashes with another event");
-//   } else {
-//       console.log(`Hour ${hours} does not match an hour from the array.`);
-//   }
-// });
 
 
-// } 
-// catch (error) {
-//       console.error('Error checking existing events:', error);
-//       validationErrors.time = 'Error checking existing events';
-//     }
+
+
+
+
+
   
 //     setErrors(validationErrors);
   
@@ -382,6 +339,7 @@ try {
             style={inputStyle}
           >
             <option value="">Select Age Category</option>
+            <option value="under16">Under 16</option>
             <option value="under18">Under 18</option>
             <option value="above18">Above 18</option>
             <option value="open">Open</option>

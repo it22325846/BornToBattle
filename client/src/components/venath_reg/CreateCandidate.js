@@ -15,7 +15,7 @@ function CreateCandidate() {
     un: "",
     username: localStorage.getItem('username') || '',
     categoryOptions: {
-      dancing: ['Hiphop', 'AllStyles'],
+      dancing: ['Hiphop', 'FreeStyle'],
       rap: ['N/A'],
       beatbox: ['FreeStyle', 'Sound Effect'],
     },

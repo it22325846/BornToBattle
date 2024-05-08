@@ -6,6 +6,7 @@ const EditGroup = () => {
   
   const [group, setGroup] = useState({});
   const { id } = useParams();
+  const userType = localStorage.getItem('userType');
 
   const [formData, setFormData] = useState({
     groupName: '',
@@ -60,7 +61,13 @@ const EditGroup = () => {
         if (res.data ) {
             console.log("Update response:", res.data);
           alert("Group updated successfully");
-          window.location.href = '/editGroups';
+          if(userType=='group'){
+            window.location.href = '/groupprofile';
+          }
+          else{
+            window.location.href = '/editGroups';
+          }
+          
         }
       })
       .catch((error) => {

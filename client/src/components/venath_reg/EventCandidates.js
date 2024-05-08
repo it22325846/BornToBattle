@@ -100,7 +100,7 @@ const EventCandidates = () => {
               <th>Event</th>
               <th>Category</th>
               <th>Phone Number</th>
-              <th>Action</th>
+           
             </tr>
           </thead>
           <tbody>
@@ -118,14 +118,7 @@ const EventCandidates = () => {
                 <td>{candidate.category}</td>
                 <td>{candidate.phoneNumber}</td>
                 
-                <td>
-                  {/* <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </Link>
-                  <a className="btn btn-danger" href="#" onClick={() => onDelete(candidate._id)}>
-                    <i className="far fa-trash-alt"></i>&nbsp;Delete
-                  </a> */}
-                </td>
+            
               </tr>
             ))}
           </tbody>
@@ -140,7 +133,7 @@ const EventCandidates = () => {
           <td style={{ paddingRight: '20px' }}>
             <h5>{index+1}</h5>
           </td>
-          <td style={{ paddingRight: '20px' }}>
+          <td style={{ paddingRight: '20px', color: 'red' }}>
             <h5>{event.topic}</h5>
           </td>
           <td style={{ paddingRight: '20px' }}>
@@ -167,10 +160,10 @@ const EventCandidates = () => {
       <h5> Over  18 <a href="/subcandidates/dancing?cat=o18bh">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
       <h5> Under 16  <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
      <br></br>
-      <h4>All Styles</h4>
-      <h5> Under 18 <a href="/subcandidates/dancing?cat=u18ba">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
-      <h5> Over  18 <a href="/subcandidates/dancing?cat=o18ba">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
-      <h5> Under 16  <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
+      <h4>Free Styles</h4>
+      <h5> Under 18 <a href="/subcandidates/dancing?cat=u18ba">Boys </a> or <a href="/subcandidates/dancing?cat=u18ga">girls</a></h5>
+      <h5> Over  18 <a href="/subcandidates/dancing?cat=o18ba">Boys </a> or <a href="/subcandidates/dancing?cat=o18ga">girls</a></h5>
+      <h5> Under 16  <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16ga">girls</a></h5>
     </div>
   )}
 

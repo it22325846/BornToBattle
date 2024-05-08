@@ -1,3 +1,4 @@
+//events.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -58,6 +59,8 @@ const Events = () => {
 
   const onDelete = (id) => {
     axios.delete(`http://localhost:8020/event/delete/${id}`).then((res) => {
+      
+      
       alert("Deleted successfully");
       retrieveEvents();
     });

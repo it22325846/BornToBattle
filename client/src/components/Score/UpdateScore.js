@@ -1,29 +1,36 @@
 import React, { useState, useEffect } from "react";
+import{useNavigate} from "react-router-dom";
 import '../Style/score/AddScore.css'
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 export default function UpdateScore() {
     const location = useLocation();
+    const navigate = useNavigate();
     const searchParams = new URLSearchParams(location.search);
-    const scoreId = searchParams.get("id");
-    const Cname= searchParams.get("Cname");
-    const Category = searchParams.get("Category");
-    const initialPerformance = searchParams.get("Performance");
-    const initialCostume = searchParams.get("Costume");
-    const initialTechnique = searchParams.get("Technique");
-    const initialTiming = searchParams.get("Timing");
-    const initialFeedback = searchParams.get("Feedback");
 
-    // const [Cname, setCname] = useState(initialCname);
-    // const [Category, setCategory] = useState(initialCategory);
-    const [Performance, setPerformance] = useState(initialPerformance);
-    const [Costume, setCostume] = useState(initialCostume);
-    const [Technique, setTechnique] = useState(initialTechnique);
-    const [Timing, setTiming] = useState(initialTiming);
-    const [Feedback, setFeedback] = useState(initialFeedback);
+    const [scoreId, setScoreId] = useState(searchParams.get("scoreId"));
+    const [Cname, setCname] = useState(searchParams.get("Cname"));
+    const [Category, setCategory] = useState(searchParams.get("Category"));
+    const [Performance, setPerformance] = useState(searchParams.get("Performance"));
+    const [Costume, setCostume] = useState(searchParams.get("Costume"));
+    const [Technique, setTechnique] = useState(searchParams.get("Technique"));
+    const [Timing, setTiming] = useState(searchParams.get("Timing"));
+    const [Feedback, setFeedback] = useState(searchParams.get("Feedback"));
 
-    function sendData(e) {
+    useEffect(() => {
+        setScoreId(searchParams.get("scoreId"));
+        setCname(searchParams.get("Cname"));
+        setCategory(searchParams.get("Category"));
+        setPerformance(searchParams.get("Performance"));
+        setCostume(searchParams.get("Costume"));
+        setTechnique(searchParams.get("Technique"));
+        setTiming(searchParams.get("Timing"));
+        setFeedback(searchParams.get("Feedback"));
+    }, [location.search]);
+
+
+    function editData(e) {
         e.preventDefault();
         const updatedScore = {
             Performance,
@@ -33,21 +40,21 @@ export default function UpdateScore() {
             Feedback
         };
 
-        axios.put(`http://localhost:8070/score/update/${scoreId}`, updatedScore)
+        axios.put(`http://localhost:8020/score/update/${scoreId}`, updatedScore)
             .then(() => {
                 alert("Score Updated");
+                navigate('/finalscoresheet');
             })
             .catch((err) => {
                 alert(err);
+                //console.log(`http://localhost:8070/score/update/${scoreId}`);
             });
     }
 
     return (
         <div className="Main">
-
-            <h2>Update Score and Feedback</h2>
-
-            <form className="row g-3  formAdd" onSubmit={sendData}>
+            <h2>Score and Feedback</h2>
+            <form className="row g-3  formAdd" onSubmit={editData}>
                 
                 <div className="mb-3 col-md-6">
                     <label htmlFor="CId">Candidate Name</label>
@@ -84,7 +91,7 @@ export default function UpdateScore() {
                 </div>
 
                 <div className="mb-3 col-12">
-                    <button type="submit" className="btn btn-secondary">Update</button>
+                    <button type="submit" className="btn btn-secondary" >Update</button>
                 </div>
             </form>
         </div>

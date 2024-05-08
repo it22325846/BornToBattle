@@ -59,7 +59,8 @@ function AllCandidates () {
           <input className="form-control mr-sm-2 ml-auto" type="search" placeholder="Search" aria-label="Search" onChange={handleSearchArea} />
           <button className="btn btn-success" type="submit">Search</button>
         </form>
-        <h4>candidate details</h4>
+        <h4 style={{ color: 'white' }}>Candidate details</h4>
+
         <table className="table">
           <thead>
             <tr>
@@ -70,7 +71,7 @@ function AllCandidates () {
               <th>Event</th>
               <th>Category</th>
               <th>Phone Number</th>
-              <th>Action</th>
+             
             </tr>
           </thead>
           <tbody>
@@ -87,14 +88,7 @@ function AllCandidates () {
                 <td>{candidate.event}</td>
                 <td>{candidate.category}</td>
                 <td>{candidate.phoneNumber}</td>
-                <td>
-                  {/* <a className="btn btn-warning" href={`/edit/${candidate._id}`}>
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </a>
-                  <a className="btn btn-danger" href="/" onClick={() => onDelete(candidate._id)}>
-                    <i className="far fa-trash-alt"></i>&nbsp;Delete
-                  </a> */}
-                </td>
+             
               </tr>
             ))}
           </tbody>
