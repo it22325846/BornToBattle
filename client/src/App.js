@@ -89,7 +89,7 @@ import FinalScore from './components/Score/FinalScore';
 import AddScore from './components/Score/AddScore';
 import UpdateScore from './components/Score/UpdateScore';
 import CandidateAddScore from './components/Score/CandidateAddScore';
-
+import UserFinalScore from'./components/Score/UserFinalScore';
 
 
 
@@ -314,7 +314,7 @@ function App() {
         <Route path='/addscore' Component={AddScore}/>
         <Route path='/updatescore' Component={UpdateScore}/>
         <Route path='/candidateaddscore' Component={CandidateAddScore}/>
-
+        <Route path='/userfinalscoresheet' Component={UserFinalScore}/>
 
 
 
