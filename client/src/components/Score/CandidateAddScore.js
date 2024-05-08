@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import '../Style/score/FinalScore.css'
 
 export default function CandidateAddScore() {
     const [candidates, setCandidates] = useState([]);
@@ -61,7 +62,7 @@ export default function CandidateAddScore() {
                                 <td>
                                     <button 
                                         type="button" 
-                                        className="btn btn-primary" 
+                                        className="btn btn-primary custom" 
                                         onClick={() => handleAddButtonClick(candidate.name, candidate.category, index)} 
                                         disabled={scoredNames.includes(candidate.name) || clickedButtons.includes(index)} 
                                     >
