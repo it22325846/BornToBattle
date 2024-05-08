@@ -93,7 +93,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="active" to="/stalls">
+      <NavLink className="nav-link" activeClassName="active" to="/createStaller">
           SHOPS
         </NavLink>
       </li>
@@ -154,6 +154,13 @@ function Header() {
           COMMENTS & FEEDBACK
         </NavLink>
       </li>
+      <span className="separator">|</span>
+
+<li className="nav-item">
+<NavLink className="nav-link" activeClassName="active" to="notif">
+    Updates <i class="fa-regular fa-bell"></i>
+  </NavLink>
+</li>
       {userType && (
         <div className="image_nav2" style={{ marginRight: "10px" }}>
           <a href="#" onClick={handleProfileClick}>
