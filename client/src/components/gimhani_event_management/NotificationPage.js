@@ -27,6 +27,7 @@ const NotificationPage = () => {
   return (
     <div className="container mt-5" style={{ color: "white" }}>
       <h1 style={{ textAlign: 'center' }}> All Notifications</h1>
+      <h5> Click to see new details of the event</h5>
       <h2 style={{ textAlign: 'left' }}>{ltext}<a href={`/displayevents/${lid}`}>{levent}</a></h2>
       
       <table className="table" style={{ color: "white" }}>
