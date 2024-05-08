@@ -114,8 +114,8 @@ export default function Home(){
                 </button>
                 
             </div>
-                <button className="btn btn-success"  onClick={() => window.location.href = "/CandidateSignup"}>
-                    Register To A Event
+                <button className="btn btn-success" onClick={() => window.location.href = "/JudgeSignup"}>
+                    Sign In as a judge
                 </button>
                 <p></p>
                 <button className="btn btn-success" onClick={() => window.location.href = "/managerSignin"}>
@@ -126,9 +126,6 @@ export default function Home(){
                     Admin Sign In
                 </button>
                 <p></p>
-                <button className="btn btn-success" onClick={() => window.location.href = "/JudgeSignup"}>
-                    Sign In as a judge
-                </button>
             </div>
                
 
