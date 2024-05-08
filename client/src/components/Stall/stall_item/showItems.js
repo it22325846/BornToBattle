@@ -75,11 +75,11 @@ export default function ItemShow() {
             }).map((item) => (
               <div className='col-md-6' key={item._id}>
                 <div className='d-flex flex-column' style={{ position: 'relative' }}>
-                  <div className='d-flex flex-column gap-2 mt-4' style={{ position: 'absolute', top: '0px', right: '15px', zIndex: 2 }}> {/* Button container */}
-                    <button className='btn btn-success text-white' onClick={() => goToEditItem(item._id)}>
+                  <div className='d-flex flex-column gap-2 mt-1' style={{ position: 'absolute', top: '0px', right: '15px', zIndex: 2 }}> {/* Button container */}
+                    <button className='btn btn-success text-warning' onClick={() => goToEditItem(item._id)}>
                       edit
                     </button>
-                    <button className='btn btn-warning text-white mt-1' onClick={(d) => deleteItem(item._id)}>
+                    <button className='btn btn-warning text-danger mt-1' onClick={(d) => deleteItem(item._id)}>
                       delete
                     </button>
                   </div>
@@ -97,7 +97,7 @@ export default function ItemShow() {
                         <h3 className='card-text bg-white text-dark rounded-bottom' >{item.pName}</h3>
                       </div>
                       <div className='card-block my-3'>
-                        <h3 className='card-text text-white rounded-4 px-4' style={{ display: 'inline-block', backgroundColor: '#ff0000' }}>Rs.{item.pPrice}</h3>
+                        <h3 className='card-text text-white rounded-4 px-4' style={{ display: 'inline-block', backgroundColor: '#ff0000' }}>Rs.{item.pPrice}.00</h3>
                       </div>
                     </div>
                   </div>

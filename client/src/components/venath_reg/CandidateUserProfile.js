@@ -96,6 +96,8 @@ const UserProfile = () => {
     axios.delete(`/candidate/delete/${id}`).then((res) => {
       axios.delete(`/signup/delete/${username}`).then((res) => {
         localStorage.removeItem('username'); 
+        localStorage.removeItem("userType");
+
         alert("deleted");
         window.location.href=('/');
       });

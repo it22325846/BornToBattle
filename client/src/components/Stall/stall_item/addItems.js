@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import '../../Style/stallStyles/EditStallStyles.css';
 import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 export default function ItemAdd() {
+    
+    const navigate = useNavigate();
 
     const [pName, setPname] = useState('');
     const [pPrice, setPprice] = useState(0);
@@ -33,7 +36,20 @@ export default function ItemAdd() {
             <div>
                 <div className="fullDiv rounded-4" style={{ borderRadius: '30px', marginInline: '100px' }}>
                     <div className="p-4">
-                        <form className="row g-3" style={{textAlign: 'start'}} onSubmit={addItem}>
+                        <div>
+                            <div className="d-flex justify-content-between mb-3">
+                                <h2 className="ml-3 mt-3 text-success">Your Stall</h2>
+                                <div className="d-flex justify-content-between">
+                                    <h3 className="mt-3 mr-3 text-success">Your Profile</h3>
+                                    <button className="btn btn-success rounded-circle py-3 px-4"
+                                        onClick={(v)=> {navigate('/stallerProfile')}}
+                                    >
+                                        <i className="fa fa-user" aria-hidden="true" style={{ fontSize: '30px' }}></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <form className="row g-3" style={{ textAlign: 'start' }} onSubmit={addItem}>
                             <div className="col-md-8">
                                 <label htmlFor="pName" className="form-label">Product Name</label>
                                 <input

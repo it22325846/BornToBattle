@@ -6,6 +6,8 @@ const EditCandidate = () => {
   const [candidate, setCandidate] = useState({});
   const { id } = useParams();
   const username = localStorage.getItem('username') || '';
+  const [error, setError] = useState('');
+
 
   const [formData, setFormData] = useState({
     name: '',
@@ -18,6 +20,17 @@ const EditCandidate = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'phoneNumber') {
+      // Validate phone number to accept exactly 10 digits
+      const isValidPhoneNumber = /^\d{10}$/.test(value);
+      if (!isValidPhoneNumber && value.length > 0) {
+        setError('Phone number must be 10 digits');
+      } else {
+        setError('');
+      }
+    }
   };
 
   const handleSubmit = (e) => {
@@ -199,6 +212,8 @@ const EditCandidate = () => {
             required
             style={{ width: '30%' }}
           />
+                              {error && <p className="text-danger">{error}</p>}
+
         </div>
 
         <div>
