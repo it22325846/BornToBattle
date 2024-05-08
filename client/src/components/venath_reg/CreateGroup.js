@@ -21,7 +21,7 @@ function CreateGroup() {
   const [phoneNumberError, setPhoneNumberError] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('userType', "group");//set session for user type for testing, chard to input manymembers
+   
 
 
     const storedUsername = localStorage.getItem('username');
@@ -79,6 +79,7 @@ function CreateGroup() {
       .post('/group/save', data)
       .then((res) => {
         if (res.data.success) {
+          localStorage.setItem('userType', "group");//set session for user type for testing, chard to input manymembers
           alert('Sign-up successful!');
           window.location.href = '/'; // Redirect after successful submission
         }

@@ -15,6 +15,10 @@ const sponsorSchema = new Schema({
     type: String,
     required: true,
   },
+  sponsorType: {
+    type: String,
+    required: true,
+  },
   companyLogo: {
     type: String,
     required: true,
