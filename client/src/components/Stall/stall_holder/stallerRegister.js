@@ -35,7 +35,7 @@ export default function StallReg() {
         axios.post("http://localhost:8020/staller/create", newStaller)
             .then(() => {
                 alert("Staller added successfully.");
-                navigate('/stallerprofile');
+                navigate('/theStall');
             })
             .catch((err) => {
                 console.error("Error adding staller:", err);
