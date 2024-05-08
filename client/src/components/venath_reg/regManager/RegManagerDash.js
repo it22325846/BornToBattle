@@ -217,8 +217,8 @@ const RegDash =()=>{
         reportWindow.document.close();
       };
       const generateCSV = (data) => {
-        const header = 'Event Category, Event Name, Individual/Group, Gender, Age Category, Time\n';
-        const rows = data.map(judges => `${judges.name}, ${judges.username}, ${judges.phoneNumber}, ${judges.email}`);
+        const header = 'Judge Name, Judge Username, Phone Number, Email\n';
+        const rows = data.map(judges => `${judges.name}, ${judges.un}, ${judges.phoneNumber}, ${judges.email}`);
         return header + rows.join('\n');
       };
       const downloadCSV = (content, filename) => {

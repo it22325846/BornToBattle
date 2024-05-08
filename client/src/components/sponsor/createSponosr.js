@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate, useLocation } from "react-router-dom";
 
 export default function SponsorClaim() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
 
 
   // State variables to store form data
   const [sponsorName, setSponsorName] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const sponsorType = searchParams.get("sponsorType")
   const [sponsorPosition, setSponsorPosition] = useState("");
   const [companyLogo, setCompanyLogo] = useState();
   const [contactPerson, setContactPerson] = useState(0);
@@ -26,6 +29,10 @@ export default function SponsorClaim() {
   const handleCompanyNameChange = (event) => {
     setCompanyName(event.target.value);
   };
+
+  // const handleSponsorTypeChange = (event) => {
+  //   setSponsorType(event.target.value);
+  // };
 
   const handleSponsorPositionChange = (event) => {
     setSponsorPosition(event.target.value);
@@ -66,6 +73,7 @@ export default function SponsorClaim() {
     const sponsorFormData = new FormData();
     sponsorFormData.append("sponsorName", sponsorName);
     sponsorFormData.append("companyName", companyName);
+    sponsorFormData.append("sponsorType", sponsorType);
     sponsorFormData.append("sponsorPosition", sponsorPosition);
     sponsorFormData.append("companyLogo", companyLogo);
     sponsorFormData.append("contactPerson", contactPerson);
@@ -83,7 +91,7 @@ export default function SponsorClaim() {
       })
       .then(() => {
         alert("Sponsor added successfully.");
-        navigate('/sponsorread')
+        navigate(`/sponsorread`)
       })  
       .catch((err) => {
         console.error("Error adding sponsor:", err);
@@ -113,7 +121,7 @@ export default function SponsorClaim() {
             </div>
           </div>
           <div className="row col-12" style={{textAlign: 'start' }}>
-            <div className="col-12">
+            <div className="col-8">
               <label htmlFor="companyName" className="form-label">
                 Company Name
               </label>
@@ -122,6 +130,20 @@ export default function SponsorClaim() {
                 className="form-control"
                 id="companyName"
                 onChange={handleCompanyNameChange}
+              />
+            </div>
+            <div className="col-md-4">
+              <label htmlFor="companyLogo" className="form-label">
+                Sponsor Type
+              </label>
+              <input
+                type="text"
+                name="sponsorType"
+                className="form-control"
+                id="sponsorType"
+                value = {sponsorType}
+                readOnly
+                // onChange={handleSponsorTypeChange}
               />
             </div>
           </div>

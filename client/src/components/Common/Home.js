@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 import "../Style/main.css"; // Adjust the path to main.css
 import "../Style/Home.css"; // Adjust the path to Home.css
 
 
+  
 export default function Home(){
+    const [category, setCategory] = useState({});
+
+    
+    useEffect(() => {
+        axios.get(`http://localhost:8020/cat/661ec35e6ea732705d49728d`)
+            .then((res) => {
+                if (res.data.success) {
+                    setCategory(res.data.categories);
+                    console.log("data",res.data)
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching category:", error);
+                // Handle error, e.g., display a message to the user
+            });
+    }, []);
+    
     return(
         <div className="img1">
          <div class="image-container">
@@ -37,8 +57,23 @@ export default function Home(){
                     <p class="ph">Registration opens on June 3, 2024 at 12:00am. SPOTS ARE LIMITED...BE SURE TO REGISTER EARLY!</p>
                     <p class="ph">Registration will be accepted on a first-come, first-served basis. Spots are limited in each division. Once a division is full, no more entries will be accepted for that division</p>
                     <p class="ph">Payment must be made in FULL in order for registration to be processed.</p>
-                    <button type="button" class="btn btn-primary btn-lg custom-btn">More Information</button>
-                    <button type="button" class="btn btn-primary btn-lg custom-btn"  onClick={() => window.location.href = "/CandidateSignup"}>Register To A Event</button>
+                    
+                    <button
+    type="button"
+    className="btn btn-primary btn-lg custom-btn"
+    style={{
+        paddingTop: '20px',
+        paddingBottom: '20px',
+        fontSize: '20px',
+        marginLeft: '2.2in',
+        fontWeight: 'bold'
+    }}
+    onClick={() => window.location.href = "/CandidateSignup"}
+disabled={category.registrationOpen != 'true'}
+    >
+    Register To A Event
+</button>
+
 
                
                 </div>
@@ -111,12 +146,12 @@ export default function Home(){
             <div className="overlay7">
                 <h1 className="payment">Buy Your Own Tickets.</h1>
                 <button type="button" class="btn btn-primary btn-lg custom-btn2" style={{ color:'black' , fontWeight:'bolder', cursor:'default', borderRadius:'50px', fontSize:'25px' }}  
-                    onClick={() => window.location.href = "/A_SignIn"}>BUY
+                    onClick={() => window.location.href = "/payment"}>BUY
                 </button>
                 
             </div>
-                <button className="btn btn-success"  onClick={() => window.location.href = "/CandidateSignup"}>
-                    Register To A Event
+                <button className="btn btn-success" onClick={() => window.location.href = "/JudgeSignup"}>
+                    Sign In as a judge
                 </button>
                 <p></p>
                 <button className="btn btn-success" onClick={() => window.location.href = "/managerSignin"}>
@@ -127,9 +162,6 @@ export default function Home(){
                     Admin Sign In
                 </button>
                 <p></p>
-                <button className="btn btn-success" onClick={() => window.location.href = "/JudgeSignup"}>
-                    Sign In as a judge
-                </button>
             </div>
                
 

@@ -10,7 +10,7 @@ const path = require('path');
 // Multer configuration
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      return cb(null, './uploads')
+      return cb(null, './client/public/uploads/sponsor')
     },
     filename: function (req, file, cb) { 
     return cb(null, `${Date.now()}_${file.originalname}`) 
@@ -23,6 +23,7 @@ router.route("/add").post(upload.single('companyLogo'), (req,res)=>{
  
    const  sponsorName = req.body.sponsorName;
    const companyName = req.body.companyName;
+   const sponsorType = req.body.sponsorType;
    const sponsorPosition = req.body.sponsorPosition;
    const  contactPerson = Number(req.body.contactPerson);
    const companyPhone = Number(req.body.companyPhone);
@@ -38,6 +39,7 @@ router.route("/add").post(upload.single('companyLogo'), (req,res)=>{
 
       sponsorName,
       companyName,
+      sponsorType,
       sponsorPosition,
       companyLogo,
       contactPerson,
@@ -54,25 +56,19 @@ router.route("/add").post(upload.single('companyLogo'), (req,res)=>{
     }).catch((err)=>{
         console.log(err);
     })
-
-
-
 })
+
 //see who is in the list addedd by manager
 
-router.use('/uploads', express.static(path.join(__dirname, '../uploads')))
+router.use('/uploads', express.static(path.join(__dirname, '../../client/public/uploads/sponsor')))
 
 //http://localhost:8070/sponsor/display
 
 router.route("/read").get((req,res)=> {
-
     Sponsor.find().then((sponsors) =>{
-
         res.json(sponsors)
     }).catch((err)=>{
-
         console.log(err)
-
     })
 
 })
@@ -104,8 +100,8 @@ router.route("/get/:sponsorid").get(async (req, res) => {
         website: sponsor.website,
       });
     }).catch((err) => {
-        console.log(err) 
-    })
+        console.log(err)
+    })
   
   })
 
