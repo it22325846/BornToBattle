@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import './Style/FinalScore.css'
+import '../Style/score/FinalScore.css'
 import axios from "axios";
 
 export default function FinalScore() {
@@ -9,7 +9,7 @@ export default function FinalScore() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8070/score")
+        axios.get("http://localhost:8020/score")
             .then(response => {
                 // Organize scores by Cname
                 const scoresByCname = response.data.reduce((acc, score) => {
@@ -46,29 +46,22 @@ export default function FinalScore() {
             <div>
                 <div className="row">
                     <div className="col">
-                        <h2>Final Resultsheet</h2>
+                        <h2 className="h2center  !important"
+                        >Final Resultsheet</h2>
                     </div>
                     <div className="col">
-                        <form
-                            className="d-flex justify-content-"
-                            role="search"
-                            onSubmit={(e) => {
-                                e.preventDefault(); // Prevent form submission
-                            }}
-                        >
-                            <input
-                                className="form-control me-2"
-                                type="search"
-                                placeholder="Search candidate name here"
-                                aria-label="Search"
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                            />
-                            {/* <button className="btn btn-outline-success" type="submit">
-                                Search
-                            </button> */}
-                        </form>
-                    </div>
+                            <form className="d-flex justify-content-end" role="search">
+                                <input
+                                    className="form-control me-2  hide-on-print"
+                                    type="search"
+                                    placeholder="Search candidate name here"
+                                    aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                />
+                                {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
+                            </form>
+                        </div>
                 </div>
                 <table className="table">
                     <thead>
