@@ -78,6 +78,7 @@ const GroupUserProfile = () => {
       .then((res) => {
         axios.delete(`/signup/delete/${username}`).then((res) => {
           localStorage.removeItem('username'); 
+          localStorage.removeItem('userType'); 
           alert("Deleted");
           window.location.href = "/editGroups";
         });
