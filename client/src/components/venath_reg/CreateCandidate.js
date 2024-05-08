@@ -15,7 +15,7 @@ function CreateCandidate() {
     un: "",
     username: localStorage.getItem('username') || '',
     categoryOptions: {
-      dancing: ['Hiphop', 'AllStyles'],
+      dancing: ['Hiphop', 'FreeStyle'],
       rap: ['N/A'],
       beatbox: ['FreeStyle', 'Sound Effect'],
     },
@@ -35,21 +35,19 @@ function CreateCandidate() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    if (name === 'age' && parseInt(value) <= 0 ||  parseInt(value)>100) {
-      setAgeError("Invalid Age");
-      setFormData(prevState => ({ ...prevState, [name]: '' }));
-      return;
-    }else{
-      setAgeError("");
+    if (name === 'age') {
+      const intValue = parseInt(value);
+      if (intValue <= 0 || intValue > 100 || isNaN(intValue)) {
+        setAgeError("Invalid Age");
+      } else {
+        setAgeError("");
+      }
     }
-
-
-
+  
     if (name === 'phoneNumber') {
       // Validate phone number to accept exactly 10 digits
-      const isValidPhoneNumber = /^\d{10}$/.test(value);  // \d  a digit, and {10} count
-      if (!isValidPhoneNumber && value.length > 0) { 
-        
+      const isValidPhoneNumber = /^\d{10}$/.test(value);
+      if (!isValidPhoneNumber && value.length > 0) {
         setError('Phone number must be 10 digits');
       } else {
         setError('');

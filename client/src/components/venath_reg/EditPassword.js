@@ -7,6 +7,7 @@ const EditPassword = ({  }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const username = localStorage.getItem('username') || '';
+  const userType = localStorage.getItem('userType');
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();
@@ -16,11 +17,18 @@ const EditPassword = ({  }) => {
       return;
     }
 
+    let response = null; // Declare response variable
+
     try {
-      // Replace 'YOUR_API_ENDPOINT' with the actual endpoint for updating the password
-      const response = await axios.put(`/password/update/${username}`, {
-        newPassword: newPassword,
-      });
+      if (userType === 'judge') {
+        response = await axios.put(`/jpassword/update/${username}`, {
+          newPassword: newPassword,
+        });
+      } else {
+        response = await axios.put(`/password/update/${username}`, {
+          newPassword: newPassword,
+        });
+      }
 
       if (response.data.success) {
         setSuccess('Password updated successfully');
@@ -39,7 +47,7 @@ const EditPassword = ({  }) => {
   };
 
   return (
-    <div>
+    <div style={{ color: 'white' }}>
       <h2>Edit Password</h2>
       <form onSubmit={handlePasswordChange}>
         <div className="mb-3">

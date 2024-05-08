@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const Group = require("../../models/venath_registration_models/candidate_group_model"); // Import your Group model
+const multer = require('multer');
+const path = require('path');
 
 // Route to create a new group
 router.post('/group/save', (req, res) => {
@@ -22,6 +24,44 @@ router.post('/group/save', (req, res) => {
     });
     
   });
+
+  // Multer configuration for storing photos
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadPath = path.join(__dirname, '..', '..', 'client', 'public', 'uploads', 'group-photos');
+    cb(null, uploadPath); // Set the destination folder for group photos
+  },
+  filename: function (req, file, cb) {
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + ext); // Set the filename to be unique (timestamp + original extension)
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Route to update group photo
+router.put('/group/update/:id/photo', upload.single('photo'), async (req, res) => {
+  try {
+    const groupId = req.params.id;
+    const { filename } = req.file; // Uploaded photo filename
+
+    // Update the group document with the photo filename
+    const updatedGroup = await Group.findByIdAndUpdate(
+      groupId,
+      { photo: filename }, // Assuming 'photo' is the field in your Group schema to store the photo filename
+      { new: true }
+    );
+
+    if (!updatedGroup) {
+      return res.status(404).json({ error: 'Group not found.' });
+    }
+
+    return res.status(200).json({ success: 'Group photo updated successfully', group: updatedGroup });
+  } catch (error) {
+    console.error('Error updating group photo:', error);
+    return res.status(500).json({ error: 'Failed to update group photo.' });
+  }
+});
   
   // Route to get all groups
   router.get('/groups', async (req, res) => {

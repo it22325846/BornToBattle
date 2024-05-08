@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 const EventCandidates = () => {
   const [candidates, setCandidates] = useState([]);
   const { event } = useParams();
+  const [gevents, setGevents] = useState([]);
+
 
 
   useEffect(() => {
@@ -46,9 +48,31 @@ const EventCandidates = () => {
     });
   };
 
-  // const handleConfirm = (id) => {
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
-  // }
+  const fetchEvents = () => {
+    axios.get('/events').then((res) => {
+      if (res.data.success) {
+        if(event=='dancing'){
+          const dancingEvents = res.data.existingEvents.filter(event => event.category === "Dancing");
+          setGevents(dancingEvents);
+        }
+        else{
+          const dancingEvents = res.data.existingEvents.filter(event => event.category === "Beatbox");
+          setGevents(dancingEvents);
+        }
+       
+       // console.log("dancing events", dancingEvents)
+      }
+    }).catch((error) => {
+      console.error("Error fetching events:", error);
+    });
+  }
+
+
+  
 
   return (
     <div>
@@ -76,7 +100,7 @@ const EventCandidates = () => {
               <th>Event</th>
               <th>Category</th>
               <th>Phone Number</th>
-              <th>Action</th>
+           
             </tr>
           </thead>
           <tbody>
@@ -88,50 +112,67 @@ const EventCandidates = () => {
                     {candidate.name}
                   </Link>
                 </td>
-                <td>{candidate.age}</td>
-                <td>{candidate.gender}</td>
+                <td>{candidate.event === 'beatbox' ? 'Open' :candidate.age}</td>
+                <td>{candidate.event === 'beatbox' ? 'Open' : candidate.gender}</td>
                 <td>{candidate.event}</td>
                 <td>{candidate.category}</td>
                 <td>{candidate.phoneNumber}</td>
                 
-                <td>
-                  {/* <Link to={`/edit/${candidate._id}`} className="btn btn-warning">
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </Link>
-                  <a className="btn btn-danger" href="#" onClick={() => onDelete(candidate._id)}>
-                    <i className="far fa-trash-alt"></i>&nbsp;Delete
-                  </a> */}
-                </td>
+            
               </tr>
             ))}
           </tbody>
         </table>
-        <div style={{ color: 'white' }}>
-        <h4>HipHop</h4>
-        <h5> Under 18 <a href="/subcandidates/dancing?cat=u18bh">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
-        <h5> Over  18 <a href="/subcandidates/dancing?cat=o18bh">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
+        <div>
+          <h2>Available Events</h2>
+          <div style={{ margin: 'auto', width: 'fit-content' }}>
+  <div style={{ display: 'flex', justifyContent: 'center', border: '2px solid white', padding: '10px', maxWidth: '800px' }}>
+    <div style={{ color: 'white' }}>
+      {gevents.map((event, index) => (
+        <tr key={index}>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{index+1}</h5>
+          </td>
+          <td style={{ paddingRight: '20px', color: 'red' }}>
+            <h5>{event.topic}</h5>
+          </td>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{event.type}</h5>
+          </td>
+          <td style={{ paddingRight: '20px' }}>
+            <h5>{event.gender}</h5>
+          </td>
+          <td>
+            <h5>{event.ageGroup}</h5>
+          </td>
+        </tr>
+      ))}
+    </div>
+  </div>
+</div>
 
-        <h5> Under 16  <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
-        {/* <h5> Over  16 <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5> */}
-
-<br></br>
-        <h4>All Styles</h4>
-        <h5> Under 18 <a href="/subcandidates/dancing?cat=u18ba">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
-        <h5> Over  18 <a href="/subcandidates/dancing?cat=o18ba">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
-
-        <h5> Under 16  <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
-        {/* <h5> Over  16 <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5> */}
-        
 
         </div>
+  {event === 'dancing' && (
+    <div style={{ color: 'white' }}>
+      <h4>HipHop</h4>
+      <h5> Under 18 <a href="/subcandidates/dancing?cat=u18bh">Boys </a> or <a href="/subcandidates/dancing?cat=u18gh">girls</a></h5>
+      <h5> Over  18 <a href="/subcandidates/dancing?cat=o18bh">Boys </a> or <a href="/subcandidates/dancing?cat=o18gh">girls</a></h5>
+      <h5> Under 16  <a href="/subcandidates/dancing?cat=u16bh">Boys </a> or <a href="/subcandidates/dancing?cat=u16gh">girls</a></h5>
+     <br></br>
+      <h4>Free Styles</h4>
+      <h5> Under 18 <a href="/subcandidates/dancing?cat=u18ba">Boys </a> or <a href="/subcandidates/dancing?cat=u18ga">girls</a></h5>
+      <h5> Over  18 <a href="/subcandidates/dancing?cat=o18ba">Boys </a> or <a href="/subcandidates/dancing?cat=o18ga">girls</a></h5>
+      <h5> Under 16  <a href="/subcandidates/dancing?cat=u16ba">Boys </a> or <a href="/subcandidates/dancing?cat=u16ga">girls</a></h5>
+    </div>
+  )}
 
-
-
-        {/* <button className="btn btn-success">
-          <Link to="/add" style={{ color: 'black' }}>
-            Create New Student
-          </Link>
-        </button> */}
+{/* {event !== 'dancing' && (
+    <div style={{ color: 'white' }}>
+     
+    </div>
+  )} */}
+   
       </div>
     </div>
   );

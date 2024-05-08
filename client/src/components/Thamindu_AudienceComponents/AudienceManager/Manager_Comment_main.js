@@ -77,6 +77,7 @@ const M_MainComponent = () => {
 
   const handleSignOut = () => {
     localStorage.removeItem('username');
+    alert('Sign Out');
     window.location.href = '/';
   };
   
