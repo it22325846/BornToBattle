@@ -7,6 +7,7 @@ import { useReactToPrint } from "react-to-print";
 export default function FinalScore() {
     const [finalScores, setFinalScores] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const [disableUpdateButton, setDisableUpdateButton] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,6 +34,13 @@ export default function FinalScore() {
                 console.error("Error fetching final scores:", error);
             });
     }, []);
+
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+            setDisableUpdateButton(true);
+        },6000);
+        return ()=> clearTimeout(timer);
+    },[]);
 
     const handleUpdateButtonClick = (_id, Cname, Category, Performance, Costume, Technique, Timing, Feedback) => {
         navigate(`/updatescore?scoreId=${_id}&Cname=${Cname}&Category=${Category}&Performance=${Performance}&Costume=${Costume}&Technique=${Technique}&Timing=${Timing}&Feedback=${Feedback}`);
@@ -109,6 +117,7 @@ export default function FinalScore() {
                                                     type="button"
                                                     className="btn btn-primary-custom hide-on-print"
                                                     onClick={() => handleUpdateButtonClick(score._id, score.Cname, score.Category, score.Performance, score.Costume, score.Technique, score.Timing, score.Feedback)}
+                                                    disabled={disableUpdateButton}
                                                 >
                                                     Update
                                                 </button>

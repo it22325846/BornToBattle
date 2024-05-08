@@ -80,12 +80,12 @@ const CommentList = ({ comments, onDelete, onEdit }) => {
                             />
                         ) : comment.comments  }
                         {comment.candidate && (
-                            <span className='candidate-name'>:{comment.candidate.name} </span>
+                            <span className='candidate-name'> - To {comment.candidate.name} </span>
                         )}
                     </span>
                         
                     <span className='username' >
-                        ({comment.username}:{new Date(comment.create).toLocaleString()})
+                        ({comment.username}: {new Date(comment.create).toLocaleString()})
                     </span>
                 </div>
 

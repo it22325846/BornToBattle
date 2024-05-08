@@ -93,7 +93,7 @@ function Header() {
       <span className="separator">|</span>
 
       <li className="nav-item">
-      <NavLink className="nav-link" activeClassName="active" to="/createStaller">
+      <NavLink className="nav-link" activeClassName="active" to="/stalls">
           SHOPS
         </NavLink>
       </li>

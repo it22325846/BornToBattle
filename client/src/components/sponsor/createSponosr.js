@@ -84,7 +84,7 @@ export default function SponsorClaim() {
       .then(() => {
         alert("Sponsor added successfully.");
         navigate('/sponsorread')
-      })
+      })  
       .catch((err) => {
         console.error("Error adding sponsor:", err);
         alert("Sponsor creation failed.");
@@ -94,11 +94,12 @@ export default function SponsorClaim() {
     <div>
       <div classNameName="container m-5">
         <form
-          className="row g-3 bg-dark bg-gradient text-white p-4 text-start rounded-4 m-5"
+          className="row g-3 bg-gradient text-white p-4 text-start rounded-4 m-5"
+          style={{backgroundImage: 'url("../../../Images/red_and_black.jpg")', backgroundSize: 'cover',borderRadius: '20px'}}
           onSubmit={submitSponosr}
         >
-          <div className="row g-2">
-            <div className="col-12">
+          <div className="row col-12" style={{textAlign: 'start' }}>
+            <div className="col-md-12">
               <label htmlFor="sponsorName" className="form-label">
                 Sponsor Name
               </label>
@@ -111,7 +112,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="companyName" className="form-label">
                 Company Name
@@ -124,7 +125,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="sponsorPosition" className="form-label">
                 Sponsor Position
@@ -149,7 +150,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="contactPerson" className="form-label">
                 Contact Person
@@ -173,7 +174,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="address" className="form-label">
                 Address
@@ -187,7 +188,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-12">
               <label htmlFor="state" className="form-label">
                 City/State
@@ -201,7 +202,7 @@ export default function SponsorClaim() {
               />
             </div>
           </div>
-          <div className="row g-2">
+          <div className="row col-12" style={{textAlign: 'start' }}>
             <div className="col-md-6">
               <label htmlFor="email" className="form-label">
                 Email
@@ -226,7 +227,7 @@ export default function SponsorClaim() {
             </div>
           </div>
           <div className="col-12">
-              <button type="submit" className="btn btn-danger">
+              <button type="submit" className="btn btn-danger p-3" style={{width: '300px', fontSize: 'larger', fontWeight: 'bolder'}}>
                 Get Sponsorship
               </button>
           </div>

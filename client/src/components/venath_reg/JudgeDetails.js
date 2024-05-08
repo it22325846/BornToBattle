@@ -43,7 +43,11 @@ const JudgeDetails = () => {
       </div>
       <div style={{ flex: 3 }}>
         {judge.photo && (
-          <img src={`/uploads/judges/${judge.photo}`} alt="Judge Photo" style={{ maxWidth: '200px' }} />
+          <img src={`/uploads/judges/${judge.photo}`} alt="Judge Photo" style={{
+            maxWidth: '200px',
+            border: '2px solid white', // Add border styling here
+            borderRadius: '5px' // Add border radius for rounded corners
+          }} />
         )}
       </div>
   
